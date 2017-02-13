@@ -1,0 +1,33 @@
+Change the summary numbers we show to be what Ben's document says
+
+Code to reproduce "Results" section in paper as JSON
+Code to reproduce from XLS a version of table 4 from paper as JSON
+
+Deploy it
+Register domain
+
+Make it clear what the date is that the data is from
+Make narrow width front page look better - the large numbers
+Turn compression back on without it breaking styling
+
+Load data for individual organisations into SQL (or lots of JSON files?)
+Make a page for each individual organisation
+Make list of all organisations
+
+Add list of individual trials, with their titles, to the organisation pages
+
+Add social sharing stuff
+Twitter / Facebook sharing links on pages - look up best practice
+
+
+Read:
+https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit
+
+Also read draft paper
+
+Spec and notes:
+https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
+
+
+
+
