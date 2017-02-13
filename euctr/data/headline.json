@@ -7,5 +7,6 @@
 
     "due_with_completion_date": 6551,
     "completed_trials_with_date": 6551,
-    "percent_with_results": 46.9
+    "percent_with_results": 46.9,
+    "percent_without_results": 53.1
 }
