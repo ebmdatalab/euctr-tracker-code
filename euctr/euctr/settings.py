@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,26 @@ TEMPLATES = [
         },
     },
 ]
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
+COMPRESS_ROOT = 'static'
+
+COMPRESS_CSS_FILTERS = [
+  'compressor.filters.css_default.CssAbsoluteFilter',
+  'compressor.filters.cssmin.CSSCompressorFilter'
+]
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+    'compressor.finders.CompressorFinder',
+)
 
 WSGI_APPLICATION = 'euctr.wsgi.application'
 

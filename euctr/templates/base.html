@@ -4,6 +4,15 @@
     <title>
       {% block title %}{% endblock %}
     </title>
+
+    {% load compress %}
+
+    {% compress css %}
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css"
+        type="text/css" charset="utf-8">
+      <link rel="stylesheet" href="/static/scss/site.scss"
+        type="text/x-scss" charset="utf-8">
+    {% endcompress %}
   </head>
 
   <body>
