@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+import json
+
+def get_headlines():
+    data = json.load(open('data/headline.json'))
+    return data
+
