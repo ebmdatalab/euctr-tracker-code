@@ -36,8 +36,42 @@
     </div>
   </div>
 
-
   <div class="container">
+    <table id="table4_table" class="display" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Sponsor name</th>
+          <th>Total reported</th>
+          <th>Total due</th>
+          <th>Percent reported</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Sponsor name</th>
+          <th>Total reported</th>
+          <th>Total due</th>
+          <th>Percent reported</th>
+        </tr>
+      </tfoot>
+    
+      {% for sponsor in table4 %}
+      <tr>
+        <td>
+          {{ sponsor.sponsor_name }}
+        </td>
+        <td>
+          {{ sponsor.total_reported }}
+        </td>
+        <td>
+          {{ sponsor.total_due }}
+        </td>
+        <td>
+          {{ sponsor.percent_reported }}%
+        </td>
+      </tr> 
+      {% endfor %}
+    </table>
   </div>
 
 {% endblock%}
