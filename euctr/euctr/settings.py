@@ -81,7 +81,7 @@ COMPRESS_CSS_FILTERS = [
   'compressor.filters.cssmin.CSSCompressorFilter'
 ]
 
-#COMPRESS_ENABLED = True
+COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
