@@ -1,22 +1,61 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>
       {% block title %}{% endblock %}
     </title>
 
     {% load compress %}
-
     {% compress css %}
-      <link rel="stylesheet" href="/static/css/bootstrap.min.css"
-        type="text/css" charset="utf-8">
-      <link rel="stylesheet" href="/static/scss/site.scss"
-        type="text/x-scss" charset="utf-8">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css"
+	  type="text/css" charset="utf-8">
+	<link rel="stylesheet" href="/static/scss/site.scss"
+	  type="text/x-scss" charset="utf-8">
     {% endcompress %}
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">EU Trials Tracker</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav navbar-right">
+            <!--<li> <a href="">All Sponsors</a> </li>-->
+            <li> <a href="/about">About</a> </li>
+          </ul>
+
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
     {% block content %}{% endblock %}
+
+      <hr>
+
+      <footer>
+	<div class="container">
+	Built by the <a href="http://ebmdatalab.net">Evidence-Based Medicine 
+	  Data Lab</a>, University of Oxford. 
+ 	  <a href="mailto:hello@ebmdatalab.net">Get in touch</a>.
+	</div>
+      </footer>
+
+    {% compress js %}
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    {% endcompress %}
   </body>
 
 </html>
