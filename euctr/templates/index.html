@@ -6,21 +6,21 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
+      <h1>Who's not sharing EU clinical trial results?</h1>
       <div class="row">
         <div class="col-md-6">
-          <h2>Who's not sharing EU clinical trial results?</h2>
-            <p>By law, all clinical trials on the 
-               <a href="https://www.clinicaltrialsregister.eu/">
-                 European Union Clinical Trials Register (EUCTR)
-               </a>
+          <p id="intro">By law, all clinical trials on the 
+          <a href="https://www.clinicaltrialsregister.eu/">
+            European Union Clinical Trials Register (EUCTR)
+          </a>
           must post their results to the registry within a year of
           completion. This site tracks which universities and
           pharmaceutical companies are doing this and which aren't.
+          <a href="/about">Learn more &raquo;</a>
           </p>
-          <p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more &raquo;</a></p>
         </div>
         <div class="col-md-6" id="headlines">
-          <h2>Out of {{total_trials}} clinical trials in the registry&hellip;</h2>
+          <h2>Out of {{total_trials}} trials in the registry&hellip;</h2>
           <div class="row">
             <div class="col-sm-4 headline-box">
               <div class="headline-number">{{due_trials}}</div>
