@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor'
+    'compressor',
+
+    'frontend',
+    'euctr'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +85,7 @@ COMPRESS_CSS_FILTERS = [
 ]
 
 # This is breaking the styling, now sure why
-#COMPRESS_ENABLED = True
+# COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
