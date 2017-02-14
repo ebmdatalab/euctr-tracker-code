@@ -1,4 +1,5 @@
 Django==1.10.5
 django_compressor==2.1.1
-django-libsass=0.7
-csscompressor=0.9.4
+django-libsass==0.7
+csscompressor==0.9.4
+pandas==0.19.2
