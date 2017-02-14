@@ -8,7 +8,6 @@ body {
 
 .headline-box {
     font-size: 21px;
-    width: 10em;
     margin-bottom: 24px;
 }
 .headline-number {
@@ -16,3 +15,8 @@ body {
     margin-bottom: -12px;
 }
 
+@media (max-width: $screen-md-min) {
+    #headlines {
+        margin-top: 50px;
+    }
+}

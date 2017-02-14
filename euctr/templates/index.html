@@ -7,7 +7,7 @@
   <div class="jumbotron">
     <div class="container">
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6">
           <h2>Who's not sharing EU clinical trial results?</h2>
             <p>By law, all clinical trials on the 
                <a href="https://www.clinicaltrialsregister.eu/">
@@ -19,20 +19,20 @@
           </p>
           <p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more &raquo;</a></p>
         </div>
-        <div class="col-md-7">
-          <h2>Out of {{total_trials}} clinical trials in the registry</h2>
+        <div class="col-md-6" id="headlines">
+          <h2>Out of {{total_trials}} clinical trials in the registry&hellip;</h2>
           <div class="row">
-            <div class="col-xs-6 headline-box">
+            <div class="col-sm-4 headline-box">
               <div class="headline-number">{{due_trials}}</div>
-              list a due completion date
+              <span title="That is to say, they list a completion date which is more than a year ago">are due to post results</span>
             </div>
-            <div class="col-xs-6 headline-box">
+            <div class="col-sm-4 headline-box">
               <div class="headline-number">{{due_trials_without_results}}</div>
-              trials are overdue posting results
+              of those haven't posted results
             </div>
-            <div class="col-xs-6 headline-box">
+            <div class="col-sm-4 headline-box">
               <div class="headline-number">{{percent_without_results}}%</div>
-              have <b>not</b> reported results
+              of due trials are breaking the law 
             </div>
           </div>
         </div>
