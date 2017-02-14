@@ -1,7 +1,5 @@
 Change the summary numbers we show to be what Ben's document says
-
-Code to reproduce "Results" section in paper as JSON
-Code to reproduce from XLS a version of table 4 from paper as JSON
+Pfizer count doesn't agree with table 4 in paper
 
 Deploy it
 Register domain
