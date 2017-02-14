@@ -8,7 +8,7 @@ from django.core.management.base import BaseCommand, CommandError
 SOURCE_XLS_FILE = '../data/export-from-stata-2016-02-13.xls'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_TABLE4_FILE = '../data/table4.json'
-TABLE_4_QUARTILE_THRESHOLD = 3
+TABLE_4_THRESHOLD = 50
 
 def yes_no_to_number(x):
     if x == 'yes':
@@ -38,7 +38,7 @@ class Command(BaseCommand):
         with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
             json.dump(headline, outfile)
 
-        table4_trials = due_trials[due_trials['quartile'] >= TABLE_4_QUARTILE_THRESHOLD]
+        table4_trials = due_trials[due_trials['count'] >= TABLE_4_THRESHOLD]
         table4_trials = table4_trials[
             ['normalized_name_of_sponsor', 'results', 'are_results_due']
         ]
