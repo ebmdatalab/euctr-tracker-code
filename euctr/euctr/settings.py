@@ -25,7 +25,7 @@ SECRET_KEY = '*s4t00$^f+-w(x93dm3wj3bi-$i*cz$n($%-4v^fp*1xlt#mj3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net']
 
 
 # Application definition

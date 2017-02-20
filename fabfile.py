@@ -40,9 +40,8 @@ def setup_nginx():
     run('ln -sf %s/deploy/supervisor-%s.conf /etc/supervisor/conf.d/%s.conf' % (env.path, env.app, env.app))
     run('ln -sf %s/deploy/nginx-%s /etc/nginx/sites-enabled/%s' % (env.path, env.app, env.app))
     run('chown -R www-data:www-data /var/www/%s' % (env.app))
-    run('service supervisor start')
-    run('supervisorctl start %s' % (env.app))
-    run('service nginx start')
+    run('service supervisor restart')
+    run('service nginx restart')
 
 def graceful_reload():
     run('service supervisor reload')

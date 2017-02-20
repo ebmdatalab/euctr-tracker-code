@@ -74,9 +74,9 @@ server {
         proxy_pass http://eutrialstracker_live;
     }
 
-    #location /media {
-    #    alias   /var/www/eutrialstracker_live/media;
-    #    expires max;
-    #    access_log off;
-    #}
+    location /static {
+        alias   /var/www/eutrialstracker_live/euctr/static;
+        expires max;
+        access_log off;
+    }
 }
