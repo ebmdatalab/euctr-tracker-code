@@ -1,7 +1,7 @@
 # euctr-tracker
 
-Installation
-============
+Development
+===========
 
 Install these Python development packages before you begin. For
 example, on a Debian-based system:
