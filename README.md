@@ -35,7 +35,7 @@ cd euctr
 Deployment
 ==========
 
-We use fabric to deploy over SSH to a pet servers. 
+We use fabric to deploy over SSH to a pet server. 
 
 ```
 fab deploy:production
