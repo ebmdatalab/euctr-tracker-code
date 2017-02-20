@@ -68,15 +68,12 @@ def deploy(environment, branch='master'):
 
     make_directory()
     with cd(env.path):
-	upload_files()
-	setup_nginx()
-
-	sys.exit(0)
 	venv_init()
 	upload_files()
         pip_install()
+	setup_nginx()
         #run_migrations()
-        graceful_reload()
+        #graceful_reload()
 
 
 
