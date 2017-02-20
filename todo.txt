@@ -1,10 +1,10 @@
-Check Pfizer count against new table
-
 Deploy it
 Register domain
 
 Make it clear what the date is that the data is from
 Turn compression back on without it breaking styling
+
+Check Pfizer count against new table - 154 / 161 vs 154 / 160
 
 Load data for individual organisations into SQL (or lots of JSON files?)
 Make list of all organisations
