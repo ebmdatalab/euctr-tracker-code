@@ -32,6 +32,22 @@ cd euctr
 ./manage.py runserver
 ```
 
+Deployment
+==========
+
+We use fabric to deploy over SSH to a pet servers. 
+
+```
+fab deploy:production
+```
+
+WARNING: Currently the code is copied from your local directory.
+When the paper is published, we can perhaps make the github 
+repository public, so the server can easily fetch the code 
+directly.
+
+The configuration is in `fabfile.py` and the `deploy` directory.
+
 
 Loading new data
 ================
