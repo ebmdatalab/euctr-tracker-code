@@ -1,21 +1,21 @@
-Change the summary numbers we show to be what Ben's document says
-Pfizer count doesn't agree with table 4 in paper
+Check Pfizer count against new table
 
 Deploy it
 Register domain
 
 Make it clear what the date is that the data is from
-Make narrow width front page look better - the large numbers
 Turn compression back on without it breaking styling
 
 Load data for individual organisations into SQL (or lots of JSON files?)
-Make a page for each individual organisation
 Make list of all organisations
+Make a page for each individual organisation
 
 Add list of individual trials, with their titles, to the organisation pages
 
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
+
+Test on IE11 and Edge 
 
 
 Read:
