@@ -33,7 +33,7 @@ DEBUG = EUCTR_DEBUG == 'yes'
 ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1']
 
 # When the data was last updated
-DATA_SOURCE_DATE = datetime.date(2017,1,23)
+DATA_SOURCE_DATE = datetime.date(2017, 1, 23)
 
 # Application definition
 
@@ -89,8 +89,7 @@ COMPRESS_ROOT = 'static'
 COMPRESS_CSS_FILTERS = [
   'compressor.filters.css_default.CssAbsoluteFilter',
   'compressor.filters.cssmin.CSSCompressorFilter'
-
-  #'compressor.filters.cssmin.CSSMinFilter',
+  # 'compressor.filters.cssmin.CSSMinFilter',
 ]
 
 # This is breaking the styling, now sure why

@@ -1,6 +1,7 @@
 import os
 import django.core.exceptions
 
+
 # Originally taken from openprescribing
 def get_env_setting(setting, default=None):
     """ Get the environment setting.
@@ -15,4 +16,3 @@ def get_env_setting(setting, default=None):
         else:
             error_msg = "Set the %s env variable" % setting
             raise django.core.exceptions.ImproperlyConfigured(error_msg)
-
