@@ -16,7 +16,7 @@ env.colorize_errors = True
 env.user = 'root'
 
 environments = {
-    'production': 'eutrialstracker_live',
+    'live': 'eutrialstracker_live',
     #'staging': 'eutrialstracker_staging'
 }
 
@@ -43,15 +43,11 @@ def setup_nginx():
     run('service supervisor restart')
     run('service nginx restart')
 
-def graceful_reload():
-    run('service supervisor reload')
-    run('service nginx reload')
-
 #def run_migrations():
-#    if env.environment == 'production':
+#    if env.environment == 'live':
 #        with prefix('source .venv/bin/activate'):
 #            run('cd openprescribing/ && python manage.py migrate '
-#                '--settings=openprescribing.settings.production')
+#                '--settings=openprescribing.settings.live')
 #    else:
 #        warn("Refusing to run migrations in staging environment")
 
@@ -72,7 +68,6 @@ def deploy(environment, branch='master'):
         pip_install()
 	setup_nginx()
         #run_migrations()
-        #graceful_reload()
 
 
 

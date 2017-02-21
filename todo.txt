@@ -1,7 +1,6 @@
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
-Make production SECRET_KEY secret
 Debug off in production
 PEP8
 

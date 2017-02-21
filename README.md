@@ -44,7 +44,7 @@ Deployment
 We use fabric to deploy over SSH to a pet server. 
 
 ```
-fab deploy:production
+fab deploy:live
 ```
 
 WARNING: Currently the code is copied from your local directory.
@@ -53,6 +53,8 @@ repository public, so the server can easily fetch the code
 directly.
 
 The configuration is in `fabfile.py` and the `deploy` directory.
+
+Environment settings live in `/etc/profile.d/eutrialstracker_live.sh`
 
 
 Loading new data
