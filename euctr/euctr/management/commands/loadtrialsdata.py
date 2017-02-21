@@ -27,6 +27,12 @@ class Command(BaseCommand):
         # on whether to include on the front page of the site / table 4 of the
         # journal paper.
         all_trials['total_trials'] = all_trials.groupby(['normalized_name'])['trial_id'].transform('count')
+        # ... check the grouping, counting worked, e.g. all have a normalized_name
+        null_counts = all_trials[all_trials['total_trials'].isnull()]
+        # TODO: re-enable this check when fixed
+        #assert len(null_counts) == 0
+        # XXX: can then remove the fillna below too
+        all_trials['total_trials'] = all_trials['total_trials'].fillna(0.0).astype(int)
 
         # Trials which have declared completed everywhere with a date, and a
         # year has passed
