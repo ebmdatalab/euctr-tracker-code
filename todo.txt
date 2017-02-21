@@ -1,11 +1,8 @@
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
-PEP8
-
 Load data for each organisation into separate SQL row or JSON file (by first letter? by trial id hash?)
 Make a page for each individual organisation
-
 Add list of individual trials, with their titles, to the organisation pages
 
 From Ben's spec:
@@ -13,6 +10,7 @@ From Ben's spec:
     Rank commercial and non-commercial separately
 
 Test on IE11 and Edge 
+Make it cache it for scaling
 
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
@@ -20,7 +18,7 @@ Twitter / Facebook sharing links on pages - look up best practice
 Read:
 https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit
 
-Also read draft paper
+Read final paper through, while double checking
 
 Spec and notes:
 https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
