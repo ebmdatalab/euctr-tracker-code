@@ -3,7 +3,6 @@ Make sure Nick can use SQL
 
 Make production SECRET_KEY secret
 Debug off in production
-Turn compression back on without it breaking styling
 PEP8
 
 Load data for each organisation into separate SQL row or JSON file (by first letter? by trial id hash?)
@@ -19,8 +18,6 @@ Test on IE11 and Edge
 
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
-Try DataTables "bootstrap" styling
-
 
 Read:
 https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit
