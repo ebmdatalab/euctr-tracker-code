@@ -5,10 +5,10 @@ $(document).ready( function () {
 	"paging": false,
 	"aoColumns": [
 	    { "orderSequence": [ "asc", "desc" ] },
-	    { "orderSequence": [ "desc", "asc" ] },
-	    { "orderSequence": [ "desc", "asc" ] },
-	    { "orderSequence": [ "desc", "asc" ] },
-	    { "orderSequence": [ "desc", "asc" ] }
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  }
 	]
     });
 } );
