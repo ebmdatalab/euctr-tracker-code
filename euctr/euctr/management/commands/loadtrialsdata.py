@@ -6,7 +6,7 @@ import numpy as np
 from django.core.management.base import BaseCommand, CommandError
 
 SOURCE_CSV_FILE = '../data/trials.csv'
-NORMALIZE_FILE = '../data/normalized_sponsor_names_20FEB2017.xlsx'
+NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_TABLE4_FILE = '../data/table4.json'
 TABLE_4_THRESHOLD = 50
@@ -19,7 +19,7 @@ class Command(BaseCommand):
 
         # Load in list of trials, list of normalized names, and join together
         trials_input = pandas.read_csv(SOURCE_CSV_FILE)
-        normalize = pandas.ExcelFile(NORMALIZE_FILE).parse("Sheet1")
+        normalize = pandas.read_excel(NORMALIZE_FILE, "Sheet1", keep_default_na=False, na_values=[])
         all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
         headline['total_trials'] = len(all_trials)
 
@@ -29,10 +29,8 @@ class Command(BaseCommand):
         all_trials['total_trials'] = all_trials.groupby(['normalized_name'])['trial_id'].transform('count')
         # ... check the grouping, counting worked, e.g. all have a normalized_name
         null_counts = all_trials[all_trials['total_trials'].isnull()]
-        # TODO: re-enable this check when fixed
-        #assert len(null_counts) == 0
-        # XXX: can then remove the fillna below too
-        all_trials['total_trials'] = all_trials['total_trials'].fillna(0.0).astype(int)
+        assert len(null_counts) == 0
+        all_trials['total_trials'] = all_trials['total_trials'].astype(int)
 
         # Trials which have declared completed everywhere with a date, and a
         # year has passed
