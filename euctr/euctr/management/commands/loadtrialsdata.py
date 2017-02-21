@@ -5,9 +5,11 @@ import numpy as np
 
 from django.core.management.base import BaseCommand, CommandError
 
+SOURCE_CSV_FILE = '../data/trials.csv'
 NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_TABLE4_FILE = '../data/table4.json'
+OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
 TABLE_4_THRESHOLD = 50
 
 class Command(BaseCommand):
@@ -47,26 +49,29 @@ class Command(BaseCommand):
         with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
             json.dump(headline, outfile)
 
-        # For front page table (which is like table 4 + table 5 in the journal
-        # paper) extract major organisations ...
-        table4_trials = due_trials[due_trials['total_trials'] >= TABLE_4_THRESHOLD]
-        table4_trials = table4_trials[
+        sponsor_trials = due_trials[
             ['normalized_name', 'has_results', 'results_expected', 'total_trials']
         ]
         # ... count up totals
-        by_sponsor = table4_trials.groupby('normalized_name')
-        table4 = by_sponsor.agg({
+        sponsor_grouped = sponsor_trials.groupby('normalized_name')
+        sponsor_counts = sponsor_grouped.agg({
             'has_results': 'sum',
             'results_expected': 'sum',
             'total_trials': 'max'
         })
-        table4.reset_index(level=0, inplace=True)
-        table4.rename(columns={
+        sponsor_counts.reset_index(level=0, inplace=True)
+        sponsor_counts.rename(columns={
             'normalized_name': 'sponsor_name',
             'has_results': 'total_reported',
             'results_expected': 'total_due'
         }, inplace=True)
-        table4['percent_reported'] = np.round(table4['total_reported'] / table4['total_due'] * 100, 1)
-        # ... save to file
+        sponsor_counts['percent_reported'] = np.round(sponsor_counts['total_reported'] / sponsor_counts['total_due'] * 100, 1)
+        # ... write them to a file
+        sponsor_counts.to_json(OUTPUT_ALL_SPONSORS_FILE, orient='records')
+
+        # For front page table (which is like table 4 + table 5 in the journal
+        # paper) extract major organisations only
+        table4 = sponsor_counts[sponsor_counts['total_trials'] >= TABLE_4_THRESHOLD]
+        # ... write them to a file
         table4.to_json(OUTPUT_TABLE4_FILE, orient='records')
 

@@ -1,10 +1,14 @@
 @import 'variables';
 @import 'bootswatch';
 
+/* All pages */
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+/* Front page */
 
 #intro {
     margin-top: 20px;
@@ -23,4 +27,8 @@ body {
     #headlines {
         margin-top: 50px;
     }
+}
+
+.all_sponsors_bottom_link {
+    margin-top: 24px;
 }

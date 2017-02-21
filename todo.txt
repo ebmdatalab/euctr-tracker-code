@@ -4,12 +4,16 @@ Make sure Nick can use SQL
 Debug off in production
 Turn compression back on without it breaking styling
 Make production SECRET_KEY secret
+PEP8
 
-Load data for individual organisations into SQL (or lots of JSON files?)
-Make list of all organisations
+Load data for each organisation into separate SQL row or JSON file (by first letter? by trial id hash?)
 Make a page for each individual organisation
 
 Add list of individual trials, with their titles, to the organisation pages
+
+From Ben's spec:
+    Front page search should search ALL sponsors..
+    Rank commercial and non-commercial separately
 
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
@@ -24,7 +28,4 @@ Also read draft paper
 
 Spec and notes:
 https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
-
-
-
 

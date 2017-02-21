@@ -11,6 +11,12 @@ def index(request):
 
     return render(request, "index.html", context=headlines)
 
+def sponsors(request):
+    context = {}
+    context['all_sponsors'] = models.get_all_sponsors()
+
+    return render(request, "sponsors.html", context=context)
+
 def about(request):
     context = {}
     context['data_source_date'] = getattr(settings, "DATA_SOURCE_DATE", None)

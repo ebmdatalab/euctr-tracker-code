@@ -43,46 +43,12 @@
   <div class="container">
     <h1>How many trials have major sponsors reported?</h1>
 
-    <table id="table4_table" class="display" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th>Sponsor name</th>
-          <th>Total trials on EUCTR</th>
-          <th>Total reported</th>
-          <th>Total due</th>
-          <th>Percent reported</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <th>Sponsor name</th>
-          <th>Total trials on EUCTR</th>
-          <th>Total reported</th>
-          <th>Total due</th>
-          <th>Percent reported</th>
-        </tr>
-      </tfoot>
-    
-      {% for sponsor in table4 %}
-      <tr>
-        <td>
-          {{ sponsor.sponsor_name }}
-        </td>
-        <td>
-          {{ sponsor.total_trials }}
-        </td>
-        <td>
-          {{ sponsor.total_reported }}
-        </td>
-        <td>
-          {{ sponsor.total_due }}
-        </td>
-        <td>
-          {{ sponsor.percent_reported }}%
-        </td>
-      </tr> 
-      {% endfor %}
-    </table>
+    {% include "_sponsor_table.html" with table=table4 %}
+
+    <p class="lead all_sponsors_bottom_link">
+      <a href="/sponsors">View all sponsors &raquo;</a>
+    </p>
   </div>
+
 
 {% endblock%}
