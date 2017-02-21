@@ -52,14 +52,33 @@ The configuration is in `fabfile.py` and the `deploy` directory.
 Loading new data
 ================
 
-There's no database yet. Data is read from static files in
-the `data/` directory.
+1. Get hold of a dump from OpenTrials EUCTR SQL databsae. 
+It'll be called something like:
 
-You can regenerate the JSON files in there from the XLS source
-file with this command.
+```
+opentrials-warehouse-euctr-20170123.dump
+```
+
+Restore that into a PostgreSQL database.
+
+2. Export that to `data/trials.csv` using the SQL script
+`data/csv-from-opentrials.sql`.
+
+```
+psql euctr --quiet -f csv-from-opentrials.sql -o trials.csv
+```
+
+3. The frontend application reads data from static JSON files 
+in the `data/` directory. There's no database yet.
+
+Regenerate the JSON files from the CSV file with this command.
 
 ```
 ./manage.py loadtrialsdata
 ```
+
+
+
+
 
 
