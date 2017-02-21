@@ -62,10 +62,10 @@ opentrials-warehouse-euctr-20170123.dump
 Restore that into a PostgreSQL database.
 
 2. Export that to `data/trials.csv` using the SQL script
-`data/csv-from-opentrials.sql`.
+`data/opentrials-to-csv.sql`.
 
 ```
-psql euctr --quiet -f csv-from-opentrials.sql -o trials.csv
+psql euctr --quiet -f opentrials-to-csv.sql -o trials.csv
 ```
 
 3. The frontend application reads data from static JSON files 
