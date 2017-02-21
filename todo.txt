@@ -1,9 +1,9 @@
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
+Make production SECRET_KEY secret
 Debug off in production
 Turn compression back on without it breaking styling
-Make production SECRET_KEY secret
 PEP8
 
 Load data for each organisation into separate SQL row or JSON file (by first letter? by trial id hash?)
@@ -15,10 +15,11 @@ From Ben's spec:
     Front page search should search ALL sponsors..
     Rank commercial and non-commercial separately
 
+Test on IE11 and Edge 
+
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
-
-Test on IE11 and Edge 
+Try DataTables "bootstrap" styling
 
 
 Read:
