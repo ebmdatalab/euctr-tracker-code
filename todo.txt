@@ -5,8 +5,6 @@ Turn compression back on without it breaking styling
 Make production SECRET_KEY secret
 
 Pfizer count wrong - 154 / 161 vs 154 / 160
-University of Dundee and onwards not in paper
-Add total trials and check against Pfizer
 
 Load data for individual organisations into SQL (or lots of JSON files?)
 Make list of all organisations

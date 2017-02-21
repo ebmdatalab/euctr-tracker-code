@@ -44,11 +44,10 @@ class Command(BaseCommand):
 
         table4_trials = due_trials[due_trials['total_trials'] >= TABLE_4_THRESHOLD]
         table4_trials = table4_trials[
-            ['normalized_name', 'has_results', 'results_expected']
+            ['normalized_name', 'has_results', 'results_expected', 'total_trials']
         ]
-        table4_trials['results'] = table4_trials['has_results']
         by_sponsor = table4_trials.groupby('normalized_name')
-        table4 = by_sponsor.sum()
+        table4 = by_sponsor.agg({'has_results': 'sum', 'results_expected': 'sum', 'total_trials': 'max' })
         table4.reset_index(level=0, inplace=True)
         table4.rename(columns={
             'normalized_name': 'sponsor_name',
