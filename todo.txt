@@ -1,27 +1,11 @@
 Make it clear what the date is that the data is from
 
-Debug off in production
-Turn compression back on without it breaking styling
-Make production SECRET_KEY secret
-
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
-These ones have no normalized name
-             trial_id             name_of_sponsor_x normalized_name_only  \
-16814  2005-000060-16                 Aerogen, Inc.                  NaN
-29448  2007-005275-33                           NaN                  NaN
-29447  2007-005601-22                           NaN                  NaN
-29450  2011-000092-13                           NaN                  NaN
-12376  2011-000802-23         Javier García Campayo                  NaN
-2371   2011-003012-23   AQUINOX PHARMACEUTICALS INC                  NaN
-2373   2011-005398-22          ARAFARMA GROUP, S.A.                  NaN
-2372   2013-001951-11  Aquinox Pharmaceuticals Inc.                  NaN
-29449  2013-003260-32                           NaN                  NaN
-29446  2016-000565-23                           NaN                  NaN
-This one has name N/A
-28107  2005-005460-80                           NaN                  NaN
-Re-enable assert len(null_counts) == 0
+Debug off in production
+Turn compression back on without it breaking styling
+Make production SECRET_KEY secret
 
 Load data for individual organisations into SQL (or lots of JSON files?)
 Make list of all organisations
