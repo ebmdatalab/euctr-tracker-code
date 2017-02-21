@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 
 from . import models
 
@@ -9,3 +10,10 @@ def index(request):
     headlines['table4'] = table4
 
     return render(request, "index.html", context=headlines)
+
+def about(request):
+    context = {}
+    context['data_source_date'] = getattr(settings, "DATA_SOURCE_DATE", None)
+
+    return render(request, "about.html", context=context)
+

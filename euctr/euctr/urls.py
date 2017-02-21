@@ -21,6 +21,6 @@ import frontend.views
 
 urlpatterns = [
     url(r'^$', frontend.views.index),
-    url(r'^about$', TemplateView.as_view(template_name="about.html")),
+    url(r'^about$', frontend.views.about),
     url(r'^admin/', admin.site.urls),
 ]

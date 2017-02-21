@@ -5,7 +5,6 @@ import numpy as np
 
 from django.core.management.base import BaseCommand, CommandError
 
-SOURCE_CSV_FILE = '../data/trials.csv'
 NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_TABLE4_FILE = '../data/table4.json'

@@ -71,12 +71,13 @@ psql euctr --quiet -f opentrials-to-csv.sql -o trials.csv
 3. The frontend application reads data from static JSON files 
 in the `data/` directory. There's no database yet.
 
-Regenerate the JSON files from the CSV file with this command.
+Then regenerate the JSON files from the CSV file by running it:
 
 ```
 ./manage.py loadtrialsdata
 ```
 
+Update the `DATA_SOURCE_DATE` in `euctr/settings.py`.
 
 
 

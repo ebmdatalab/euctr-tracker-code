@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1']
 
+# When the data was last updated
+DATA_SOURCE_DATE = datetime.date(2017,1,23)
 
 # Application definition
 

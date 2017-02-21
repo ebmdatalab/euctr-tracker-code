@@ -1,5 +1,3 @@
-Make it clear what the date is that the data is from
-
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
