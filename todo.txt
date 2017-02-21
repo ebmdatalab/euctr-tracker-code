@@ -1,7 +1,6 @@
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
-Debug off in production
 PEP8
 
 Load data for each organisation into separate SQL row or JSON file (by first letter? by trial id hash?)

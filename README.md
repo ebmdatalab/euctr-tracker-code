@@ -28,7 +28,8 @@ pip install -r requirements.txt
 Set environment variables required.
 
 ```
-export EUCTR_SECRET_KEY=
+export EUCTR_SECRET_KEY= # random longish string for sessions
+export EUCTR_DEBUG= # yes or no
 ```
 
 Run the application.

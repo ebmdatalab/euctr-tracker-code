@@ -26,7 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = common.utils.get_env_setting('EUCTR_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+EUCTR_DEBUG = common.utils.get_env_setting('EUCTR_DEBUG')
+assert EUCTR_DEBUG in ['yes', 'no']
+DEBUG = EUCTR_DEBUG == 'yes'
 
 ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1']
 
