@@ -25,6 +25,12 @@ Install required Python packages.
 pip install -r requirements.txt
 ```
 
+Set environment variables required.
+
+```
+export EUCTR_SECRET_KEY=
+```
+
 Run the application.
 
 ```

@@ -3,3 +3,4 @@ db.sqlite3
 euctr/static/CACHE
 .~lock*
 .ipynb_checkpoints
+euctr/rundev
