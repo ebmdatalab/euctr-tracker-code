@@ -20,6 +20,9 @@ server {
     listen [::]:80;
     server_name eutrialstracker_live.tech;
 
+    auth_basic "Private until the paper is published";
+    auth_basic_user_file /etc/nginx/htpasswd-eutrialstracker.users;
+
     access_log /var/log/nginx/eutrialstracker_live.access.log;
     error_log /var/log/nginx/eutrialstracker_live.error.log;
 
