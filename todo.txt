@@ -1,3 +1,34 @@
+ben: ah interesting, so incremental search acts on the table, rather than producing some autocomplete options in a popup below the search. well now, initially i thought, to avoid confusion, and maximise the obviousness of the offer, the front page search box should search all sponsors, not just those with >50 trials in the DB. now i see this implementation, maybe we should flag up in text clearly above that table "This is only for major sponsors, to see all sponsors click HERE". except we know people ignore instructions. what do u think?
+
+ben: 
+i wonder whether we should have columns as:
+"name, total on EUCTR, total due, total unreported, % reported"
+then we can allow people to sort by LARGEST NUMBER UNREPORTED
+
+seb: There's a jitter on the "all sponsors" page while we (presumably) await
+datatables formatting. Perhaps delay showing anything (or spinner) until
+datatables has finished its shizzle?
+
+seb: I feel the header is not impactful enough -- too many numbers to parse.
+How about focusing on the the percentage by making the raw numbers on which
+it's based much smaller?  Perhaps the percentage could look nice and
+impactful with a pie chart or progress bar with some green and red.
+Similarly I wonder about making "by law" and "must" bold. I'd really like
+it if we could make it super clear this isn't good enough!
+
+seb: Have there been any conversations yet about the time dimension, e.g. is
+there going to be some kind of indication of how the percentage is changing
+each month?
+
+
+helen: One thought I had was perhaps it's useful to put your description of
+major sponsors (and maybe "click here to see all sponsors"?) directly
+underneath  the header "How many trials have major sponsors reported?" - of
+course too much text would be unhelpful because people won't read it, but one
+line is probably OK here?
+
+helen: a minor point on the blurb at the top, it says "universities and pharmaceutical companies" but there are other organisations like NHS / hospital trusts, was this deliberately simplified or should other types of organisation be mentioned?  (looks like there's at least 3 or 4 of these in the major sponsors list)
+
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
@@ -5,12 +36,14 @@ Load data for each organisation into separate SQL row or JSON file (by first let
 Make a page for each individual organisation
 Add list of individual trials, with their titles, to the organisation pages
 
-From Ben's spec:
-    Front page search should search ALL sponsors..
-    Rank commercial and non-commercial separately
+graphic generated for each centre:
+- the distribution of reporting rates, and a line for where they sit in that  
+- proportion reported from each year, by completion date
+- something new we haven't thought of yet. 
 
 Test on IE11 and Edge 
 Make it cache it for scaling
+Disable sessions, remove migrations and SQLite database for now at least
 
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
