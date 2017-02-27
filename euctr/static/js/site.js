@@ -1,11 +1,11 @@
-function hide_datatable() {
+function hide_sponsor_datatable() {
     /* Hide while loading to prevent style change jitter */
     $('#sponsor_table').hide()
     $('#sponsor_table_loading').show()
     $('#sponsor-pills').hide()
 }
 
-function activate_datatable() {
+function activate_sponsor_datatable() {
     var t = $('#sponsor_table').DataTable({
         "order": [[ 4, "desc" ]],
 	"paging": false,
@@ -65,3 +65,30 @@ function activate_datatable() {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
+
+function hide_trials_datatable() {
+    /* Hide while loading to prevent style change jitter */
+    $('#trials_table').hide()
+    $('#trials_table_loading').show()
+}
+
+function activate_trials_datatable() {
+    var t = $('#trials_table').DataTable({
+/*        "order": [[ 4, "desc" ]], */
+	"paging": false
+/*	"aoColumns": [
+	    { "orderSequence": [ "asc", "desc" ] },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "orderSequence": [ "asc", "desc" ] }, // Hidden column
+	]
+*/
+    });
+    /* Show after style change */
+    $('#trials_table_loading').hide()
+    $('#trials_table').show()
+}
+
+

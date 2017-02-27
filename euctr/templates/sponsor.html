@@ -34,8 +34,57 @@
     below.
     </p> -->
 
+    <h2>List of trials due</h2>
+
+    <div id="trials_table_loading">
+      <span class="glyphicon glyphicon-refresh spinning"></span>
+    </div>
+
+    <table id="trials_table" class="display" cellspacing="0" width="100%">
+      <script>
+        hide_trials_datatable()
+      </script>
+
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Min end date</th>
+          <th>Max end date</th>
+          <th>Results posted</th>
+        </tr>
+      </thead>
+
+      {% for trial in trials %}
+        <tr>
+          <td>{{ trial.trial_title }}</td>
+          <td>{{ trial.min_end_date }}</td>
+          <td>{{ trial.max_end_date }}</td>
+          {% if trial.has_results == 0 %}
+            <td>-</td>
+          {% elif trial.has_results == 1%}
+            <td>yes</td>
+          {% else %}
+            <td>{{ trial.has_results }}</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+
+      <tfoot>
+        <tr>
+          <th>Title</th>
+          <th>Min end date</th>
+          <th>Max end date</th>
+          <th>Results posted</th>
+        </tr>
+      </tfoot>
+    </table>
+
+    <script>
+      activate_trials_datatable()
+    </script>
+
     <div class="prominent_link"><a href="/">
-    Look up other sponsors &raquo;      
+      Look up other sponsors &raquo;      
     </div>
 
   </div>

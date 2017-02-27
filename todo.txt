@@ -1,6 +1,12 @@
-Add list of individual trials, with their titles, to the organisation pages
+Add list of individual trials, with their titles, to the sponsor pages
 
 Show the number of errors on sponsor pages
+Also show bad data trials on sponsor pages
+
+"I find the changing column widths when switching between "all" and "major"
+a bit disconcerting. If it was easy enough to fix that would be nice." - seb
+
+Link to EUCTR sponsor and trial pages
 
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
@@ -10,8 +16,15 @@ graphic generated for each centre:
 - proportion reported from each year, by completion date
 - something new we haven't thought of yet. 
 
+Wording when there is only 1 trial etc. on sponsor page is a bit off
+
+Undo this rename?
+            'normalized_name': 'sponsor_name',
+            'has_results': 'total_reported',
+            'results_expected': 'total_due'
+
 Test on IE11 and Edge 
-Make it cache it for scaling
+Make it cache front page for scaling
 Disable sessions, remove migrations and SQLite database for now at least
 Install Lets Encrypt
 Make major sponsors link work without Javascript

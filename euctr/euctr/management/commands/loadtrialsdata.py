@@ -11,6 +11,7 @@ NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
 TABLE_4_THRESHOLD = 50
+OUTPUT_ALL_TRIALS_FILE = '../data/all_trials.json'
 
 
 class Command(BaseCommand):
@@ -38,11 +39,13 @@ class Command(BaseCommand):
         null_counts = all_trials[all_trials['total_trials'].isnull()]
         assert len(null_counts) == 0
         all_trials['total_trials'] = all_trials['total_trials'].astype(int)
+        all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
 
         # Trials which have declared completed everywhere with a date, and a
         # year has passed
         due_trials = all_trials[all_trials.results_expected == 1]
         headline['due_trials'] = len(due_trials)
+        due_trials.to_json(OUTPUT_ALL_TRIALS_FILE, orient='records')
 
         # Trials which have or have not posted results
         due_with_results = due_trials[due_trials.has_results == 1]
@@ -54,6 +57,7 @@ class Command(BaseCommand):
         )
 
         sponsor_trials = due_trials[[
+            'slug',
             'normalized_name',
             'has_results',
             'results_expected',
@@ -62,6 +66,7 @@ class Command(BaseCommand):
         # ... count up totals
         sponsor_grouped = sponsor_trials.groupby('normalized_name')
         sponsor_counts = sponsor_grouped.agg({
+            'slug': 'max',
             'has_results': 'sum',
             'results_expected': 'sum',
             'total_trials': 'max'
@@ -82,7 +87,6 @@ class Command(BaseCommand):
             sponsor_counts['total_due'] * 100, 1
         )
         # ... write them to a file
-        sponsor_counts['slug'] = np.vectorize(slugify)(sponsor_counts['sponsor_name'])
         sponsor_counts.to_json(OUTPUT_ALL_SPONSORS_FILE, orient='records')
 
         # To get size of the default front page table
