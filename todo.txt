@@ -34,11 +34,17 @@ Add list of individual trials, with their titles, to the organisation pages
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
+Add .table-responsive
+    http://getbootstrap.com/css/#tables
+
+Remove table4 JSON
+
 graphic generated for each centre:
 - the distribution of reporting rates, and a line for where they sit in that  
 - proportion reported from each year, by completion date
 - something new we haven't thought of yet. 
 
+Very basic tests
 Test on IE11 and Edge 
 Make it cache it for scaling
 Disable sessions, remove migrations and SQLite database for now at least

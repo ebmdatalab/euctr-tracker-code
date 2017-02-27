@@ -2,6 +2,15 @@
   <span class="glyphicon glyphicon-refresh spinning"></span>
 </div>
 
+<ul class="nav nav-pills" id="sponsor-pills">
+  <li id="major_sponsors" role="presentation" class="active" title="Sponsors with more than 50 trials listed in EUCTR">
+    <a href="#">Major sponsors <span class="badge">{{ major_sponsors_count }}</span></a>
+  </li>
+  <li id="all_sponsors" role="presentation">
+    <a href="#">All sponsors <span class="badge">{{ all_sponsors_count }}</span></a>
+  </li>
+</ul>
+
 <table id="sponsor_table" class="display" cellspacing="0" width="100%">
 
   <script>
@@ -15,6 +24,7 @@
       <th>Due trials</th>
       <th>Unreported</th>
       <th>% Reported</th>
+      <th class="sponsor_type">Major?</th>
     </tr>
   </thead>
   <tfoot>
@@ -24,6 +34,7 @@
       <th>Due</th>
       <th>Unreported</th>
       <th>% Reported</th>
+      <th class="sponsor_type">Major?</th>
     </tr>
   </tfoot>
 
@@ -34,6 +45,11 @@
       <td> {{ sponsor.total_due }} </td>
       <td> {{ sponsor.total_unreported }} </td>
       <td> {{ sponsor.percent_reported }}% </td>
+      {% if sponsor.total_trials >= 50 %}
+      <td class="sponsor_type">major</td>
+      {% else %}
+      <td class="sponsor_type">minor</td>
+      {% endif %}
     </tr> 
   {% endfor %}
 

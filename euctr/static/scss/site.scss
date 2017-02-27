@@ -33,6 +33,22 @@ body {
     margin-top: 24px;
 }
 
+#sponsor-pills {
+    margin-top: 16px;
+    margin-bottom: -34px;
+}
+
+@media (max-width: $screen-sm-min) {
+    #sponsor_table_filter {
+        margin-top: 48px;
+    }
+}
+
+.sponsor_type {
+    display: none;
+}
+
+
 /* Sponsor table loading spinner */
 
 .sponsor_table_loading {

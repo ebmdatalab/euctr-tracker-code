@@ -53,10 +53,6 @@ class Command(BaseCommand):
                 len(due_without_results) / len(due_trials) * 100, 1
         )
 
-        # Write out file of totals, e.g. for front page large numbers
-        with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
-            json.dump(headline, outfile)
-
         sponsor_trials = due_trials[[
             'normalized_name',
             'has_results',
@@ -91,3 +87,13 @@ class Command(BaseCommand):
         ]
         # ... write them to a file
         table4.to_json(OUTPUT_TABLE4_FILE, orient='records')
+
+        # More total counts
+        headline["all_sponsors_count"] = len(sponsor_counts)
+        headline["major_sponsors_count"] = len(table4)
+
+        # Write out file of totals, e.g. for front page large numbers
+        with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
+            json.dump(headline, outfile)
+
+

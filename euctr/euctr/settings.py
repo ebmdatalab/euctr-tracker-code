@@ -88,12 +88,11 @@ COMPRESS_ROOT = 'static'
 
 COMPRESS_CSS_FILTERS = [
   'compressor.filters.css_default.CssAbsoluteFilter',
-  'compressor.filters.cssmin.CSSCompressorFilter'
-  # 'compressor.filters.cssmin.CSSMinFilter',
+#  'compressor.filters.cssmin.CSSCompressorFilter'
 ]
 
 # This is breaking the styling, now sure why
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

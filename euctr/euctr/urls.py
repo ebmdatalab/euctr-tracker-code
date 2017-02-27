@@ -22,6 +22,5 @@ import frontend.views
 urlpatterns = [
     url(r'^$', frontend.views.index),
     url(r'^about$', frontend.views.about),
-    url(r'^sponsors$', frontend.views.sponsors),
     url(r'^admin/', admin.site.urls),
 ]
