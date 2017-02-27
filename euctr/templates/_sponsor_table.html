@@ -1,4 +1,9 @@
 <table id="sponsor_table" class="display" cellspacing="0" width="100%">
+
+  <script>
+    hide_datatable()
+  </script>
+
   <thead>
     <tr>
       <th>Sponsor name</th>
@@ -18,28 +23,18 @@
     </tr>
   </tfoot>
 
-  <script>
-    activate_datatable()
-  </script>
-
   {% for sponsor in table %}
-  <tr>
-    <td>
-      {{ sponsor.sponsor_name }}
-    </td>
-    <td>
-      {{ sponsor.total_trials }}
-    </td>
-    <td>
-      {{ sponsor.total_due }}
-    </td>
-    <td>
-      {{ sponsor.total_unreported }}
-    </td>
-    <td>
-      {{ sponsor.percent_reported }}%
-    </td>
-  </tr> 
+    <tr>
+      <td> {{ sponsor.sponsor_name }} </td>
+      <td> {{ sponsor.total_trials }} </td>
+      <td> {{ sponsor.total_due }} </td>
+      <td> {{ sponsor.total_unreported }} </td>
+      <td> {{ sponsor.percent_reported }}% </td>
+    </tr> 
   {% endfor %}
+
 </table>
 
+<script>
+  activate_datatable()
+</script>
