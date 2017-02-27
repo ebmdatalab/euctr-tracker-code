@@ -10,11 +10,11 @@ graphic generated for each centre:
 - proportion reported from each year, by completion date
 - something new we haven't thought of yet. 
 
-Very basic tests
 Test on IE11 and Edge 
 Make it cache it for scaling
 Disable sessions, remove migrations and SQLite database for now at least
 Install Lets Encrypt
+Make major sponsors link work without Javascript
 
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
