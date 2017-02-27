@@ -8,11 +8,6 @@ def get_headlines():
     return data
 
 
-def get_table4():
-    data = json.load(open('../data/table4.json'))
-    return data
-
-
 def get_all_sponsors():
     data = json.load(open('../data/all_sponsors.json'))
     return data

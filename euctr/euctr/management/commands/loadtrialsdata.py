@@ -8,7 +8,6 @@ from django.core.management.base import BaseCommand, CommandError
 SOURCE_CSV_FILE = '../data/trials.csv'
 NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
-OUTPUT_TABLE4_FILE = '../data/table4.json'
 OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
 TABLE_4_THRESHOLD = 50
 
@@ -80,13 +79,10 @@ class Command(BaseCommand):
         # ... write them to a file
         sponsor_counts.to_json(OUTPUT_ALL_SPONSORS_FILE, orient='records')
 
-        # For front page table (which is like table 4 + table 5 in the journal
-        # paper) extract major organisations only
+        # To get size of the default front page table
         table4 = sponsor_counts[
             sponsor_counts['total_trials'] >= TABLE_4_THRESHOLD
         ]
-        # ... write them to a file
-        table4.to_json(OUTPUT_TABLE4_FILE, orient='records')
 
         # More total counts
         headline["all_sponsors_count"] = len(sponsor_counts)
