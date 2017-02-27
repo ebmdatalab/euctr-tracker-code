@@ -39,6 +39,12 @@ cd euctr
 ./manage.py runserver
 ```
 
+There are a few tests.
+
+```
+./manage.py test
+```
+
 Deployment
 ==========
 
