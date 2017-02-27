@@ -18,6 +18,9 @@
 	<link rel="stylesheet" href="/static/DataTables-1.10.13/media/css/jquery.dataTables.css"
 	  type="text/x-scss" charset="utf-8">
     {% endcompress %}
+    {% if load_js_at_start %}
+      {% include "_load_js.html" %}
+    {% endif %}
   </head>
 
   <body>
@@ -54,12 +57,9 @@
       </div>
     </footer>
 
-    {% compress js %}
-      <script src="/static/js/jquery-3.1.1.min.js"></script>
-      <script src="/static/js/bootstrap.min.js"></script>
-      <script src="/static/DataTables-1.10.13/media/js/jquery.dataTables.js"></script>
-      <script src="/static/js/site.js"></script>
-    {% endcompress %}
+    {% if not load_js_at_start %}
+      {% include "_load_js.html" %}
+    {% endif %}
   </body>
 
 </html>

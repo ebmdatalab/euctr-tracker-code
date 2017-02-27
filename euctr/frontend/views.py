@@ -5,16 +5,19 @@ from . import models
 
 
 def index(request):
-    headlines = models.get_headlines()
-    table4 = models.get_table4()
-    headlines['table4'] = table4
+    context = models.get_headlines()
 
-    return render(request, "index.html", context=headlines)
+    table4 = models.get_table4()
+    context['table4'] = table4
+    context['load_js_at_start'] = True
+
+    return render(request, "index.html", context=context)
 
 
 def sponsors(request):
     context = {}
     context['all_sponsors'] = models.get_all_sponsors()
+    context['load_js_at_start'] = True
 
     return render(request, "sponsors.html", context=context)
 

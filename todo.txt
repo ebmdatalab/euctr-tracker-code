@@ -7,15 +7,6 @@ up in text clearly above that table "This is only for major sponsors, to see
 all sponsors click HERE". except we know people ignore instructions. what do u
 think?
 
-ben: 
-i wonder whether we should have columns as:
-"name, total on EUCTR, total due, total unreported, % reported"
-then we can allow people to sort by LARGEST NUMBER UNREPORTED
-
-seb: There's a jitter on the "all sponsors" page while we (presumably) await
-datatables formatting. Perhaps delay showing anything (or spinner) until
-datatables has finished its shizzle?
-
 seb: I feel the header is not impactful enough -- too many numbers to parse.
 How about focusing on the the percentage by making the raw numbers on which
 it's based much smaller?  Perhaps the percentage could look nice and
@@ -48,6 +39,7 @@ graphic generated for each centre:
 - proportion reported from each year, by completion date
 - something new we haven't thought of yet. 
 
+Very basic tests
 Test on IE11 and Edge 
 Make it cache it for scaling
 Disable sessions, remove migrations and SQLite database for now at least

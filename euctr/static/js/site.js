@@ -1,7 +1,6 @@
-$(document).ready( function () {
+function activate_datatable() {
     var t = $('#sponsor_table').DataTable({
         "order": [[ 4, "desc" ]],
-        //order": [[ 3, "desc" ], [2, "desc"], [0, "asc"]], // reproduce order in paper
 	"paging": false,
 	"aoColumns": [
 	    { "orderSequence": [ "asc", "desc" ] },
@@ -11,4 +10,4 @@ $(document).ready( function () {
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  }
 	]
     });
-} );
+}
