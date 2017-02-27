@@ -21,6 +21,7 @@ import frontend.views
 
 urlpatterns = [
     url(r'^$', frontend.views.index),
+    url(r'^sponsor/(?P<slug>[a-z0-9-]+)$', frontend.views.sponsor),
     url(r'^about$', frontend.views.about),
     url(r'^admin/', admin.site.urls),
 ]

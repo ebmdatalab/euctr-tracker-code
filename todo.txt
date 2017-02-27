@@ -5,9 +5,6 @@ Add list of individual trials, with their titles, to the organisation pages
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL
 
-Add .table-responsive
-    http://getbootstrap.com/css/#tables
-
 graphic generated for each centre:
 - the distribution of reporting rates, and a line for where they sit in that  
 - proportion reported from each year, by completion date
@@ -21,6 +18,7 @@ Install Lets Encrypt
 
 Add social sharing stuff
 Twitter / Facebook sharing links on pages - look up best practice
+Consider adding meta descriptions, e.g. for sponsor pages
 
 Read:
 https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit

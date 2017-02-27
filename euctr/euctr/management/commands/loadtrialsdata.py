@@ -4,6 +4,7 @@ import json
 import numpy as np
 
 from django.core.management.base import BaseCommand, CommandError
+from django.template.defaultfilters import slugify
 
 SOURCE_CSV_FILE = '../data/trials.csv'
 NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
@@ -76,7 +77,12 @@ class Command(BaseCommand):
             sponsor_counts['total_due'] * 100, 1
         )
         sponsor_counts['total_unreported'] = sponsor_counts['total_due'] - sponsor_counts['total_reported']
+        sponsor_counts['percent_unreported'] = np.round(
+            sponsor_counts['total_unreported'] /
+            sponsor_counts['total_due'] * 100, 1
+        )
         # ... write them to a file
+        sponsor_counts['slug'] = np.vectorize(slugify)(sponsor_counts['sponsor_name'])
         sponsor_counts.to_json(OUTPUT_ALL_SPONSORS_FILE, orient='records')
 
         # To get size of the default front page table

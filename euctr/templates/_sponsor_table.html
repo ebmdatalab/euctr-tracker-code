@@ -40,7 +40,7 @@
 
   {% for sponsor in table %}
     <tr>
-      <td> {{ sponsor.sponsor_name }} </td>
+      <td> <a href="/sponsor/{{ sponsor.slug }}">{{ sponsor.sponsor_name }}</a></td>
       <td> {{ sponsor.total_trials }} </td>
       <td> {{ sponsor.total_due }} </td>
       <td> {{ sponsor.total_unreported }} </td>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Is {{ sponsor_name }} late reporting EU clinical trials?{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h1>{{ sponsor_name }}'s trials in EUCTR</h1>
+
+    <div class="lead">
+      <p>Out of {{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span>,
+     
+      {% if percent_unreported > 0 %}
+        sponsor {{ sponsor_name }} is <b>late</b> reporting results for {{total_unreported}} of them. 
+        </p>
+         <p>They're <b>breaking the law</b> for <b>{{percent_unreported}}%</b>
+        of their trials.
+        </p>
+      {% else %}
+        sponsor {{ sponsor_name }} is <b>on time</b> reporting results for all {{total_reported}}.
+        <p>They're <b>obeying the law</b> for <b>{{percent_reported}}%</b>
+        of their trials.
+      {% endif %}
+    </div>
+    
+    <!-- <p>In addition XX trials have errors or problems in their
+    data. Many of these trials will be due to reported results too. You can see
+    the specific trials that are overdue, or contain errors, in the list
+    below.
+    </p> -->
+
+    <div class="prominent_link"><a href="/">
+    Look up other sponsors &raquo;      
+    </div>
+
+  </div>
+
+
+{% endblock%}

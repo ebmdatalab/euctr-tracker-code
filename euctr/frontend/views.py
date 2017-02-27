@@ -13,6 +13,10 @@ def index(request):
 
     return render(request, "index.html", context=context)
 
+def sponsor(request, slug):
+    sponsor_details = models.get_sponsor(slug)
+
+    return render(request, "sponsor.html", context=sponsor_details)
 
 def about(request):
     context = {}
