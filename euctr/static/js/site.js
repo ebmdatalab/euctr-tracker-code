@@ -38,14 +38,23 @@ function activate_datatable() {
     show_major();
 
     t.on('search.dt', function () {
+	var major_search = t.columns(5).search().join()
 	if (t.search() == "") {
-	    $('#all_sponsors').addClass('active')
-	    $('#major_sponsors').removeClass('active')
+	    if (major_search == "major") {
+		$('#major_sponsors').addClass('active')
+		$('#all_sponsors').removeClass('active')
+	    } else {
+		$('#all_sponsors').addClass('active')
+		$('#major_sponsors').removeClass('active')
+	    }
 	} else {
+	    if (major_search == "major") {
+		t.columns(5).search("")
+	    }
 	    $('#all_sponsors').removeClass('active')
 	    $('#major_sponsors').removeClass('active')
 	}
-    } );
+    })
 
     /* Show after style change */
     $('#sponsor_table_loading').hide()
