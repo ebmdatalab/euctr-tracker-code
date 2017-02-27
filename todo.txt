@@ -1,8 +1,3 @@
-seb: Have there been any conversations yet about the time dimension, e.g. is
-there going to be some kind of indication of how the percentage is changing
-each month?
-
-
 helen: One thought I had was perhaps it's useful to put your description of
 major sponsors (and maybe "click here to see all sponsors"?) directly
 underneath  the header "How many trials have major sponsors reported?" - of

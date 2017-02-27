@@ -62,4 +62,6 @@ function activate_datatable() {
     $('#sponsor_table').show()
 }
 
-
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
