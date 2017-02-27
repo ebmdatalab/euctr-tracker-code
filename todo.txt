@@ -7,6 +7,7 @@ Also show bad data trials on sponsor pages
 a bit disconcerting. If it was easy enough to fix that would be nice." - seb
 
 Link to EUCTR sponsor and trial pages
+Make row red where the results aren't reported
 
 Pfizer count wrong - 154 / 161 vs 154 / 160
 Make sure Nick can use SQL

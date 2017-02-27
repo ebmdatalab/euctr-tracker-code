@@ -34,7 +34,7 @@
     below.
     </p> -->
 
-    <h2>List of trials due</h2>
+    <h2>{{ sponsor_name }}'s due trials</h2>
 
     <div id="trials_table_loading">
       <span class="glyphicon glyphicon-refresh spinning"></span>
@@ -55,7 +55,11 @@
       </thead>
 
       {% for trial in trials %}
+        {% if trial.has_results == 0 %}
+        <tr class="no_results">
+        {% else %}
         <tr>
+        {% endif %}
           <td>{{ trial.trial_title }}</td>
           <td>{{ trial.min_end_date }}</td>
           <td>{{ trial.max_end_date }}</td>
