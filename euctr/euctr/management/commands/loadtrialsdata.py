@@ -80,6 +80,7 @@ class Command(BaseCommand):
             sponsor_counts['total_reported'] /
             sponsor_counts['total_due'] * 100, 1
         )
+        sponsor_counts['total_unreported'] = sponsor_counts['total_due'] - sponsor_counts['total_reported']
         # ... write them to a file
         sponsor_counts.to_json(OUTPUT_ALL_SPONSORS_FILE, orient='records')
 

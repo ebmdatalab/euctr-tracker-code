@@ -2,19 +2,19 @@
   <thead>
     <tr>
       <th>Sponsor name</th>
-      <th>Total trials on EUCTR</th>
-      <th>Total reported</th>
-      <th>Total due</th>
-      <th>Percent reported</th>
+      <th>Trials on EUCTR</th>
+      <th>Due trials</th>
+      <th>Unreported</th>
+      <th>% Reported</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
       <th>Sponsor name</th>
       <th>Total trials on EUCTR</th>
-      <th>Total reported</th>
-      <th>Total due</th>
-      <th>Percent reported</th>
+      <th>Due</th>
+      <th>Unreported</th>
+      <th>% Reported</th>
     </tr>
   </tfoot>
 
@@ -27,10 +27,10 @@
       {{ sponsor.total_trials }}
     </td>
     <td>
-      {{ sponsor.total_reported }}
+      {{ sponsor.total_due }}
     </td>
     <td>
-      {{ sponsor.total_due }}
+      {{ sponsor.total_unreported }}
     </td>
     <td>
       {{ sponsor.percent_reported }}%

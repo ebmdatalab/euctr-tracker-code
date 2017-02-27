@@ -1,4 +1,11 @@
-ben: ah interesting, so incremental search acts on the table, rather than producing some autocomplete options in a popup below the search. well now, initially i thought, to avoid confusion, and maximise the obviousness of the offer, the front page search box should search all sponsors, not just those with >50 trials in the DB. now i see this implementation, maybe we should flag up in text clearly above that table "This is only for major sponsors, to see all sponsors click HERE". except we know people ignore instructions. what do u think?
+ben: ah interesting, so incremental search acts on the table, rather than
+producing some autocomplete options in a popup below the search. well now,
+initially i thought, to avoid confusion, and maximise the obviousness of the
+offer, the front page search box should search all sponsors, not just those
+with >50 trials in the DB. now i see this implementation, maybe we should flag
+up in text clearly above that table "This is only for major sponsors, to see
+all sponsors click HERE". except we know people ignore instructions. what do u
+think?
 
 ben: 
 i wonder whether we should have columns as:
@@ -29,12 +36,12 @@ line is probably OK here?
 
 helen: a minor point on the blurb at the top, it says "universities and pharmaceutical companies" but there are other organisations like NHS / hospital trusts, was this deliberately simplified or should other types of organisation be mentioned?  (looks like there's at least 3 or 4 of these in the major sponsors list)
 
-Pfizer count wrong - 154 / 161 vs 154 / 160
-Make sure Nick can use SQL
-
 Load data for each organisation into separate SQL row or JSON file (by first letter? by trial id hash?)
 Make a page for each individual organisation
 Add list of individual trials, with their titles, to the organisation pages
+
+Pfizer count wrong - 154 / 161 vs 154 / 160
+Make sure Nick can use SQL
 
 graphic generated for each centre:
 - the distribution of reporting rates, and a line for where they sit in that  
