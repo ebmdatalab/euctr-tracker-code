@@ -1,6 +1,7 @@
 /* Hide while loading to prevent style change jitter */
 function hide_datatable() {
     $('#sponsor_table').hide()
+    $('#sponsor_table_loading').show()
 }
 
 function activate_datatable() {
@@ -16,5 +17,6 @@ function activate_datatable() {
 	]
     });
     /* Show after style change */
+    $('#sponsor_table_loading').hide()
     $('#sponsor_table').show()
 }
