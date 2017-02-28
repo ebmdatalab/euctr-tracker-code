@@ -22,6 +22,7 @@ def get_all_sponsors():
     global all_sponsors_data
     if not all_sponsors_data:
         all_sponsors_data = json.load(open('../data/all_sponsors.json'))
+        all_sponsors_data.sort(key=lambda s: s['percent_reported'], reverse=True)
     return all_sponsors_data
 
 
