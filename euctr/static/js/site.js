@@ -7,9 +7,13 @@ function hide_sponsor_datatable() {
 
 function activate_sponsor_datatable() {
     var t = $('#sponsor_table').DataTable({
+	"fixedHeader": true,
         "order": [[ 4, "desc" ]],
-	"paging": false,
+	//"paging": false,
+	"pageLength": 100,
+	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
+	"dom": "ftlpr",
 	"aoColumns": [
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
@@ -61,6 +65,8 @@ function activate_sponsor_datatable() {
     $('#sponsor_table_loading').hide()
     $('#sponsor-pills').show()
     $('#sponsor_table').show()
+    $('#sponsor_table').show()
+    t.draw()
 }
 
 $(function () {

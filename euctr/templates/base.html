@@ -17,6 +17,8 @@
 	  type="text/css" charset="utf-8">
 	<link rel="stylesheet" href="/static/DataTables-1.10.13/media/css/jquery.dataTables.css"
 	  type="text/x-scss" charset="utf-8">
+	<link rel="stylesheet" href="/static/FixedHeader-3.1.2/css/fixedHeader.dataTables.min.css"
+	  type="text/x-scss" charset="utf-8">
     {% endcompress %}
     {% if load_js_at_start %}
       {% include "_load_js.html" %}
@@ -24,7 +26,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top fh-fixedHeader">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

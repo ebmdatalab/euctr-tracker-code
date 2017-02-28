@@ -1,3 +1,5 @@
+Check speed on mobile
+
 Add list of individual trials, with their titles, to the sponsor pages
 
 Show the number of errors on sponsor pages
@@ -24,6 +26,7 @@ Undo this rename?
             'has_results': 'total_reported',
             'results_expected': 'total_due'
 
+Sort the JSON for all_sponsors to speed up initial load?
 Test on IE11 and Edge 
 Make it cache front page for scaling
 Disable sessions, remove migrations and SQLite database for now at least
