@@ -30,7 +30,7 @@ EUCTR_DEBUG = common.utils.get_env_setting('EUCTR_DEBUG')
 assert EUCTR_DEBUG in ['yes', 'no']
 DEBUG = EUCTR_DEBUG == 'yes'
 
-ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1']
+ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1', '192.168.43.51']
 
 # When the data was last updated
 DATA_SOURCE_DATE = datetime.date(2017, 1, 23)

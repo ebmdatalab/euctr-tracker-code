@@ -1,4 +1,19 @@
 @import 'variables';
+
+/* Load fonts from same domain, not from Google */
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 400;
+  src: local('News Cycle'), local('NewsCycle'), url(/static/fonts/NewsCycle-400.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 700;
+  src: local('News Cycle Bold'), local('NewsCycle-Bold'), url(/static/fonts/NewsCycle-700.ttf) format('truetype');
+}
+
 @import 'bootswatch';
 
 /* All pages */
@@ -35,18 +50,35 @@ body {
 }
 
 #sponsor-pills {
-    margin-top: 16px;
-    margin-bottom: -34px;
+    margin-top: 24px;
+    margin-bottom: 12px;
 }
 
 @media (max-width: $screen-sm-min) {
     #sponsor_table_filter {
-        margin-top: 48px;
+        margin-top: 24px;
+        float: left;
     }
+}
+
+#sponsor-pills.nav > li > a {
+    padding: 14px 15px;
 }
 
 .sponsor_type {
     display: none;
+}
+
+#search_sponsors input {
+    display: inline;
+    width: 80%;
+}
+
+#sponsor-pills.nav > li#search_sponsors > a {
+    padding-top: 8px;
+    padding-bottom: 7px;
+    padding-left: 14px;
+    padding-right: 8px;
 }
 
 

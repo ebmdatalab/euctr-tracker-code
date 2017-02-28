@@ -13,7 +13,7 @@ function activate_sponsor_datatable() {
 	"pageLength": 100,
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
-	"dom": "ftlpr",
+	"dom": "tlpr",
 	"aoColumns": [
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
@@ -29,17 +29,31 @@ function activate_sponsor_datatable() {
 	t.columns(5).search("").draw()
 	$('#all_sponsors').addClass('active')
 	$('#major_sponsors').removeClass('active')
+	$('#search_sponsors').removeClass('active')
 	return false
     }
-    $('#all_sponsors').on('click', show_all)
     var show_major = function() {
 	t.search("")
 	t.columns(5).search("major").draw()
 	$('#major_sponsors').addClass('active')
 	$('#all_sponsors').removeClass('active')
+	$('#search_sponsors').removeClass('active')
 	return false
     }
+    var show_search = function() {
+	var search = $('#search_sponsors input').val()
+	t.search(search)
+	t.columns(5).search("").draw(false)
+	$('#major_sponsors').removeClass('active')
+	$('#all_sponsors').removeClass('active')
+	$('#search_sponsors').addClass('active')
+	return false
+    }
+    $('#all_sponsors').on('click', show_all)
     $('#major_sponsors').on('click', show_major)
+    $('#search_sponsors input').on('input', show_search)
+    $('#search_sponsors').on('click', show_search)
+    $('#search_sponsors button').on('submit', show_search)
     show_major();
 
     t.on('search.dt', function () {
@@ -48,9 +62,11 @@ function activate_sponsor_datatable() {
 	    if (major_search == "major") {
 		$('#major_sponsors').addClass('active')
 		$('#all_sponsors').removeClass('active')
+		$('#search_sponsors').removeClass('active')
 	    } else {
 		$('#all_sponsors').addClass('active')
 		$('#major_sponsors').removeClass('active')
+		$('#search_sponsors').removeClass('active')
 	    }
 	} else {
 	    if (major_search == "major") {
@@ -58,6 +74,7 @@ function activate_sponsor_datatable() {
 	    }
 	    $('#all_sponsors').removeClass('active')
 	    $('#major_sponsors').removeClass('active')
+	    $('#search_sponsors').addClass('active')
 	}
     })
 
