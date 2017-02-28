@@ -68,10 +68,12 @@ body {
 .sponsor_type {
     display: none;
 }
-
 #search_sponsors input {
     display: inline;
-    width: 80%;
+    width: 65%;
+}
+#search_sponsors button {
+    display: inline;
 }
 
 #sponsor-pills.nav > li#search_sponsors > a {

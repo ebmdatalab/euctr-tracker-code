@@ -26,6 +26,8 @@ Undo this rename?
             'has_results': 'total_reported',
             'results_expected': 'total_due'
 
+Save search state in URLs
+
 Sort the JSON for all_sponsors to speed up initial load?
 Test on IE11 and Edge 
 Make it cache front page for scaling

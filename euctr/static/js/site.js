@@ -47,6 +47,8 @@ function activate_sponsor_datatable() {
 	$('#major_sponsors').removeClass('active')
 	$('#all_sponsors').removeClass('active')
 	$('#search_sponsors').addClass('active')
+	var count = t.page.info().recordsDisplay
+	$('#search_sponsors .badge').text(count)
 	return false
     }
     $('#all_sponsors').on('click', show_all)
