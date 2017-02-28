@@ -9,6 +9,7 @@ function activate_sponsor_datatable() {
     var t = $('#sponsor_table').DataTable({
         "order": [[ 4, "desc" ]],
 	"paging": false,
+	"orderClasses": false, // Turns off column highlighting, so sorting much faster
 	"aoColumns": [
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
