@@ -43,11 +43,18 @@ function activate_sponsor_datatable() {
     var show_search = function() {
 	var search = $('#search_sponsors input').val()
 	t.search(search)
-	t.columns(5).search("").draw(false)
+	t.columns(5).search("")
+	var count = t.page.info().recordsDisplay
+	if (count < 16) {
+	    // Prevent jumping in scrolling as vaues are filtered
+	    $('footer').css("margin-bottom", "420px")
+	} else {
+	    $('footer').css("margin-bottom", "0px")
+	}
+	t.draw(false)
 	$('#major_sponsors').removeClass('active')
 	$('#all_sponsors').removeClass('active')
 	$('#search_sponsors').addClass('active')
-	var count = t.page.info().recordsDisplay
 	$('#search_sponsors .badge').text(count)
 	return false
     }
