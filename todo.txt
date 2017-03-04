@@ -2,8 +2,25 @@ Check speed on mobile
 
 Add list of individual trials, with their titles, to the sponsor pages
 
-Show the number of errors on sponsor pages
-Also show bad data trials on sponsor pages
+Change sponsor page to have:
+            - title
+            - link to search result for that ID on EUCTR (in order to work around EUCTR
+            not having a page for each trial...)
+            - "Completion date" (=max end date)
+            - status: "ongoing" / "completed, not yet due" / "overdue and unreported" /
+            "reported" / "inconsistent registry data" (i'll try to think of catchier
+            briefer descriptions...)
+
+            we could colour code status. grey ongoing, amber completed, red overdue,
+            green reported, ?purple error
+
+            "inconsistent registry data" means:
+            - it has at least one completion date but some sites are marked as ongoing <-- check logic
+            - all sites are marked complete but there is no completion date
+            Use the all_complete_no_comp_date,comp_date_while_ongoing fields
+
+            shall i ask nick to simply generate that as a variable, saves you computing?
+
 
 "I find the changing column widths when switching between "all" and "major"
 a bit disconcerting. If it was easy enough to fix that would be nice." - seb
