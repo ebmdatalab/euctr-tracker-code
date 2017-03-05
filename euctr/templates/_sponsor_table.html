@@ -2,17 +2,24 @@
   <span class="glyphicon glyphicon-refresh spinning"></span>
 </div>
 
-<ul class="nav nav-pills" id="sponsor-pills">
-  <li id="major_sponsors" role="presentation" class="active" title="Sponsors with more than 50 trials in total listed in EUCTR" data-toggle="tooltip" data-placement="bottom">
+<ul class="nav nav-pills nav-justified" id="sponsor-pills">
+  <li id="major_sponsors" role="presentation" class="active" title="Sponsors with more than 50 trials in total listed in EUCTR" data-toggle="xtooltip" data-placement="bottom">
     <a href="#">Major sponsors <span class="badge">{{ major_sponsors_count }}</span></a>
   </li>
-  <li id="all_sponsors" role="presentation" title="Sponsors with at least one completed, due trial" data-toggle="tooltip" data-placement="bottom">
+  <li id="all_sponsors" role="presentation" title="Sponsors with at least one completed, due trial" data-toggle="xtooltip" data-placement="bottom">
     <a href="#">All sponsors <span class="badge">{{ all_sponsors_count }}</span></a>
   </li>
-  <li id="search_sponsors" role="presentation"><a href="#">
-    <input type="text" class="form-control" placeholder="Search">
-    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-    <span class="badge"></span>
+  <li id="search_sponsors" role="presentation">
+    <a href="#">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        <div class="spacer">
+          <span class="badge">{{ all_sponsors_count }}</span>
+        </div>
+      </span>
+    </div>
   </a></li>
 
 </ul>

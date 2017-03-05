@@ -23,6 +23,12 @@ body {
     padding-bottom: 20px;
 }
 
+.prominent_link {
+    margin-top: 24px;
+    font-size: 21px;
+}
+
+
 /* Front page */
 
 #intro {
@@ -44,45 +50,24 @@ body {
     }
 }
 
-.prominent_link {
-    margin-top: 24px;
-    font-size: 21px;
-}
-
 #sponsor-pills {
     margin-top: 24px;
     margin-bottom: 12px;
 }
-
-@media (max-width: $screen-sm-min) {
-    #sponsor_table_filter {
-        margin-top: 24px;
-        float: left;
-    }
-}
-
-#sponsor-pills.nav > li > a {
-    padding: 14px 15px;
+#sponsor-pills li {
+    vertical-align: middle;
 }
 
 .sponsor_type {
     display: none;
 }
-#search_sponsors input {
-    display: inline;
-    width: 65%;
+#search_sponsors .spacer {
+    padding-left: 8px;
+    position: relative;
+    display: inline-block;
 }
-#search_sponsors button {
-    display: inline;
+#search_sponsors .badge {
 }
-
-#sponsor-pills.nav > li#search_sponsors > a {
-    padding-top: 8px;
-    padding-bottom: 7px;
-    padding-left: 14px;
-    padding-right: 8px;
-}
-
 
 /* Sponsor table loading spinner */
 
