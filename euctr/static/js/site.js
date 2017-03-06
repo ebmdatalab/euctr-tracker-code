@@ -76,7 +76,7 @@ function activate_sponsor_datatable() {
     $('#search_sponsors button').on('submit', show_search)
     show_major();
 
-    t.on('column-sizing.dt', function() { alert('column-sizing') })
+    // t.on('column-sizing.dt', function() { alert('column-sizing') })
 
     /* Show after style change */
     $('#sponsor_table_loading').hide()

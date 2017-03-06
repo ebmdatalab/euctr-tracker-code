@@ -1,5 +1,6 @@
-Sponsor page - should we offer filters of inconsistent / overdue trials
-    Make it easier to find what they did wrong
+Sponsor page
+    Should we offer filters of inconsistent / overdue trials? To make it easy to find them.
+    Someone needs to check the figures
 
 Pfizer count wrong - 154 / 161 vs 154 / 160
 
