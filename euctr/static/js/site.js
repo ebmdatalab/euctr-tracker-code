@@ -1,3 +1,14 @@
+/****************************************************************/
+/* General */
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+
+/****************************************************************/
+/* Front page */
+
 function hide_sponsor_datatable() {
     /* Hide while loading to prevent style change jitter */
     $('#sponsor_table').hide()
@@ -72,9 +83,9 @@ function activate_sponsor_datatable() {
     t.draw()
 }
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
+
+/****************************************************************/
+/* Sponsor page */
 
 function hide_trials_datatable() {
     /* Hide while loading to prevent style change jitter */
@@ -94,8 +105,7 @@ function activate_trials_datatable() {
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "orderSequence": [ "desc", "asc" ] },
+	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
 	]
     });
     /* Show after style change */

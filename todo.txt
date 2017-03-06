@@ -1,10 +1,6 @@
 Add list of individual trials, with their titles, to the sponsor pages
 
 Change sponsor page to have:
-            - title
-            - link to search result for that ID on EUCTR (in order to work around EUCTR
-            not having a page for each trial...)
-            - "Completion date" (=max end date)
             - status: "ongoing" / "completed, not yet due" / "overdue and unreported" /
             "reported" / "inconsistent registry data" (i'll try to think of catchier
             briefer descriptions...)
@@ -18,6 +14,8 @@ Change sponsor page to have:
             Use the all_complete_no_comp_date,comp_date_while_ongoing fields
 
             shall i ask nick to simply generate that as a variable, saves you computing?
+
+Filtering back on
 
 
 "I find the changing column widths when switching between "all" and "major"
