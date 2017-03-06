@@ -132,5 +132,9 @@ body {
     display: none;
 }
 
-
+@media (min-width: $screen-sm-min) {
+  #search_trials {
+      margin-top: -55px;
+  }
+}
 

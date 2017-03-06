@@ -16,14 +16,14 @@
 	in the
 	<a href="https://www.clinicaltrialsregister.eu/">European Union Clinical Trials Register (EUCTR)</a>,
 	{% if total_unreported == total_due %}
-	  >sponsor {{ sponsor_name }} are <b>late reporting
-	  all</b> trials.
+	  >sponsor {{ sponsor_name }} are late reporting
+	  <b>all trials</b>
 	{% elif total_unreported == 0 %}
 	  the sponsor {{ sponsor_name }} has reported 
 	  <b>all on time</b>.
 	{% else %}
-	  sponsor {{ sponsor_name }} are <b>late reporting
-	  {{total_unreported}}</b> trials.
+	  sponsor {{ sponsor_name }} are late reporting
+	    <b>{{total_unreported}} trials</b>.
 	{% endif %}
 	<a href="/about">Learn more &raquo;</a>
 	</p>
@@ -37,10 +37,8 @@
     <div class="row">
       <div class="col-md-6">
 	<p>In addition <b>{{inconsistent_trials}} trials</b> have <b>inconsistent</b> data. 
-	Many of these trials may also need to report results to obey the law. You can see the
-	specific trials that are 
-	<span class="label label-danger">Overdue</span> , or have 
-	<span class="label label-warning">Inconsistent</span> data in the list below.
+	Many of these trials may also need to report results to obey the law. You can look up
+	the specific overdue or inconsistent trials in the list below.
 	</p>
       </div>
     </div>
