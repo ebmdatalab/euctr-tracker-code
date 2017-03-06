@@ -96,7 +96,7 @@ function hide_trials_datatable() {
 function activate_trials_datatable() {
     var t = $('#trials_table').DataTable({
 	"fixedHeader": true,
-        "order": [[ 3, "desc" ]],
+        "order": [[ 1, "asc" ]],
 	"pageLength": 100,
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
