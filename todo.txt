@@ -24,6 +24,8 @@ Undo this rename?
             'has_results': 'total_reported',
             'results_expected': 'total_due'
 
+Columns on tables reflow when you resize
+    Just Ctrl+F can trigger it
 Save search state in URLs
 
 Sort the JSON for all_sponsors to speed up initial load?

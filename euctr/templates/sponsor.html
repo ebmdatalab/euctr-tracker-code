@@ -6,7 +6,7 @@
 
   <div class="container">
     <div class="page-header">
-      <h1>{{ sponsor_name }}' EU clinical trial</h1>
+      <h1>{{ sponsor_name }}'s EU clinical trials</h1>
     </div>
 
     <div class="lead">
@@ -104,7 +104,14 @@
 	    {% else %}
 	      EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
 	    {% endif %}
-          </td>
+
+	    {% if trial.has_results and trial.overall_status != "reported" and trial.overall_status != "reported-early" %}
+	      <span title="Trial has also reported results" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-success">
+	      Reported</span>
+	      </span>
+	    {% endif %}
+   </td>
 
 	  <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
           <td>{{ trial.trial_title }}</td>
