@@ -106,9 +106,11 @@ body {
     font-size: 60px; 
     margin-bottom: -12px;
 }
-
+#sponsor-headlines .headline-number{
+    margin-top: -16px;
+}
 @media (max-width: $screen-md-min) {
-    #headlines {
+    #front-headlines {
         margin-top: 50px;
     }
 }
