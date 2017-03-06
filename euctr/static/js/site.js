@@ -2,14 +2,13 @@ function hide_sponsor_datatable() {
     /* Hide while loading to prevent style change jitter */
     $('#sponsor_table').hide()
     $('#sponsor_table_loading').show()
-    $('#sponsor-pills').hide()
+    $('#table-pills').hide()
 }
 
 function activate_sponsor_datatable() {
     var t = $('#sponsor_table').DataTable({
 	"fixedHeader": true,
         "order": [[ 4, "desc" ]],
-	//"paging": false,
 	"pageLength": 100,
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
@@ -46,7 +45,7 @@ function activate_sponsor_datatable() {
 	t.columns(5).search("")
 	var count = t.page.info().recordsDisplay
 	if (count < 16) {
-	    // Prevent jumping in scrolling as vaues are filtered
+	    // Prevent jumping in scrolling as values are filtered
 	    $('footer').css("margin-bottom", "420px")
 	} else {
 	    $('footer').css("margin-bottom", "0px")
@@ -67,7 +66,7 @@ function activate_sponsor_datatable() {
 
     /* Show after style change */
     $('#sponsor_table_loading').hide()
-    $('#sponsor-pills').show()
+    $('#table-pills').show()
     $('#sponsor_table').show()
     $('#sponsor_table').show()
     t.draw()
@@ -85,17 +84,19 @@ function hide_trials_datatable() {
 
 function activate_trials_datatable() {
     var t = $('#trials_table').DataTable({
-/*        "order": [[ 4, "desc" ]], */
-	"paging": false
-/*	"aoColumns": [
+	"fixedHeader": true,
+        "order": [[ 2, "desc" ]],
+	"pageLength": 100,
+	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
+	"orderClasses": false, // Turns off column highlighting, so sorting much faster
+	"dom": "tlpr",
+	"aoColumns": [
+	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "orderSequence": [ "asc", "desc" ] }, // Hidden column
+	    { "orderSequence": [ "desc", "asc" ] },
 	]
-*/
     });
     /* Show after style change */
     $('#trials_table_loading').hide()

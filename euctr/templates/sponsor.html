@@ -47,6 +47,7 @@
 
       <thead>
         <tr>
+          <th>Trial ID</th>
           <th>Title</th>
           <th>Min end date</th>
           <th>Max end date</th>
@@ -60,6 +61,7 @@
         {% else %}
         <tr>
         {% endif %}
+        <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
           <td>{{ trial.trial_title }}</td>
           <td>{{ trial.min_end_date }}</td>
           <td>{{ trial.max_end_date }}</td>
@@ -72,15 +74,6 @@
           {% endif %}
         </tr>
       {% endfor %}
-
-      <tfoot>
-        <tr>
-          <th>Title</th>
-          <th>Min end date</th>
-          <th>Max end date</th>
-          <th>Results posted</th>
-        </tr>
-      </tfoot>
     </table>
 
     <script>

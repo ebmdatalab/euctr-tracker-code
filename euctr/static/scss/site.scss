@@ -55,6 +55,15 @@ body {
     margin-top: 12px;
 }
 
+#table-pills {
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+#table-pills li {
+    vertical-align: middle;
+}
+
+
 /* Front page */
 
 #intro {
@@ -76,17 +85,6 @@ body {
     }
 }
 
-#sponsor-pills {
-    margin-top: 24px;
-    margin-bottom: 12px;
-}
-#sponsor-pills li {
-    vertical-align: middle;
-}
-
-.sponsor_type {
-    display: none;
-}
 #search_sponsors .spacer {
     padding-left: 8px;
     position: relative;
@@ -95,8 +93,18 @@ body {
 #search_sponsors .badge {
 }
 
+.sponsor_type {
+    display: none;
+}
 .sponsor_table_loading {
     display: none;
 }
+
+/* Sponsor page */
+
+.trials_table_loading {
+    display: none;
+}
+
 
 
