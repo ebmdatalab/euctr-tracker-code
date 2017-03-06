@@ -77,7 +77,7 @@
 	    {% elif trial.overall_status == "completed-due" %}
 	      <span title="Trial completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-danger">
-	      Due</span></span>
+	      Overdue</span></span>
 	    {% elif trial.overall_status == "reported-early" %}
 	      <span title="Trial completed and reported results within year of date; this means it is too recent to appear in our main scores" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-success">
@@ -93,12 +93,12 @@
 	      <span class="label label-warning">
 	      Inconsistent</span></span>
 	    {% elif trial.overall_status == "not-run" %}
-	      <span title="Suspended, withdrawn, not authorised or prohibited by CA" data-toggle="tooltip" data-placement="bottom">
+	      <span title="Trial was suspended, withdrawn, not authorised or prohibited by CA" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-info">
 	      Not run</span></span>
 	    {% elif trial.overall_status == "no-trial-status" %}
 	      <span title="No status listed; usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-warning">
+	      <span class="label label-info">
 	      No trial status</span></span>
 	    {% else %}
 	      EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
