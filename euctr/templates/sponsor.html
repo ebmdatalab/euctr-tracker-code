@@ -42,6 +42,23 @@
       <span class="glyphicon glyphicon-refresh spinning"></span>
     </div>
 
+    <div class="row" id="table-pills">
+      <div class="col-sm-7">
+      </div>
+      <div class="col-sm-5" id="search_trials">
+	<div class="input-group">
+	  <input type="text" class="form-control" placeholder="Search">
+	  <span class="input-group-btn">
+	    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+	    <div class="spacer">
+	      <span class="badge">{{ total_trials }}</span>
+	    </div>
+	  </span>
+	</div>
+      </div>
+    </div>
+
+
     <table id="trials_table" class="display" cellspacing="0" width="100%">
       <script>
         hide_trials_datatable()

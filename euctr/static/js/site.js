@@ -113,6 +113,25 @@ function activate_trials_datatable() {
 	$('#trials_table [data-toggle="tooltip"]').tooltip()
     })
 
+    var show_search = function() {
+	var search = $('#search_trials input').val()
+	t.search(search)
+	var count = t.page.info().recordsDisplay
+	if (count < 16) {
+	    // Prevent jumping in scrolling as values are filtered
+	    $('footer').css("margin-bottom", "420px")
+	} else {
+	    $('footer').css("margin-bottom", "0px")
+	}
+	t.draw(false)
+	$('#search_trials .badge').text(count)
+	return false
+    }
+ 
+    $('#search_trials input').on('input', show_search)
+    $('#search_trials').on('click', show_search)
+    $('#search_trials button').on('submit', show_search)
+
     /* Show after style change */
     $('#trials_table_loading').hide()
     $('#trials_table').show()
