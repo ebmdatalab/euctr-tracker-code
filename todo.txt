@@ -3,9 +3,6 @@ Sponsor page - should we offer filters of inconsistent / overdue trials
 
 Pfizer count wrong - 154 / 161 vs 154 / 160
 
-"I find the changing column widths when switching between "all" and "major"
-a bit disconcerting. If it was easy enough to fix that would be nice." - seb
-
 graphic generated for each centre:
 - the distribution of reporting rates, and a line for where they sit in that  
 - proportion reported from each year, by completion date

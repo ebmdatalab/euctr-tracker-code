@@ -24,13 +24,14 @@ function activate_sponsor_datatable() {
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
 	"dom": "tlpr",
+	"autoWidth": true,
 	"aoColumns": [
-	    { "orderSequence": [ "asc", "desc" ] },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "orderSequence": [ "asc", "desc" ] }, // Hidden column
+	    { "width": "30%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
+	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "width": "0%", "orderSequence": [ "asc", "desc" ] }, // Hidden column
 	]
     });
 
@@ -75,6 +76,8 @@ function activate_sponsor_datatable() {
     $('#search_sponsors button').on('submit', show_search)
     show_major();
 
+    t.on('column-sizing.dt', function() { alert('column-sizing') })
+
     /* Show after style change */
     $('#sponsor_table_loading').hide()
     $('#table-pills').show()
@@ -101,7 +104,7 @@ function activate_trials_datatable() {
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
 	"dom": "tlpr",
-	"autoWidth": false,
+	"autoWidth": true,
 	"aoColumns": [
 	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
