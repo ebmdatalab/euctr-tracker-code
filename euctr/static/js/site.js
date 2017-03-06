@@ -106,9 +106,12 @@ function activate_trials_datatable() {
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
 	]
     });
+    $('#trials_table').on('draw.dt', function() {
+	$('#trials_table [data-toggle="tooltip"]').tooltip()
+    })
+
     /* Show after style change */
     $('#trials_table_loading').hide()
     $('#trials_table').show()

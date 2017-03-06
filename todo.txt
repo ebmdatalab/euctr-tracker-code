@@ -1,10 +1,6 @@
 Add list of individual trials, with their titles, to the sponsor pages
 
 Change sponsor page to have:
-            - status: "ongoing" / "completed, not yet due" / "overdue and unreported" /
-            "reported" / "inconsistent registry data" (i'll try to think of catchier
-            briefer descriptions...)
-
             we could colour code status. grey ongoing, amber completed, red overdue,
             green reported, ?purple error
 

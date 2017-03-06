@@ -51,7 +51,6 @@
           <th>Title</th>
           <th>Status</th>
           <th>Completion date</th>
-          <th>Results posted</th>
         </tr>
       </thead>
 
@@ -62,40 +61,34 @@
         <tr>
         {% endif %}
         <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
+
           <td>{{ trial.trial_title }}</td>
 
           <td>
 			  {% if trial.overall_status == "ongoing" %}
 				  Ongoing
 			  {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
-				  Registry inconsistent &mdash; ongoing but has completion date
-			  {% elif trial.overall_status == "completed_not_due" %}
-				  Completed &mdash; not due
+				  <span title="Trial is ongoing, but database shows a completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
+			  {% elif trial.overall_status == "completed-not-due" %}
+				  <span title="Completed less than a year ago" data-toggle="tooltip" data-placement="bottom">Completed</span>
 			  {% elif trial.overall_status == "completed-due" %}
-				  Completed &mdash; due
+				  <span title="Completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">Due</span>
 			  {% elif trial.overall_status == "reported-early" %}
-				  Reported &mdash; early
+				  Reported early
 			  {% elif trial.overall_status == "reported" %}
 				  Reported
 			  {% elif trial.overall_status == "error-completed-no-comp-date" %}
-				  Registry inconsistent &mdash; completed but no completion date
-			  {% elif trial.overall_status == "not run" %}
-				  Suspended, withdrawn, not authorised or prohibited by CA
-			  {% elif trial.overall_status == "no-trial status" %}
-				  No trial status
+				  <span title="Trial is completed, but database has no completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
+			  {% elif trial.overall_status == "not-run" %}
+				  <span title="Suspended, withdrawn, not authorised or prohibited by CA" data-toggle="tooltip" data-placement="bottom">Not run</span>
+			  {% elif trial.overall_status == "no-trial-status" %}
+				  <span title="Usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">No trial status</span>
 			  {% else %}
-				  EUCTR internal error &mdash; {{ trial.overall_status }}
+				  EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
 			  {% endif %}
           </td>
 
           <td>{{ trial.max_end_date | default_if_none:"-"}}</td>
-          {% if trial.has_results == 0 %}
-            <td>-</td>
-          {% elif trial.has_results == 1%}
-            <td>yes</td>
-          {% else %}
-            <td>{{ trial.has_results }}</td>
-          {% endif %}
         </tr>
       {% endfor %}
     </table>
