@@ -9,8 +9,6 @@ graphic generated for each centre:
 - proportion reported from each year, by completion date
 - something new we haven't thought of yet. 
 
-Columns on tables reflow when you resize
-    Just Ctrl+F can trigger it
 Save search state in URLs
 
 Sort the JSON for all_sponsors to speed up initial load?

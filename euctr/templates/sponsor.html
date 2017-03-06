@@ -11,7 +11,7 @@
     </div>
 
     <div class="row headline-box" id="sponsor-headlines">
-      <div class="col-md-6">
+      <div class="col-md-7">
 	<p class="lead">Out of <b>{{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due 
 	    trial{{total_due|pluralize}}</span></b> 
 	in the
@@ -28,14 +28,14 @@
 	{% endif %}
 	</p>
       </div>
-      <div class="col-md-6 second-column">
+      <div class="col-md-5 second-column">
 	<div class="headline-number">{{percent_unreported}}%</div>
 	<p class="lead"> of trials <b>breaking the law</b></p>
       </div>
     </div>
     {% if inconsistent_trials > 0 %}
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-7">
 	<p>In addition <b>{{inconsistent_trials}} trial{{inconsistent_trials|pluralize}}</b> 
 	have <b>inconsistent</b> data. 
 	Many of these trials may also need to report results to obey the law. You can look up
