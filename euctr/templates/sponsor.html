@@ -100,7 +100,7 @@
 	      <span title="Trial is ongoing, but database already shows a completion date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-warning">
 	      Inconsistent</span></span>
-	    {% elif trial.overall_status == "completed-not-due" %}
+	    {% elif trial.overall_status == "completed-not-due"  or trial.overall_status == "reported-early"%}
 	      <span title="Trial completed less than a year ago" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-info">
 	      Completed</span></span>
@@ -108,12 +108,6 @@
 	      <span title="Trial completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-danger">
 	      Overdue</span></span>
-	    {% elif trial.overall_status == "reported-early" %}
-	      <span title="Trial completed and reported results within year of date; this means it is too recent to appear in our main scores" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-success">
-	      Reported</span> 
-	      <br><span class="label label-primary">
-	      Recent</span></span>
 	    {% elif trial.overall_status == "reported" %}
 	      <span title="Trial completed and reported results after year of date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-success">
@@ -134,7 +128,7 @@
 	      EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
 	    {% endif %}
 
-	    {% if trial.has_results and trial.overall_status != "reported" and trial.overall_status != "reported-early" %}
+	    {% if trial.has_results and trial.overall_status != "reported" %}
 	    <br><span title="Trial has also reported results" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-success">
 	      Reported</span>

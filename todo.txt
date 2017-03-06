@@ -1,9 +1,4 @@
 Sponsor page:
-    Add % errors value and copy
-    Consider adding "results posted" note for error cases and other weird ones with results pasted
-        https://www.clinicaltrialsregister.eu/ctr-search/search?query=2012-005661-13
-    Not happy about "Reported Early" - it's not in the front page table, how do we flag that?
-        e.g. http://127.0.0.1:8000/sponsor/4sc-ag 2009-010760-42 finished in April 2016
     *** Make sure it is always "clear what they did wrong"
     Filtering back on sponsor
 Wording when there is only 1 trial etc. on sponsor page is a bit off
