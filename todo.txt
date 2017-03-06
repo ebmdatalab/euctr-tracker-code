@@ -1,7 +1,6 @@
 Sponsor page - should we offer filters of inconsistent / overdue trials
     Make it easier to find what they did wrong
 
-# assert t.has_results == 0 or t.trial_status != 0 # TODO, are there statuses where it is an error to have results?
 Pfizer count wrong - 154 / 161 vs 154 / 160
 
 "I find the changing column widths when switching between "all" and "major"

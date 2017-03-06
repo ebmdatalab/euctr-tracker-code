@@ -25,7 +25,6 @@ def work_out_status(t):
     assert t.trial_status in (0, 1, 2, 3, 4)
     assert t.comp_date_while_ongoing == 0 or (t.trial_status in (0, 2))
     assert t.all_completed_no_comp_date == 0 or t.trial_status == 1
-    # assert t.has_results == 0 or t.trial_status != 0 # TODO, are there statuses where it is an error to have results?
 
     if t.trial_status == 0 or t.trial_status == 2: # 0 means none done, 2 means some protocols are done
         if t.comp_date_while_ongoing:
