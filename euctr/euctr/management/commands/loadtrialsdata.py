@@ -75,10 +75,12 @@ class Command(BaseCommand):
         # journal paper.
         all_trials['total_trials'] = all_trials.groupby(
             ['normalized_name']
-        )['trial_id'].transform('count')
+        )['trial_id'].transform('count') # XXX could just do ).size() ?
         # ... check the group and count worked, eg all have a normalized_name
         null_counts = all_trials[all_trials['total_trials'].isnull()]
         assert len(null_counts) == 0
+
+        # Add various other fields
         all_trials['total_trials'] = all_trials['total_trials'].astype(int)
         all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
         all_trials['overall_status'] = all_trials.apply(work_out_status, axis=1)
@@ -115,6 +117,16 @@ class Command(BaseCommand):
             'results_expected': 'sum',
             'total_trials': 'max'
         })
+        # Count number of trials with inconsistent data
+        inconsistent_trials = all_trials[
+            (all_trials['overall_status'] == 'error-completed-no-comp-date') |
+            (all_trials['overall_status'] == 'error-ongoing-has-comp-date')
+        ]
+        inconsistent_trials_count = inconsistent_trials.groupby('normalized_name').size()
+        sponsor_counts['inconsistent_trials'] = inconsistent_trials_count
+        sponsor_counts['inconsistent_trials'].fillna(0.0, inplace=True)
+        sponsor_counts['inconsistent_trials'] = sponsor_counts['inconsistent_trials'].astype(int)
+        # ...
         sponsor_counts.reset_index(level=0, inplace=True)
         sponsor_counts.rename(columns={
             'normalized_name': 'sponsor_name',
