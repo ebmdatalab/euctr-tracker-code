@@ -1,15 +1,19 @@
 Add list of individual trials, with their titles, to the sponsor pages
 
 Change sponsor page to have:
-            we could colour code status. grey ongoing, amber completed, red overdue,
-            green reported, ?purple error
+    we could colour code status. grey ongoing, amber completed, red overdue,
+    green reported, ?purple error
 
-            "inconsistent registry data" means:
-            - it has at least one completion date but some sites are marked as ongoing <-- check logic
-            - all sites are marked complete but there is no completion date
-            Use the all_complete_no_comp_date,comp_date_while_ongoing fields
+    "inconsistent registry data" means:
+    - it has at least one completion date but some sites are marked as ongoing <-- check logic
+    - all sites are marked complete but there is no completion date
+    Use the all_complete_no_comp_date,comp_date_while_ongoing fields
 
-Filtering back on sponsor
+Sponsor page:
+    Consider adding "results posted" note for error cases and other weird ones with results pasted
+                https://www.clinicaltrialsregister.eu/ctr-search/search?query=2012-005661-13
+    *** Make sure it is always "clear what they did wrong"
+    Filtering back on sponsor
 Wording when there is only 1 trial etc. on sponsor page is a bit off
 
 # assert t.has_results == 0 or t.trial_status != 0 # TODO, are there statuses where it is an error to have results?
