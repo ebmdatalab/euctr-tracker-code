@@ -47,9 +47,9 @@
 
       <thead>
         <tr>
+          <th>Status</th>
           <th>Trial ID</th>
           <th>Title</th>
-          <th>Status</th>
           <th>Completion date</th>
         </tr>
       </thead>
@@ -60,33 +60,53 @@
         {% else %}
         <tr>
         {% endif %}
-        <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
-
-          <td>{{ trial.trial_title }}</td>
-
           <td>
 	    {% if trial.overall_status == "ongoing" %}
-		    Ongoing
+	      <span class="label label-default">
+	      <span title="Trial is ongoing" data-toggle="tooltip" data-placement="bottom">
+	      Ongoing
+	      </span></span>
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
-		    <span title="Trial is ongoing, but database shows a completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
+	      <span title="Trial is ongoing, but database already shows a completion date" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-warning">
+	      Inconsistent</span></span>
 	    {% elif trial.overall_status == "completed-not-due" %}
-		    <span title="Completed less than a year ago" data-toggle="tooltip" data-placement="bottom">Completed</span>
+	      <span title="Trial completed less than a year ago" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-info">
+	      Completed</span></span>
 	    {% elif trial.overall_status == "completed-due" %}
-		    <span title="Completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">Due</span>
+	      <span title="Trial completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-danger">
+	      Due</span></span>
 	    {% elif trial.overall_status == "reported-early" %}
-		    Reported early
+	      <span title="Trial completed and reported results within year of date; this means it is too recent to appear in our main scores" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-success">
+	      Reported</span> 
+	      <span class="label label-primary">
+	      Recent</span></span>
 	    {% elif trial.overall_status == "reported" %}
-		    Reported
+	      <span title="Trial completed and reported results after year of date" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-success">
+	      Reported</span></span></span>
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
-		    <span title="Trial is completed, but database has no completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
+	      <span title="Trial is completed, but database does not list a completion date" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-warning">
+	      Inconsistent</span></span>
 	    {% elif trial.overall_status == "not-run" %}
-		    <span title="Suspended, withdrawn, not authorised or prohibited by CA" data-toggle="tooltip" data-placement="bottom">Not run</span>
+	      <span title="Suspended, withdrawn, not authorised or prohibited by CA" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-info">
+	      Not run</span></span>
 	    {% elif trial.overall_status == "no-trial-status" %}
-		    <span title="Usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">No trial status</span>
+	      <span title="No status listed; usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-warning">
+	      No trial status</span></span>
 	    {% else %}
-		    EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
+	      EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
 	    {% endif %}
           </td>
+
+	  <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
+          <td>{{ trial.trial_title }}</td>
 
           <td>{{ trial.max_end_date | default_if_none:"-"}}</td>
         </tr>
