@@ -1,5 +1,3 @@
-Check speed on mobile
-
 Add list of individual trials, with their titles, to the sponsor pages
 
 Change sponsor page to have:
