@@ -4,16 +4,16 @@
 
 /* Load fonts from same domain, not from Google */
 @font-face {
-  font-family: 'News Cycle';
-  font-style: normal;
-  font-weight: 400;
-  src: local('News Cycle'), local('NewsCycle'), url(/static/fonts/NewsCycle-400.ttf) format('truetype');
+    font-family: 'News Cycle';
+    font-style: normal;
+    font-weight: 400;
+    src: local('News Cycle'), local('NewsCycle'), url(/static/fonts/NewsCycle-400.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'News Cycle';
-  font-style: normal;
-  font-weight: 700;
-  src: local('News Cycle Bold'), local('NewsCycle-Bold'), url(/static/fonts/NewsCycle-700.ttf) format('truetype');
+    font-family: 'News Cycle';
+    font-style: normal;
+    font-weight: 700;
+    src: local('News Cycle Bold'), local('NewsCycle-Bold'), url(/static/fonts/NewsCycle-700.ttf) format('truetype');
 }
 
 @import 'bootswatch';
@@ -63,6 +63,10 @@ body {
 }
 #table-pills li {
     vertical-align: middle;
+}
+
+.dataTable .label {
+    line-height: 20px;
 }
 
 

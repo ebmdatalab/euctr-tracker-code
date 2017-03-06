@@ -84,7 +84,7 @@
 	      <span title="Trial completed and reported results within year of date; this means it is too recent to appear in our main scores" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-success">
 	      Reported</span> 
-	      <span class="label label-primary">
+	      <br><span class="label label-primary">
 	      Recent</span></span>
 	    {% elif trial.overall_status == "reported" %}
 	      <span title="Trial completed and reported results after year of date" data-toggle="tooltip" data-placement="bottom">
@@ -107,7 +107,7 @@
 	    {% endif %}
 
 	    {% if trial.has_results and trial.overall_status != "reported" and trial.overall_status != "reported-early" %}
-	      <span title="Trial has also reported results" data-toggle="tooltip" data-placement="bottom">
+	    <br><span title="Trial has also reported results" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-success">
 	      Reported</span>
 	      </span>

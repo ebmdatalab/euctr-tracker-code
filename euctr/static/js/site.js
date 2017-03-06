@@ -101,11 +101,12 @@ function activate_trials_datatable() {
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
 	"dom": "tlpr",
+	"autoWidth": false,
 	"aoColumns": [
-	    { "orderSequence": [ "asc", "desc" ] },
-	    { "orderSequence": [ "asc", "desc" ] },
-	    { "orderSequence": [ "asc", "desc" ] },
-	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
+	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "55%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "15%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
 	]
     });
     $('#trials_table').on('draw.dt', function() {
