@@ -5,7 +5,9 @@
 {% block content %}
 
   <div class="container">
-    <h1>Is {{ sponsor_name }} late reporting EU clinical trials?</h1>
+    <div class="page-header">
+      <h1>{{ sponsor_name }}' EU clinical trial</h1>
+    </div>
 
     <div class="lead">
       <p>Out of {{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span> in the
@@ -14,27 +16,26 @@
       {% if percent_unreported > 0 %}
         sponsor {{ sponsor_name }} is <b>late</b> reporting results for {{total_unreported}} of them. 
         </p>
-         <p>They're <b>breaking the law</b> for <b>{{percent_unreported}}%</b>
+        <p>They're <b>breaking the law</b> for <b>{{percent_unreported}}%</b>
          of their trials. 
-        </p>
       {% else %}
         sponsor {{ sponsor_name }} is <b>on time</b> reporting results for all {{total_reported}}.
         <p>They're <b>obeying the law</b> for <b>{{percent_reported}}%</b>
         of their trials.
       {% endif %}
+	<a href="/about">Learn more &raquo;</a>
+      </p>
     </div>
 
-    <div class="lead">
-         <a href="/about">Why's this matter?</a>
-    </div>
-    
     <!-- <p>In addition XX trials have errors or problems in their
     data. Many of these trials will be due to reported results too. You can see
     the specific trials that are overdue, or contain errors, in the list
     below.
     </p> -->
+  </div>
 
-    <h2>{{ sponsor_name }}'s due trials</h2>
+  <div class="container">
+    <h2>Status of all trials</h2>
 
     <div id="trials_table_loading">
       <span class="glyphicon glyphicon-refresh spinning"></span>

@@ -1,15 +1,5 @@
-Add list of individual trials, with their titles, to the sponsor pages
-
-Change sponsor page to have:
-    we could colour code status. grey ongoing, amber completed, red overdue,
-    green reported, ?purple error
-
-    "inconsistent registry data" means:
-    - it has at least one completion date but some sites are marked as ongoing <-- check logic
-    - all sites are marked complete but there is no completion date
-    Use the all_complete_no_comp_date,comp_date_while_ongoing fields
-
 Sponsor page:
+    Add % errors value and copy
     Consider adding "results posted" note for error cases and other weird ones with results pasted
         https://www.clinicaltrialsregister.eu/ctr-search/search?query=2012-005661-13
     Not happy about "Reported Early" - it's not in the front page table, how do we flag that?
