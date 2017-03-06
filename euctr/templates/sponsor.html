@@ -49,6 +49,7 @@
         <tr>
           <th>Trial ID</th>
           <th>Title</th>
+          <th>Status</th>
           <th>Completion date</th>
           <th>Results posted</th>
         </tr>
@@ -62,7 +63,32 @@
         {% endif %}
         <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
           <td>{{ trial.trial_title }}</td>
-          <td>{{ trial.max_end_date }}</td>
+
+          <td>
+			  {% if trial.overall_status == "ongoing" %}
+				  Ongoing
+			  {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
+				  Registry inconsistent &mdash; ongoing but has completion date
+			  {% elif trial.overall_status == "completed_not_due" %}
+				  Completed &mdash; not due
+			  {% elif trial.overall_status == "completed-due" %}
+				  Completed &mdash; due
+			  {% elif trial.overall_status == "reported-early" %}
+				  Reported &mdash; early
+			  {% elif trial.overall_status == "reported" %}
+				  Reported
+			  {% elif trial.overall_status == "error-completed-no-comp-date" %}
+				  Registry inconsistent &mdash; completed but no completion date
+			  {% elif trial.overall_status == "not run" %}
+				  Suspended, withdrawn, not authorised or prohibited by CA
+			  {% elif trial.overall_status == "no-trial status" %}
+				  No trial status
+			  {% else %}
+				  EUCTR internal error &mdash; {{ trial.overall_status }}
+			  {% endif %}
+          </td>
+
+          <td>{{ trial.max_end_date | default_if_none:"-"}}</td>
           {% if trial.has_results == 0 %}
             <td>-</td>
           {% elif trial.has_results == 1%}

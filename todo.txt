@@ -13,26 +13,19 @@ Change sponsor page to have:
             - all sites are marked complete but there is no completion date
             Use the all_complete_no_comp_date,comp_date_while_ongoing fields
 
-            shall i ask nick to simply generate that as a variable, saves you computing?
+Filtering back on sponsor
+Wording when there is only 1 trial etc. on sponsor page is a bit off
 
-Filtering back on
-
+# assert t.has_results == 0 or t.trial_status != 0 # TODO, are there statuses where it is an error to have results?
+Pfizer count wrong - 154 / 161 vs 154 / 160
 
 "I find the changing column widths when switching between "all" and "major"
 a bit disconcerting. If it was easy enough to fix that would be nice." - seb
-
-Link to EUCTR sponsor and trial pages
-Make row red where the results aren't reported
-
-Pfizer count wrong - 154 / 161 vs 154 / 160
-Make sure Nick can use SQL
 
 graphic generated for each centre:
 - the distribution of reporting rates, and a line for where they sit in that  
 - proportion reported from each year, by completion date
 - something new we haven't thought of yet. 
-
-Wording when there is only 1 trial etc. on sponsor page is a bit off
 
 Undo this rename?
             'normalized_name': 'sponsor_name',

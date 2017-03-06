@@ -41,11 +41,54 @@ class Command(BaseCommand):
         all_trials['total_trials'] = all_trials['total_trials'].astype(int)
         all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
 
+        # Work out status
+        def work_out_status(t):
+            #print("-------------")
+            #print(t)
+
+            status = None
+
+            assert t.results_expected in (0, 1)
+            assert t.trial_status in (0, 1, 2, 3, 4)
+            assert t.comp_date_while_ongoing == 0 or (t.trial_status in (0, 2))
+            assert t.all_completed_no_comp_date == 0 or t.trial_status == 1
+            # assert t.has_results == 0 or t.trial_status != 0 # TODO, are there statuses where it is an error to have results?
+
+            if t.trial_status == 0 or t.trial_status == 2: # 0 means none done, 2 means some protocols are done
+                if t.comp_date_while_ongoing:
+                    overall_status = "error-ongoing-has-comp-date"
+                else:
+                    overall_status = "ongoing" # none done yet
+            elif t.trial_status == 1:
+                if t.all_completed_no_comp_date:
+                    overall_status = "error-completed-no-comp-date"
+                elif t.results_expected == 0:
+                    if t.has_results == 1:
+                        overall_status = "reported-early"
+                    else:
+                        overall_status = "completed-not-due"
+                else:
+                    if t.has_results == 1:
+                        overall_status = "reported"
+                    else:
+                        overall_status = "completed-due"
+            elif t.trial_status == 3:
+                overall_status = "not-run" # suspended, withdrawn, not authorised, prohibited by CA
+            elif t.trial_status == 4:
+                overall_status = "no-trial-status" # a blank trial status usually indicated a paediatric trial taking place wholly outside of the EU/EEA
+
+            #print("NEW STATUS", overall_status)
+
+            return overall_status
+        all_trials['overall_status'] = all_trials.apply(work_out_status, axis=1)
+
+        # Output all trials to file for sponsors page
+        all_trials.to_json(OUTPUT_ALL_TRIALS_FILE, orient='records')
+
         # Trials which have declared completed everywhere with a date, and a
         # year has passed
         due_trials = all_trials[all_trials.results_expected == 1]
         headline['due_trials'] = len(due_trials)
-        due_trials.to_json(OUTPUT_ALL_TRIALS_FILE, orient='records')
 
         # Trials which have or have not posted results
         due_with_results = due_trials[due_trials.has_results == 1]

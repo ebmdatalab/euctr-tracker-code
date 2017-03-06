@@ -96,12 +96,13 @@ function hide_trials_datatable() {
 function activate_trials_datatable() {
     var t = $('#trials_table').DataTable({
 	"fixedHeader": true,
-        "order": [[ 2, "desc" ]],
+        "order": [[ 3, "desc" ]],
 	"pageLength": 100,
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
 	"dom": "tlpr",
 	"aoColumns": [
+	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "asc", "desc" ] },
 	    { "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
