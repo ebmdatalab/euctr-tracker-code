@@ -98,19 +98,21 @@ body {
     margin-top: 20px;
 }
 
-.headline-box {
-    font-size: 21px;
-    margin-bottom: 24px;
-}
 .headline-number {
     font-size: 60px; 
     margin-bottom: -12px;
+}
+.jumbotron {
+    padding-bottom: 64px;
 }
 #sponsor-headlines .headline-number{
     margin-top: -16px;
 }
 @media (max-width: $screen-md-min) {
-    #front-headlines {
+    .second-column {
+        margin-top: 20px;
+    }
+    .jumbotron .second-column {
         margin-top: 50px;
     }
 }

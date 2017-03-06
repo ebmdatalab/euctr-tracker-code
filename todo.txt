@@ -19,11 +19,6 @@ graphic generated for each centre:
 - proportion reported from each year, by completion date
 - something new we haven't thought of yet. 
 
-Undo this rename?
-            'normalized_name': 'sponsor_name',
-            'has_results': 'total_reported',
-            'results_expected': 'total_due'
-
 Columns on tables reflow when you resize
     Just Ctrl+F can trigger it
 Save search state in URLs

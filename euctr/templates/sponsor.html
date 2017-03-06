@@ -12,7 +12,7 @@
 
     <div class="row headline-box" id="sponsor-headlines">
       <div class="col-md-6">
-	<p>Out of <b>{{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span></b> in the
+	<p class="lead">Out of <b>{{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span></b> in the
 	<a href="https://www.clinicaltrialsregister.eu/">European Union Clinical Trials Register (EUCTR)</a>,
 	{% if total_unreported == total_due %}
 	  >sponsor {{ sponsor_name }} are <b>late reporting
@@ -27,17 +27,20 @@
 	<a href="/about">Learn more &raquo;</a>
 	</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 second-column">
 	<div class="headline-number">{{percent_unreported}}%</div>
-	<div> of trials <b>breaking the law</b></div>
+	<p class="lead"> of trials <b>breaking the law</b></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+	<p>In addition XX trials have inconsistent data. Many of these trials will
+	be due to report results too. You can see the specific trials that are
+	overdue, or contain inconsistencies in their data, in the list below.
+	</p>
       </div>
     </div>
 
-    <!-- <p>In addition XX trials have errors or problems in their
-    data. Many of these trials will be due to reported results too. You can see
-    the specific trials that are overdue, or contain errors, in the list
-    below.
-    </p> -->
   </div>
 
   <div class="container">
