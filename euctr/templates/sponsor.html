@@ -12,20 +12,20 @@
 
     <div class="row headline-box" id="sponsor-headlines">
       <div class="col-md-6">
-	<p class="lead">Out of <b>{{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span></b> 
+	<p class="lead">Out of <b>{{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due 
+	    trial{{total_due|pluralize}}</span></b> 
 	in the
 	<a href="https://www.clinicaltrialsregister.eu/">European Union Clinical Trials Register (EUCTR)</a>,
 	{% if total_unreported == total_due %}
-	  >sponsor {{ sponsor_name }} are late reporting
-	  <b>all trials</b>
+	  sponsor {{ sponsor_name }} are late reporting
+	  <b>all of them</b>.
 	{% elif total_unreported == 0 %}
 	  the sponsor {{ sponsor_name }} has reported 
 	  <b>all on time</b>.
 	{% else %}
 	  sponsor {{ sponsor_name }} are late reporting
-	    <b>{{total_unreported}} trials</b>.
+	  <b>{{total_unreported}} trial{{total_unreported|pluralize}}</b>.
 	{% endif %}
-	<a href="/about">Learn more &raquo;</a>
 	</p>
       </div>
       <div class="col-md-6 second-column">
@@ -36,7 +36,8 @@
     {% if inconsistent_trials > 0 %}
     <div class="row">
       <div class="col-md-6">
-	<p>In addition <b>{{inconsistent_trials}} trials</b> have <b>inconsistent</b> data. 
+	<p>In addition <b>{{inconsistent_trials}} trial{{inconsistent_trials|pluralize}}</b> 
+	have <b>inconsistent</b> data. 
 	Many of these trials may also need to report results to obey the law. You can look up
 	the specific overdue or inconsistent trials in the list below.
 	</p>
