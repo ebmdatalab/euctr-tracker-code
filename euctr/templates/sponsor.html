@@ -11,18 +11,26 @@
     </div>
 
     <div class="lead">
-      <p>Out of {{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span> in the
-      <a href="https://www.clinicaltrialsregister.eu/">EUCTR</a>,
+      <p>Out of <b>{{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span></b> in the
+      <a href="https://www.clinicaltrialsregister.eu/">European Union Clinical Trials Register (EUCTR)</a>,
      
-      {% if percent_unreported > 0 %}
-        sponsor {{ sponsor_name }} is <b>late</b> reporting results for {{total_unreported}} of them. 
+      {% if total_unreported == total_due %}
+        <br>sponsor {{ sponsor_name }} are <b>late reporting
+	all</b> trials.
+        </p>
+        <p>They're <b>breaking the law</b> for <b>all</b>
+         of their trials. 
+      {% elif total_unreported == 0 %}
+        <br>the sponsor {{ sponsor_name }} has reported 
+	<b>all on time</b>.
+	<p>They're <b>obeying the law</b> for <b>all</b>
+        of their trials.
+      {% else %}
+        <br>sponsor {{ sponsor_name }} are <b>late reporting
+	{{total_unreported}}</b> trials.
         </p>
         <p>They're <b>breaking the law</b> for <b>{{percent_unreported}}%</b>
          of their trials. 
-      {% else %}
-        sponsor {{ sponsor_name }} is <b>on time</b> reporting results for all {{total_reported}}.
-        <p>They're <b>obeying the law</b> for <b>{{percent_reported}}%</b>
-        of their trials.
       {% endif %}
 	<a href="/about">Learn more &raquo;</a>
       </p>
@@ -36,7 +44,7 @@
   </div>
 
   <div class="container">
-    <h2>Status of all trials</h2>
+    <h2>Status of trials</h2>
 
     <div id="trials_table_loading">
       <span class="glyphicon glyphicon-refresh spinning"></span>
@@ -142,10 +150,6 @@
     <script>
       activate_trials_datatable()
     </script>
-
-    <div class="prominent_link"><a href="/">
-      Look up other sponsors &raquo;      
-    </div>
 
   </div>
 
