@@ -65,27 +65,27 @@
           <td>{{ trial.trial_title }}</td>
 
           <td>
-			  {% if trial.overall_status == "ongoing" %}
-				  Ongoing
-			  {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
-				  <span title="Trial is ongoing, but database shows a completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
-			  {% elif trial.overall_status == "completed-not-due" %}
-				  <span title="Completed less than a year ago" data-toggle="tooltip" data-placement="bottom">Completed</span>
-			  {% elif trial.overall_status == "completed-due" %}
-				  <span title="Completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">Due</span>
-			  {% elif trial.overall_status == "reported-early" %}
-				  Reported early
-			  {% elif trial.overall_status == "reported" %}
-				  Reported
-			  {% elif trial.overall_status == "error-completed-no-comp-date" %}
-				  <span title="Trial is completed, but database has no completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
-			  {% elif trial.overall_status == "not-run" %}
-				  <span title="Suspended, withdrawn, not authorised or prohibited by CA" data-toggle="tooltip" data-placement="bottom">Not run</span>
-			  {% elif trial.overall_status == "no-trial-status" %}
-				  <span title="Usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">No trial status</span>
-			  {% else %}
-				  EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
-			  {% endif %}
+	    {% if trial.overall_status == "ongoing" %}
+		    Ongoing
+	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
+		    <span title="Trial is ongoing, but database shows a completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
+	    {% elif trial.overall_status == "completed-not-due" %}
+		    <span title="Completed less than a year ago" data-toggle="tooltip" data-placement="bottom">Completed</span>
+	    {% elif trial.overall_status == "completed-due" %}
+		    <span title="Completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">Due</span>
+	    {% elif trial.overall_status == "reported-early" %}
+		    Reported early
+	    {% elif trial.overall_status == "reported" %}
+		    Reported
+	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
+		    <span title="Trial is completed, but database has no completion date" data-toggle="tooltip" data-placement="bottom">Registry inconsistent</span>
+	    {% elif trial.overall_status == "not-run" %}
+		    <span title="Suspended, withdrawn, not authorised or prohibited by CA" data-toggle="tooltip" data-placement="bottom">Not run</span>
+	    {% elif trial.overall_status == "no-trial-status" %}
+		    <span title="Usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">No trial status</span>
+	    {% else %}
+		    EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
+	    {% endif %}
           </td>
 
           <td>{{ trial.max_end_date | default_if_none:"-"}}</td>
