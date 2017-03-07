@@ -27,10 +27,10 @@ part of it being `<h2>`). I think it all needs to be the serif font. (Seb)
 
 On the data table layout, the arrows for sorting by column don't make visual
 sense in the "sponsor" column as the text is left aligned and the arrows right
-aligned. Perhaps left align the arrows. It would be a nice-to-have if the
-column widths were the same when flicking between "all" and "major" sponsors.
-(Seb)
+aligned. Perhaps left align the arrows. (Seb)
 
+Column widths flicker if you scroll down and up again.
+ 
 Pfizer count wrong - 154 / 161 vs 154 / 160
 
 graphic generated for each centre:
@@ -44,7 +44,7 @@ For scaling, do we need to cache front page or other pages
 Disable sessions, remove migrations and SQLite database for now at least
 Install Lets Encrypt
 
-Save search state in URLs
+Save search state in URLs? Back button does reload the table losing place
 Make major sponsors link work without Javascript
 
 Add social sharing stuff

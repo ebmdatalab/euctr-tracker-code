@@ -27,7 +27,7 @@ function activate_sponsor_datatable() {
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
 	"dom": "tlpr",
-	"autoWidth": true,
+	"autoWidth": false,
 	"aoColumns": [
 	    { "width": "30%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
@@ -107,7 +107,7 @@ function activate_trials_datatable() {
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
 	"dom": "tlpr",
-	"autoWidth": true,
+	"autoWidth": false,
 	"aoColumns": [
 	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
