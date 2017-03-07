@@ -2,11 +2,24 @@ Sponsor page
     Should we offer filters of inconsistent / overdue trials? To make it easy to find them.
     Someone needs to check the figures
 
+What should sort by status do? (F asks)
+Ben
+    rename not-run to other. "suspended" means it was run but paused
+
+    Key on page - hovering doesn't work
+    Footnotes?
+    Not so clear there are two pages
+    
+    Clean story to people new to the issue - details elsewhere
+    Make sure very clear can switch between trials - big tabs
+
+
 Pfizer count wrong - 154 / 161 vs 154 / 160
 
 graphic generated for each centre:
 - the distribution of reporting rates, and a line for where they sit in that  
-- proportion reported from each year, by completion date
+  Line graph of cumulative proportion reported with line where they are
+- proportion reported from each year, by completion date NUMBERS LOW
 - something new we haven't thought of yet. 
 
 Save search state in URLs
