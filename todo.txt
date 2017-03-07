@@ -13,6 +13,23 @@ Ben
     Clean story to people new to the issue - details elsewhere
     Make sure very clear can switch between trials - big tabs
 
+    Inconsistent - show full reason (Lisa)
+    Sort by status should not be alphabetic (Lisa)
+    Completed - assumed it meant "done + reported" not completed less than a year ago (Lisa)
+    Summary at top with total trials in register, due, late unreported etc. in a table (Helen)
+    
+Main page - put low % places at top of list more interesting (Helen)
+Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
+also it's not easy to see HOW late the overdue trials are.. can we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
+
+on design, the "out of N results...breaking the law" fonts are mixed (due to
+part of it being `<h2>`). I think it all needs to be the serif font. (Seb)
+
+On the data table layout, the arrows for sorting by column don't make visual
+sense in the "sponsor" column as the text is left aligned and the arrows right
+aligned. Perhaps left align the arrows. It would be a nice-to-have if the
+column widths were the same when flicking between "all" and "major" sponsors.
+(Seb)
 
 Pfizer count wrong - 154 / 161 vs 154 / 160
 
@@ -22,13 +39,12 @@ graphic generated for each centre:
 - proportion reported from each year, by completion date NUMBERS LOW
 - something new we haven't thought of yet. 
 
-Save search state in URLs
-
-Sort the JSON for all_sponsors to speed up initial load?
 Test on IE11 and Edge 
-Make it cache front page for scaling
+For scaling, do we need to cache front page or other pages
 Disable sessions, remove migrations and SQLite database for now at least
 Install Lets Encrypt
+
+Save search state in URLs
 Make major sponsors link work without Javascript
 
 Add social sharing stuff
