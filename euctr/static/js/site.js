@@ -5,7 +5,6 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-
 /****************************************************************/
 /* Front page */
 
@@ -16,10 +15,14 @@ function hide_sponsor_datatable() {
     $('#table-pills').hide()
 }
 
+const DEFAULT_SPONSOR_ORDER = 4
+const DEFAULT_SPONSOR_ORDER_DIR = "desc"
+const MAJOR_SPONSOR_COLUMN = 5
+
 function activate_sponsor_datatable() {
     var t = $('#sponsor_table').DataTable({
 	"fixedHeader": true,
-        "order": [[ 4, "desc" ]],
+        "order": [[ DEFAULT_SPONSOR_ORDER, DEFAULT_SPONSOR_ORDER_DIR ]],
 	"pageLength": 100,
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
@@ -32,12 +35,12 @@ function activate_sponsor_datatable() {
 	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
 	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
 	    { "width": "0%", "orderSequence": [ "asc", "desc" ] }, // Hidden column
-	]
+	],
     });
 
     var show_all = function() {
 	t.search("")
-	t.columns(5).search("").draw()
+	t.columns(MAJOR_SPONSOR_COLUMN).search("").draw()
 	$('#all_sponsors').addClass('active')
 	$('#major_sponsors').removeClass('active')
 	$('#search_sponsors').removeClass('active')
@@ -45,7 +48,7 @@ function activate_sponsor_datatable() {
     }
     var show_major = function() {
 	t.search("")
-	t.columns(5).search("major").draw()
+	t.columns(MAJOR_SPONSOR_COLUMN).search("major").draw()
 	$('#major_sponsors').addClass('active')
 	$('#all_sponsors').removeClass('active')
 	$('#search_sponsors').removeClass('active')
@@ -54,7 +57,7 @@ function activate_sponsor_datatable() {
     var show_search = function() {
 	var search = $('#search_sponsors input').val()
 	t.search(search)
-	t.columns(5).search("")
+	t.columns(MAJOR_SPONSOR_COLUMN).search("")
 	var count = t.page.info().recordsDisplay
 	if (count < 16) {
 	    // Prevent jumping in scrolling as values are filtered
