@@ -4,7 +4,7 @@
 
 {% block content %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="container">
+    <div class="container" id="about-page">
 
 	<div class="page-header">
     <h1>About the EU Trials Tracker</h1>
@@ -27,27 +27,54 @@
 
 	<hr>
 
-	<h2>Where can I read the journal paper about this?</h2>
+	<h2 id="journal-paper">Where can I read the journal paper about this?</h2>
 
 	<p>You can find it at XXX
 	</p>
 
-	<h2>Which trials are in the register?</h2>
+	<h2 id="which-trials">Which trials are in the register?</h2>
 
 	<p>Roughly, all clinical trials conducted in Europe since 2004 are in the
 	register. For full details, see the register's
 	<a href="https://www.clinicaltrialsregister.eu/about.html">about page</a>.
 	</p>
 
-	<h2>When was the data updated?</h2>
+	<h2 id="when-updated">When was the data updated?</h2>
 
 	<p>The current data was taken from the register on {{ data_source_date | date:"d M Y"}}.
 	</p>
 	
-	<h2>What's a major sponsor?</h2>
+	<h2 id="major-sponsor">What's a major sponsor?</h2>
 
 	<p>The table on the <a href="/">front page</a> can show only sponsors
 	with 50 or more trials in the register.
+	</p>
+
+	<h2 id="bad-data">What does "bad data" mean for a trial?</h2>
+
+	<p>Some trials have problematic data on the registry. There
+	are three reasons for this:
+	</p>
+
+	<ol>
+		<li>
+		All the sites are listed as completed, so there should be a
+		completion date; and yet there is no completion date for the trial. 
+		</li>
+		<li>
+		There is a date for the “global end of the trial”; and yet some of
+		the sites are still listed as ongoing. 
+		</li>
+		<li>
+		For some, the trial status is left entirely blank. 
+		</li>
+	</ol>
+
+	<p>These errors may be due to trialists’ errors, or failures at the
+	registry. However, we think the EU registry managers could and should
+	automatically identify trials with inconsistent data, as we have done; and
+	then require trialists to correct their records. More details are in our
+	paper.
 	</p>
 
     </div>

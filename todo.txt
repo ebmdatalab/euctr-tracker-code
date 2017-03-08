@@ -16,6 +16,14 @@ Ben
     Completed - assumed it meant "done + reported" not completed less than a year ago (Lisa)
     Summary at top with total trials in register, due, late unreported etc. in a table (Helen)
 
+Mark
+    Search should say "search trials", and be smaller with spacing to left
+    Hard to know how to go back to the front page
+    Less copy at top of sponsor page
+    33.3% not clear what it is of
+    Bad data copy too verbose
+
+
 Should "other" or "no trial status" say also if reported?
 "Some have, some have not" not true if they are all one way
 

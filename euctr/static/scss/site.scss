@@ -35,6 +35,19 @@ body {
     font-size: 21px;
 }
 
+*[data-toggle="tooltip"] {
+    cursor: default;
+}
+
+a > span[data-toggle="tooltip"] {
+    cursor: pointer;
+}
+
+.glyphicon-question-sign, .glyphicon-info-sign {
+    vertical-align: text-bottom;
+    margin-left: 6px;
+}
+
 
 /****************************************************************/
 /* Loading spinner */
@@ -127,11 +140,6 @@ li.search-pill a {
     background-color: $brand-primary;
 }
 
-td .glyphicon {
-    vertical-align: text-bottom;
-    margin-left: 6px;
-}
-
 /****************************************************************/
 /* Front page */
 
@@ -141,13 +149,14 @@ td .glyphicon {
 
 .headline-number {
     font-size: 60px; 
-    margin-bottom: -12px;
+    margin-bottom: -10px;
+    margin-top: -30px;
 }
 .jumbotron {
     padding-bottom: 64px;
 }
-#sponsor-headlines .headline-number{
-    margin-top: -16px;
+.jumbotron p {
+    margin-bottom: 21px;
 }
 @media (max-width: $screen-md-min) {
     .second-column {
@@ -168,5 +177,21 @@ td .glyphicon {
 
 .trials_table_loading {
     display: none;
+}
+
+/****************************************************************/
+/* About page */
+
+// https://github.com/twbs/bootstrap/issues/1768
+#about-page *[id]:before { 
+  display: block; 
+  content: " "; 
+  margin-top: -75px; 
+  height: 75px; 
+  visibility: hidden; 
+}
+
+#about-page + hr + footer {
+  margin-bottom: 80em;
 }
 

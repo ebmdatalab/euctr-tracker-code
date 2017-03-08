@@ -11,39 +11,28 @@
     </div>
 
     <div class="row headline-box" id="sponsor-headlines">
-      <div class="col-md-7">
-	<p class="lead">Out of <b>{{total_due}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due 
-	    trial{{total_due|pluralize}}</span></b> 
-	in the
-	<a href="https://www.clinicaltrialsregister.eu/">European Union Clinical Trials Register (EUCTR)</a>,
-	{% if total_unreported == total_due %}
-	  sponsor {{ sponsor_name }} are late reporting
-	  <b>all of them</b>.
-	{% elif total_unreported == 0 %}
-	  the sponsor {{ sponsor_name }} has reported 
-	  <b>all on time</b>.
-	{% else %}
-	  sponsor {{ sponsor_name }} are late reporting
-	  <b>{{total_unreported}} trial{{total_unreported|pluralize}}</b>.
-	{% endif %}
-	</p>
-      </div>
       <div class="col-md-5 second-column">
+        <p class="lead"> 
+	Has not reported
+	<b>{{ total_unreported }} trials</b> 
+	<br>
+	out of <b>{{ total_due }} due trials</b>.
+	That's
+	</p>
 	<div class="headline-number">{{percent_unreported}}%</div>
 	<p class="lead"> of trials <b>breaking the law</b></p>
       </div>
-    </div>
-    {% if inconsistent_trials > 0 %}
-    <div class="row">
       <div class="col-md-7">
-	<p>In addition <b>{{inconsistent_trials}} trial{{inconsistent_trials|pluralize}}</b> 
-	have <b>inconsistent</b> data. 
-	Many of these trials may also need to report results to obey the law. You can look up
-	the specific overdue or inconsistent trials in the list below.
+	<p class="lead">By law</b>, all clinical trials on the 
+	<a href="https://www.clinicaltrialsregister.eu/">
+	  European Union Clinical Trials Register (EUCTR)
+	</a>
+	<b>must</b> report their results in the registry within a year of
+	completion. This site tracks who's doing this and who isn't.
+	<a href="/about">Learn more &raquo;</a>
 	</p>
       </div>
     </div>
-    {% endif %}
   </div>
 
   <div class="container">
@@ -52,13 +41,13 @@
     </div>
    
     <ul class="nav nav-pills nav-justified" id="table-pills">
-      <li id="due_trials" role="presentation" class="active" title="" data-toggle="xtooltip" data-placement="bottom">
+      <li id="due_trials" role="presentation" class="active">
 	<a href="#"><h2>Due trials<span class="badge">{{ total_due }}</span></h2></a>
       </li>
-      <li id="not_yet_due_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
+      <li id="not_yet_due_trials" role="presentation">
 	<a href="#"><h2>Not due<span class="badge">{{ not_yet_due_trials }}</span></h2></a>
       </li>
-      <li id="bad_data_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
+      <li id="bad_data_trials" role="presentation">
 	<a href="#"><h2>Bad data<span class="badge">{{ inconsistent_trials }}</span></h2></a>
       </li>
       <li id="search_trials" class="search-pill" role="presentation">
@@ -87,20 +76,10 @@
       <div class="bad_data_preamble">
 	<p class="lead">
 	These trials have problematic data on the registry. 
+
+	<a href="/about#bad-data"><span class="glyphicon glyphicon-info-sign"></span></a>
 	</p>
 
-	<p>For some, all the sites are
-	listed as completed, so there should be a completion date; and yet there is no
-	completion date for the trial. For some, there is a date for the “global end of
-	the trial”; and yet some of the sites are still listed as ongoing. For some,
-	the trial status is left entirely blank. 
-	</p>
-
-	<p>These errors may be due to trialists’
-	errors, or failures at the registry. However, we think the EU registry managers
-	could and should automatically identify trials with inconsistent data, as we
-	have done; and then require trialists to correct their records. More details
-	are in our paper.
       </div>
     </div>
 
@@ -152,7 +131,7 @@
 	      <span class="label label-info"> <!-- XXX white -->
 	      Other
 	      </span>
-	      <span class="glyphicon glyphicon-question-sign"></span>
+	      <span data-toggle="tooltip" data-placement="right" title="Suspended, withdrawn, not authorised or prohibited by Country Authority" class="glyphicon glyphicon-question-sign"></span>
 
 	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
