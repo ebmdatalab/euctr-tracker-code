@@ -187,44 +187,59 @@ function activate_trials_datatable() {
 
     var data = {
 	labels: [
-	    "Due (reported)",
-	    "Due (not reported)",
-	    "Not due",
-	    "Bad data"
+	    "Number of trials"
 	],
-	datasets: [{
-	    label: "Trials",
-	    data: [total_due - total_unreported, total_unreported, not_yet_due_trials, bad_data_trials],
-	    backgroundColor: [
-		"#22B24C",
-		"#EB6864",
-		"#999",
-		"#7632B0"
-	    ],
-	    hoverBackgroundColor: [
-		"#22B24C",
-		"#EB6864",
-		"#999",
-		"#7632B0"
-	    ]
-        }]
+	datasets: [
+	{
+	    label: "Due - Reported",
+	    data: [total_due - total_unreported],
+	    backgroundColor: [ "#22B24C" ],
+	    hoverBackgroundColor: [ "#22B24C" ]
+       	},
+	{
+	    label: "Due - Not reported",
+	    data: [total_unreported],
+	    backgroundColor: [ "#EB6864" ],
+	    hoverBackgroundColor: [ "#EB6864" ]
+        },
+	{
+	    label: "Not due",
+	    data: [not_yet_due_trials],
+	    backgroundColor: [ "#999" ],
+	    hoverBackgroundColor: [ "#999" ]
+        },
+	{
+	    label: "Bad data",
+	    data: [inconsistent_trials],
+	    backgroundColor: [ "#7632B0" ],
+	    hoverBackgroundColor: [ "#7632B0" ]
+        },
+	]
     };
 
     var options = {
         animation:{
             animateScale:true
         },
+	scales: {
+	    xAxes: [{
+		stacked: true
+	    }],
+	    yAxes: [{
+		stacked: true
+	    }]
+	}
     }
 
-    var pie_chart = new Chart(ctx,{
-	type: 'pie',
+    var chart = new Chart(ctx,{
+	type: 'horizontalBar',
 	data: data,
 	options: options
     });
 
     ctx.onclick = function(evt) {
-	var pt = pie_chart.getElementsAtEvent(evt)
-	legendItem = pt[0]['_index']
+	var pt = chart.getDatasetAtEvent(evt)
+	legendItem = pt[0]['_datasetIndex']
 	if (legendItem == 0 || legendItem == 1) {
 	    show_due()
 	} else if (legendItem == 2) {

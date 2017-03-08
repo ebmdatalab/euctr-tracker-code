@@ -8,19 +8,34 @@
     total_unreported = {{ total_unreported }}
     total_due = {{ total_due }}
     not_yet_due_trials = {{ not_yet_due_trials }}
-    bad_data_trials = {{ bad_data_trials }}
+    inconsistent_trials = {{ inconsistent_trials }}
     total_trials = {{ total_trials }}
   </script>
 
-  <div class="container">
+  <div class="container" id="sponsor-headlines">
     <div class="page-header">
       <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
 	EU clinical trials</h1>
     </div>
 
-    <div class="row" id="sponsor-headlines">
-      <div class="col-md-9 second-column">
-	<p class="lead">By law</b>, all clinical trials on the 
+    <div class="row">
+      <div class="col-md-4 col-lg-3">
+        <p class="lead"> 
+	Is <b>breaking the law</b> for
+	</p>
+	<div class="headline-number">{{percent_unreported}}%</div>
+	<p class="lead"> 
+	of due trials. That's <b>{{ total_unreported }} trials not reported</b> 
+	out of <b>{{ total_due }}</b> which are due to report.
+	</p>
+      </div>
+      <div class="col-md-8 col-lg-9 second-column">
+      	<canvas id="overview_chart" height="80px"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 second-column">
+	<p class="lead">All clinical trials on the 
 	<a href="https://www.clinicaltrialsregister.eu/">
 	  European Union Clinical Trials Register (EUCTR)
 	</a>
@@ -28,21 +43,9 @@
 	completion. This site tracks who's doing this and who isn't.
 	<a href="/about">Learn more &raquo;</a>
 	</p>
-
-        <p class="lead"> 
-	Has not reported
-	<b>{{ total_unreported }} trials</b> 
-	out of <b>{{ total_due }} due trials</b>.
-	That's
-	</p>
-	<div class="headline-number">{{percent_unreported}}%</div>
-	<p class="lead"> of trials <b>breaking the law</b></p>
       </div>
-      <div class="col-md-3 second-column">
-      	<canvas id="overview_chart"></canvas>
-      </div>
+     </div>
 
-    </div>
   </div>
 
   <div class="container">

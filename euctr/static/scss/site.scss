@@ -160,7 +160,7 @@ li.search-pill a {
 }
 @media (max-width: $screen-md-min) {
     .second-column {
-        margin-top: 20px;
+        margin-top: 40px;
     }
     .jumbotron .second-column {
         margin-top: 50px;
@@ -181,6 +181,11 @@ li.search-pill a {
 
 #sponsor-headlines {
     margin-bottom: 20px;
+}
+#sponsor-headlines {
+  .headline-number {
+      text-align: center;
+  }
 }
 
 /****************************************************************/
