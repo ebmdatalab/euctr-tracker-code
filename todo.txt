@@ -4,8 +4,6 @@ Sponsor page
 
 What should sort by status do? (F asks)
 Ben
-    rename not-run to other. "suspended" means it was run but paused
-
     Key on page - hovering doesn't work
     Footnotes?
     Not so clear there are two pages
@@ -17,6 +15,8 @@ Ben
     Sort by status should not be alphabetic (Lisa)
     Completed - assumed it meant "done + reported" not completed less than a year ago (Lisa)
     Summary at top with total trials in register, due, late unreported etc. in a table (Helen)
+
+/ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
     
 Main page - put low % places at top of list more interesting (Helen)
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
@@ -29,7 +29,7 @@ On the data table layout, the arrows for sorting by column don't make visual
 sense in the "sponsor" column as the text is left aligned and the arrows right
 aligned. Perhaps left align the arrows. (Seb)
 
-Column widths flicker if you scroll down and up again.
+Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
  
 Pfizer count wrong - 154 / 161 vs 154 / 160
 

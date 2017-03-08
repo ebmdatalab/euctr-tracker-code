@@ -117,10 +117,10 @@
 	      <span title="Trial is completed, but database does not list a completion date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-warning">
 	      Inconsistent</span></span>
-	    {% elif trial.overall_status == "not-run" %}
+	    {% elif trial.overall_status == "other" %}
 	      <span title="Trial was suspended, withdrawn, not authorised or prohibited by the country authority" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-info">
-	      Not run</span></span>
+	      Other</span></span>
 	    {% elif trial.overall_status == "no-trial-status" %}
 	      <span title="No status listed; usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-info">

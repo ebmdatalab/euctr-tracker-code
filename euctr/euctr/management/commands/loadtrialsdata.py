@@ -45,7 +45,7 @@ def work_out_status(t):
             else:
                 overall_status = "completed-due"
     elif t.trial_status == 3:
-        overall_status = "not-run" # suspended, withdrawn, not authorised, prohibited by CA
+        overall_status = "other" # suspended, withdrawn, not authorised, prohibited by CA
     elif t.trial_status == 4:
         overall_status = "no-trial-status" # a blank trial status usually indicated a paediatric trial taking place wholly outside of the EU/EEA
 
