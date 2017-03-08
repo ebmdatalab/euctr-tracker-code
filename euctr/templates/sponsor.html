@@ -4,25 +4,22 @@
 
 {% block content %}
 
+  <script>
+    total_unreported = {{ total_unreported }}
+    total_due = {{ total_due }}
+    not_yet_due_trials = {{ not_yet_due_trials }}
+    bad_data_trials = {{ bad_data_trials }}
+    total_trials = {{ total_trials }}
+  </script>
+
   <div class="container">
     <div class="page-header">
       <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
 	EU clinical trials</h1>
     </div>
 
-    <div class="row headline-box" id="sponsor-headlines">
-      <div class="col-md-5 second-column">
-        <p class="lead"> 
-	Has not reported
-	<b>{{ total_unreported }} trials</b> 
-	<br>
-	out of <b>{{ total_due }} due trials</b>.
-	That's
-	</p>
-	<div class="headline-number">{{percent_unreported}}%</div>
-	<p class="lead"> of trials <b>breaking the law</b></p>
-      </div>
-      <div class="col-md-7">
+    <div class="row" id="sponsor-headlines">
+      <div class="col-md-9 second-column">
 	<p class="lead">By law</b>, all clinical trials on the 
 	<a href="https://www.clinicaltrialsregister.eu/">
 	  European Union Clinical Trials Register (EUCTR)
@@ -31,7 +28,20 @@
 	completion. This site tracks who's doing this and who isn't.
 	<a href="/about">Learn more &raquo;</a>
 	</p>
+
+        <p class="lead"> 
+	Has not reported
+	<b>{{ total_unreported }} trials</b> 
+	out of <b>{{ total_due }} due trials</b>.
+	That's
+	</p>
+	<div class="headline-number">{{percent_unreported}}%</div>
+	<p class="lead"> of trials <b>breaking the law</b></p>
       </div>
+      <div class="col-md-3 second-column">
+      	<canvas id="overview_chart"></canvas>
+      </div>
+
     </div>
   </div>
 
@@ -57,7 +67,7 @@
 	  <span class="input-group-btn">
 	    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 	    <div class="spacer">
-	      <span class="badge">{{ 99 }}</span>
+	      <span class="badge">{{ total_trials }}</span>
 	    </div>
 	  </span>
 	</div>
@@ -135,11 +145,11 @@
 
 	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
-	      <span class="label label-danger">
+	      <span class="label label-warning">
 	      Ongoing yet has completion date</span>
 	      {% if trial.has_results%}<br>Also reported results{% endif %}
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
-	      <span class="label label-danger">
+	      <span class="label label-warning">
 	      Completed but no date</span>
 	      {% if trial.has_results%}<br>Also reported results{% endif %}
 	    {% elif trial.overall_status == "no-trial-status" %}

@@ -1,19 +1,8 @@
 Sponsor page
-    Should we offer filters of inconsistent / overdue trials? To make it easy to find them.
     Someone needs to check the figures
-
-What should sort by status do? (F asks)
-Ben
-    Key on page - hovering doesn't work
-    Footnotes?
-    Not so clear there are two pages
-    
     Clean story to people new to the issue - details elsewhere
-    Make sure very clear can switch between trials - big tabs
 
-    Inconsistent - show full reason (Lisa)
-    Sort by status should not be alphabetic (Lisa)
-    Completed - assumed it meant "done + reported" not completed less than a year ago (Lisa)
+    Sort by status should not be alphabetic (Lisa) - what should it do?
     Summary at top with total trials in register, due, late unreported etc. in a table (Helen)
 
 Mark

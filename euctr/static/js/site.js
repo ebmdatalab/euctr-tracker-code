@@ -181,6 +181,58 @@ function activate_trials_datatable() {
     /* Show after style change */
     $('#trials_table_loading').hide()
     $('#trials_table').show()
+
+    /* Pie chart */
+    var ctx = document.getElementById("overview_chart");
+
+    var data = {
+	labels: [
+	    "Due (reported)",
+	    "Due (not reported)",
+	    "Not due",
+	    "Bad data"
+	],
+	datasets: [{
+	    label: "Trials",
+	    data: [total_due - total_unreported, total_unreported, not_yet_due_trials, bad_data_trials],
+	    backgroundColor: [
+		"#22B24C",
+		"#EB6864",
+		"#999",
+		"#7632B0"
+	    ],
+	    hoverBackgroundColor: [
+		"#22B24C",
+		"#EB6864",
+		"#999",
+		"#7632B0"
+	    ]
+        }]
+    };
+
+    var options = {
+        animation:{
+            animateScale:true
+        },
+    }
+
+    var pie_chart = new Chart(ctx,{
+	type: 'pie',
+	data: data,
+	options: options
+    });
+
+    ctx.onclick = function(evt) {
+	var pt = pie_chart.getElementsAtEvent(evt)
+	legendItem = pt[0]['_index']
+	if (legendItem == 0 || legendItem == 1) {
+	    show_due()
+	} else if (legendItem == 2) {
+	    show_not_yet_due()
+	} else if (legendItem == 3) {
+	    show_bad_data()
+	}
+    }
 }
 
 
