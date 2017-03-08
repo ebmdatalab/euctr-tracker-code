@@ -53,22 +53,31 @@
     <div id="trials_table_loading">
       <span class="glyphicon glyphicon-refresh spinning"></span>
     </div>
-
-    <div class="row" id="table-pills">
-      <div class="col-sm-7">
-      </div>
-      <div class="col-sm-5" id="search_trials">
+   
+    <ul class="nav nav-pills nav-justified" id="table-pills">
+      <li id="due_trials" role="presentation" class="active" title="" data-toggle="xtooltip" data-placement="bottom">
+	<a href="#">Due trials<span class="badge">{{ total_due }}</span></a>
+      </li>
+      <li id="not_yet_due_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
+	<a href="#">Not yet due<span class="badge">{{ 30 }}</span></a>
+      </li>
+      <li id="bad_data_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
+	<a href="#">Bad data<span class="badge">{{ 1 }}</span></a>
+      </li>
+      <li id="search_trials" role="presentation">
+	<a href="#">
 	<div class="input-group">
 	  <input type="text" class="form-control" placeholder="Search">
 	  <span class="input-group-btn">
 	    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 	    <div class="spacer">
-	      <span class="badge">{{ total_trials }}</span>
+	      <span class="badge">{{ 99 }}</span>
 	    </div>
 	  </span>
 	</div>
-      </div>
-    </div>
+      </a></li>
+  </ul>
+
 
 
     <table id="trials_table" class="display" cellspacing="0" width="100%">
@@ -82,6 +91,7 @@
           <th>Trial ID</th>
           <th>Title</th>
           <th>Completion date</th>
+	  <th class="hidden_column">Category</th>
         </tr>
       </thead>
 
@@ -130,14 +140,14 @@
 	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
 	      <span title="Trial is ongoing, but database already shows a completion date" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-warning">
-	      Inconsistent data</span></span>
-	      <br>Ongoing but has completion date{% if trial.has_results%}; reported results{% endif %}
+	      <span class="label label-danger">
+	      Ongoing but has completion date</span></span>
+	      {% if trial.has_results%}<br>Also reported results{% endif %}
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
 	      <span title="Trial is completed, but database does not list a completion date" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-warning">
-	      Inconsistent data</span></span>
-	      <br>All completed but no completion date{% if trial.has_results%}; reported results{% endif %}
+	      <span class="label label-danger">
+	      Completed but no date</span></span>
+	      {% if trial.has_results%}<br>Also reported results{% endif %}
 	    {% elif trial.overall_status == "no-trial-status" %}
 	      <span title="No status listed; usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-default">
@@ -151,6 +161,34 @@
           <td>{{ trial.trial_title }}</td>
 
           <td>{{ trial.max_end_date | default_if_none:"-"}}</td>
+
+	  <td class="hidden_column">
+	    <!-- Due -->
+	    {% if trial.overall_status == "reported" %}
+	      due-trials
+	    {% elif trial.overall_status == "completed-due" %}
+	      due-trials
+	    <!-- Not yet due -->
+	    {% elif trial.overall_status == "ongoing" %}
+	      not-yet-due
+	    {% elif trial.overall_status == "ongoing-reported-early"%}
+	      not-yet-due
+	    {% elif trial.overall_status == "completed-not-due" %}
+	      not-yet-due
+	    {% elif trial.overall_status == "completed-reported-early"%}
+	      not-yet-due
+	    {% elif trial.overall_status == "other" %}
+	      not-yet-due
+	    <!-- Bad data -->
+	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
+	      bad-data
+	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
+	      bad-data
+	    {% elif trial.overall_status == "no-trial-status" %}
+	      bad-data
+	    {% else %}
+	      bad-data
+	    {% endif %}
         </tr>
       {% endfor %}
     </table>

@@ -122,7 +122,8 @@ class Command(BaseCommand):
         # Count number of trials with inconsistent data
         inconsistent_trials = all_trials[
             (all_trials['overall_status'] == 'error-completed-no-comp-date') |
-            (all_trials['overall_status'] == 'error-ongoing-has-comp-date')
+            (all_trials['overall_status'] == 'error-ongoing-has-comp-date') |
+            (all_trials['overall_status'] == 'no-trial-status')
         ]
         inconsistent_trials_count = inconsistent_trials.groupby('normalized_name').size()
         sponsor_counts['inconsistent_trials'] = inconsistent_trials_count

@@ -79,7 +79,7 @@ body {
   background-color: $component-active-color;
 }
 
-.dataTable .label {
+.table .label {
     line-height: 20px;
 }
 
@@ -90,6 +90,9 @@ body {
     vertical-align: middle;
 }
 
+.hidden_column {
+    display: none;
+}
 
 /****************************************************************/
 /* Front page */
@@ -117,9 +120,6 @@ body {
     }
 }
 
-.sponsor_type {
-    display: none;
-}
 .sponsor_table_loading {
     display: none;
 }

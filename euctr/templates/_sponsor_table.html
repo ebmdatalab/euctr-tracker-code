@@ -35,7 +35,7 @@
       <th>Due trials</th>
       <th>Unreported</th>
       <th>% Reported</th>
-      <th class="sponsor_type">Major?</th>
+      <th class="hidden_column">Major?</th>
     </tr>
   </thead>
 
@@ -47,9 +47,9 @@
       <td> {{ sponsor.total_unreported }} </td>
       <td> {{ sponsor.percent_reported }}% </td>
       {% if sponsor.total_trials >= 50 %}
-      <td class="sponsor_type">major</td>
+      <td class="hidden_column">major</td>
       {% else %}
-      <td class="sponsor_type">minor</td>
+      <td class="hidden_column">minor</td>
       {% endif %}
     </tr> 
   {% endfor %}
