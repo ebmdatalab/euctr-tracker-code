@@ -30,13 +30,16 @@ def work_out_status(t):
         if t.comp_date_while_ongoing:
             overall_status = "error-ongoing-has-comp-date"
         else:
-            overall_status = "ongoing" # none done yet
+            if t.has_results == 1:
+                overall_status = "ongoing-reported-early"
+            else:
+                overall_status = "ongoing"
     elif t.trial_status == 1:
         if t.all_completed_no_comp_date:
             overall_status = "error-completed-no-comp-date"
         elif t.results_expected == 0:
             if t.has_results == 1:
-                overall_status = "reported-early"
+                overall_status = "completed-reported-early"
             else:
                 overall_status = "completed-not-due"
         else:

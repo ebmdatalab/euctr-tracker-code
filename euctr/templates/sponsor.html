@@ -92,50 +92,60 @@
         <tr>
         {% endif %}
           <td>
-	    {% if trial.overall_status == "ongoing" %}
+	    <!-- Due -->
+	    {% if trial.overall_status == "reported" %}
+	      <span title="Trial completed and reported results after year of date" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-success">
+	      Reported results</span></span></span>
+	    {% elif trial.overall_status == "completed-due" %}
+	      <span title="Trial completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-danger">
+	      Not reported</span></span>
+      
+	    <!-- Not yet due -->
+	    {% elif trial.overall_status == "ongoing" %}
 	      <span class="label label-default">
 	      <span title="Trial is ongoing" data-toggle="tooltip" data-placement="bottom">
 	      Ongoing
 	      </span></span>
+	    {% elif trial.overall_status == "ongoing-reported-early"%}
+	      <span title="Trial is ongoing but has already reported results" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-default">
+	      Completed and reported early</span></span>
+
+	    {% elif trial.overall_status == "completed-not-due" %}
+	      <span title="Trial completed less than a year ago" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-info">
+	      Completed and not yet due</span></span>
+	    {% elif trial.overall_status == "completed-reported-early"%}
+	      <span title="Trial is completed and has reported results early" data-toggle="tooltip" data-placement="bottom">
+	      <span class="label label-default">
+	      Completed and reported early</span></span>
+	    {% elif trial.overall_status == "other" %}
+	      <span title="Trial was suspended, withdrawn, not authorised or prohibited by the country authority" data-toggle="tooltip" data-placement="bottom">
+		<span class="label label-info"> <!-- XXX white -->
+	      Other</span></span>
+
+
+	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
 	      <span title="Trial is ongoing, but database already shows a completion date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-warning">
-	      Inconsistent</span></span>
-	    {% elif trial.overall_status == "completed-not-due"  or trial.overall_status == "reported-early"%}
-	      <span title="Trial completed less than a year ago" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-info">
-	      Completed</span></span>
-	    {% elif trial.overall_status == "completed-due" %}
-	      <span title="Trial completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-danger">
-	      Overdue</span></span>
-	    {% elif trial.overall_status == "reported" %}
-	      <span title="Trial completed and reported results after year of date" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-success">
-	      Reported</span></span></span>
+	      Inconsistent data</span></span>
+	      <br>Ongoing but has completion date{% if trial.has_results%}; reported results{% endif %}
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
 	      <span title="Trial is completed, but database does not list a completion date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-warning">
-	      Inconsistent</span></span>
-	    {% elif trial.overall_status == "other" %}
-	      <span title="Trial was suspended, withdrawn, not authorised or prohibited by the country authority" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-info">
-	      Other</span></span>
+	      Inconsistent data</span></span>
+	      <br>All completed but no completion date{% if trial.has_results%}; reported results{% endif %}
 	    {% elif trial.overall_status == "no-trial-status" %}
 	      <span title="No status listed; usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-info">
-	      No trial status</span></span>
+	      <span class="label label-default">
+	      No trial status on register</span></span>
 	    {% else %}
 	      EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
 	    {% endif %}
-
-	    {% if trial.has_results and trial.overall_status != "reported" %}
-	    <br><span title="Trial has also reported results" data-toggle="tooltip" data-placement="bottom">
-	      <span class="label label-success">
-	      Reported</span>
-	      </span>
-	    {% endif %}
-   </td>
+	 </td>
 
 	  <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
           <td>{{ trial.trial_title }}</td>

@@ -16,6 +16,8 @@ Ben
     Completed - assumed it meant "done + reported" not completed less than a year ago (Lisa)
     Summary at top with total trials in register, due, late unreported etc. in a table (Helen)
 
+Should "other" or "no trial status" say also if reported?
+
 /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
     
 Main page - put low % places at top of list more interesting (Helen)
