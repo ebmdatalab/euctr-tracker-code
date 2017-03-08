@@ -110,7 +110,7 @@ function activate_trials_datatable() {
 	"pageLength": 100,
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
-	"dom": "tlpri",
+	"dom": "tlpr",
 	"autoWidth": false,
 	"aoColumns": [
 	    { "width": "25%", "orderSequence": [ "asc", "desc" ] },
@@ -127,28 +127,28 @@ function activate_trials_datatable() {
     var show_due = function() {
 	t.search("")
 	t.columns(DUE_TRIAL_COLUMN).search("due-trials").draw()
+	$('li.active').removeClass('active')
 	$('#due_trials').addClass('active')
-	$('#not_yet_due_trials').removeClass('active')
-	$('#bad_data_trials').removeClass('active')
-	$('#search_trials').removeClass('active')
+	$('.trials_preamble > *').hide()
+	$('.due_trials_preamble').show()
 	return false
     }
     var show_not_yet_due = function() {
 	t.search("")
 	t.columns(DUE_TRIAL_COLUMN).search("not-yet-due").draw()
-	$('#due_trials').removeClass('active')
+	$('li.active').removeClass('active')
 	$('#not_yet_due_trials').addClass('active')
-	$('#bad_data_trials').removeClass('active')
-	$('#search_trials').removeClass('active')
+	$('.trials_preamble > *').hide()
+	$('.not_yet_due_preamble').show()
 	return false
     }
     var show_bad_data = function() {
 	t.search("")
 	t.columns(DUE_TRIAL_COLUMN).search("bad-data").draw()
-	$('#due_trials').removeClass('active')
-	$('#not_yet_due_trials').removeClass('active')
+	$('li.active').removeClass('active')
 	$('#bad_data_trials').addClass('active')
-	$('#search_trials').removeClass('active')
+	$('.trials_preamble > *').hide()
+	$('.bad_data_preamble').show()
 	return false
     }
      var show_search = function() {
@@ -164,10 +164,9 @@ function activate_trials_datatable() {
 	t.draw(false)
 	$('#search_trials .badge').text(count)
 
-	$('#due_trials').removeClass('active')
-	$('#not_yet_due_trials').removeClass('active')
-	$('#bad_data_trials').removeClass('active')
+	$('li.active').removeClass('active')
 	$('#search_trials').addClass('active')
+	$('.trials_preamble > *').hide()
 	return false
     }
  

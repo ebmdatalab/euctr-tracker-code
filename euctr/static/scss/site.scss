@@ -94,6 +94,44 @@ body {
     display: none;
 }
 
+.nav-tabs .badge {
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+@media (min-width: $screen-sm-min) {
+  .search-pill {
+      margin-top: -55px;
+  }
+}
+
+#table-pills li.search-pill {
+  vertical-align: middle;
+}
+
+li.search-pill a {
+    margin-bottom: 3px;
+    padding-top: 14px;
+    padding-bottom: 15px;
+}
+#table-pills h2 {
+    margin-top: 6px;
+}
+#table-pills .badge {
+    margin-left: 8px;
+}
+.nav-pills > li.active a h2, 
+.nav-pills > li.active a:hover h2, 
+.nav-pills > li.active a:focus h2 {
+    color: #fff;
+    background-color: $brand-primary;
+}
+
+td .glyphicon {
+    vertical-align: text-bottom;
+    margin-left: 6px;
+}
+
 /****************************************************************/
 /* Front page */
 
@@ -130,11 +168,5 @@ body {
 
 .trials_table_loading {
     display: none;
-}
-
-@media (min-width: $screen-sm-min) {
-  #search_trials {
-      margin-top: -55px;
-  }
 }
 

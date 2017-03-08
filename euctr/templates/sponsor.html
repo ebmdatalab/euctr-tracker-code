@@ -51,17 +51,17 @@
       <span class="glyphicon glyphicon-refresh spinning"></span>
     </div>
    
-    <ul class="nav nav-tabs nav-justified" id="table-pills">
+    <ul class="nav nav-pills nav-justified" id="table-pills">
       <li id="due_trials" role="presentation" class="active" title="" data-toggle="xtooltip" data-placement="bottom">
-	<a href="#">Due trials<span class="badge">{{ total_due }}</span></a>
+	<a href="#"><h2>Due trials<span class="badge">{{ total_due }}</span></h2></a>
       </li>
       <li id="not_yet_due_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
-	<a href="#">Not yet due<span class="badge">{{ not_yet_due_trials }}</span></a>
+	<a href="#"><h2>Not due<span class="badge">{{ not_yet_due_trials }}</span></h2></a>
       </li>
       <li id="bad_data_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
-	<a href="#">Bad data<span class="badge">{{ inconsistent_trials }}</span></a>
+	<a href="#"><h2>Bad data<span class="badge">{{ inconsistent_trials }}</span></h2></a>
       </li>
-      <li id="search_trials" role="presentation">
+      <li id="search_trials" class="search-pill" role="presentation">
 	<a href="#">
 	<div class="input-group">
 	  <input type="text" class="form-control" placeholder="Search">
@@ -75,12 +75,34 @@
       </a></li>
     </ul>
 
-    <h2>Trials that are late</h2>
-    <p>
-    These trials completed more than 12 months ago and should have reported
-    results. Some have, some have not. The individual trials are identified below
-    </p>
+    <div class="trials_preamble">
+      <p class="due_trials_preamble lead">
+	These trials completed more than 12 months ago and should have reported
+	results. Some have, some have not.
+      </p>
+      <p class="not_yet_due_preamble lead">
+	These trials are not yet due to report results: some are ongoing, some
+	completed within the past 12 months. 
+      </p>
+      <div class="bad_data_preamble">
+	<p class="lead">
+	These trials have problematic data on the registry. 
+	</p>
 
+	<p>For some, all the sites are
+	listed as completed, so there should be a completion date; and yet there is no
+	completion date for the trial. For some, there is a date for the “global end of
+	the trial”; and yet some of the sites are still listed as ongoing. For some,
+	the trial status is left entirely blank. 
+	</p>
+
+	<p>These errors may be due to trialists’
+	errors, or failures at the registry. However, we think the EU registry managers
+	could and should automatically identify trials with inconsistent data, as we
+	have done; and then require trialists to correct their records. More details
+	are in our paper.
+      </div>
+    </div>
 
 
     <table id="trials_table" class="display" cellspacing="0" width="100%">
@@ -122,13 +144,15 @@
 	      Completed and reported early</span>
 	    {% elif trial.overall_status == "completed-not-due" %}
 	      <span class="label label-info">
-	      Completed and not yet due</span>
+	      Completed, report not yet due</span>
 	    {% elif trial.overall_status == "completed-reported-early"%}
 	      <span class="label label-default">
 	      Completed and reported early</span>
 	    {% elif trial.overall_status == "other" %}
 	      <span class="label label-info"> <!-- XXX white -->
-	      Other</span>
+	      Other
+	      </span>
+	      <span class="glyphicon glyphicon-question-sign"></span>
 
 	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}

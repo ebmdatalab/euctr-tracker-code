@@ -17,6 +17,7 @@ Ben
     Summary at top with total trials in register, due, late unreported etc. in a table (Helen)
 
 Should "other" or "no trial status" say also if reported?
+"Some have, some have not" not true if they are all one way
 
 /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
     
