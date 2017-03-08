@@ -110,7 +110,7 @@ function activate_trials_datatable() {
 	"pageLength": 100,
 	"lengthMenu": [ [10, 100, 500, -1], [10, 100, 500, "All"] ],
 	"orderClasses": false, // Turns off column highlighting, so sorting much faster
-	"dom": "tlpr",
+	"dom": "tlpri",
 	"autoWidth": false,
 	"aoColumns": [
 	    { "width": "25%", "orderSequence": [ "asc", "desc" ] },

@@ -119,7 +119,7 @@ class Command(BaseCommand):
             'results_expected': 'sum',
             'total_trials': 'max'
         })
-        # Count number of trials with inconsistent data
+        # ... count number of trials with inconsistent data
         inconsistent_trials = all_trials[
             (all_trials['overall_status'] == 'error-completed-no-comp-date') |
             (all_trials['overall_status'] == 'error-ongoing-has-comp-date') |
@@ -129,13 +129,16 @@ class Command(BaseCommand):
         sponsor_counts['inconsistent_trials'] = inconsistent_trials_count
         sponsor_counts['inconsistent_trials'].fillna(0.0, inplace=True)
         sponsor_counts['inconsistent_trials'] = sponsor_counts['inconsistent_trials'].astype(int)
-        # ...
+        # ... reform it
         sponsor_counts.reset_index(level=0, inplace=True)
         sponsor_counts.rename(columns={
             'normalized_name': 'sponsor_name',
             'has_results': 'total_reported',
             'results_expected': 'total_due'
         }, inplace=True)
+        # ... count number not yet due
+        sponsor_counts['not_yet_due_trials'] = sponsor_counts['total_trials'] - sponsor_counts['total_due'] - sponsor_counts['inconsistent_trials']
+        # ... work out percentages
         sponsor_counts['percent_reported'] = np.round(
             sponsor_counts['total_reported'] /
             sponsor_counts['total_due'] * 100, 1

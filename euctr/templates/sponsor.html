@@ -44,25 +44,22 @@
       </div>
     </div>
     {% endif %}
-
   </div>
 
   <div class="container">
-    <h2>Status of each trial</h2>
-
     <div id="trials_table_loading">
       <span class="glyphicon glyphicon-refresh spinning"></span>
     </div>
    
-    <ul class="nav nav-pills nav-justified" id="table-pills">
+    <ul class="nav nav-tabs nav-justified" id="table-pills">
       <li id="due_trials" role="presentation" class="active" title="" data-toggle="xtooltip" data-placement="bottom">
 	<a href="#">Due trials<span class="badge">{{ total_due }}</span></a>
       </li>
       <li id="not_yet_due_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
-	<a href="#">Not yet due<span class="badge">{{ 30 }}</span></a>
+	<a href="#">Not yet due<span class="badge">{{ not_yet_due_trials }}</span></a>
       </li>
       <li id="bad_data_trials" role="presentation" title="" data-toggle="xtooltip" data-placement="bottom">
-	<a href="#">Bad data<span class="badge">{{ 1 }}</span></a>
+	<a href="#">Bad data<span class="badge">{{ inconsistent_trials }}</span></a>
       </li>
       <li id="search_trials" role="presentation">
 	<a href="#">
@@ -76,7 +73,13 @@
 	  </span>
 	</div>
       </a></li>
-  </ul>
+    </ul>
+
+    <h2>Trials that are late</h2>
+    <p>
+    These trials completed more than 12 months ago and should have reported
+    results. Some have, some have not. The individual trials are identified below
+    </p>
 
 
 
@@ -104,54 +107,41 @@
           <td>
 	    <!-- Due -->
 	    {% if trial.overall_status == "reported" %}
-	      <span title="Trial completed and reported results after year of date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-success">
-	      Reported results</span></span></span>
+	      Reported results</span></span>
 	    {% elif trial.overall_status == "completed-due" %}
-	      <span title="Trial completed more than a year ago, and hasn't reported results" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-danger">
-	      Not reported</span></span>
-      
+	      Not reported</span>
+
 	    <!-- Not yet due -->
 	    {% elif trial.overall_status == "ongoing" %}
 	      <span class="label label-default">
-	      <span title="Trial is ongoing" data-toggle="tooltip" data-placement="bottom">
-	      Ongoing
-	      </span></span>
+	      Ongoing</span>
 	    {% elif trial.overall_status == "ongoing-reported-early"%}
-	      <span title="Trial is ongoing but has already reported results" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-default">
-	      Completed and reported early</span></span>
-
+	      Completed and reported early</span>
 	    {% elif trial.overall_status == "completed-not-due" %}
-	      <span title="Trial completed less than a year ago" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-info">
-	      Completed and not yet due</span></span>
+	      Completed and not yet due</span>
 	    {% elif trial.overall_status == "completed-reported-early"%}
-	      <span title="Trial is completed and has reported results early" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-default">
-	      Completed and reported early</span></span>
+	      Completed and reported early</span>
 	    {% elif trial.overall_status == "other" %}
-	      <span title="Trial was suspended, withdrawn, not authorised or prohibited by the country authority" data-toggle="tooltip" data-placement="bottom">
-		<span class="label label-info"> <!-- XXX white -->
-	      Other</span></span>
-
+	      <span class="label label-info"> <!-- XXX white -->
+	      Other</span>
 
 	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
-	      <span title="Trial is ongoing, but database already shows a completion date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-danger">
-	      Ongoing but has completion date</span></span>
+	      Ongoing yet has completion date</span>
 	      {% if trial.has_results%}<br>Also reported results{% endif %}
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
-	      <span title="Trial is completed, but database does not list a completion date" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-danger">
-	      Completed but no date</span></span>
+	      Completed but no date</span>
 	      {% if trial.has_results%}<br>Also reported results{% endif %}
 	    {% elif trial.overall_status == "no-trial-status" %}
-	      <span title="No status listed; usually a paediatric trial taking place wholly outside of the EU/EEA" data-toggle="tooltip" data-placement="bottom">
 	      <span class="label label-default">
-	      No trial status on register</span></span>
+	      No trial status on register</span>
 	    {% else %}
 	      EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
 	    {% endif %}
