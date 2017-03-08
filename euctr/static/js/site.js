@@ -228,17 +228,30 @@ function activate_trials_datatable() {
 	    yAxes: [{
 		stacked: true
 	    }]
+	},
+	onResize: function() {
+	    // Hide legend on small browser widths, otherwise
+            // chart itself disappears.
+	    var height = $('#overview_chart').height()
+	    if (height < 150) {
+		window.chart.options.legend.display = false
+	    } else {
+		window.chart.options.legend.display = true
+            }
+	},
+	legend: {
+	    display: true
 	}
     }
 
-    var chart = new Chart(ctx,{
+    window.chart = new Chart(ctx,{
 	type: 'horizontalBar',
 	data: data,
 	options: options
     });
 
     ctx.onclick = function(evt) {
-	var pt = chart.getDatasetAtEvent(evt)
+	var pt = window.chart.getDatasetAtEvent(evt)
 	legendItem = pt[0]['_datasetIndex']
 	if (legendItem == 0 || legendItem == 1) {
 	    show_due()
