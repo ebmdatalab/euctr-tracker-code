@@ -1,34 +1,31 @@
-Sponsor page
-    Someone needs to check the figures
-    Clean story to people new to the issue - details elsewhere
-
-    Sort by status should not be alphabetic (Lisa) - what should it do?
-    Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
-
-    "Some have, some have not" not true if they are all one way
+*** Clean story to people new to the issue - details elsewhere
 
 Ask Nick or Ben
     /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
+    Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
+    Someone needs to check the figures
+Ask Lisa
+  Sort by status should not be alphabetic (Lisa) - ask if OK now have filter
+Ask Helen
+  Details on: also it's not easy to see HOW late the overdue trials are.. can
+  we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
 
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
-
-also it's not easy to see HOW late the overdue trials are.. can we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
 
 On the data table layout, the arrows for sorting by column don't make visual
 sense in the "sponsor" column as the text is left aligned and the arrows right
 aligned. Perhaps left align the arrows. (Seb)
 
+"Some have, some have not" not true if they are all one way
+Not obvious that it is paginated when you get to the bottom (Ben)
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
- 
-Pfizer count wrong - 154 / 161 vs 154 / 160
 
 Test on IE11 and Edge 
 For scaling, do we need to cache front page or other pages
 Disable sessions, remove migrations and SQLite database for now at least
 Install Lets Encrypt
 
-Save search state in URLs? Back button does reload the table losing place
-Make major sponsors link work without Javascript
+Test both pages without Javascript - do any links need to work or should be hidden?
 
 Add social sharing stuff - with an image of the chart
 Twitter / Facebook sharing links on pages - look up best practice
