@@ -5,16 +5,10 @@ Sponsor page
     Sort by status should not be alphabetic (Lisa) - what should it do?
     Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
 
-Mark
-    Hard to know how to go back to the front page
-
-
-Should "other" or "no trial status" say also if reported?
-"Some have, some have not" not true if they are all one way
+    "Some have, some have not" not true if they are all one way
 
 /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
-    
-Main page - put low % places at top of list more interesting (Helen)
+
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
 also it's not easy to see HOW late the overdue trials are.. can we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
 
