@@ -248,6 +248,10 @@ function activate_trials_datatable() {
 	},
 	legend: {
 	    display: true
+	},
+	title: {
+	    display: true,
+	    text: 'Out of ' + total_trials + ' trials on the registry'
 	}
     }
 
