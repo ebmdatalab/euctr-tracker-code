@@ -3,14 +3,10 @@ Sponsor page
     Clean story to people new to the issue - details elsewhere
 
     Sort by status should not be alphabetic (Lisa) - what should it do?
-    Summary at top with total trials in register, due, late unreported etc. in a table (Helen)
+    Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
 
 Mark
-    Search should say "search trials", and be smaller with spacing to left
     Hard to know how to go back to the front page
-    Less copy at top of sponsor page
-    33.3% not clear what it is of
-    Bad data copy too verbose
 
 
 Should "other" or "no trial status" say also if reported?

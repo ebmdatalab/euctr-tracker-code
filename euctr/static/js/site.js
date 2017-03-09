@@ -219,7 +219,7 @@ function activate_trials_datatable() {
 
     var options = {
         animation:{
-            animateScale:true
+            animateScale: true
         },
 	scales: {
 	    xAxes: [{
