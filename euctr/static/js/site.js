@@ -154,6 +154,7 @@ function activate_trials_datatable() {
      var show_search = function() {
 	var search = $('#search_trials input').val()
 	t.search(search)
+	t.columns(DUE_TRIAL_COLUMN).search("").draw()
 	var count = t.page.info().recordsDisplay
 	if (count < 16) {
 	    // Prevent jumping in scrolling as values are filtered
@@ -227,10 +228,12 @@ function activate_trials_datatable() {
         },
 	scales: {
 	    xAxes: [{
-		stacked: true
+		stacked: true,
+		display: false
 	    }],
 	    yAxes: [{
-		stacked: true
+		stacked: true,
+		display: false
 	    }]
 	},
 	onResize: function() {
