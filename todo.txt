@@ -1,5 +1,16 @@
 *** Clean story to people new to the issue - details elsewhere
 
+New feedback
+    Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
+    2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
+    Green and red adjacent are bad for colour blind (Helen + Lisa) - do faint outline, or make shades go
+      Keep in mind some authorities have zero width for some colours
+    "(Also reported results)" could be prettier (Ben)
+
+    Two pie charts reported/unreported, same/as/now (Ben) - label ON the pie for colour blind?
+    Quantify bad data that are due and unreported (Helen) - how many due ones are being hidden as bad data?
+      Try the second blob whose size tells you how many bad data trials there are 
+
 Ask Nick or Ben
     /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
     Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
@@ -19,16 +30,16 @@ Main page - make numbers in columns link straight to filtered versions of sponso
 Not obvious that it is paginated when you get to the bottom (Ben)
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
+*** Add social sharing stuff - with an image of the chart
+Twitter / Facebook sharing links on pages - look up best practice
+Consider adding meta descriptions, e.g. for sponsor pages
+
 Test on IE11 and Edge 
 For scaling, do we need to cache front page or other pages
 Disable sessions, remove migrations and SQLite database for now at least
 Install Lets Encrypt
 
 Test both pages without Javascript - do any links need to work or should be hidden?
-
-Add social sharing stuff - with an image of the chart
-Twitter / Facebook sharing links on pages - look up best practice
-Consider adding meta descriptions, e.g. for sponsor pages
 
 Read:
 https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit
