@@ -113,10 +113,10 @@ function activate_trials_datatable() {
 	"dom": "tlpr",
 	"autoWidth": false,
 	"aoColumns": [
-	    { "width": "25%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "23%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "45%", "orderSequence": [ "asc", "desc" ] },
-	    { "width": "15%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
+	    { "width": "17%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
 	    { "width": "0%", "orderSequence": [ "asc", "desc" ] }, // Hidden column
 	]
     });
