@@ -143,20 +143,15 @@ li.search-pill a {
 /****************************************************************/
 /* Front page */
 
-#intro {
+.intro {
     margin-top: 20px;
-}
-
-.headline-bigtitle {
-    font-size: 30px;
-    font-weight: bold;
-    margin-top: 15px;
 }
 
 .headline-number {
     font-size: 60px; 
     margin-bottom: -10px;
     margin-top: -30px;
+   text-align: center; 
 }
 .jumbotron {
     padding-bottom: 64px;
@@ -187,11 +182,6 @@ li.search-pill a {
 
 #sponsor-headlines {
     margin-bottom: 20px;
-}
-#sponsor-headlines {
-  .headline-number {
-      text-align: center;
-  }
 }
 
 

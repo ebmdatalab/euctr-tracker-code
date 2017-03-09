@@ -9,7 +9,7 @@
       <h1>Who's not sharing EU clinical trial results?</h1>
       <div class="row">
         <div class="col-md-6">
-          <p id="intro"><b>By law</b>, all clinical trials on the 
+          <p class="intro"><b>By law</b>, all clinical trials on the 
           <a href="https://www.clinicaltrialsregister.eu/">
             European Union Clinical Trials Register (EUCTR)
           </a>
@@ -20,13 +20,11 @@
           </p>
         </div>
         <div class="col-md-6 second-column">
-          <div class="headline-bigtitle">Out of {{due_trials}} <span title="Trials which are listed as completed with a completion date, and the date is more than a year ago" data-toggle="tooltip" data-placement="bottom">due trials</span></div>
-          <p class="lead">
-          {{due_trials_without_results}} 
-          are <b>late</b> reporting results. That's
-          </p>
+          <p class="intro">Trial sponsors are <b>breaking the law</b> for</p>
           <div class="headline-number">{{percent_without_results}}%</div>
-          <p class="lead">of trials <b>breaking the law</b>.</p>
+          <p>of due trials. That's <b>{{due_trials_without_results}} trials not reported</b> 
+          out of <b>{{due_trials}}</b> which are due to report.
+          </p>
         </div>
       </div>
     </div>
