@@ -12,9 +12,6 @@ Sponsor page
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
 also it's not easy to see HOW late the overdue trials are.. can we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
 
-on design, the "out of N results...breaking the law" fonts are mixed (due to
-part of it being `<h2>`). I think it all needs to be the serif font. (Seb)
-
 On the data table layout, the arrows for sorting by column don't make visual
 sense in the "sponsor" column as the text is left aligned and the arrows right
 aligned. Perhaps left align the arrows. (Seb)
