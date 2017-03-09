@@ -172,6 +172,9 @@ li.search-pill a {
     display: none;
 }
 
+.dataTable thead tr th:not(.dt-right) {
+    background-position: center left;
+}
 
 /****************************************************************/
 /* Sponsor page */

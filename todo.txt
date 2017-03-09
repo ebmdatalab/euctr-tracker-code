@@ -4,6 +4,8 @@ Ask Nick or Ben
     /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
     Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
     Someone needs to check the figures
+    Why is https://www.clinicaltrialsregister.eu/ctr-search/search?query=2004-002661-21 
+      completed and reported earlywhen it is ongoing?
 Ask Lisa
   Sort by status should not be alphabetic (Lisa) - ask if OK now have filter
 Ask Helen
@@ -12,11 +14,8 @@ Ask Helen
 
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
 
-On the data table layout, the arrows for sorting by column don't make visual
-sense in the "sponsor" column as the text is left aligned and the arrows right
-aligned. Perhaps left align the arrows. (Seb)
-
 "Some have, some have not" not true if they are all one way
+    e.g. http://127.0.0.1:8000/sponsor/almirall-sa
 Not obvious that it is paginated when you get to the bottom (Ben)
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
