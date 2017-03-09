@@ -182,8 +182,12 @@ function activate_trials_datatable() {
     $('#trials_table_loading').hide()
     $('#trials_table').show()
 
-    /* Pie chart */
+    /* Chart */
     var ctx = document.getElementById("overview_chart");
+
+    Chart.defaults.global.defaultFontFamily = "Georgia, 'Times New Roman', Times, serif"
+    Chart.defaults.global.defaultFontSize = 15
+    Chart.defaults.global.defaultFontColor = '#333'
 
     var data = {
 	labels: [

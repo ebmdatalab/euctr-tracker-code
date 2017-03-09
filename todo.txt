@@ -7,9 +7,11 @@ Sponsor page
 
     "Some have, some have not" not true if they are all one way
 
-/ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
+Ask Nick or Ben
+    /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
 
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
+
 also it's not easy to see HOW late the overdue trials are.. can we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
 
 On the data table layout, the arrows for sorting by column don't make visual
@@ -20,12 +22,6 @@ Column widths flicker if you scroll down and up again. https://github.com/DataTa
  
 Pfizer count wrong - 154 / 161 vs 154 / 160
 
-graphic generated for each centre:
-- the distribution of reporting rates, and a line for where they sit in that  
-  Line graph of cumulative proportion reported with line where they are
-- proportion reported from each year, by completion date NUMBERS LOW
-- something new we haven't thought of yet. 
-
 Test on IE11 and Edge 
 For scaling, do we need to cache front page or other pages
 Disable sessions, remove migrations and SQLite database for now at least
@@ -34,7 +30,7 @@ Install Lets Encrypt
 Save search state in URLs? Back button does reload the table losing place
 Make major sponsors link work without Javascript
 
-Add social sharing stuff
+Add social sharing stuff - with an image of the chart
 Twitter / Facebook sharing links on pages - look up best practice
 Consider adding meta descriptions, e.g. for sponsor pages
 
