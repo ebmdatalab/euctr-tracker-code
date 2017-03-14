@@ -1,10 +1,6 @@
 *** Clean story to people new to the issue - details elsewhere
 
 New feedback
-    "X break the law for" on sponsor page --> "X is late reporting xx% of due trials..." 
-    "trial sponsors break the law" on front page --> "late reporting"
-    By law on front page
-
     "(Also reported results)" could be prettier (Ben)
 
     Two pie charts reported/unreported, same/as/now (Ben) - label ON the pie for colour blind?
