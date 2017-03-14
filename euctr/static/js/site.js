@@ -189,7 +189,7 @@ function activate_trials_datatable() {
     Chart.defaults.global.defaultFontColor = '#333'
 
     var unreported_data = {
-	labels: [ "Reported", "Not reported" ],
+	labels: [ "Reported on time", "Late reporting results" ],
 	datasets: [
 	{
 	    data: [total_due - total_unreported, total_unreported],
@@ -199,12 +199,12 @@ function activate_trials_datatable() {
 	]
     };
     var overview_data = {
-	labels: [ "Due", "Not due", "Bad data" ],
+	labels: [ "Good data", "Bad data" ],
 	datasets: [
 	{
-	    data: [total_due, not_yet_due_trials, inconsistent_trials],
-	    backgroundColor: [ "#999", "#eee", "#EB6864" ],
-	    hoverBackgroundColor: [ "#999", "#eee", "#EB6864" ]
+	    data: [total_due + not_yet_due_trials, inconsistent_trials],
+	    backgroundColor: [ "#999", "#B264B2" ],
+	    hoverBackgroundColor: [ "#999", "#B264B2" ]
        	},
 	]
     };
