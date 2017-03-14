@@ -193,8 +193,8 @@ function activate_trials_datatable() {
 	datasets: [
 	{
 	    data: [total_due - total_unreported, total_unreported],
-	    backgroundColor: [ "#22B24C", "#EB6864" ],
-	    hoverBackgroundColor: [ "#22B24C", "#EB6864" ]
+	    backgroundColor: [ "#999", "#EB6864" ],
+	    hoverBackgroundColor: [ "#999", "#EB6864" ]
        	},
 	]
     };

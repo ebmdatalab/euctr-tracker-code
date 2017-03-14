@@ -1,18 +1,13 @@
 *** Clean story to people new to the issue - details elsewhere
 
 New feedback
-    Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
-    2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
-
-Green and red adjacent are bad for colour blind (Helen + Lisa) - do faint outline, or make shades go
-  Label ON the pie?
-  Keep in mind some authorities have zero width for some colours
-  http://www.vischeck.com/vischeck/
+  Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
+  2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
 
 Ask Nick or Ben
-    /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
-    Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
-    Someone needs to check the figures
+  /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
+  Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
+  Someone needs to check the figures
     Why is https://www.clinicaltrialsregister.eu/ctr-search/search?query=2004-002661-21 
       completed and reported earlywhen it is ongoing?
 Ask Lisa
@@ -23,10 +18,9 @@ Ask Helen
 
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
 
-"Some have, some have not" not true if they are all one way
-    e.g. http://127.0.0.1:8000/sponsor/almirall-sa
 Not obvious that it is paginated when you get to the bottom (Ben)
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
+
 
 *** Add social sharing stuff - with an image of the chart
 Twitter / Facebook sharing links on pages - look up best practice
