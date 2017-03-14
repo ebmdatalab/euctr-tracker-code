@@ -149,12 +149,13 @@
 	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
 	      <span class="label label-warning">
-	      Listed as ongoing, but also has a completion date</span>
-	      {% if trial.has_results%}<br><i>(Also reported results)</i>{% endif %}
+	      Listed as ongoing, but also has a completion date
+	      {% if trial.has_results%}and reported results{% endif %}
+	      </span>
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
 	      <span class="label label-warning">
-	      Completed, but no date</span>
-	      {% if trial.has_results%}<br><i>(Also reported results)</i>{% endif %}
+	      Completed, but no date{% if trial.has_results%}, and reported results{% endif %}
+	      </span>
 	    {% elif trial.overall_status == "no-trial-status" %}
 	      <span class="label label-default">
 	      No trial status on register</span>

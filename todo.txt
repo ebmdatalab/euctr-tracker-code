@@ -1,8 +1,6 @@
 *** Clean story to people new to the issue - details elsewhere
 
 New feedback
-    "(Also reported results)" could be prettier (Ben)
-
     Two pie charts reported/unreported, same/as/now (Ben) - label ON the pie for colour blind?
     Quantify bad data that are due and unreported (Helen) - how many due ones are being hidden as bad data?
       Try the second blob whose size tells you how many bad data trials there are 
