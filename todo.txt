@@ -1,15 +1,25 @@
 *** Clean story to people new to the issue - details elsewhere
 
 New feedback
-    Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
-    2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
-    Green and red adjacent are bad for colour blind (Helen + Lisa) - do faint outline, or make shades go
-      Keep in mind some authorities have zero width for some colours
+    "X break the law for" on sponsor page --> "X is late reporting xx% of due trials..." 
+    "trial sponsors break the law" on front page --> "late reporting"
+    By law on front page
+
     "(Also reported results)" could be prettier (Ben)
 
     Two pie charts reported/unreported, same/as/now (Ben) - label ON the pie for colour blind?
     Quantify bad data that are due and unreported (Helen) - how many due ones are being hidden as bad data?
       Try the second blob whose size tells you how many bad data trials there are 
+
+    Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
+    2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
+    Green and red adjacent are bad for colour blind (Helen + Lisa) - do faint outline, or make shades go
+      Keep in mind some authorities have zero width for some colours
+
+    Replace purple with crosshatching? (Seb, Helen likes boldness of purple) Maybe another red?
+    Alignment of chart with text - put key below chart, then label below that (Seb)
+
+
 
 Ask Nick or Ben
     /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?

@@ -133,13 +133,13 @@
 	      Ongoing</span>
 	    {% elif trial.overall_status == "ongoing-reported-early"%}
 	      <span class="label label-default">
-	      Completed and reported early</span>
+	      Ongoing, reported early</span>
 	    {% elif trial.overall_status == "completed-not-due" %}
 	      <span class="label label-info">
 	      Completed, report not yet due</span>
 	    {% elif trial.overall_status == "completed-reported-early"%}
 	      <span class="label label-default">
-	      Completed and reported early</span>
+	      Completed, reported early</span>
 	    {% elif trial.overall_status == "other" %}
 	      <span class="label label-info"> <!-- XXX white -->
 	      Other
@@ -149,11 +149,11 @@
 	    <!-- Bad data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
 	      <span class="label label-warning">
-	      Ongoing yet has completion date</span>
+	      Listed as ongoing, but also has a completion date</span>
 	      {% if trial.has_results%}<br><i>(Also reported results)</i>{% endif %}
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}
 	      <span class="label label-warning">
-	      Completed but no date</span>
+	      Completed, but no date</span>
 	      {% if trial.has_results%}<br><i>(Also reported results)</i>{% endif %}
 	    {% elif trial.overall_status == "no-trial-status" %}
 	      <span class="label label-default">
