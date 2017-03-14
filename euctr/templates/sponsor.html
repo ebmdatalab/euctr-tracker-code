@@ -78,7 +78,10 @@
     <div class="trials_preamble">
       <p class="due_trials_preamble lead">
 	These trials completed more than 12 months ago and should have reported
-	results. Some have, some have not.
+	results. 
+	{% if total_unreported > 0 %}
+	Some have, some have not.
+	{% endif %}
       </p>
       <p class="not_yet_due_preamble lead">
 	These trials are not yet due to report results: some are ongoing, some

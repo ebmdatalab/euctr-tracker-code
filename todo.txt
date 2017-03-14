@@ -1,20 +1,13 @@
 *** Clean story to people new to the issue - details elsewhere
 
 New feedback
-    Label ON the pie for colour blind?
-        http://www.vischeck.com/vischeck/
-    Quantify bad data that are due and unreported (Helen) - how many due ones are being hidden as bad data?
-      Try the second blob whose size tells you how many bad data trials there are 
-
     Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
     2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
-    Green and red adjacent are bad for colour blind (Helen + Lisa) - do faint outline, or make shades go
-      Keep in mind some authorities have zero width for some colours
 
-    Replace purple with crosshatching? (Seb, Helen likes boldness of purple) Maybe another red?
-    Alignment of chart with text - put key below chart, then label below that (Seb)
-
-
+Green and red adjacent are bad for colour blind (Helen + Lisa) - do faint outline, or make shades go
+  Label ON the pie?
+  Keep in mind some authorities have zero width for some colours
+  http://www.vischeck.com/vischeck/
 
 Ask Nick or Ben
     /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
