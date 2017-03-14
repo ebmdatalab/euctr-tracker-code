@@ -113,7 +113,7 @@ function activate_trials_datatable() {
 	"dom": "tlpr",
 	"autoWidth": false,
 	"aoColumns": [
-	    { "width": "23%", "orderSequence": [ "asc", "desc" ] },
+	    { "orderData": [0,1], "width": "23%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "45%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "17%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
