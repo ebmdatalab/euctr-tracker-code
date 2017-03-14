@@ -148,6 +148,10 @@ class Command(BaseCommand):
             sponsor_counts['total_unreported'] /
             sponsor_counts['total_due'] * 100, 1
         )
+        sponsor_counts['percent_bad_data'] = np.round(
+            sponsor_counts['inconsistent_trials'] /
+            sponsor_counts['total_trials'] * 100, 1
+        )
         # ... write them to a file
         sponsor_counts.to_json(OUTPUT_ALL_SPONSORS_FILE, orient='records')
 

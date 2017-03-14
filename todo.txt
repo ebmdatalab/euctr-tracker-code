@@ -1,7 +1,8 @@
 *** Clean story to people new to the issue - details elsewhere
 
 New feedback
-    Two pie charts reported/unreported, same/as/now (Ben) - label ON the pie for colour blind?
+    Label ON the pie for colour blind?
+        http://www.vischeck.com/vischeck/
     Quantify bad data that are due and unreported (Helen) - how many due ones are being hidden as bad data?
       Try the second blob whose size tells you how many bad data trials there are 
 

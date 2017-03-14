@@ -183,95 +183,49 @@ function activate_trials_datatable() {
     $('#trials_table_loading').hide()
     $('#trials_table').show()
 
-    /* Chart */
-    var ctx = document.getElementById("overview_chart");
-
+    /* Charts */
     Chart.defaults.global.defaultFontFamily = "Georgia, 'Times New Roman', Times, serif"
     Chart.defaults.global.defaultFontSize = 15
     Chart.defaults.global.defaultFontColor = '#333'
 
-    var data = {
-	labels: [
-	    "Number of trials"
-	],
+    var unreported_data = {
+	labels: [ "Reported", "Not reported" ],
 	datasets: [
 	{
-	    label: "Due - Reported",
-	    data: [total_due - total_unreported],
-	    backgroundColor: [ "#22B24C" ],
-	    hoverBackgroundColor: [ "#22B24C" ]
+	    data: [total_due - total_unreported, total_unreported],
+	    backgroundColor: [ "#22B24C", "#EB6864" ],
+	    hoverBackgroundColor: [ "#22B24C", "#EB6864" ]
        	},
+	]
+    };
+    var overview_data = {
+	labels: [ "Due", "Not due", "Bad data" ],
+	datasets: [
 	{
-	    label: "Due - Not reported",
-	    data: [total_unreported],
-	    backgroundColor: [ "#EB6864" ],
-	    hoverBackgroundColor: [ "#EB6864" ]
-        },
-	{
-	    label: "Not due",
-	    data: [not_yet_due_trials],
-	    backgroundColor: [ "#999" ],
-	    hoverBackgroundColor: [ "#999" ]
-        },
-	{
-	    label: "Bad data",
-	    data: [inconsistent_trials],
-	    backgroundColor: [ "#7632B0" ],
-	    hoverBackgroundColor: [ "#7632B0" ]
-        },
+	    data: [total_due, not_yet_due_trials, inconsistent_trials],
+	    backgroundColor: [ "#999", "#eee", "#EB6864" ],
+	    hoverBackgroundColor: [ "#999", "#eee", "#EB6864" ]
+       	},
 	]
     };
 
     var options = {
-        animation:{
-            animateScale: true
-        },
-	scales: {
-	    xAxes: [{
-		stacked: true,
-		display: false
-	    }],
-	    yAxes: [{
-		stacked: true,
-		display: false
-	    }]
-	},
-	onResize: function() {
-	    // Hide legend on small browser widths, otherwise
-            // chart itself disappears.
-	    var height = $('#overview_chart').height()
-	    if (height < 150) {
-		window.chart.options.legend.display = false
-	    } else {
-		window.chart.options.legend.display = true
-            }
-	},
-	legend: {
-	    display: true
-	},
-	title: {
-	    display: true,
-	    text: 'Out of ' + total_trials + ' trials on the registry'
-	}
+	legend: { display: false },
     }
 
-    window.chart = new Chart(ctx,{
-	type: 'horizontalBar',
-	data: data,
+    var overview_ctx = document.getElementById("overview_chart");
+    window.overview_chart = new Chart(overview_ctx, {
+	type: 'pie' ,
+	data: overview_data,
 	options: options
     });
 
-    ctx.onclick = function(evt) {
-	var pt = window.chart.getDatasetAtEvent(evt)
-	legendItem = pt[0]['_datasetIndex']
-	if (legendItem == 0 || legendItem == 1) {
-	    show_due()
-	} else if (legendItem == 2) {
-	    show_not_yet_due()
-	} else if (legendItem == 3) {
-	    show_bad_data()
-	}
-    }
-}
+    var unreported_ctx = document.getElementById("unreported_chart");
+    window.unreported_chart = new Chart(unreported_ctx, {
+	type: 'pie' ,
+	data: unreported_data,
+	options: options
+    });
 
+}
 

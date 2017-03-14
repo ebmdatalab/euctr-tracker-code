@@ -12,30 +12,29 @@
     total_trials = {{ total_trials }}
   </script>
 
-  <div class="container" id="sponsor-headlines">
+  <div class="container">
     <div class="page-header">
       <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
 	EU clinical trials</h1>
     </div>
 
     <div class="row">
-      <div class="col-md-4">
-        <p class="lead"> 
-	{{ sponsor_name }} is <b>late reporting</b>
-	</p>
-	<div class="headline-number">{{percent_unreported}}%</div>
-	<p class="lead"> 
-	of due trials. That's <b>{{ total_unreported }} trials not reported</b> 
-	out of <b>{{ total_due }}</b> which are due to report.
-	</p>
+      <div class="col-sm-4 col-xs-6 sponsor-headlines">
+	<h2>Late reporting</h2>
+      	<canvas id="unreported_chart" height="200px"></canvas>
+	<div class="sponsor-number">{{percent_unreported}}%</div>
+	<p class="lead">of {{ sponsor_name }}'s due trials haven't
+	reported yet</p>
       </div>
-      <div class="col-md-8 second-column">
-      	<canvas id="overview_chart" height="80px"></canvas>
+      <div class="col-sm-4 col-xs-6 sponsor-headlines">
+	<h2>Bad data</h2>
+      	<canvas id="overview_chart" height="200px"></canvas>
+	<div class="sponsor-number">{{percent_bad_data}}%</div>
+	<p class="lead">of {{ sponsor_name }}'s entries in the
+	register are inconsistent</p>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 second-column">
-	<p class="lead">All clinical trials on the 
+      <div class="col-sm-offset-1 col-xs-offset-0 col-sm-3 col-xs-12">
+	<p class="lead sponsor-blurb">All clinical trials on the 
 	<a href="https://www.clinicaltrialsregister.eu/">
 	  European Union Clinical Trials Register (EUCTR)
 	</a>
@@ -45,7 +44,6 @@
 	</p>
       </div>
      </div>
-
   </div>
 
   <div class="container">
