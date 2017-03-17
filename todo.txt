@@ -1,12 +1,35 @@
-*** Clean story to people new to the issue - details elsewhere
+Read open trials paper
+  Consider emailing project
+
+
+Ben
+  Bad data blob corresponding size
+  - see them both
+  Number of trials with bad data
+
+  Front page should include bad data as absolute number
+    "Trials on EUCTR"
+    "Due trials"
+    "% Reported"
+    "Trials with bad data" 
+    
+  Front page can kill the unreported column
+    Any kind of picture on the front page?
+    Pie chart? 
+  Change old pie to be red and green
+  Under old pie put "of GSK's 338 due trials"
+  Chrome on Mac - there's a font display error with 12.8
+  
+  Give audit on colours and design
+
+  /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
+      Yes we should display these
 
 New feedback
   Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
   2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
 
 Ask Nick or Ben
-  /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
-  Front page has "% Reported", but sponsor page has "% Unreported" - keep consistent?
   Someone needs to check the figures
     Why is https://www.clinicaltrialsregister.eu/ctr-search/search?query=2004-002661-21 
       completed and reported earlywhen it is ongoing?
@@ -23,6 +46,7 @@ Column widths flicker if you scroll down and up again. https://github.com/DataTa
 
 
 *** Add social sharing stuff - with an image of the chart
+  OK to remove password page now
 Twitter / Facebook sharing links on pages - look up best practice
 Consider adding meta descriptions, e.g. for sponsor pages
 

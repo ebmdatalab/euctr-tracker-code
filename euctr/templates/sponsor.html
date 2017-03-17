@@ -1,50 +1,10 @@
-{% extends "base.html" %}
+{% extends "_base.html" %}
 
 {% block title %}Is {{ sponsor_name }} late reporting EU clinical trials?{% endblock %}
 
 {% block content %}
 
-  <script>
-    total_unreported = {{ total_unreported }}
-    total_due = {{ total_due }}
-    not_yet_due_trials = {{ not_yet_due_trials }}
-    inconsistent_trials = {{ inconsistent_trials }}
-    total_trials = {{ total_trials }}
-  </script>
-
-  <div class="container">
-    <div class="page-header">
-      <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
-	EU clinical trials</h1>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4 col-xs-6 sponsor-headlines">
-	<h2>Late reporting</h2>
-      	<canvas id="unreported_chart" height="200px"></canvas>
-	<div class="sponsor-number">{{percent_unreported}}%</div>
-	<p class="lead">of {{ sponsor_name }}'s trials which 
-	are due to report haven't reported yet</p>
-      </div>
-      <div class="col-sm-4 col-xs-6 sponsor-headlines">
-	<h2>Bad data</h2>
-      	<canvas id="overview_chart" height="200px"></canvas>
-	<div class="sponsor-number">{{percent_bad_data}}%</div>
-	<p class="lead">of {{ sponsor_name }}'s entries in the
-	register are inconsistent</p>
-      </div>
-      <div class="col-sm-offset-1 col-xs-offset-0 col-sm-3 col-xs-12">
-	<p class="lead sponsor-blurb">All clinical trials on the 
-	<a href="https://www.clinicaltrialsregister.eu/">
-	  European Union Clinical Trials Register (EUCTR)
-	</a>
-	<b>must</b> report their results in the registry within a year of
-	completion. This site tracks who's doing this and who isn't.
-	<a href="/about">Learn more &raquo;</a>
-	</p>
-      </div>
-     </div>
-  </div>
+  {% include "_sponsor_charts.html" %}
 
   <div class="container">
     <div id="trials_table_loading">

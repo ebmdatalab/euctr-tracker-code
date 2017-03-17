@@ -182,7 +182,9 @@ function activate_trials_datatable() {
     /* Show after style change */
     $('#trials_table_loading').hide()
     $('#trials_table').show()
+}
 
+function activate_charts() {
     /* Charts */
     Chart.defaults.global.defaultFontFamily = "Georgia, 'Times New Roman', Times, serif"
     Chart.defaults.global.defaultFontSize = 15
@@ -211,6 +213,7 @@ function activate_trials_datatable() {
 
     var options = {
 	legend: { display: false },
+	animation: { animateRotate: false }
     }
 
     var overview_ctx = document.getElementById("overview_chart");

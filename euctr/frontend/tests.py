@@ -13,6 +13,11 @@ class BasicLoadTestCase(TestCase):
         r = c.get('/sponsor/4sc-ag')
         self.assertEqual(r.status_code, 200)
 
+    def test_sponsor_screenshot_loads(self):
+        c = Client()
+        r = c.get('/sponsor/4sc-ag/screenshot')
+        self.assertEqual(r.status_code, 200)
+
     def test_about_loads(self):
         c = Client()
         r = c.get('/about')
