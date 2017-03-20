@@ -195,8 +195,8 @@ function activate_charts() {
 	datasets: [
 	{
 	    data: [total_due - total_unreported, total_unreported],
-	    backgroundColor: [ "#999", "#EB6864" ],
-	    hoverBackgroundColor: [ "#999", "#EB6864" ]
+	    backgroundColor: [ "#22B24C", "#EB6864" ],
+	    hoverBackgroundColor: [ "#22B24C", "#EB6864" ]
        	},
 	]
     };
