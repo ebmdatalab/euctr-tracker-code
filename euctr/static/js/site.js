@@ -195,18 +195,18 @@ function activate_charts() {
 	datasets: [
 	{
 	    data: [total_due - total_unreported, total_unreported],
-	    backgroundColor: [ "#22B24C", "#EB6864" ],
-	    hoverBackgroundColor: [ "#22B24C", "#EB6864" ]
+	    backgroundColor: [ "#999", "#EB6864" ],
+	    hoverBackgroundColor: [ "#999", "#EB6864" ]
        	},
 	]
     };
     var overview_data = {
-	labels: [ "Bad data" ],
+	labels: [ "Good data", "Bad data" ],
 	datasets: [
 	{
-	    data: [inconsistent_trials],
-	    backgroundColor: [ "#B264B2" ],
-	    hoverBackgroundColor: [ "#B264B2" ]
+	    data: [total_due + not_yet_due_trials, inconsistent_trials],
+	    backgroundColor: [ "#999", "#B264B2" ],
+	    hoverBackgroundColor: [ "#999", "#B264B2" ]
        	},
 	]
     };

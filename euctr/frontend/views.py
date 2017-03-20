@@ -1,5 +1,4 @@
 import logging
-import math
 
 from django.shortcuts import render
 from django.conf import settings
@@ -28,18 +27,6 @@ def sponsor_screenshot(request, slug):
 
 def _sponsor(request, slug, template_name, taking_screenshot):
     context = models.get_sponsor(slug)
-
-    EXTRA_MARGIN=8
-    if (context['inconsistent_trials'] > context['total_due']):
-        context['late_reporting_height'] = 200 * math.sqrt(context['total_due'] / context['inconsistent_trials'])
-        context['bad_data_height'] = 200
-        context['late_reporting_margin'] = (context['bad_data_height'] - context['late_reporting_height']) / 2 + EXTRA_MARGIN
-        context['bad_data_margin'] = 0 + EXTRA_MARGIN
-    else:
-        context['late_reporting_height'] = 200
-        context['bad_data_height'] = 200 * math.sqrt(context['inconsistent_trials'] / context['total_due'])
-        context['late_reporting_margin'] = 0 + EXTRA_MARGIN
-        context['bad_data_margin'] = (context['late_reporting_height'] - context['bad_data_height']) / 2 + EXTRA_MARGIN
 
     context['trials'] = models.get_trials(slug)
     context['load_js_at_start'] = True
