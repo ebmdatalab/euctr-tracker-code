@@ -1,24 +1,15 @@
 Read open trials paper
   Consider emailing project
 
+Picture on front page - try making the table have charts in it
 
 Ben
-  Front page should include bad data as absolute number
-    "Trials on EUCTR"
-    "Due trials"
-    "% Reported"
-    "Trials with bad data" 
-    
-  Front page can kill the unreported column
-    Any kind of picture on the front page?
-    Pie chart? 
-  Under old pie put "of GSK's 338 due trials"
+  /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
+      Yes we should display these
+
   Chrome on Mac - there's a font display error with 12.8
   
   Give audit on colours and design
-
-  /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
-      Yes we should display these
 
 New feedback
   Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)

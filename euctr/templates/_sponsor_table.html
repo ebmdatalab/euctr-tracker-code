@@ -32,9 +32,9 @@
     <tr>
       <th>Sponsor name</th>
       <th>Trials on EUCTR</th>
-      <th>Due trials</th>
-      <th>Unreported</th>
+      <th>Trials due to report results</th>
       <th>% Reported</th>
+      <th>Trials with bad data</th>
       <th class="hidden_column">Major?</th>
     </tr>
   </thead>
@@ -44,8 +44,8 @@
       <td> <a href="/sponsor/{{ sponsor.slug }}">{{ sponsor.sponsor_name }}</a></td>
       <td> {{ sponsor.total_trials }} </td>
       <td> {{ sponsor.total_due }} </td>
-      <td> {{ sponsor.total_unreported }} </td>
       <td> {{ sponsor.percent_reported }}% </td>
+      <td> {{ sponsor.inconsistent_trials }} </td>
       {% if sponsor.total_trials >= 50 %}
       <td class="hidden_column">major</td>
       {% else %}
