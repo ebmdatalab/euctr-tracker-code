@@ -3,10 +3,6 @@ Read open trials paper
 
 
 Ben
-  Bad data blob corresponding size
-  - see them both
-  Number of trials with bad data
-
   Front page should include bad data as absolute number
     "Trials on EUCTR"
     "Due trials"
@@ -16,7 +12,6 @@ Ben
   Front page can kill the unreported column
     Any kind of picture on the front page?
     Pie chart? 
-  Change old pie to be red and green
   Under old pie put "of GSK's 338 due trials"
   Chrome on Mac - there's a font display error with 12.8
   
