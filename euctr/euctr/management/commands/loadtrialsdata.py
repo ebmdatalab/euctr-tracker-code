@@ -88,8 +88,10 @@ class Command(BaseCommand):
         all_trials['overall_status'] = all_trials.apply(work_out_status, axis=1)
 
         # Output all trials to file for sponsors page
+        all_trials.sort_values('trial_id', inplace=True)
         json.dump(all_trials.to_dict(orient='records'),
-                open(OUTPUT_ALL_TRIALS_FILE, 'w'), indent=4
+                open(OUTPUT_ALL_TRIALS_FILE, 'w'),
+                indent=4, sort_keys=True
         )
 
         # Trials which have declared completed everywhere with a date, and a
@@ -155,8 +157,10 @@ class Command(BaseCommand):
             sponsor_counts['total_trials'] * 100, 1
         )
         # ... write them to a file
+        sponsor_counts.sort_values('slug', inplace=True)
         json.dump(sponsor_counts.to_dict(orient='records'),
-                open(OUTPUT_ALL_SPONSORS_FILE, 'w'), indent=4
+                open(OUTPUT_ALL_SPONSORS_FILE, 'w'),
+                indent=4, sort_keys=True
         )
 
         # To get size of the default front page table
@@ -170,6 +174,6 @@ class Command(BaseCommand):
 
         # Write out file of totals, e.g. for front page large numbers
         with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
-            json.dump(headline, outfile, indent=4)
+            json.dump(headline, outfile, indent=4, sort_keys=True)
 
 
