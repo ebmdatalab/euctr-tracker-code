@@ -117,12 +117,22 @@ class Command(BaseCommand):
         ]]
         # ... count up totals
         sponsor_grouped = sponsor_trials.groupby('normalized_name')
-        sponsor_counts = sponsor_grouped.agg({
-            'slug': 'max',
-            'has_results': 'sum',
-            'results_expected': 'sum',
-            'total_trials': 'max'
-        })
+        def do_counts(g):
+            print("======================")
+            print(g)
+            print("----------------------")
+            ret = pandas.Series({
+                'slug': g['slug'].max(),
+                'sponsor_name': g['normalized_name'].max(),
+                'total_due': (g['results_expected'] == 1).count(),
+                'total_reported': g[g['results_expected'] == 1]['has_results'].sum(),
+                'total_trials': g['total_trials'].max(),
+            })
+            print(ret)
+            print("----------------------")
+            return ret
+        sponsor_counts = sponsor_grouped.apply(do_counts)
+        print(sponsor_counts)
         # ... count number of trials with inconsistent data
         inconsistent_trials = all_trials[
             (all_trials['overall_status'] == 'error-completed-no-comp-date') |
@@ -135,11 +145,6 @@ class Command(BaseCommand):
         sponsor_counts['inconsistent_trials'] = sponsor_counts['inconsistent_trials'].astype(int)
         # ... reform it
         sponsor_counts.reset_index(level=0, inplace=True)
-        sponsor_counts.rename(columns={
-            'normalized_name': 'sponsor_name',
-            'has_results': 'total_reported',
-            'results_expected': 'total_due'
-        }, inplace=True)
         # ... count number not yet due
         sponsor_counts['not_yet_due_trials'] = sponsor_counts['total_trials'] - sponsor_counts['total_due'] - sponsor_counts['inconsistent_trials']
         # ... work out percentages
@@ -156,6 +161,7 @@ class Command(BaseCommand):
             sponsor_counts['inconsistent_trials'] /
             sponsor_counts['total_trials'] * 100, 1
         )
+        del sponsor_counts['normalized_name']
         # ... write them to a file
         sponsor_counts.sort_values('slug', inplace=True)
         json.dump(sponsor_counts.to_dict(orient='records'),
