@@ -1,3 +1,5 @@
+{% load render_nan %}
+
 <div id="sponsor_table_loading">
   <span class="glyphicon glyphicon-refresh spinning"></span>
 </div>
@@ -44,7 +46,7 @@
       <td> <a href="/sponsor/{{ sponsor.slug }}">{{ sponsor.sponsor_name }}</a></td>
       <td> {{ sponsor.total_trials }} </td>
       <td> {{ sponsor.total_due }} </td>
-      <td> {{ sponsor.percent_reported }}% </td>
+      <td> {{ sponsor.percent_reported | custom_percent }} </td>
       <td> {{ sponsor.inconsistent_trials }} </td>
       {% if sponsor.total_trials >= 50 %}
       <td class="hidden_column">major</td>

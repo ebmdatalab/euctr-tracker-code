@@ -36,7 +36,7 @@ function activate_sponsor_datatable() {
 	    { "width": "30%", "orderSequence": [ "asc", "desc" ] },
 	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
 	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right", "type": "num-fmt" },
 	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
 	    { "width": "0%", "orderSequence": [ "asc", "desc" ] }, // Hidden column
 	],

@@ -1,4 +1,5 @@
 {% extends "_base.html" %}
+{% load render_nan %}
 
 {% block title %}Is {{ sponsor_name }} late reporting EU clinical trials?{% endblock %}
 
@@ -127,7 +128,7 @@
 	  <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
           <td>{{ trial.trial_title }}</td>
 
-          <td>{{ trial.max_end_date | default_if_none:"-"}}</td>
+          <td>{{ trial.max_end_date | default_if_invalid:"-"}}</td>
 
 	  <td class="hidden_column">
 	    <!-- Due -->
