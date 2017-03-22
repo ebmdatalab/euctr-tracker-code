@@ -4,19 +4,19 @@ import math
 register = django.template.Library()
 
 def default_if_nan(value, default):
-    """Converts NaN (not a number) to string"""
+    """Converts numbers which are NaN (not a number) to string"""
     if math.isnan(value):
         return default
     return value
 
 def default_if_invalid(value, default):
-    """Converts None or NaN (not a number) to string"""
+    """Converts numbers which are None or NaN (not a number) to string"""
     if value is None or (isinstance(value, float) and math.isnan(value)):
         return default
     return value
 
 def custom_percent(value):
-    """Renders as a percent"""
+    """Display a number with a percent after it, or a dash if not valid"""
     if math.isnan(value):
         return "-"
     return str(value) + "%"
