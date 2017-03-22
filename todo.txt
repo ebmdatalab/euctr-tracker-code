@@ -4,9 +4,6 @@ Read open trials paper
 Picture on front page - try making the table have charts in it
 
 Ben
-  /ab-science isn't in all_sponsors - isn't listed as has no due trials. Should it be?
-      Yes we should display these
-
   Chrome on Mac - there's a font display error with 12.8
   
   Give audit on colours and design

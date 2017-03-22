@@ -11,7 +11,7 @@ def default_if_nan(value, default):
 
 def default_if_invalid(value, default):
     """Converts None or NaN (not a number) to string"""
-    if value is None or math.isnan(value):
+    if value is None or (isinstance(value, float) and math.isnan(value)):
         return default
     return value
 
