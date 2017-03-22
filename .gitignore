@@ -4,3 +4,4 @@ euctr/static/CACHE
 .~lock*
 .ipynb_checkpoints
 rundev
+euctr/ghostdriver.log
