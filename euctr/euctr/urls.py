@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^$', frontend.views.index),
     url(r'^sponsor/(?P<slug>[a-z0-9-]+)$', frontend.views.sponsor),
     url(r'^sponsor/(?P<slug>[a-z0-9-]+)/screenshot$', frontend.views.sponsor_screenshot, name="sponsor_screenshot"),
-    url(r'^sponsor/(?P<slug>[a-z0-9-]+)/screenshot.png$', frontend.views.sponsor_screenshot_png),
+    url(r'^sponsor/(?P<slug>[a-z0-9-]+)/screenshot.png$', frontend.views.sponsor_screenshot_png, name="sponsor_screenshot_png"),
     url(r'^about$', frontend.views.about),
     url(r'^admin/', admin.site.urls),
 ]

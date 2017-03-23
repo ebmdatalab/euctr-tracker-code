@@ -1,7 +1,14 @@
 {% extends "_base.html" %}
 {% load render_nan %}
 
-{% block title %}Is {{ sponsor_name }} late reporting EU clinical trials?{% endblock %}
+{% block social_title %}{% block title %}
+  Is {{ sponsor_name }} late reporting EU clinical trials?
+{% endblock %}{% endblock %}
+{% block social_description %}
+  {{ sponsor_name }} hasn't reported {{percent_unreported | custom_percent}} of 
+  trials which they must report by law on the EU Clinical Trials Register. Find
+  out which trials they are, and how consistent {{ sponsor_name }}'s reporting is.
+{% endblock %}
 
 {% block content %}
 

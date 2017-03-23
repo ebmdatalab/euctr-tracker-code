@@ -32,6 +32,10 @@ def _sponsor(request, slug, template_name, taking_screenshot):
     context['load_js_at_start'] = True
     context['taking_screenshot'] = taking_screenshot
 
+    if not taking_screenshot:
+        context['social_image'] = request.build_absolute_uri(
+            reverse("sponsor_screenshot_png", kwargs={"slug": slug})
+        )
     return render(request, template_name, context=context)
 
 driver = selenium.webdriver.PhantomJS()

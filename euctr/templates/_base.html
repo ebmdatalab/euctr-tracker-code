@@ -9,6 +9,12 @@
       {% block title %}{% endblock %}
     </title>
 
+    <meta property="og:title" content="{% block social_title %}{% endblock %}">
+    <meta property="og:description" content="{% block social_description %}{% endblock %}">
+    <meta property="og:image" content="{{ social_image }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+
     {% load compress %}
     {% compress css %}
 	<link rel="stylesheet" href="/static/scss/site.scss"

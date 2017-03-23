@@ -1,8 +1,5 @@
 Get audit on colours and design from designer
 
-New feedback
-  2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
-
 *** Add social sharing stuff - with an image of the chart
   OK to remove password page now
 Twitter / Facebook sharing links on pages - look up best practice
@@ -18,6 +15,7 @@ Read "Team tech manual"
 Error monitoring
   Back-end errors, zero tolerance
   Errorception
+Analytics
 
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
