@@ -14,7 +14,6 @@ Test on IE11 and Edge
   - search box on IE11
 Test both pages without Javascript - do any links need to work or should be hidden?
 For scaling, do we need to cache front page or other pages
-Disable sessions, remove migrations and SQLite database for now at least
 
 Read "Team tech manual"
 Error monitoring
