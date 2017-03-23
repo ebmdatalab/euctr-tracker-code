@@ -1,9 +1,14 @@
 Get audit on colours and design from designer
 
-*** Add social sharing stuff - with an image of the chart
-  OK to remove password page now
-Twitter / Facebook sharing links on pages - look up best practice
-Consider adding meta descriptions, e.g. for sponsor pages
+Front page too large for Twitter https://cards-dev.twitter.com/validator
+Include size
+  <meta name="twitter:image:width" content= "..." />
+  <meta name="twitter:image:height" content= "..." />
+Slow sometimes for Facebook
+  Provided og:image, https://eutrialstracker.ebmdatalab.net/screenshot-0002.png
+  could not be downloaded because it exceeded the maximum allowed sized of 8Mb or
+  your server was too slow to respond.
+
 
 Test on IE11 and Edge 
   - search box on IE11
