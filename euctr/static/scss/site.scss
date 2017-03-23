@@ -145,6 +145,22 @@ li.search-pill a {
     background-color: $brand-primary;
 }
 
+.dataTables_wrapper .dataTables_paginate {
+    float: left !important;
+    text-align: left !important;
+    padding-top: 1em !important;
+    margin-left: -8px !important;
+}
+
+.dataTables_wrapper .dataTables_length {
+    float: right !important;
+    margin-top: 22px !important;
+
+    label {
+      font-weight: normal;
+    }
+}
+
 /****************************************************************/
 /* Front page */
 
