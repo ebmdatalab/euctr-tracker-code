@@ -1,32 +1,7 @@
-Read open trials paper
-  Consider emailing project
-
-Picture on front page - try making the table have charts in it
-
-Ben
-  Chrome on Mac - there's a font display error with 12.8
-  
-  Give audit on colours and design
+Get audit on colours and design from designer
 
 New feedback
-  Due-unreported at top (sorted by ID, newist first) followed by the due rpeorted (Helen)
   2s look wrong on Chrome on Windows 7 (Helen) - it is Georgia! 268 Just by search box
-
-Ask Nick or Ben
-  Someone needs to check the figures
-    Why is https://www.clinicaltrialsregister.eu/ctr-search/search?query=2004-002661-21 
-      completed and reported earlywhen it is ongoing?
-Ask Lisa
-  Sort by status should not be alphabetic (Lisa) - ask if OK now have filter
-Ask Helen
-  Details on: also it's not easy to see HOW late the overdue trials are.. can
-  we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
-
-Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
-
-Not obvious that it is paginated when you get to the bottom (Ben)
-Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
-
 
 *** Add social sharing stuff - with an image of the chart
   OK to remove password page now
@@ -34,17 +9,35 @@ Twitter / Facebook sharing links on pages - look up best practice
 Consider adding meta descriptions, e.g. for sponsor pages
 
 Test on IE11 and Edge 
+  - search box on IE11
+Test both pages without Javascript - do any links need to work or should be hidden?
 For scaling, do we need to cache front page or other pages
 Disable sessions, remove migrations and SQLite database for now at least
-Install Lets Encrypt
 
-Test both pages without Javascript - do any links need to work or should be hidden?
+Read "Team tech manual"
+Error monitoring
+  Back-end errors, zero tolerance
+  Errorception
 
-Read:
-https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit
+Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
-Read final paper through, while double checking
+
+Read 
+  open trials paper https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-016-1290-8
+  https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit
+  Final paper through, while double checking
+Consider emailing project
+Picture on front page - try making the table have charts in it
 
 Spec and notes:
 https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
+
+
+Later
+=====
+
+Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
+
+Details on: also it's not easy to see HOW late the overdue trials are.. can
+we say X trials are late, on average/maximum/minimum xx days/months? (Helen)
 
