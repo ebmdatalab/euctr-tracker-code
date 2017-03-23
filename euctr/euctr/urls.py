@@ -22,7 +22,7 @@ import frontend.views
 urlpatterns = [
     url(r'^$', frontend.views.index),
     url(r'^screenshot$', frontend.views.index_screenshot, name="index_screenshot"),
-    url(r'^screenshot.png$', frontend.views.index_screenshot_png, name="index_screenshot_png"),
+    url(r'^screenshot-0002.png$', frontend.views.index_screenshot_png, name="index_screenshot_png"),
 
     url(r'^sponsor/(?P<slug>[a-z0-9-]+)$', frontend.views.sponsor),
     url(r'^sponsor/(?P<slug>[a-z0-9-]+)/screenshot$', frontend.views.sponsor_screenshot, name="sponsor_screenshot"),

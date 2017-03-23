@@ -10,9 +10,8 @@ import selenium.webdriver
 from . import models
 
 driver = selenium.webdriver.PhantomJS()
-driver.set_window_size(1280, 100)
-
-def _capture_screenshot(url):
+def _capture_screenshot(width, url):
+    driver.set_window_size(width, 100)
     driver.get(url)
     png_binary = driver.get_screenshot_as_png()
     return HttpResponse(png_binary, 'image/png')
@@ -40,7 +39,7 @@ def index_screenshot(request):
     return render(request, "index_screenshot.html", context=context)
 
 def index_screenshot_png(request):
-    return _capture_screenshot(request.build_absolute_uri(
+    return _capture_screenshot(1024, request.build_absolute_uri(
         reverse("index_screenshot"))
     )
 
@@ -68,7 +67,7 @@ def _sponsor(request, slug, template_name, taking_screenshot):
     return render(request, template_name, context=context)
 
 def sponsor_screenshot_png(request, slug):
-    return _capture_screenshot(request.build_absolute_uri(
+    return _capture_screenshot(1280, request.build_absolute_uri(
         reverse("sponsor_screenshot", kwargs={"slug": slug}))
     )
 
