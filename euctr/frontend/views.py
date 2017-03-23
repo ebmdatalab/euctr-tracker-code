@@ -9,6 +9,17 @@ import selenium.webdriver
 
 from . import models
 
+driver = selenium.webdriver.PhantomJS()
+driver.set_window_size(1280, 100)
+
+def _capture_screenshot(url):
+    driver.get(url)
+    png_binary = driver.get_screenshot_as_png()
+    return HttpResponse(png_binary, 'image/png')
+
+
+#############################################################################
+# Index page
 
 def index(request):
     context = models.get_headlines()
@@ -17,7 +28,25 @@ def index(request):
     context['all_sponsors'] = all_sponsors
     context['load_js_at_start'] = True
 
+    context['social_image'] = request.build_absolute_uri(
+        reverse("index_screenshot_png")
+    )
+
     return render(request, "index.html", context=context)
+
+def index_screenshot(request):
+    context = models.get_headlines()
+    context['taking_screenshot'] = True
+    return render(request, "index_screenshot.html", context=context)
+
+def index_screenshot_png(request):
+    return _capture_screenshot(request.build_absolute_uri(
+        reverse("index_screenshot"))
+    )
+
+
+#############################################################################
+# Sponsor page
 
 def sponsor(request, slug):
     return _sponsor(request, slug, "sponsor.html", False)
@@ -38,17 +67,21 @@ def _sponsor(request, slug, template_name, taking_screenshot):
         )
     return render(request, template_name, context=context)
 
-driver = selenium.webdriver.PhantomJS()
-driver.set_window_size(1280, 100)
 def sponsor_screenshot_png(request, slug):
-    url = request.build_absolute_uri(reverse("sponsor_screenshot", kwargs={"slug": slug}))
-    driver.get(url)
-    png_binary = driver.get_screenshot_as_png()
+    return _capture_screenshot(request.build_absolute_uri(
+        reverse("sponsor_screenshot", kwargs={"slug": slug}))
+    )
 
-    return HttpResponse(png_binary, 'image/png')
+
+#############################################################################
+# About page
 
 def about(request):
     context = {}
     context['data_source_date'] = getattr(settings, "DATA_SOURCE_DATE", None)
+
+    context['social_image'] = request.build_absolute_uri(
+        reverse("index_screenshot_png")
+    )
 
     return render(request, "about.html", context=context)

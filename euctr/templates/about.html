@@ -1,6 +1,18 @@
 {% extends "_base.html" %}
 
-{% block title %}About &mdash; EU Trials Tracker{% endblock %}
+{% block social_title %}{% block title %}
+	About &mdash; EU Trials Tracker
+{% endblock %}{% endblock %}
+
+{% block social_description %}
+	By EU law, from December 2016, all trials on the European Union Clinical
+	Trials Register (EUCTR) must post results within 12 months of completion.
+	This is the first legislation enacted anywhere in the world which requires
+	such trial publication.
+
+	EU Trials Tracker shows which organisations are compliant and which 
+	aren't.
+{% endblock %}
 
 {% block content %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
