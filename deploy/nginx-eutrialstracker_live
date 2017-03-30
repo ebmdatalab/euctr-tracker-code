@@ -13,6 +13,8 @@ server {
     }
 }
 
+proxy_cache_path /var/cache/nginx/eutrialstracker_live levels=1:2 keys_zone=main_cache:10m max_size=2g inactive=60m use_temp_path=off;
+
 server {  
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
@@ -71,13 +73,9 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $http_host;
 
-#        proxy_cache STATIC;
-#        proxy_cache_valid 200 10m;
-#        proxy_cache_valid 404 1m;
-
-#        proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
-#        proxy_ignore_headers Set-Cookie;
-#        proxy_hide_header Set-Cookie;
+        proxy_cache main_cache;
+        add_header X-Cache-Status $upstream_cache_status;
+        proxy_cache_valid 200 10m;
 
         proxy_pass http://eutrialstracker_live;
     }

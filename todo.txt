@@ -1,14 +1,25 @@
 Get audit on colours and design from designer
 
 Front page too large for Twitter https://cards-dev.twitter.com/validator
-Include size
-  <meta name="twitter:image:width" content= "..." />
-  <meta name="twitter:image:height" content= "..." />
+  Make it load in two stages - Major sponsors first
 Slow sometimes for Facebook
   Provided og:image, https://eutrialstracker.ebmdatalab.net/screenshot-0002.png
   could not be downloaded because it exceeded the maximum allowed sized of 8Mb or
   your server was too slow to respond.
+Include size
+  <meta name="twitter:image:width" content= "..." />
+  <meta name="twitter:image:height" content= "..." />
 
+
+Two figures to highlight
+  X% of this sponsor's trials are overdue.
+
+  X of their trials have bad data. [For the purposes of the site, we don't
+  care if those ones have shared results, that's for the detail of the
+  paper].
+
+  The only challenge really is that those two figures have a different
+  denominator (due trials, and all trials, respectively).
 
 Test on IE11 and Edge 
   - search box on IE11
