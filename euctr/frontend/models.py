@@ -5,6 +5,7 @@ import collections
 
 headings_data = None
 all_sponsors_data = None
+major_sponsors_data = None
 all_trials_data = None
 
 sponsor_by_slug = None
@@ -24,6 +25,16 @@ def get_all_sponsors():
         all_sponsors_data = json.load(open('../data/all_sponsors.json'))
         all_sponsors_data.sort(key=lambda s: s['percent_reported'], reverse=True)
     return all_sponsors_data
+
+def get_major_sponsors():
+    global major_sponsors_data
+
+    if not major_sponsors_data:
+        all_sponsors = get_all_sponsors()
+        major_sponsors_data = [ x for x in all_sponsors if x['total_trials'] >= 50 ]
+
+    return major_sponsors_data
+
 
 
 def get_all_trials():
