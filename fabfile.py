@@ -41,7 +41,7 @@ def setup_nginx():
     run('ln -sf %s/deploy/nginx-%s /etc/nginx/sites-enabled/%s' % (env.path, env.app, env.app))
     run('chown -R www-data:www-data /var/www/%s' % (env.app))
     run('service supervisor restart')
-    run('nginx -t && service nginx restart && rm -fr /var/cache/nginx/eutrialstracker_live/*')
+    run('nginx -t && service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start')
 
 #def run_migrations():
 #    if env.environment == 'live':
