@@ -1,7 +1,9 @@
 Get audit on colours and design from designer
 
-Front page too large for Twitter https://cards-dev.twitter.com/validator
-  Make it load in two stages - Major sponsors first
+Fix feel of clicking on "search"
+Decide more confidently to use URLs same for Major / All always
+
+Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
 Slow sometimes for Facebook
   Provided og:image, https://eutrialstracker.ebmdatalab.net/screenshot-0002.png
   could not be downloaded because it exceeded the maximum allowed sized of 8Mb or
