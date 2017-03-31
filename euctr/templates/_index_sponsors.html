@@ -10,12 +10,12 @@
       <a href="#"><h2>Major sponsors <span class="badge">{{ major_sponsors_count }}</span></h2></a>
     </li>
     <li id="all_sponsors" role="presentation" title="Sponsors with at least one completed, due trial" data-toggle="xtooltip" data-placement="bottom">
-      <a href="#"><h2>All sponsors <span class="badge">{{ all_sponsors_count }}</span></h2></a>
+      <a href="{% if showing_all_sponsors %}#{% else %}/?all{% endif %}"><h2>All sponsors <span class="badge">{{ all_sponsors_count }}</span></h2></a>
     </li>
     <li id="search_sponsors" class="search-pill" role="presentation">
       <a href="#">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search sponsors">
+        <input type="text" class="form-control" placeholder="Search sponsors" {% if activate_search %}autofocus{% endif %}>
         <span class="input-group-btn">
           <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           <div class="spacer">

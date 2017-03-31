@@ -23,8 +23,15 @@ def _capture_screenshot(width, url):
 def index(request):
     context = models.get_headlines()
 
-    all_sponsors = models.get_all_sponsors()
-    context['all_sponsors'] = all_sponsors
+    context['showing_all_sponsors'] = 'all' in request.GET
+    context['activate_search'] = 'search' in request.GET
+    if context['activate_search']:
+        context['showing_all_sponsors'] = True
+
+    if context['showing_all_sponsors']:
+        context['sponsors'] = models.get_all_sponsors()
+    else:
+        context['sponsors'] = models.get_major_sponsors()
     context['load_js_at_start'] = True
 
     context['social_image'] = request.build_absolute_uri(

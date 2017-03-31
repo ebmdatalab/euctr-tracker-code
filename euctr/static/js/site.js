@@ -76,12 +76,30 @@ function activate_sponsor_datatable() {
 	$('#search_sponsors .badge').text(count)
 	return false
     }
-    $('#all_sponsors').on('click', show_all)
+    var redirect_search = function() {
+	$(location).attr('href', '/?search')
+    }
+    if (showing_all_sponsors) {
+	$('#all_sponsors').on('click', show_all)
+    }
     $('#major_sponsors').on('click', show_major)
-    $('#search_sponsors input').on('input', show_search)
-    $('#search_sponsors').on('click', show_search)
-    $('#search_sponsors button').on('submit', show_search)
-    show_major();
+    if (showing_all_sponsors) {
+	$('#search_sponsors input').on('input', show_search)
+	$('#search_sponsors').on('click', show_search)
+	$('#search_sponsors button').on('submit', show_search)
+    } else {
+	$('#search_sponsors input').on('input', redirect_search)
+	$('#search_sponsors').on('click', redirect_search)
+	$('#search_sponsors button').on('submit', redirect_search)
+    }
+    if (activate_search) {
+	show_search()
+	$('#search_sponsors input').focus()
+    } else if (showing_all_sponsors) {
+	show_all();
+    } else {
+	show_major();
+    }
 
     // t.on('column-sizing.dt', function() { alert('column-sizing') })
 

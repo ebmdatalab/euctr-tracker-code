@@ -12,6 +12,11 @@
 {% endblock %}
 
 {% block content %}
+  <script>
+    showing_all_sponsors = {% if showing_all_sponsors %}true{% else %}false{% endif %}
+    activate_search = {% if activate_search %}true{% else %}false{% endif %}
+  </script>
+
   {% include "_index_jumbotron.html" %}
-  {% include "_index_sponsors.html" with table=all_sponsors %}
+  {% include "_index_sponsors.html" with table=sponsors %}
 {% endblock%}
