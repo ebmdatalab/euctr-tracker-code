@@ -12,6 +12,11 @@ Include size
   <meta name="twitter:image:width" content= "..." />
   <meta name="twitter:image:height" content= "..." />
 
+"All data for EUCTR was therefore updated on 18th January 2017 to ensure that
+the data was current and reflected compliance with the legislation."
+
+"This ongoing ranking from updated current data will be made available at
+EU-trialstracker.ebmdatalab.net"
 
 Two figures to highlight
   X% of this sponsor's trials are overdue.
@@ -36,12 +41,6 @@ Analytics
 
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
-
-Read 
-  open trials paper https://trialsjournal.biomedcentral.com/articles/10.1186/s13063-016-1290-8
-  https://docs.google.com/document/d/1_fNJWbjpocKwHvwsdbsrITY6wySulsPypkYG1zbSSaE/edit
-  Final paper through, while double checking
-Consider emailing project
 Picture on front page - try making the table have charts in it
 
 Spec and notes:
