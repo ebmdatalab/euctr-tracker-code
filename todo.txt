@@ -1,24 +1,28 @@
 Get audit on colours and design from designer
 
-Fix feel of clicking on "search"
-Decide more confidently to use URLs same for Major / All always
+Present normalisation of name better
 
-Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
-Slow sometimes for Facebook
-  Provided og:image, https://eutrialstracker.ebmdatalab.net/screenshot-0002.png
-  could not be downloaded because it exceeded the maximum allowed sized of 8Mb or
-  your server was too slow to respond.
-Include size
-  <meta name="twitter:image:width" content= "..." />
-  <meta name="twitter:image:height" content= "..." />
+Social sharing stuff
+  Fix feel of clicking on "search"
+  Decide more confidently to use URLs same for Major / All always
 
-"All data for EUCTR was therefore updated on 18th January 2017 to ensure that
-the data was current and reflected compliance with the legislation."
+  Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
+  Slow sometimes for Facebook
+    Provided og:image, https://eutrialstracker.ebmdatalab.net/screenshot-0002.png
+    could not be downloaded because it exceeded the maximum allowed sized of 8Mb or
+    your server was too slow to respond.
+  Include size
+    <meta name="twitter:image:width" content= "..." />
+    <meta name="twitter:image:height" content= "..." />
 
-"This ongoing ranking from updated current data will be made available at
-EU-trialstracker.ebmdatalab.net"
+Notes from paper reading:
+  "All data for EUCTR was therefore updated on 18th January 2017 to ensure that
+  the data was current and reflected compliance with the legislation."
 
-Two figures to highlight
+  "This ongoing ranking from updated current data will be made available at
+  EU-trialstracker.ebmdatalab.net"
+
+Visulisation improvement - two figures to highlight
   X% of this sponsor's trials are overdue.
 
   X of their trials have bad data. [For the purposes of the site, we don't
@@ -27,6 +31,9 @@ Two figures to highlight
 
   The only challenge really is that those two figures have a different
   denominator (due trials, and all trials, respectively).
+
+  Try making the table have charts in
+
 
 Test on IE11 and Edge 
   - search box on IE11
@@ -40,8 +47,6 @@ Error monitoring
 Analytics
 
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
-
-Picture on front page - try making the table have charts in it
 
 Spec and notes:
 https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
