@@ -68,7 +68,7 @@ class Command(BaseCommand):
         normalize = pandas.read_excel(
             NORMALIZE_FILE, "Sheet1",
             keep_default_na=False, na_values=[]
-        )
+        ).loc[:, ('trial_id', 'normalized_name_only', 'normalized_name')]
         all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
         headline['total_trials'] = len(all_trials)
 
