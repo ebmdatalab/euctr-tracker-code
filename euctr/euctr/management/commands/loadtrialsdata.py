@@ -72,14 +72,15 @@ class Command(BaseCommand):
         # ... add count of total number of trials for the sponsor (this is used to
         # distinguish major sponsors so is a useful field to have at row level)
         all_trials['total_trials'] = all_trials.groupby(
-            ['normalized_name']
+            ['normalized_name_only']
         )['trial_id'].transform('count') # XXX could just do ).size() ?
-        # (check the group and count worked, e.g. all have a normalized_name)
+        # (check the group and count worked, e.g. all have a normalized_name_only)
         null_counts = all_trials[all_trials['total_trials'].isnull()]
         assert len(null_counts) == 0
         all_trials['total_trials'] = all_trials['total_trials'].astype(int)
         # ... add various other fields
-        all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
+        all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name_only'])
+        all_trials['parent_slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
         all_trials['overall_status'] = all_trials.apply(work_out_status, axis=1)
         # ... write to a file
         all_trials.sort_values('trial_id', inplace=True)
@@ -91,18 +92,23 @@ class Command(BaseCommand):
         # Sponsor list file, with all relevant counts
         sponsor_trials = all_trials[[
             'slug',
-            'normalized_name',
+            'normalized_name_only',
             'has_results',
             'results_expected',
             'total_trials'
         ]]
         # ... count up totals
-        sponsor_grouped = sponsor_trials.groupby('normalized_name')
+        sponsor_grouped = sponsor_trials.groupby('normalized_name_only')
         def do_counts(g):
             due = g[g['results_expected'] == 1]
+
+            # These should be the same for all trials of a sponsor
+            assert len(g['slug'].value_counts()) == 1
+            assert len(g['total_trials'].value_counts()) == 1
+
             ret = pandas.Series({
                 'slug': g['slug'].max(),
-                'sponsor_name': g['normalized_name'].max(),
+                'sponsor_name': g['normalized_name_only'].max(),
                 'total_due': due['results_expected'].sum(),
                 'total_reported': due['has_results'].sum(),
                 'total_trials': g['total_trials'].max(),
@@ -115,7 +121,7 @@ class Command(BaseCommand):
             (all_trials['overall_status'] == 'error-ongoing-has-comp-date') |
             (all_trials['overall_status'] == 'no-trial-status')
         ]
-        inconsistent_trials_count = inconsistent_trials.groupby('normalized_name').size()
+        inconsistent_trials_count = inconsistent_trials.groupby('normalized_name_only').size()
         sponsor_counts['inconsistent_trials'] = inconsistent_trials_count
         sponsor_counts['inconsistent_trials'].fillna(0.0, inplace=True)
         sponsor_counts['inconsistent_trials'] = sponsor_counts['inconsistent_trials'].astype(int)
@@ -137,7 +143,7 @@ class Command(BaseCommand):
             sponsor_counts['inconsistent_trials'] /
             sponsor_counts['total_trials'] * 100, 1
         )
-        del sponsor_counts['normalized_name']
+        del sponsor_counts['normalized_name_only']
         # ... write to a file
         sponsor_counts.sort_values('slug', inplace=True)
         json.dump(sponsor_counts.to_dict(orient='records'),

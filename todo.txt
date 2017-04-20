@@ -8,10 +8,10 @@ Get audit on colours and design from designer
   - need weekly update
 
 *** Present normalisation of sponsor name better
-  - normalise by name but not by purchasing / acquisition mergers
   - have link to the other companies that they own 
   - link to show corrections
 Later:
+  - for Schering Plough ---> Merck put "this includes trials conducted by [acquired company]"
   - can show evidence for assertion too (in Nick's spreadsheet)
 
 Social sharing stuff
