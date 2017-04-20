@@ -10,7 +10,7 @@ SOURCE_CSV_FILE = '../data/trials.csv'
 NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
-TABLE_4_THRESHOLD = 50
+MAJOR_SPONSORS_THRESHOLD = 50
 OUTPUT_ALL_TRIALS_FILE = '../data/all_trials.json'
 
 # For given row of trial data, work out the overall status for display in the
@@ -61,53 +61,34 @@ class Command(BaseCommand):
     help = 'Loads in data'
 
     def handle(self, *args, **options):
-        headline = {}
-
-        # Load in list of trials, list of normalized names, and join together
+        # All trials file
+        # ... load in list of trials, list of normalized names, and join together
         trials_input = pandas.read_csv(SOURCE_CSV_FILE)
         normalize = pandas.read_excel(
             NORMALIZE_FILE, "Sheet1",
             keep_default_na=False, na_values=[]
-        ).loc[:, ('trial_id', 'normalized_name_only', 'normalized_name')]
+        )[['trial_id', 'normalized_name_only', 'normalized_name']]
         all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
-        headline['total_trials'] = len(all_trials)
-
-        # Add count of number of trials. Used for the TABLE_4_THRESHOLD below
-        # on whether to include on the front page of the site / table 4 of the
-        # journal paper.
+        # ... add count of total number of trials for the sponsor (this is used to
+        # distinguish major sponsors so is a useful field to have at row level)
         all_trials['total_trials'] = all_trials.groupby(
             ['normalized_name']
         )['trial_id'].transform('count') # XXX could just do ).size() ?
-        # ... check the group and count worked, eg all have a normalized_name
+        # (check the group and count worked, e.g. all have a normalized_name)
         null_counts = all_trials[all_trials['total_trials'].isnull()]
         assert len(null_counts) == 0
-
-        # Add various other fields
         all_trials['total_trials'] = all_trials['total_trials'].astype(int)
+        # ... add various other fields
         all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
         all_trials['overall_status'] = all_trials.apply(work_out_status, axis=1)
-
-        # Output all trials to file for sponsors page
+        # ... write to a file
         all_trials.sort_values('trial_id', inplace=True)
         json.dump(all_trials.to_dict(orient='records'),
                 open(OUTPUT_ALL_TRIALS_FILE, 'w'),
                 indent=4, sort_keys=True
         )
 
-        # Trials which have declared completed everywhere with a date, and a
-        # year has passed
-        due_trials = all_trials[all_trials.results_expected == 1]
-        headline['due_trials'] = len(due_trials)
-
-        # Trials which have or have not posted results
-        due_with_results = due_trials[due_trials.has_results == 1]
-        due_without_results = due_trials[due_trials.has_results == 0]
-        headline['due_trials_with_results'] = len(due_with_results)
-        headline['due_trials_without_results'] = len(due_without_results)
-        headline['percent_without_results'] = round(
-                len(due_without_results) / len(due_trials) * 100, 1
-        )
-
+        # Sponsor list file, with all relevant counts
         sponsor_trials = all_trials[[
             'slug',
             'normalized_name',
@@ -157,23 +138,35 @@ class Command(BaseCommand):
             sponsor_counts['total_trials'] * 100, 1
         )
         del sponsor_counts['normalized_name']
-        # ... write them to a file
+        # ... write to a file
         sponsor_counts.sort_values('slug', inplace=True)
         json.dump(sponsor_counts.to_dict(orient='records'),
                 open(OUTPUT_ALL_SPONSORS_FILE, 'w'),
                 indent=4, sort_keys=True
         )
 
-        # To get size of the default front page table
-        table4 = sponsor_counts[
-            sponsor_counts['total_trials'] >= TABLE_4_THRESHOLD
-        ]
-
-        # More total counts
+        # Headline counts file, used for things like front page large numbers
+        headline = {}
+        headline['total_trials'] = len(all_trials)
+        # ... trials which have declared completed everywhere with a date, and a
+        # year has passed
+        due_trials = all_trials[all_trials.results_expected == 1]
+        headline['due_trials'] = len(due_trials)
+        # ... trials which have or have not posted results
+        due_with_results = due_trials[due_trials.has_results == 1]
+        due_without_results = due_trials[due_trials.has_results == 0]
+        headline['due_trials_with_results'] = len(due_with_results)
+        headline['due_trials_without_results'] = len(due_without_results)
+        headline['percent_without_results'] = round(
+                len(due_without_results) / len(due_trials) * 100, 1
+        )
+        # ... sponsors counts
         headline["all_sponsors_count"] = len(sponsor_counts)
-        headline["major_sponsors_count"] = len(table4)
-
-        # Write out file of totals, e.g. for front page large numbers
+        major_sponsors = sponsor_counts[
+            sponsor_counts['total_trials'] >= MAJOR_SPONSORS_THRESHOLD
+        ]
+        headline["major_sponsors_count"] = len(major_sponsors)
+        # ... write to a file
         with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
             json.dump(headline, outfile, indent=4, sort_keys=True)
 
