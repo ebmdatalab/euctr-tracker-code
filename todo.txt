@@ -1,6 +1,16 @@
 Get audit on colours and design from designer
 
-Present normalisation of name better
+*** Scraping 
+  - what's update schedule?
+  - where run now?
+  - meant to be live and different from paper
+  - be able to do changes over time for overall numbers - LOG every week
+  - need weekly update
+
+*** Present normalisation of sponsor name better
+  - normalise by name but not by purchasing / acquisition mergers
+  - have link to the other companies that they own 
+  - can show evidence for assertion too (in Nick's spreadsheet)
 
 Social sharing stuff
   Fix feel of clicking on "search"
@@ -22,7 +32,11 @@ Notes from paper reading:
   "This ongoing ranking from updated current data will be made available at
   EU-trialstracker.ebmdatalab.net"
 
-Visulisation improvement - two figures to highlight
+*** Visulisation improvement - two figures to highlight
+  Try 
+    - pie chart
+    - bar chart for bad data
+
   X% of this sponsor's trials are overdue.
 
   X of their trials have bad data. [For the purposes of the site, we don't
