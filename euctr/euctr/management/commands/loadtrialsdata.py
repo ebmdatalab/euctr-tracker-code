@@ -121,12 +121,26 @@ class Command(BaseCommand):
                 'slug': slug,
                 'sponsor_name': sponsor_name,
                 'parents': parents,
+                'children': [],
                 'total_due': due['results_expected'].sum(),
                 'total_reported': due['has_results'].sum(),
                 'total_trials': g['total_trials'].max(),
             })
             return ret
         sponsor_counts = sponsor_grouped.apply(do_counts)
+        # ... add in relationships between orgs in other direction
+        for child_ix, child in sponsor_counts.iterrows():
+            for parent in child["parents"]:
+                full_parent = sponsor_counts.loc[sponsor_counts["slug"] == parent["slug"]]
+                if full_parent.empty:
+                    print("Failed to find parent %s for child %s" % (parent["slug"], child["slug"]))
+                else:
+                    print("Working on parent %s for child %s" % (parent["slug"], child["slug"]))
+                    #import pdb; pdb.set_trace()
+                    full_parent.ix[0]["children"].append({
+                        "slug": child["slug"],
+                        "name": child["sponsor_name"]
+                    })
         # ... count number of trials with inconsistent data
         inconsistent_trials = all_trials[
             (all_trials['overall_status'] == 'error-completed-no-comp-date') |

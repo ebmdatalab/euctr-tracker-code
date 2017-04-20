@@ -17,7 +17,21 @@
 	Part of 
 	{% for parent in parents %}
 	  <a href="/sponsor/{{ parent.slug }}">
-	    {{ parent.name }}
+	    {{ parent.name }}{% if not forloop.last %},{% endif %}
+	  </a>
+	{% endfor %}
+
+	<a href="/about#part-of">
+	  <span class="glyphicon glyphicon-question-sign"></span>
+	</a>
+      </div>
+    {% endif %}
+    {% if children %}
+      <div class="related-sponsors">
+	See also
+	{% for child in children %}
+	  <a href="/sponsor/{{ child.slug }}">
+	    {{ child.name }}{% if not forloop.last %},{% endif %}
 	  </a>
 	{% endfor %}
 
