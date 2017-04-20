@@ -10,9 +10,14 @@ Get audit on colours and design from designer
 *** Present normalisation of sponsor name better
   - have link to the other companies that they own 
   - link to show corrections
+  - Genentech
+  - Actavis (Teva, Aurobindo)
 Later:
   - for Schering Plough ---> Merck put "this includes trials conducted by [acquired company]"
   - can show evidence for assertion too (in Nick's spreadsheet)
+
+Looks weird when all reported
+  http://127.0.0.1:8000/sponsor/fujisawa-gmbh
 
 Social sharing stuff
   Fix feel of clicking on "search"
@@ -26,13 +31,6 @@ Social sharing stuff
   Include size
     <meta name="twitter:image:width" content= "..." />
     <meta name="twitter:image:height" content= "..." />
-
-Notes from paper reading:
-  "All data for EUCTR was therefore updated on 18th January 2017 to ensure that
-  the data was current and reflected compliance with the legislation."
-
-  "This ongoing ranking from updated current data will be made available at
-  EU-trialstracker.ebmdatalab.net"
 
 *** Visulisation improvement - two figures to highlight
   Try 

@@ -92,7 +92,9 @@ class Command(BaseCommand):
         # Sponsor list file, with all relevant counts
         sponsor_trials = all_trials[[
             'slug',
+            'parent_slug',
             'normalized_name_only',
+            'normalized_name',
             'has_results',
             'results_expected',
             'total_trials'
@@ -106,9 +108,19 @@ class Command(BaseCommand):
             assert len(g['slug'].value_counts()) == 1
             assert len(g['total_trials'].value_counts()) == 1
 
+            slug = g['slug'].max()
+            sponsor_name = g['normalized_name_only'].max()
+            parent_slugs = list(g['parent_slug'].unique())
+            parent_names = list(g['normalized_name'].unique())
+            if slug in parent_slugs:
+                parent_slugs.remove(slug)
+                parent_names.remove(sponsor_name)
+            parents = [ { 'slug': a[0], 'name': a[1]} for a in zip(parent_slugs, parent_names) ]
+
             ret = pandas.Series({
-                'slug': g['slug'].max(),
-                'sponsor_name': g['normalized_name_only'].max(),
+                'slug': slug,
+                'sponsor_name': sponsor_name,
+                'parents': parents,
                 'total_due': due['results_expected'].sum(),
                 'total_reported': due['has_results'].sum(),
                 'total_trials': g['total_trials'].max(),

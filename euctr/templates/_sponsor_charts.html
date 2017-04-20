@@ -12,6 +12,16 @@
   <div class="page-header">
     <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
       EU clinical trials</h1>
+    {% if parents %}
+      <div class="related-sponsors">
+	Part of 
+	{% for parent in parents %}
+	  <a href="/sponsor/{{ parent.slug }}">
+	    {{ parent.name }}
+	  </a>
+	{% endfor %}
+      </div>
+    {% endif %}
   </div>
 
   <div class="row">

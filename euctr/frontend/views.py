@@ -62,6 +62,7 @@ def sponsor_screenshot(request, slug):
 
 def _sponsor(request, slug, template_name, taking_screenshot):
     context = models.get_sponsor(slug)
+    print(context)
 
     context['trials'] = models.get_trials(slug)
     context['load_js_at_start'] = True
