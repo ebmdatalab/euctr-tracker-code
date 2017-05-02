@@ -7,7 +7,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
 SOURCE_CSV_FILE = '../data/trials.csv'
-NORMALIZE_FILE = '../data/normalized_sponsor_names_21FEB2017.xlsx'
+NORMALIZE_FILE = '../data/normalized_sponsor_names.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
 MAJOR_SPONSORS_THRESHOLD = 50

@@ -8,8 +8,8 @@ Get audit on colours and design from designer
   - need weekly update
 
 *** Present normalisation of sponsor name better
-  - Genentech
-  - Actavis (Teva, Aurobindo)
+  Genentech, Actavis (Teva, Aurobindo), Pfizer are good examples
+  http://127.0.0.1:8000/sponsor/pfizer - Icagen twice
   - When loading data "Failed to find parent tigenix for child tigenix-sau0" etc.
 Later:
   - for Schering Plough ---> Merck put "this includes trials conducted by [acquired company]"
