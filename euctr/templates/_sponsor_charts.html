@@ -28,7 +28,7 @@
     {% endif %}
     {% if children %}
       <div class="related-sponsors">
-	See also
+	Also owns
 	{% for child in children %}
 	  <a href="/sponsor/{{ child.slug }}">
 	    {{ child.name }}{% if not forloop.last %},{% endif %}

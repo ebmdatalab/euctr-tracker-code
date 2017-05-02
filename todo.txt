@@ -8,8 +8,6 @@ Get audit on colours and design from designer
   - need weekly update
 
 *** Present normalisation of sponsor name better
-  - have link to the other companies that they own 
-  - link to show corrections
   - Genentech
   - Actavis (Teva, Aurobindo)
   - When loading data "Failed to find parent tigenix for child tigenix-sau0" etc.
