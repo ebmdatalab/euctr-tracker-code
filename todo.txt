@@ -1,13 +1,22 @@
 Get audit on colours and design from designer
 
 *** Scraping 
-  - make update schedule weekly
-  - log changes to overall figuresevery week
+  - create task which gets data from database and makes local file
+  - remove data files from then on in pipeline from github
+  - read environment variables to get database connection
+    see https://github.com/ebmdatalab/openprescribing#production-notes
+  - make sure update schedule of scraper is weekly
+  - log changes to overall figures every week
+  - why are there old trials that haven't updated? (their meta_updated)
 
 *** Present normalisation of sponsor name better
+  - include parent pages
+    Tigenix
+    Abbie
   - make page for ones that don't have trials
   e.g. Genentech, Actavis (Teva, Aurobindo), Pfizer, Merck (relationships both ways) 
   - When loading data "Failed to find parent tigenix for child tigenix-sau0" etc.
+
   - confirm where on page we want this info
   - change wording to one Ben happy with
 
