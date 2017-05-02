@@ -1,19 +1,15 @@
 Get audit on colours and design from designer
 
 *** Scraping 
-  - what's update schedule?
-  - where run now?
-  - meant to be live and different from paper
-  - be able to do changes over time for overall numbers - LOG every week
-  - need weekly update
+  - make update schedule weekly
+  - log changes to overall figuresevery week
 
 *** Present normalisation of sponsor name better
-  Genentech, Actavis (Teva, Aurobindo), Pfizer are good examples
-  http://127.0.0.1:8000/sponsor/pfizer - Icagen twice
+  - make page for ones that don't have trials
+  e.g. Genentech, Actavis (Teva, Aurobindo), Pfizer, Merck (relationships both ways) 
   - When loading data "Failed to find parent tigenix for child tigenix-sau0" etc.
-Later:
-  - for Schering Plough ---> Merck put "this includes trials conducted by [acquired company]"
-  - can show evidence for assertion too (in Nick's spreadsheet)
+  - confirm where on page we want this info
+  - change wording to one Ben happy with
 
 Looks weird when all reported
   http://127.0.0.1:8000/sponsor/fujisawa-gmbh

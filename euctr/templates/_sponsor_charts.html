@@ -13,12 +13,12 @@
     <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
       EU clinical trials</h1>
     {% if parents %}
-      <div class="related-sponsors">
-	Part of 
+      <div class="related-sponsors"> 
+	<!-- Please note that over time organisations can merge, or split. 
+       We think {{ sponsor_name }} is effectively part of -->
+        Part of
 	{% for parent in parents %}
-	  <a href="/sponsor/{{ parent.slug }}">
-	    {{ parent.name }}{% if not forloop.last %},{% endif %}
-	  </a>
+	  <a href="/sponsor/{{ parent.slug }}">{{ parent.name }}</a>{% include "_comma.html" %}
 	{% endfor %}
 
 	<a href="/about#part-of">
@@ -28,11 +28,11 @@
     {% endif %}
     {% if children %}
       <div class="related-sponsors">
-	Also owns
+	<!-- Please note that over time organisations can merge, or split.
+        We think {{ sponsor_name }} is also responsible for the trials of -->
+	Also responsible for
 	{% for child in children %}
-	  <a href="/sponsor/{{ child.slug }}">
-	    {{ child.name }}{% if not forloop.last %},{% endif %}
-	  </a>
+	  <a href="/sponsor/{{ child.slug }}">{{ child.name }}</a>{% include "_comma.html" %}
 	{% endfor %}
 
 	<a href="/about#part-of">
