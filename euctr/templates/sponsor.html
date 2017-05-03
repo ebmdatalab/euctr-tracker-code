@@ -174,22 +174,28 @@
 
     {% if parents or children %}
       <div class="related-sponsors"> 
-	 Please note that over time organisations can merge, or split. 
+	 <h2>Related organisations</h2>
+  	 <p>
+	  Over time organisations can merge, or split.
+	  <a href="/about#part-of">
+	    <span class="glyphicon glyphicon-question-sign"></span>
+	  </a>
+	 </p>
     {% endif %}
       {% if parents %}
-	 We think {{ sponsor_name }} is now effectively part of 
-	 {% for parent in parents %}<a href="/sponsor/{{ parent.slug }}">{{ parent.name }}</a>{% include "_comma.html" %}{% endfor %}
+         <p>We think {{ sponsor_name }} is now effectively part of
+	 {% for parent in parents %}
+	   <a href="/sponsor/{{ parent.slug }}">{{ parent.name }}</a>.
+	 {% endfor %}
       {% endif %}
       {% if children %}
-	  We think {{ sponsor_name }} is now also responsible for the trials of 
-	  {% for child in children %}<a href="/sponsor/{{ child.slug }}">{{ child.name }}</a>{% include "_comma.html" %}{% endfor %}
+	  We think {{ sponsor_name }} is now also responsible for the trials of:
+	  <ul>
+	  {% for child in children %}
+	    <li><a href="/sponsor/{{ child.slug }}">{{ child.name }}</a></li>
+	  {% endfor %}
+	  </ul>
       {% endif %}
-    {% if parents or children %}
-	<a href="/about#part-of">
-	  <span class="glyphicon glyphicon-question-sign"></span>
-	</a>
-      </div>
-    {% endif %}
   </div>
 
 

@@ -8,7 +8,6 @@
   - why are there old trials that haven't updated? (their meta_updated)
 
 *** Present normalisation of sponsor name better
-  - make page for ones that don't have trials
   e.g. Tigenix, Abbie
   e.g. Genentech, Actavis (Teva, Aurobindo), Pfizer, Merck (relationships both ways) 
   - don't render trials if there aren't any http://127.0.0.1:8000/sponsor/tigenix
