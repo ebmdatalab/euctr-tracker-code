@@ -69,18 +69,19 @@ class Command(BaseCommand):
             keep_default_na=False, na_values=[]
         )[['trial_id', 'normalized_name_only', 'normalized_name']]
         all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
+        # ... add slug fields
+        all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name_only'])
+        all_trials['parent_slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
         # ... add count of total number of trials for the sponsor (this is used to
         # distinguish major sponsors so is a useful field to have at row level)
         all_trials['total_trials'] = all_trials.groupby(
-            ['normalized_name_only']
+            ['slug']
         )['trial_id'].transform('count') # XXX could just do ).size() ?
-        # (check the group and count worked, e.g. all have a normalized_name_only)
+        # (check the group and count worked, e.g. all have a slug)
         null_counts = all_trials[all_trials['total_trials'].isnull()]
         assert len(null_counts) == 0
         all_trials['total_trials'] = all_trials['total_trials'].astype(int)
         # ... add various other fields
-        all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name_only'])
-        all_trials['parent_slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
         all_trials['overall_status'] = all_trials.apply(work_out_status, axis=1)
         # ... write to a file
         all_trials.sort_values('trial_id', inplace=True)
@@ -90,7 +91,7 @@ class Command(BaseCommand):
         )
 
         # Sponsor list file, with all relevant counts
-        sponsor_trials = all_trials[[
+        all_trials_less_fields = all_trials[[
             'slug',
             'parent_slug',
             'normalized_name_only',
@@ -99,8 +100,8 @@ class Command(BaseCommand):
             'results_expected',
             'total_trials'
         ]]
+        sponsor_grouped = all_trials_less_fields.groupby('slug')
         # ... count up totals
-        sponsor_grouped = sponsor_trials.groupby('normalized_name_only')
         def do_counts(g):
             due = g[g['results_expected'] == 1]
 
@@ -118,7 +119,6 @@ class Command(BaseCommand):
             parents = [ { 'slug': a[0], 'name': a[1]} for a in zip(parent_slugs, parent_names) ]
 
             ret = pandas.Series({
-                'slug': slug,
                 'sponsor_name': sponsor_name,
                 'parents': parents,
                 'children': [],
@@ -128,17 +128,40 @@ class Command(BaseCommand):
             })
             return ret
         sponsor_counts = sponsor_grouped.apply(do_counts)
+        #import pdb; pdb.set_trace()
+        #sponsor_counts.index.rename('name_for_index', inplace=True)
+
+        # Work out sponsors which are parents only and don't have own trials
+        all_parents = pandas.DataFrame({
+            # this is confusing, but needed for consistency with sponsor_counts.
+            # effectively, these parents with no trials have a slug
+            # the same as their parent_slug
+            'slug': all_trials_less_fields['parent_slug'],
+            'sponsor_name': all_trials_less_fields['normalized_name']
+        })
+        all_parents = all_parents.set_index('slug')
+        all_parents = all_parents.drop_duplicates()
+        all_parents['children'] = [ list() for x in range(len(all_parents)) ]
+        all_parents['parents'] = [ list() for x in range(len(all_parents)) ]
+        all_parents['total_due'] = 0
+        all_parents['total_reported'] = 0
+        all_parents['total_trials'] = 0
+        all_parents = all_parents.drop(sponsor_counts.index, errors='ignore')
+
+        # Combine list of ones with trials with list of ones without trials
+        all_sponsors = pandas.concat([sponsor_counts, all_parents])
+
         # ... add in relationships between orgs in other direction
-        for child_ix, child in sponsor_counts.iterrows():
+        for child_slug, child in all_sponsors.iterrows():
+            #print("child", child_slug, child["parents"])
             for parent in child["parents"]:
-                full_parent = sponsor_counts.loc[sponsor_counts["slug"] == parent["slug"]]
+                full_parent = all_sponsors.loc[parent["slug"]]
                 if full_parent.empty:
-                    print("Failed to find parent %s for child %s" % (parent["slug"], child["slug"]))
+                    print("Failed to find parent %s of child %s" % (parent["slug"], child_slug))
                 else:
-                    print("Working on parent %s for child %s" % (parent["slug"], child["slug"]))
                     #import pdb; pdb.set_trace()
-                    full_parent.ix[0]["children"].append({
-                        "slug": child["slug"],
+                    full_parent["children"].append({
+                        "slug": child_slug,
                         "name": child["sponsor_name"]
                     })
         # ... count number of trials with inconsistent data
@@ -147,32 +170,31 @@ class Command(BaseCommand):
             (all_trials['overall_status'] == 'error-ongoing-has-comp-date') |
             (all_trials['overall_status'] == 'no-trial-status')
         ]
-        inconsistent_trials_count = inconsistent_trials.groupby('normalized_name_only').size()
-        sponsor_counts['inconsistent_trials'] = inconsistent_trials_count
-        sponsor_counts['inconsistent_trials'].fillna(0.0, inplace=True)
-        sponsor_counts['inconsistent_trials'] = sponsor_counts['inconsistent_trials'].astype(int)
-        # ... reform it
-        sponsor_counts.reset_index(level=0, inplace=True)
+        inconsistent_trials_count = inconsistent_trials.groupby('slug').size()
+        all_sponsors['inconsistent_trials'] = inconsistent_trials_count
+        all_sponsors['inconsistent_trials'].fillna(0.0, inplace=True)
+        all_sponsors['inconsistent_trials'] = all_sponsors['inconsistent_trials'].astype(int)
+        # ... move slug from being index to being column
+        all_sponsors.reset_index(level=0, inplace=True)
         # ... count number not yet due
-        sponsor_counts['not_yet_due_trials'] = sponsor_counts['total_trials'] - sponsor_counts['total_due'] - sponsor_counts['inconsistent_trials']
+        all_sponsors['not_yet_due_trials'] = all_sponsors['total_trials'] - all_sponsors['total_due'] - all_sponsors['inconsistent_trials']
         # ... work out percentages
-        sponsor_counts['percent_reported'] = np.round(
-            sponsor_counts['total_reported'] /
-            sponsor_counts['total_due'] * 100, 1
+        all_sponsors['percent_reported'] = np.round(
+            all_sponsors['total_reported'] /
+            all_sponsors['total_due'] * 100, 1
         )
-        sponsor_counts['total_unreported'] = sponsor_counts['total_due'] - sponsor_counts['total_reported']
-        sponsor_counts['percent_unreported'] = np.round(
-            sponsor_counts['total_unreported'] /
-            sponsor_counts['total_due'] * 100, 1
+        all_sponsors['total_unreported'] = all_sponsors['total_due'] - all_sponsors['total_reported']
+        all_sponsors['percent_unreported'] = np.round(
+            all_sponsors['total_unreported'] /
+            all_sponsors['total_due'] * 100, 1
         )
-        sponsor_counts['percent_bad_data'] = np.round(
-            sponsor_counts['inconsistent_trials'] /
-            sponsor_counts['total_trials'] * 100, 1
+        all_sponsors['percent_bad_data'] = np.round(
+            all_sponsors['inconsistent_trials'] /
+            all_sponsors['total_trials'] * 100, 1
         )
-        del sponsor_counts['normalized_name_only']
         # ... write to a file
-        sponsor_counts.sort_values('slug', inplace=True)
-        json.dump(sponsor_counts.to_dict(orient='records'),
+        all_sponsors.sort_values('slug', inplace=True)
+        json.dump(all_sponsors.to_dict(orient='records'),
                 open(OUTPUT_ALL_SPONSORS_FILE, 'w'),
                 indent=4, sort_keys=True
         )
@@ -193,9 +215,9 @@ class Command(BaseCommand):
                 len(due_without_results) / len(due_trials) * 100, 1
         )
         # ... sponsors counts
-        headline["all_sponsors_count"] = len(sponsor_counts)
-        major_sponsors = sponsor_counts[
-            sponsor_counts['total_trials'] >= MAJOR_SPONSORS_THRESHOLD
+        headline["all_sponsors_count"] = len(all_sponsors)
+        major_sponsors = all_sponsors[
+            all_sponsors['total_trials'] >= MAJOR_SPONSORS_THRESHOLD
         ]
         headline["major_sponsors_count"] = len(major_sponsors)
         # ... write to a file

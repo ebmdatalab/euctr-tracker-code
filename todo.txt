@@ -11,10 +11,8 @@
   - make page for ones that don't have trials
   e.g. Tigenix, Abbie
   e.g. Genentech, Actavis (Teva, Aurobindo), Pfizer, Merck (relationships both ways) 
-
-  - move copy down to bottom of page
-  - switch to longer wording
-
+  - don't render trials if there aren't any http://127.0.0.1:8000/sponsor/tigenix
+  - consider having a heading in new bottom position
   - get tidying from Nick for similar names that don't occur often
 
 Looks weird when all reported
