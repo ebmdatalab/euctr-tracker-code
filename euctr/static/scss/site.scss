@@ -234,13 +234,13 @@ body#taking-screenshot .jumbotron {
 }
 
 .related-sponsors {
-    font-size: 15px;
     color: $gray-light;
-    margin-top: -8px;
 
     a {
       color: lighten(#369, 30%); 
-    }
+    } 
+
+    margin-top: 16px;
 
     .glyphicon {
       font-size: 12px;
