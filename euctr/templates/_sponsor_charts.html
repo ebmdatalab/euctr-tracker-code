@@ -14,6 +14,7 @@
       EU clinical trials</h1>
   </div>
 
+  {% if total_trials > 0 %}
   <div class="row">
     <div class="col-sm-4 col-xs-6 sponsor-headlines">
       <h2>Late reporting</h2>
@@ -40,10 +41,12 @@
       </p>
     </div>
    </div>
+
+   <script>
+   activate_charts()
+   </script>
+   {% endif %}
 </div>
 
-<script>
-activate_charts()
-</script>
 
 

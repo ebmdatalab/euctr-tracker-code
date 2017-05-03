@@ -15,6 +15,8 @@
   {% include "_sponsor_charts.html" %}
 
   <div class="container">
+    {% if total_trials > 0 %}
+
     <div id="trials_table_loading">
       <span class="glyphicon glyphicon-refresh spinning"></span>
     </div>
@@ -171,6 +173,12 @@
     <script>
       activate_trials_datatable()
     </script>
+
+    {% else %}
+      <p class="lead">{{ sponsor_name }} does not itself have any trials on the register. 
+      However, there are organisations related to it which have trials.
+      </p>
+    {% endif %}
 
     {% if parents or children %}
       <div class="related-sponsors"> 
