@@ -18,9 +18,6 @@ Looks weird when all reported
   http://127.0.0.1:8000/sponsor/fujisawa-gmbh
 
 Social sharing stuff
-  Fix feel of clicking on "search"
-  Decide more confidently to use URLs same for Major / All always
-
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
   Slow sometimes for Facebook
     Provided og:image, https://eutrialstracker.ebmdatalab.net/screenshot-0002.png

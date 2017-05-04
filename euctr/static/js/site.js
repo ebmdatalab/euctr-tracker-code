@@ -42,23 +42,38 @@ function activate_sponsor_datatable() {
 	],
     });
 
-    var show_all = function() {
+    /* The three tabs - major, all and search - can be flipped between
+     * at will. So the front page loads fast (necessary for e.g. Twitter cards)
+     * only partial list of sponsors is loaded for "major". First time going 
+     * to "all" or "search" a whole new page is loaded. After that, it is
+     * all done with Javascript so is instant.
+     *
+     * There is use of window.history to make sure the back button behaves
+     * consistently with these two ways of reaching the same page.
+     */
+    var show_all = function(ev) {
 	t.search("")
 	t.columns(MAJOR_SPONSOR_COLUMN).search("").draw()
 	$('#all_sponsors').addClass('active')
 	$('#major_sponsors').removeClass('active')
 	$('#search_sponsors').removeClass('active')
+	if (ev) {
+	    window.history.pushState('all', '', '/?all');
+	}
 	return false
     }
-    var show_major = function() {
+    var show_major = function(ev) {
 	t.search("")
 	t.columns(MAJOR_SPONSOR_COLUMN).search("major").draw()
 	$('#major_sponsors').addClass('active')
 	$('#all_sponsors').removeClass('active')
 	$('#search_sponsors').removeClass('active')
+	if (ev) {
+	    window.history.pushState('major', '', '/');
+	}
 	return false
     }
-    var show_search = function() {
+    var show_search = function(ev) {
 	var search = $('#search_sponsors input').val()
 	t.search(search)
 	t.columns(MAJOR_SPONSOR_COLUMN).search("")
@@ -74,10 +89,14 @@ function activate_sponsor_datatable() {
 	$('#all_sponsors').removeClass('active')
 	$('#search_sponsors').addClass('active')
 	$('#search_sponsors .badge').text(count)
+	if (ev) {
+	    window.history.pushState('search', '', '/?search');
+	}
 	return false
     }
     var redirect_search = function() {
-	$(location).attr('href', '/?search')
+	$('#search_sponsors input').blur() 
+	$(location).attr('href', '/?search') 
     }
     if (showing_all_sponsors) {
 	$('#all_sponsors').on('click', show_all)
@@ -92,16 +111,29 @@ function activate_sponsor_datatable() {
 	$('#search_sponsors').on('click', redirect_search)
 	$('#search_sponsors button').on('submit', redirect_search)
     }
-    if (activate_search) {
-	show_search()
-	$('#search_sponsors input').focus()
-    } else if (showing_all_sponsors) {
-	show_all();
-    } else {
-	show_major();
+    function initial_tab() {
+	if (activate_search) {
+	    show_search(null)
+	    $('#search_sponsors input').focus()
+	} else if (showing_all_sponsors) {
+	    show_all(null);
+	} else {
+	    show_major(null);
+	}
     }
+    initial_tab()
 
-    // t.on('column-sizing.dt', function() { alert('column-sizing') })
+    window.onpopstate = function(ev) {
+	if (ev.state == "search") {
+	    show_search(null)
+	} else if (ev.state == "all") {
+	    show_all(null)
+	} else if (ev.state == "major") {
+	    show_major(null)
+	} else {
+	    initial_tab()
+	}
+    }
 
     /* Show after style change */
     $('#sponsor_table_loading').hide()

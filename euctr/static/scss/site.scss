@@ -204,6 +204,10 @@ body#taking-screenshot .jumbotron {
     background-position: center left;
 }
 
+#search_sponsors input.not-showing-all {
+    pointer-events: none;
+}
+
 /****************************************************************/
 /* Sponsor page */
 
