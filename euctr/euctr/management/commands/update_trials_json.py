@@ -67,8 +67,15 @@ class Command(BaseCommand):
         normalize = pandas.read_excel(
             NORMALIZE_FILE, "Sheet1",
             keep_default_na=False, na_values=[]
-        )[['trial_id', 'normalized_name_only', 'normalized_name']]
-        all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
+        )[['name_of_sponsor', 'normalized_name_only', 'normalized_name']].drop_duplicates()
+        all_trials = pandas.merge(normalize, trials_input, on=['name_of_sponsor'])
+        if len(trials_input) != len(all_trials):
+            diff = set(trials_input['name_of_sponsor']) - set(normalize['name_of_sponsor'])
+            diff = [ str(x) for x in diff ]
+            for d in sorted(diff):
+                print(d)
+            print("Trials CSV: %d entries  After merge with normalization: %d entries  Diff: %d" % (len(trials_input), len(all_trials), len(diff)))
+            sys.exit()
         # ... add slug fields
         all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name_only'])
         all_trials['parent_slug'] = np.vectorize(slugify)(all_trials['normalized_name'])

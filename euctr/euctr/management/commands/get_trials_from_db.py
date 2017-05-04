@@ -12,7 +12,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         opentrials_db = os.environ['OPENTRIALS_DB']
         params = [ 'psql', '--quiet', '-f', '../data/opentrials-to-csv.sql', '-o', TRIALS_CSV_FILE, '--dbname', opentrials_db ]
-        print(params)
         subprocess.call(params)
 
 

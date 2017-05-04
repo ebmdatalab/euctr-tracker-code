@@ -1,6 +1,9 @@
 *** Scraping 
-  - change end date in SQL for measuring due dynamically
-    AND max_end_date <= '2015-12-21' 
+  - normalization of trials
+  - dynamically change max_end_date threshold 
+      max_end_date <= '2015-12-21' 
+    to 1 year and 3 weeks before the beginning of the scrape
+  - "check the registration dates are largely since jan 2017"
   - remove data files from then on in pipeline from github
   - set environment variables for database connection in production
     see https://github.com/ebmdatalab/openprescribing#production-notes
