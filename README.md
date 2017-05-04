@@ -67,34 +67,30 @@ Environment settings live in `/etc/profile.d/eutrialstracker_live.sh`
 Loading new data
 ================
 
-1. Get hold of a dump from OpenTrials EUCTR SQL databsae. 
-It'll be called something like:
+The frontend application reads data from static JSON files 
+in the `data/` directory. There's no local database.
+
+1. Set the location of the OpenTrials PostgreSQL database.
 
 ```
-opentrials-warehouse-euctr-20170123.dump
+export OPENTRIALS\_DB=postgres://username:password@hostname/dbname
 ```
 
-Restore that into a PostgreSQL database.
-
-2. Export that to `data/trials.csv` using the SQL script
-`data/opentrials-to-csv.sql`.
+2. Update `data/trials.csv` from the PostgreSQL database by running:
 
 ```
-psql euctr --quiet -f opentrials-to-csv.sql -o trials.csv
+cd euctr
+./manage.py get_trials_from_db
 ```
 
-3. The frontend application reads data from static JSON files 
-in the `data/` directory. There's no database yet.
+This assumes the table is called "euctr". It uses the SQL script
+`data/opentrials-to-csv.sql` for the calculations and conversions needed.
 
-Then regenerate the JSON files from the CSV file by running it:
+3. Regenerate the JSON files from the CSV file by running:
 
 ```
-./manage.py loadtrialsdata
+./manage.py update_trials_json
 ```
 
-Update the `DATA_SOURCE_DATE` in `euctr/settings.py`.
-
-
-
-
+4. Update the `DATA_SOURCE_DATE` in `euctr/settings.py`.
 

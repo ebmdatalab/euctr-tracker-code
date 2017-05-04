@@ -58,7 +58,7 @@ def work_out_status(t):
 
 
 class Command(BaseCommand):
-    help = 'Loads in data'
+    help = 'Converts data/trials.csv into various JSON files that the Django app needs'
 
     def handle(self, *args, **options):
         # All trials file
