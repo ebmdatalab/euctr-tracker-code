@@ -1,8 +1,8 @@
 *** Scraping 
-  - normalization of trials
   - dynamically change max_end_date threshold 
       max_end_date <= '2015-12-21' 
     to 1 year and 3 weeks before the beginning of the scrape
+  - put that dynamic date in headlines.json
   - "check the registration dates are largely since jan 2017"
   - remove data files from then on in pipeline from github
   - set environment variables for database connection in production
