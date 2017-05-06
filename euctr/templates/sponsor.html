@@ -29,7 +29,7 @@
 	<a href="#"><h2>Not due<span class="badge">{{ not_yet_due_trials }}</span></h2></a>
       </li>
       <li id="bad_data_trials" role="presentation">
-	<a href="#"><h2>Bad data<span class="badge">{{ inconsistent_trials }}</span></h2></a>
+	<a href="#"><h2>Inconsistent data<span class="badge">{{ inconsistent_trials }}</span></h2></a>
       </li>
       <li id="search_trials" class="search-pill" role="presentation">
 	<a href="#">
@@ -60,7 +60,7 @@
       <div class="bad_data_preamble">
 	<p class="lead">
 	These trials have problematic data on the registry. 
-	<a href="/about#bad-data">Details why &raquo;</a>
+	<a href="/about#inconsistent-data">Details why &raquo;</a>
 	</p>
 
       </div>
@@ -116,7 +116,7 @@
 	      </span>
 	      <span data-toggle="tooltip" data-placement="right" title="Suspended, withdrawn, not authorised or prohibited by Country Authority" class="glyphicon glyphicon-question-sign"></span>
 
-	    <!-- Bad data -->
+	    <!-- Inconsistent data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
 	      <span class="label label-warning">
 	      Listed as ongoing, but also has a completion date
@@ -156,7 +156,7 @@
 	      not-yet-due
 	    {% elif trial.overall_status == "other" %}
 	      not-yet-due
-	    <!-- Bad data -->
+	    <!-- Inconsistent data -->
 	    {% elif trial.overall_status == "error-ongoing-has-comp-date" %}
 	      bad-data
 	    {% elif trial.overall_status == "error-completed-no-comp-date" %}

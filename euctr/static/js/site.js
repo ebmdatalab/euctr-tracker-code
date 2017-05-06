@@ -251,7 +251,7 @@ function activate_charts() {
 	]
     };
     var overview_data = {
-	labels: [ "Good data", "Bad data" ],
+	labels: [ "Good data", "Inconsistent data" ],
 	datasets: [
 	{
 	    data: [total_due + not_yet_due_trials, inconsistent_trials],
