@@ -19,9 +19,23 @@
     <div class="col-sm-4 col-xs-6 sponsor-headlines">
       <h2>Late reporting</h2>
       <canvas id="unreported_chart" height="200px"></canvas>
-      <div class="sponsor-number">{{percent_unreported | custom_percent}}</div>
-      <p class="lead">of {{ sponsor_name }}'s {{ total_due}} due trials 
-      haven't reported yet</p>
+      {% if percent_unreported == 0 %}
+	<div class="sponsor-number">All</div>
+	<p class="lead">of {{ sponsor_name }}'s {{ total_due}} due trials 
+	have been reported</p>
+      {% elif percent_unreported == 100 %}
+	<div class="sponsor-number">None</div>
+	<p class="lead">of {{ sponsor_name }}'s {{ total_due}} due trials 
+	have been reported</p>
+      {% elif percent_unreported|custom_percent == "-" %}
+	<div class="sponsor-number">&nbsp;</div>
+	<p class="lead">{{ sponsor_name }} has no due trials, so none
+	are late reporting</p>
+      {% else %}
+	<div class="sponsor-number">{{percent_unreported | custom_percent}}</div>
+	<p class="lead">of {{ sponsor_name }}'s {{ total_due}} due trials 
+	haven't reported yet</p>
+      {% endif %}
     </div>
     <div class="col-sm-4 col-xs-6 sponsor-headlines">
       <h2>Inconsistent data</h2>

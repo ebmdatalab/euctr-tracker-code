@@ -6,8 +6,6 @@
   - allow date ranges for that date
   - "check the registration dates are largely since jan 2017"
   - remove data files from then on in pipeline from github
-  - set environment variables for database connection in production
-    see https://github.com/ebmdatalab/openprescribing#production-notes
   - make sure update schedule of scraper is weekly
   - log changes to overall figures every week
   - why are there old trials that haven't updated? (their meta_updated)
@@ -22,10 +20,6 @@ Read re. OpenTrials
   - don't render trials if there aren't any http://127.0.0.1:8000/sponsor/tigenix
   - consider having a heading in new bottom position
   - get tidying from Nick for similar names that don't occur often
-
-Looks weird when all reported
-  http://127.0.0.1:8000/sponsor/fujisawa-gmbh
-  Easy thing to do would be to special case 0 and 100% and just say "All" or "None" clearly. 
 
 Social sharing stuff
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
