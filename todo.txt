@@ -14,13 +14,6 @@ Read re. OpenTrials
   https://docs.google.com/document/d/1MdcjRQgDJPz8J5yZ8__9heci9HyQm3Z0L27L-whEuTQ/edit?usp=sharing
   https://github.com/opentrials/collectors/blob/f03096855b8d702969d22af0b20a4d6a0d820bd0/collectors/euctr/spider.py#L26
 
-*** Present normalisation of sponsor name better
-  e.g. Tigenix, Abbie
-  e.g. Genentech, Actavis (Teva, Aurobindo), Pfizer, Merck (relationships both ways) 
-  - don't render trials if there aren't any http://127.0.0.1:8000/sponsor/tigenix
-  - consider having a heading in new bottom position
-  - get tidying from Nick for similar names that don't occur often
-
 Social sharing stuff
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
   Slow sometimes for Facebook
