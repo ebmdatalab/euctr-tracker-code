@@ -30,6 +30,7 @@ Set environment variables required.
 ```
 export EUCTR_SECRET_KEY= # random longish string for sessions
 export EUCTR_DEBUG= # yes or no
+export EUCTR_OPENTRIALS_DB=postgres://<account_name>:<password>@<servername>/warehouse
 ```
 
 Run the application.

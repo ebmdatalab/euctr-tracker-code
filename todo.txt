@@ -25,6 +25,7 @@ Read re. OpenTrials
 
 Looks weird when all reported
   http://127.0.0.1:8000/sponsor/fujisawa-gmbh
+  Easy thing to do would be to special case 0 and 100% and just say "All" or "None" clearly. 
 
 Social sharing stuff
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator

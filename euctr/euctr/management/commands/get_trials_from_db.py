@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = 'Fetches trials data from OpenTrials PostgredSQL database and saves to trials.csv'
 
     def handle(self, *args, **options):
-        opentrials_db = os.environ['OPENTRIALS_DB']
+        opentrials_db = os.environ['EUCTR_OPENTRIALS_DB']
         params = [ 'psql', '--quiet', '-f', '../data/opentrials-to-csv.sql', '-o', TRIALS_CSV_FILE, '--dbname', opentrials_db ]
         subprocess.call(params)
 
