@@ -16,9 +16,6 @@ OUTPUT_ALL_TRIALS_FILE = '../data/all_trials.json'
 # For given row of trial data, work out the overall status for display in the
 # user interface in rows of the table.
 def work_out_status(t):
-    #print("-------------")
-    #print(t)
-
     status = None
 
     assert t.results_expected in (0, 1)
@@ -51,8 +48,6 @@ def work_out_status(t):
         overall_status = "other" # suspended, withdrawn, not authorised, prohibited by CA
     elif t.trial_status == 4:
         overall_status = "no-trial-status" # a blank trial status usually indicated a paediatric trial taking place wholly outside of the EU/EEA
-
-    #print("NEW STATUS", overall_status)
 
     return overall_status
 
@@ -159,7 +154,6 @@ class Command(BaseCommand):
 
         # ... add in relationships between orgs in other direction
         for child_slug, child in all_sponsors.iterrows():
-            #print("child", child_slug, child["parents"])
             for parent in child["parents"]:
                 full_parent = all_sponsors.loc[parent["slug"]]
                 if full_parent.empty:
