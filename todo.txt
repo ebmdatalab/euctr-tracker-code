@@ -17,6 +17,9 @@
 
   - "check the registration dates are largely since jan 2017"
 
+Some trials aren't updating with new scrapes
+  https://github.com/opentrials/opentrials/issues/821
+
 All/None look odd with "Late reporting" title
 
 Read re. OpenTrials
