@@ -34,6 +34,7 @@ class Command(BaseCommand):
         # trials must report a year after finishing) plus 3 weeks (21 days)
         # allowance (it takes that long for submissions to enter register)
         due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 21)
+        print("Due date cutoff:", due_date_cutoff)
 
         query = open("euctr/management/commands/opentrials-to-csv.sql").read()
         params = { 'due_date_cutoff': due_date_cutoff }
