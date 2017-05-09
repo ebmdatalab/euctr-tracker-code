@@ -98,17 +98,17 @@ SELECT
     min (date_of_the_global_end_of_the_trial) AS min_end_date,
     count ( CASE
             WHEN CAST (trial_is_part_of_a_paediatric_investigation_plan AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS Includes_PIP,
     count ( CASE
             WHEN CAST (trial_single_blind AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS Single_Blind,
     count ( CASE
             WHEN CAST (trial_single_blind AS text)
-            LIKE 'f%' THEN 1
+            LIKE 'f%%' THEN 1
             ELSE NULL
         END) AS Not_Single_Blind,
     count ( CASE
@@ -125,62 +125,62 @@ SELECT
         END) AS Rare_Disease_Empty,
     count ( CASE
             WHEN CAST (trial_therapeutic_use_phase_iv AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS phase_iv_trial,
     count ( CASE
             WHEN CAST (trial_therapeutic_use_phase_iv AS text)
-            LIKE 'f%' THEN 1
+            LIKE 'f%%' THEN 1
             ELSE NULL
         END) AS not_phase_iv_trial,
     count ( CASE
             WHEN CAST (trial_therapeutic_confirmatory_phase_iii AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS phase_iii_trial,
     count ( CASE
             WHEN CAST (trial_therapeutic_confirmatory_phase_iii AS text)
-            LIKE 'f%' THEN 1
+            LIKE 'f%%' THEN 1
             ELSE NULL
         END) AS not_phase_iii_trial,
     count ( CASE
             WHEN CAST (trial_therapeutic_exploratory_phase_ii AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS phase_ii_trial,
     count ( CASE
             WHEN CAST (trial_therapeutic_exploratory_phase_ii AS text)
-            LIKE 'f%' THEN 1
+            LIKE 'f%%' THEN 1
             ELSE NULL
         END) AS not_phase_ii_trial,
     count ( CASE
             WHEN CAST (trial_human_pharmacology_phase_i AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS phase_i_trial,
     count ( CASE
             WHEN CAST (trial_human_pharmacology_phase_i AS text)
-            LIKE 'f%' THEN 1
+            LIKE 'f%%' THEN 1
             ELSE NULL
         END) AS not_phase_i_trial,
     count ( CASE
             WHEN CAST (trial_bioequivalence_study AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS bioequivalence_study_yes,
     count ( CASE
             WHEN CAST (trial_bioequivalence_study AS text)
-            LIKE 'f%' THEN 1
+            LIKE 'f%%' THEN 1
             ELSE NULL
         END) AS bioequivalence_study_no,
     count ( CASE
             WHEN CAST (subject_healthy_volunteers AS text)
-            LIKE 't%' THEN 1
+            LIKE 't%%' THEN 1
             ELSE NULL
         END) AS healthy_volunteers_yes,
     count ( CASE
             WHEN CAST (subject_healthy_volunteers AS text)
-            LIKE 'f%' THEN 1
+            LIKE 'f%%' THEN 1
             ELSE NULL
         END) AS healthy_volunteers_no
 FROM
@@ -248,7 +248,7 @@ SELECT
     CASE
         WHEN completed + terminated = Total
         AND comp_date > 0
-        AND max_end_date < '2016-04-10'
+        AND max_end_date < %(due_date_cutoff)s
         THEN 1
         ELSE 0
     END AS results_expected,

@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 import psycopg2
 import csv
 
@@ -20,9 +21,10 @@ class Command(BaseCommand):
         cur = conn.cursor()
 
         query = open("euctr/management/commands/opentrials-to-csv.sql").read()
-        cur.execute(query)
+        params = { 'due_date_cutoff': '2016-04-10' }
+        cur.execute(query, params)
 
         with atomic_write(TRIALS_CSV_FILE, overwrite=True) as f:
-            writer = csv.writer(f)
+            writer = csv.writer(f, lineterminator="\n")
             writer.writerow([i[0] for i in cur.description])
             writer.writerows(cur)
