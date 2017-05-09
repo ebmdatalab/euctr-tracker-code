@@ -85,7 +85,7 @@ cd euctr
 ```
 
 This assumes the table is called "euctr". It uses the SQL script
-`data/opentrials-to-csv.sql` for the calculations and conversions needed.
+`opentrials-to-csv.sql` for the calculations and conversions needed.
 
 3. Regenerate the JSON files from the CSV file by running:
 

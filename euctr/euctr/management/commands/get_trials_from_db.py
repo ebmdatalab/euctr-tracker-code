@@ -1,5 +1,10 @@
 import subprocess
 import os
+import psycopg2
+import csv
+
+from atomicwrites import atomic_write
+
 
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
@@ -11,7 +16,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         opentrials_db = os.environ['EUCTR_OPENTRIALS_DB']
-        params = [ 'psql', '--quiet', '-f', '../data/opentrials-to-csv.sql', '-o', TRIALS_CSV_FILE, '--dbname', opentrials_db ]
-        subprocess.call(params)
+        conn = psycopg2.connect(opentrials_db)
+        cur = conn.cursor()
 
+        query = open("euctr/management/commands/opentrials-to-csv.sql").read()
+        cur.execute(query)
 
+        with atomic_write(TRIALS_CSV_FILE, overwrite=True) as f:
+            writer = csv.writer(f)
+            writer.writerow([i[0] for i in cur.description])
+            writer.writerows(cur)

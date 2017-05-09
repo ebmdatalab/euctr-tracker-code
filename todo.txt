@@ -3,16 +3,24 @@
       max_end_date <= '2015-12-21' 
     to 1 year and 3 weeks before the beginning of the scrape
   - put that dynamic date in headlines.json, remove DATA_SOURCE_DATE setting
-  - allow date ranges for that date
-  - "check the registration dates are largely since jan 2017"
-  - remove data files from then on in pipeline from github
-  - make sure update schedule of scraper is weekly
+  - make copy on /about imply that date is a couple of days long
+
+  - load in, where mapping missing use slug match, otherwise it is just a new sponsor
+  - write out sheet of new trials which uses those new matchings
+  - email (?) that sheet to Nick
+
   - log changes to overall figures every week
+  - remove data files from then on in pipeline from github
+
+  - make sure update schedule of scraper is weekly
   - why are there old trials that haven't updated? (their meta_updated)
+
+  - "check the registration dates are largely since jan 2017"
+
+All/None look odd with "Late reporting" title
 
 Read re. OpenTrials
   https://docs.google.com/document/d/1MdcjRQgDJPz8J5yZ8__9heci9HyQm3Z0L27L-whEuTQ/edit?usp=sharing
-  https://github.com/opentrials/collectors/blob/f03096855b8d702969d22af0b20a4d6a0d820bd0/collectors/euctr/spider.py#L26
 
 Social sharing stuff
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
