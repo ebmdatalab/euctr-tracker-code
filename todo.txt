@@ -1,7 +1,4 @@
 *** Scraping 
-  - put that dynamic date in headlines.json, remove DATA_SOURCE_DATE setting
-  - make copy on /about imply that date is a couple of days long
-
   - load in, where mapping missing use slug match, otherwise it is just a new sponsor
   - write out sheet of new trials which uses those new matchings
   - email (?) that sheet to Nick

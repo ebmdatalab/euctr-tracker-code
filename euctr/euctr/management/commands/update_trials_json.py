@@ -61,20 +61,40 @@ class Command(BaseCommand):
         # All trials metadata file
         trials_meta = json.load(open(SOURCE_META_FILE))
 
-        # All trials file
-        # ... load in list of trials, list of normalized names, and join together
+        # Load in list of trials, list of normalized names, and join together
         trials_input = pandas.read_csv(SOURCE_CSV_FILE)
-        normalize = pandas.read_excel(
+        normalize_full = pandas.read_excel(
             NORMALIZE_FILE, "Sheet1",
             keep_default_na=False, na_values=[]
-        )[['trial_id', 'normalized_name_only', 'normalized_name']]
+        )
+        normalize = normalize_full[['trial_id', 'normalized_name_only', 'normalized_name']]
+        # ... first join on trial_id
         all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
+
+        # Did the join find everything?
         if len(trials_input) != len(all_trials):
-            trials_input.set_index('trial_id', inplace=True)
-            trials_input.drop(normalize['trial_id'], inplace=True)
-            trials_input.to_csv('../data/new_trials.csv', columns=['name_of_sponsor'])
-            print("Trials CSV: %d entries  After merge with normalization: %d entries\n\nSee new_trials.csv for list" % (len(trials_input), len(all_trials)))
+            # Work out which trials are new
+            new_trials = trials_input.set_index('trial_id')
+            new_trials.drop(normalize['trial_id'], inplace=True)
+            new_trials.reset_index(inplace=True)
+            new_trials['slug'] = np.vectorize(slugify)(new_trials['name_of_sponsor'])
+            new_trials.sort_values('trial_id', inplace=True)
+            new_trials.to_csv('../data/new_trials.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
+
+            print("Trials CSV: %d entries  After merge with normalization: %d entries\n\nSee new_trials.csv : %d for list" % (len(trials_input), len(all_trials), len(new_trials)))
+
+            # Merge based on slug
+            normalize_by_slug = normalize_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name']].copy()
+            normalize_by_slug['slug'] = np.vectorize(slugify)(normalize_by_slug['name_of_sponsor'])
+            del normalize_by_slug['name_of_sponsor']
+            normalize_by_slug = normalize_by_slug.drop_duplicates('slug')
+
+            new_trials_merged = pandas.merge(normalize_by_slug, new_trials, on=['slug'], how='right')
+            new_trials_merged.sort_values('trial_id', inplace=True)
+            new_trials_merged.to_csv('../data/new_trials_merged.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
             sys.exit(1)
+
+        # All trials list
         # ... add slug fields
         all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name_only'])
         all_trials['parent_slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
