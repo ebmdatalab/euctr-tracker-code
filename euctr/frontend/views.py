@@ -83,8 +83,7 @@ def sponsor_screenshot_png(request, slug):
 # About page
 
 def about(request):
-    context = {}
-    context['data_source_date'] = getattr(settings, "DATA_SOURCE_DATE", None)
+    context = models.get_headlines()
 
     context['social_image'] = request.build_absolute_uri(
         reverse("index_screenshot_png")

@@ -32,9 +32,6 @@ DEBUG = EUCTR_DEBUG == 'yes'
 
 ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1']
 
-# When the data was last updated
-DATA_SOURCE_DATE = datetime.date(2017, 5, 1)
-
 # Application definition
 
 INSTALLED_APPS = [

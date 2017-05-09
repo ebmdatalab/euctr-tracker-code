@@ -2,11 +2,13 @@ import pandas
 import sys
 import json
 import numpy as np
+import json
 
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
 SOURCE_CSV_FILE = '../data/trials.csv'
+SOURCE_META_FILE = '../data/trials.csv.json'
 NORMALIZE_FILE = '../data/normalized_sponsor_names.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
 OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
@@ -56,6 +58,9 @@ class Command(BaseCommand):
     help = 'Converts data/trials.csv into various JSON files that the Django app needs'
 
     def handle(self, *args, **options):
+        # All trials metadata file
+        trials_meta = json.load(open(SOURCE_META_FILE))
+
         # All trials file
         # ... load in list of trials, list of normalized names, and join together
         trials_input = pandas.read_csv(SOURCE_CSV_FILE)
@@ -201,6 +206,8 @@ class Command(BaseCommand):
 
         # Headline counts file, used for things like front page large numbers
         headline = {}
+        headline['scrape_date'] = trials_meta['scrape_date']
+        headline['due_date_cutoff'] = trials_meta['due_date_cutoff']
         headline['total_trials'] = len(all_trials)
         # ... trials which have declared completed everywhere with a date, and a
         # year has passed

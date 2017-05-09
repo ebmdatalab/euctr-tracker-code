@@ -89,10 +89,24 @@
 	</p>
 	
 	<h2 id="when-updated">When was the data updated?</h2>
-	<p>The current data was taken from the register on {{ data_source_date | date:"d M Y"}}.
+	<p>The current data was taken from the register over a period of
+	a few days starting on {{ scrape_date }}.
 	Roughly, all clinical trials conducted in Europe since 2004 are in the
 	register. For full details, see the register's
 	<a href="https://www.clinicaltrialsregister.eu/about.html">about page</a>.
+	</p>
+
+	<h2 id="due">What does "due" mean?</h2>
+
+	<p>When more than a year has passed since the completion of a trial, 
+	the results should be published, and we call it "due".</p>
+
+	<p>Specifically, we take the last global end of trial data listed for
+	any of the trial's protocols. Then add a year (the legal limit)
+	and 3 weeks (time for results to get published on the register after filing).
+	If that is earlier than the date the data was updated, then the trial is due.
+
+	<p>Currently, any trial completed before {{ due_date_cutoff }} is due.
 	</p>
 	
 	<h2 id="major-sponsor">What's a major sponsor?</h2>

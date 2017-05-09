@@ -93,5 +93,3 @@ This assumes the table is called "euctr". It uses the SQL script
 ./manage.py update_trials_json
 ```
 
-4. Update the `DATA_SOURCE_DATE` in `euctr/settings.py`.
-
