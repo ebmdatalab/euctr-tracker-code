@@ -4,6 +4,8 @@ import sys
 import psycopg2
 import csv
 import datetime
+import json
+import collections
 
 from atomicwrites import atomic_write
 
@@ -12,6 +14,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
 TRIALS_CSV_FILE = '../data/trials.csv'
+TRIALS_META_FILE = '../data/trials.csv.json'
 
 class Command(BaseCommand):
     help = 'Fetches trials data from OpenTrials PostgredSQL database and saves to trials.csv'
@@ -36,12 +39,22 @@ class Command(BaseCommand):
         due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 21)
         print("Due date cutoff:", due_date_cutoff)
 
-        query = open("euctr/management/commands/opentrials-to-csv.sql").read()
-        params = { 'due_date_cutoff': due_date_cutoff }
-        cur.execute(query, params)
+        with atomic_write(TRIALS_META_FILE, overwrite=True) as f:
+            out = collections.OrderedDict([
+                ('scrape_date', scrape_date.isoformat()),
+                ('due_date_cutoff', due_date_cutoff.isoformat()),
+                ('got_from_db', datetime.datetime.now().isoformat())
+            ])
+            f.write(json.dumps(out, indent=4, sort_keys=True))
 
-        with atomic_write(TRIALS_CSV_FILE, overwrite=True) as f:
-            writer = csv.writer(f, lineterminator="\n")
-            writer.writerow([i[0] for i in cur.description])
-            writer.writerows(cur)
+            query = open("euctr/management/commands/opentrials-to-csv.sql").read()
+            params = { 'due_date_cutoff': due_date_cutoff }
+            cur.execute(query, params)
+
+            with atomic_write(TRIALS_CSV_FILE, overwrite=True) as f:
+                writer = csv.writer(f, lineterminator="\n")
+                writer.writerow([i[0] for i in cur.description])
+                writer.writerows(cur)
+
+
 

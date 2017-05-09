@@ -1,7 +1,4 @@
 *** Scraping 
-  - dynamically change max_end_date threshold 
-      max_end_date <= '2015-12-21' 
-    to 1 year and 3 weeks before the beginning of the scrape
   - put that dynamic date in headlines.json, remove DATA_SOURCE_DATE setting
   - make copy on /about imply that date is a couple of days long
 
