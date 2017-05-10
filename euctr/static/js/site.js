@@ -15,7 +15,7 @@ function hide_sponsor_datatable() {
     $('#table-pills').hide()
 }
 
-const DEFAULT_SPONSOR_ORDER = 3
+const DEFAULT_SPONSOR_ORDER = 2
 const DEFAULT_SPONSOR_ORDER_DIR = "desc"
 const MAJOR_SPONSOR_COLUMN = 5
 
