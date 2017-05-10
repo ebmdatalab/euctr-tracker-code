@@ -90,9 +90,21 @@ class Command(BaseCommand):
             normalize_by_slug = normalize_by_slug.drop_duplicates('slug')
 
             new_trials_merged = pandas.merge(normalize_by_slug, new_trials, on=['slug'], how='right')
-            new_trials_merged.sort_values('trial_id', inplace=True)
-            new_trials_merged.to_csv('../data/new_trials_merged.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
-            sys.exit(1)
+            new_trials_merged.sort_values(['normalized_name_only', 'name_of_sponsor'], inplace=True)
+
+            # Write out list of new trials with matches we have, for manual
+            # checking, fixing and adding to NORMALIZE_FILE
+            new_trials_merged.to_csv('../data/new_trials.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
+
+            # Assume remaining are new sponsors for now
+            unmatched = pandas.isnull(new_trials_merged['normalized_name_only'])
+            new_trials_merged.loc[unmatched, 'normalized_name_only'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
+            new_trials_merged.loc[unmatched, 'normalized_name'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
+            new_trials_merged.to_csv('../data/n.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
+
+            # Add our merge guesses to the main list
+            all_trials = all_trials.append(new_trials_merged)
+            assert(len(trials_input) == len(all_trials))
 
         # All trials list
         # ... add slug fields
