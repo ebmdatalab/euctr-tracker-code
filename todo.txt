@@ -10,6 +10,7 @@
     https://github.com/opentrials/opentrials/issues/821
   - "check the registration dates are largely since jan 2017"
 
+Novartis Vacinnes is not part of Novartis https://eutrialstracker.ebmdatalab.net/sponsor/novartis
 All/None look odd with "Late reporting" title
 
 Read re. OpenTrials

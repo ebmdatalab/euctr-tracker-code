@@ -93,3 +93,33 @@ This assumes the table is called "euctr". It uses the SQL script
 ./manage.py update_trials_json
 ```
 
+
+Terminology
+===========
+
+The spreadsheet `data/normalized_sponsor_names.xlsx` contains normalized versions
+of the names for trials that are listed in the register.
+
+`normalized_name_only`: This column represents normalization based only on
+sponsor name or very simple research. Different spelling/abbreviations of a
+sponsor name and divisions/subsidiaries of the same sponsor will be normalized
+to the same parent sponsor name (ex: DrugCompany Inc., DrugCompany Incorporated
+and DrugCompany Generics would all be normalized to the generic DrugCompany
+Inc.). This also includes, where possible, instances in which a sponsor name is
+implemented in different languages and also attempts to consolidate hospital
+systems under a single normalized name (ex: Putting hospitals in the Copenhagen
+University hospital system together or matching an old NHS Trust name to the
+new name). If a sponsor is identified in their sponsor name as part of another
+company (ex: “doing business as” or “a wholly owned subsidiary of” ) then that
+company will be normalized to the parent company identified (ex:
+“GenericCompany Inc, a wholly owned subsidiary of Drugs Inc.” would normalize
+to “Drugs Inc.“). Attempts are also made to make sponsor names more uniform and
+readable with the removal of extraneous text or names in all capital letters.
+
+`normalized_name`: This column represents an effort to normalize based on more in
+depth research into mergers, acquisitions and name changes for corporate
+entities. Proof is sought to account changes in corporate ownership and where
+it is believed responsibility for reporting would ultimately be vested. Proof
+of notable acquisitions is given in the spreadsheet for changes made in this
+column. 
+
