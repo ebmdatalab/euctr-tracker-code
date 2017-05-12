@@ -68,6 +68,19 @@ class Command(BaseCommand):
             keep_default_na=False, na_values=[]
         )
         normalize = normalize_full[['trial_id', 'normalized_name_only', 'normalized_name']]
+        # ... do a consistency check (see README.md for definitions of these columns) - find items
+        # which have a sponsor name ('normalized_name_only') that is also a parent name
+        # (another sponsor's 'normalized_name') but not this sponsor's parent name
+        differing_parent = normalize_full[normalize['normalized_name_only'] != normalize["normalized_name"]]
+        a1 = set(differing_parent['normalized_name_only'])
+        a2 = set(differing_parent['normalized_name'])
+        incorrect_parents = a1.intersection(a2)
+        if len(incorrect_parents) > 0:
+            print("Inconsistent parents: %r" % incorrect_parents)
+            print("For these sponsors:")
+            for p in incorrect_parents:
+                print(set(differing_parent[differing_parent['normalized_name_only'] == p]['name_of_sponsor']))
+            sys.exit(1)
         # ... first join on trial_id
         all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
 
