@@ -242,6 +242,10 @@ class Command(BaseCommand):
             all_sponsors['inconsistent_trials'] /
             all_sponsors['total_trials'] * 100, 1
         )
+        all_sponsors['major'] = np.where(
+            (all_sponsors['total_trials'] >= MAJOR_SPONSORS_THRESHOLD) &
+            (all_sponsors['sponsor_name'] != "Unknown Sponsor")
+        , 1, 0)
         # ... write to a file
         all_sponsors.sort_values('slug', inplace=True)
         json.dump(all_sponsors.to_dict(orient='records'),
@@ -268,10 +272,7 @@ class Command(BaseCommand):
         )
         # ... sponsors counts
         headline["all_sponsors_count"] = len(all_sponsors)
-        major_sponsors = all_sponsors[
-            all_sponsors['total_trials'] >= MAJOR_SPONSORS_THRESHOLD
-        ]
-        headline["major_sponsors_count"] = len(major_sponsors)
+        headline["major_sponsors_count"] = np.count_nonzero(all_sponsors['major'])
         # ... write to a file
         with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
             json.dump(headline, outfile, indent=4, sort_keys=True)

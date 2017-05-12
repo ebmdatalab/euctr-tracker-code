@@ -31,7 +31,7 @@ def get_major_sponsors():
 
     if not major_sponsors_data:
         all_sponsors = get_all_sponsors()
-        major_sponsors_data = [ x for x in all_sponsors if x['total_trials'] >= 50 ]
+        major_sponsors_data = [ x for x in all_sponsors if x['major'] == 1 ]
 
     return major_sponsors_data
 
