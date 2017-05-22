@@ -113,7 +113,7 @@ class Command(BaseCommand):
             unmatched = pandas.isnull(new_trials_merged['normalized_name_only'])
             new_trials_merged.loc[unmatched, 'normalized_name_only'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
             new_trials_merged.loc[unmatched, 'normalized_name'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
-            new_trials_merged.to_csv('../data/n.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
+            #new_trials_merged.to_csv('../data/n.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False) # debugging
 
             # Add our merge guesses to the main list
             all_trials = all_trials.append(new_trials_merged)
