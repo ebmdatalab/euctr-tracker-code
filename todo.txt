@@ -1,19 +1,22 @@
 *** Scraping 
-  - email sheet of new trials automatically to Nick
+  - decide where to store hsitory
   - log changes to overall figures every week
+      Proportion of due trials that are late
+      Proportion of all trials that have inconsistent data
+
+  - code to email sheet of new trials to Nick
   - consider removing data files from then on in pipeline from github
 
   - make sure update schedule of scraper is weekly, and confirm day ends
-  - run it on a cron job
+    started 2017-05-05 ended 2017-05-07
+    started 2017-05-17 ended 2017-05-19
+  - run data loading on an appropriate cron job
 
   - why are there old trials that haven't updated? (their meta_updated)
     https://github.com/opentrials/opentrials/issues/821
   - "check the registration dates are largely since jan 2017"
 
 All/None look odd with "Late reporting" title
-
-Read re. OpenTrials
-  https://docs.google.com/document/d/1MdcjRQgDJPz8J5yZ8__9heci9HyQm3Z0L27L-whEuTQ/edit?usp=sharing
 
 Social sharing stuff
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
@@ -25,10 +28,34 @@ Social sharing stuff
     <meta name="twitter:image:width" content= "..." />
     <meta name="twitter:image:height" content= "..." />
 
+Test on IE11 and Edge 
+  - search box on IE11
+Test both pages without Javascript - do any links need to work or should be hidden?
+For scaling, do we need to cache front page or other pages
+
+Read "Team tech manual"
+Error monitoring
+  Back-end errors, zero tolerance
+  Errorception
+  "New Relic"
+Google Analytics
+
+Improve design 
+
+Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
+
+Spec and notes:
+https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
+
+Launch
+  Link to "Methods" in navigation, going to the paper on BMJ or similar site
+
 *** Visulisation improvement - two figures to highlight
   Try 
     - pie chart
-    - bar chart for bad data
+    - histogram on the right three stacked bars:
+      1) late/reported split (red/green same as pie), 2) not due, 3) inconsistent data
+      still headline the inconsistent data part
 
   X% of this sponsor's trials are overdue.
 
@@ -39,29 +66,16 @@ Social sharing stuff
   The only challenge really is that those two figures have a different
   denominator (due trials, and all trials, respectively).
 
-  Try making the table have charts in
 
-
-Test on IE11 and Edge 
-  - search box on IE11
-Test both pages without Javascript - do any links need to work or should be hidden?
-For scaling, do we need to cache front page or other pages
-
-Read "Team tech manual"
-Error monitoring
-  Back-end errors, zero tolerance
-  Errorception
-Analytics
-Get audit on colours and design from designer
-
-Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
-
-Spec and notes:
-https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
 
 
 Later
 =====
+
+Display history
+  Do this a few months, or a year in 
+  Proportion of due trials that are late
+  Proportion of all trials that have inconsistent data
 
 Main page - make numbers in columns link straight to filtered versions of sponsor pages (Seb)
 
