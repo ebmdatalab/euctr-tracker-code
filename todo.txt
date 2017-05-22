@@ -57,17 +57,6 @@ Launch
       1) late/reported split (red/green same as pie), 2) not due, 3) inconsistent data
       still headline the inconsistent data part
 
-  X% of this sponsor's trials are overdue.
-
-  X of their trials have bad data. [For the purposes of the site, we don't
-  care if those ones have shared results, that's for the detail of the
-  paper].
-
-  The only challenge really is that those two figures have a different
-  denominator (due trials, and all trials, respectively).
-
-
-
 
 Later
 =====

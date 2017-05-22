@@ -240,6 +240,7 @@ function activate_charts() {
     Chart.defaults.global.defaultFontSize = 15
     Chart.defaults.global.defaultFontColor = '#333'
 
+    /* Pie chart */
     var unreported_data = {
 	labels: [ "Reported on time", "Late reporting results" ],
 	datasets: [
@@ -249,35 +250,50 @@ function activate_charts() {
 	    hoverBackgroundColor: [ "#22B24C", "#EB6864" ]
        	},
 	]
-    };
-    var overview_data = {
-	labels: [ "Good data", "Inconsistent data" ],
-	datasets: [
-	{
-	    data: [total_due + not_yet_due_trials, inconsistent_trials],
-	    backgroundColor: [ "#999", "#B264B2" ],
-	    hoverBackgroundColor: [ "#999", "#B264B2" ]
-       	},
-	]
-    };
-
-    var options = {
-	legend: { display: false },
-	animation: { animateRotate: false }
     }
-
-    var overview_ctx = document.getElementById("overview_chart");
-    window.overview_chart = new Chart(overview_ctx, {
-	type: 'pie' ,
-	data: overview_data,
-	options: options
-    });
-
+    var unreported_options = {
+	legend: { display: false },
+	animation: { animateRotate: false, duration: 0 },
+    }
     var unreported_ctx = document.getElementById("unreported_chart");
     window.unreported_chart = new Chart(unreported_ctx, {
 	type: 'pie' ,
 	data: unreported_data,
-	options: options
+	options: unreported_options
+    });
+
+    /* Bar chart */
+    var overview_data = {
+	labels: [ "Due", "Not due", "Inconsistent" ],
+	datasets: [{
+	    data: [total_due - total_unreported, not_yet_due_trials, inconsistent_trials],
+	    backgroundColor: [ "#22B24C", "#999", "#B264B2" ],
+	    hoverBackgroundColor: [ "#22B24C", "#999", "#B264B2" ],
+       	},{
+	    data: [total_unreported ],
+	    backgroundColor: [ "#EB6864" ],
+	    hoverBackgroundColor: [ "#EB6864" ],
+	}]
+    }
+    var overview_options = {
+	legend: { display: false },
+	animation: { duration: 0 },
+	scales: {
+	    xAxes: [{
+		gridLines: { display: false},
+	    }],
+	    yAxes: [{
+		display: false,
+		stacked: true
+	    }]
+	},
+	maintainAspectRatio: true
+    }
+    var overview_ctx = document.getElementById("overview_chart");
+    window.overview_chart = new Chart(overview_ctx, {
+	type: 'bar' ,
+	data: overview_data,
+	options: overview_options
     });
 
 }
