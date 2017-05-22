@@ -1,7 +1,7 @@
-from django.test import TestCase
+from django.test import SimpleTestCase
 from django.test import Client
 
-class BasicLoadTestCase(TestCase):
+class BasicLoadTestCase(SimpleTestCase):
 
     def test_front_page_loads(self):
         c = Client()
