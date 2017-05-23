@@ -240,7 +240,7 @@ function activate_charts() {
     Chart.defaults.global.defaultFontSize = 15
     Chart.defaults.global.defaultFontColor = '#333'
 
-    /* Pie chart */
+    /* Pie chart 1 */
     var unreported_data = {
 	labels: [ "Reported on time", "Late reporting results" ],
 	datasets: [
@@ -264,15 +264,27 @@ function activate_charts() {
 
     /* Bar chart */
     var overview_data = {
-	labels: [ "Due", "Not due", "Inconsistent" ],
+	labels: [ "Due trials", "Not due", "Inconsistent data" ],
 	datasets: [{
-	    data: [total_due - total_unreported, not_yet_due_trials, inconsistent_trials],
-	    backgroundColor: [ "#22B24C", "#999", "#B264B2" ],
-	    hoverBackgroundColor: [ "#22B24C", "#999", "#B264B2" ],
+	    label: "Reported results",
+	    data: [total_due - total_unreported, 0, 0, 0],
+	    backgroundColor: "#22B24C",
+	    hoverBackgroundColor: "#22B24C",
        	},{
-	    data: [total_unreported ],
-	    backgroundColor: [ "#EB6864" ],
-	    hoverBackgroundColor: [ "#EB6864" ],
+	    label: "",
+	    data: [0, not_yet_due_trials, 0, 0],
+	    backgroundColor: "#999",
+	    hoverBackgroundColor: "#999",
+       	},{
+	    label: "",
+	    data: [0, 0, inconsistent_trials, 0],
+	    backgroundColor: "#B264B2",
+	    hoverBackgroundColor: "#B264B2",
+       	},{
+	    label: "Not reported",
+	    data: [total_unreported, 0, 0, 0 ],
+	    backgroundColor: "#EB6864",
+	    hoverBackgroundColor: "#EB6864",
 	}]
     }
     var overview_options = {
@@ -294,6 +306,28 @@ function activate_charts() {
 	type: 'bar' ,
 	data: overview_data,
 	options: overview_options
+    });
+
+    /* Pie chart 2 */
+    var inconsistent_data = {
+	labels: [ "All trials", "Inconsistent" ],
+	datasets: [
+	{
+	    data: [total_trials - inconsistent_trials, inconsistent_trials],
+	    backgroundColor: [ "#EEE", "#B264B2" ],
+	    hoverBackgroundColor: [ "#EEE", "#B264B2" ]
+       	},
+	]
+    }
+    var inconsistent_options = {
+	legend: { display: false },
+	animation: { animateRotate: false, duration: 0 },
+    }
+    var inconsistent_ctx = document.getElementById("inconsistent_chart");
+    window.inconsistent_chart = new Chart(inconsistent_ctx, {
+	type: 'pie' ,
+	data: inconsistent_data,
+	options: inconsistent_options
     });
 
 }
