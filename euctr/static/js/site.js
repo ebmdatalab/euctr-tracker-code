@@ -309,7 +309,7 @@ function activate_charts() {
     });
 
     /* Pie chart 2 */
-    var inconsistent_data = {
+/*    var inconsistent_data = {
 	labels: [ "All trials", "Inconsistent" ],
 	datasets: [
 	{
@@ -328,7 +328,7 @@ function activate_charts() {
 	type: 'pie' ,
 	data: inconsistent_data,
 	options: inconsistent_options
-    });
+    }); */
 
 }
 
