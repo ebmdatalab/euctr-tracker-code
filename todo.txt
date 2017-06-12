@@ -1,10 +1,11 @@
 *** Scraping 
-  - decide where to store hsitory
+  - decide where to store history
   - log changes to overall figures every week
       Proportion of due trials that are late
       Proportion of all trials that have inconsistent data
 
   - code to email sheet of new trials to Nick
+  - just run it every day
   - consider removing data files from then on in pipeline from github
 
   - make sure update schedule of scraper is weekly, and confirm day ends
@@ -35,7 +36,6 @@ Test on IE11 and Edge
 Test both pages without Javascript - do any links need to work or should be hidden?
 For scaling, do we need to cache front page or other pages
 
-Read "Team tech manual"
 Error monitoring
   Back-end errors, zero tolerance
   Errorception
