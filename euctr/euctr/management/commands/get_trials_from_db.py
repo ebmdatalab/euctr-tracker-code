@@ -32,6 +32,7 @@ class Command(BaseCommand):
                 having count(*) > 100
                 order by d limit 1""")
         scrape_date = cur.fetchone()[1]
+        print("Scrape start date:", scrape_date)
 
         # Date for reporting to be due has cutoff is 1 year (365 days) (by law,
         # trials must report a year after finishing) plus 3 weeks (21 days)
