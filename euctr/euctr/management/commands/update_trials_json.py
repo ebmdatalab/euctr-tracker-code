@@ -11,6 +11,7 @@ SOURCE_CSV_FILE = '../data/trials.csv'
 SOURCE_META_FILE = '../data/trials.csv.json'
 NORMALIZE_FILE = '../data/normalized_sponsor_names.xlsx'
 OUTPUT_HEADLINE_FILE = '../data/headline.json'
+OUTPUT_HEADLINE_HISTORY = '../data/headline-history.json'
 OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
 MAJOR_SPONSORS_THRESHOLD = 50
 OUTPUT_ALL_TRIALS_FILE = '../data/all_trials.json'
@@ -276,5 +277,11 @@ class Command(BaseCommand):
         # ... write to a file
         with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
             json.dump(headline, outfile, indent=4, sort_keys=True)
+
+        # Update headline history file
+        headline_history = json.load(open(OUTPUT_HEADLINE_HISTORY, 'r'))
+        headline_history[headline['scrape_date']] = headline
+        with open(OUTPUT_HEADLINE_HISTORY, 'w') as outfile:
+            json.dump(headline_history, outfile, indent=4, sort_keys=True)
 
 
