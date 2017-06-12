@@ -10,6 +10,8 @@
   - make sure update schedule of scraper is weekly, and confirm day ends
     started 2017-05-05 ended 2017-05-07
     started 2017-05-17 ended 2017-05-19
+    ??? may have been another here, but don't think so
+    started 2017-06-06 ended 2017-06-08
   - run data loading on an appropriate cron job
 
   - why are there old trials that haven't updated? (their meta_updated)
