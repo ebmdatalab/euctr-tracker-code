@@ -1,5 +1,9 @@
 *** Scraping 
-  - move data to own repository
+  - find fabric git pull method
+  - choose deploy key method https://developer.github.com/v3/guides/managing-deploy-keys/
+  - rearrange deployed directory layout to have extra directory of new repo - change deploy/ mentions of var/www
+  - make deployment pull both repos from git
+
   - automatic commit and push to git
   - code to email sheet of new trials to Nick
 
