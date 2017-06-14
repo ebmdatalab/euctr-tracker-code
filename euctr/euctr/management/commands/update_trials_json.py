@@ -7,14 +7,16 @@ import json
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
-SOURCE_CSV_FILE = '../data/trials.csv'
-SOURCE_META_FILE = '../data/trials.csv.json'
-NORMALIZE_FILE = '../data/normalized_sponsor_names.xlsx'
-OUTPUT_HEADLINE_FILE = '../data/headline.json'
-OUTPUT_HEADLINE_HISTORY = '../data/headline-history.json'
-OUTPUT_ALL_SPONSORS_FILE = '../data/all_sponsors.json'
+PREFIX = '../../euctr-tracker-data/'
+SOURCE_CSV_FILE = PREFIX + 'trials.csv'
+SOURCE_META_FILE = PREFIX + 'trials.csv.json'
+NORMALIZE_FILE = PREFIX + 'normalized_sponsor_names.xlsx'
+OUTPUT_HEADLINE_FILE = PREFIX + 'headline.json'
+OUTPUT_HEADLINE_HISTORY = PREFIX + 'headline-history.json'
+OUTPUT_ALL_SPONSORS_FILE = PREFIX + 'all_sponsors.json'
 MAJOR_SPONSORS_THRESHOLD = 50
-OUTPUT_ALL_TRIALS_FILE = '../data/all_trials.json'
+OUTPUT_ALL_TRIALS_FILE = PREFIX + 'all_trials.json'
+OUTPUT_NEW_TRIALS_FILE = PREFIX + 'new_trials.csv'
 
 # For given row of trial data, work out the overall status for display in the
 # user interface in rows of the table.
@@ -56,7 +58,7 @@ def work_out_status(t):
 
 
 class Command(BaseCommand):
-    help = 'Converts data/trials.csv into various JSON files that the Django app needs'
+    help = 'Converts euctr-tracker-data/trials.csv into various JSON files that the Django app needs'
 
     def handle(self, *args, **options):
         # All trials metadata file
@@ -93,9 +95,6 @@ class Command(BaseCommand):
             new_trials.reset_index(inplace=True)
             new_trials['slug'] = np.vectorize(slugify)(new_trials['name_of_sponsor'])
             new_trials.sort_values('trial_id', inplace=True)
-            new_trials.to_csv('../data/new_trials.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
-
-            print("Trials CSV: %d entries  After merge with normalization: %d entries\n\nSee new_trials.csv : %d for list" % (len(trials_input), len(all_trials), len(new_trials)))
 
             # Merge based on slug
             normalize_by_slug = normalize_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name']].copy()
@@ -108,13 +107,14 @@ class Command(BaseCommand):
 
             # Write out list of new trials with matches we have, for manual
             # checking, fixing and adding to NORMALIZE_FILE
-            new_trials_merged.to_csv('../data/new_trials.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
+            new_trials_merged.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
+            print("Trials CSV: %d entries  After merge with normalization: %d entries\n\nSee new_trials.csv : %d for list" % (len(trials_input), len(all_trials), len(new_trials)))
 
             # Assume remaining are new sponsors for now
             unmatched = pandas.isnull(new_trials_merged['normalized_name_only'])
             new_trials_merged.loc[unmatched, 'normalized_name_only'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
             new_trials_merged.loc[unmatched, 'normalized_name'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
-            #new_trials_merged.to_csv('../data/n.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False) # debugging
+            #new_trials_merged.to_csv(PREFIX + 'n.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False) # debugging
 
             # Add our merge guesses to the main list
             all_trials = all_trials.append(new_trials_merged)

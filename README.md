@@ -33,6 +33,14 @@ export EUCTR_DEBUG= # yes or no
 export EUCTR_OPENTRIALS_DB=postgres://<account_name>:<password>@<servername>/warehouse
 ```
 
+Checkout the data respository.
+
+```
+cd ..
+git clone git@github.com:ebmdatalab/euctr-tracker-data.git
+cd -
+```
+
 Run the application.
 
 ```
@@ -68,8 +76,8 @@ Environment settings live in `/etc/profile.d/eutrialstracker_live.sh`
 Loading new data
 ================
 
-The frontend application reads data from static JSON files 
-in the `data/` directory. There's no local database.
+The frontend application reads data from static JSON files in 
+the `../euctr-tracker-data/` directory. There's no local database.
 
 1. Set the location of the OpenTrials PostgreSQL database.
 
@@ -77,7 +85,8 @@ in the `data/` directory. There's no local database.
 export OPENTRIALS\_DB=postgres://username:password@hostname/dbname
 ```
 
-2. Update `data/trials.csv` from the PostgreSQL database by running:
+2. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 
+database by running:
 
 ```
 cd euctr
@@ -97,8 +106,8 @@ This assumes the table is called "euctr". It uses the SQL script
 Terminology
 ===========
 
-The spreadsheet `data/normalized_sponsor_names.xlsx` contains normalized versions
-of the names for trials that are listed in the register.
+The spreadsheet `../euctr-tracker-data/normalized_sponsor_names.xlsx` contains 
+normalized versions of the names for trials that are listed in the register.
 
 `normalized_name_only`: This column represents normalization based only on
 sponsor name or very simple research. Different spelling/abbreviations of a

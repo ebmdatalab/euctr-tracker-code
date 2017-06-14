@@ -15,14 +15,14 @@ trials_by_sponsor_slug = None
 def get_headlines():
     global headings_data
     if not headings_data:
-        headings_data = json.load(open('../data/headline.json'))
+        headings_data = json.load(open('../../euctr-tracker-data/headline.json'))
     return headings_data
 
 
 def get_all_sponsors():
     global all_sponsors_data
     if not all_sponsors_data:
-        all_sponsors_data = json.load(open('../data/all_sponsors.json'))
+        all_sponsors_data = json.load(open('../../euctr-tracker-data/all_sponsors.json'))
         all_sponsors_data.sort(key=lambda s: s['percent_reported'], reverse=True)
     return all_sponsors_data
 
@@ -40,7 +40,7 @@ def get_major_sponsors():
 def get_all_trials():
     global all_trials_data
     if not all_trials_data:
-        all_trials_data = json.load(open('../data/all_trials.json'))
+        all_trials_data = json.load(open('../../euctr-tracker-data/all_trials.json'))
     return all_trials_data
 
 

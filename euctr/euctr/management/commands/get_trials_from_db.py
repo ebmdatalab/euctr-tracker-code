@@ -13,8 +13,8 @@ from atomicwrites import atomic_write
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
-TRIALS_CSV_FILE = '../data/trials.csv'
-TRIALS_META_FILE = '../data/trials.csv.json'
+TRIALS_CSV_FILE = '../../euctr-tracker-data/trials.csv'
+TRIALS_META_FILE = '../../euctr-tracker-data/trials.csv.json'
 
 class Command(BaseCommand):
     help = 'Fetches trials data from OpenTrials PostgredSQL database and saves to trials.csv'
