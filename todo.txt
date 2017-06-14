@@ -1,25 +1,14 @@
 *** Scraping 
-  - decide where to store history
-  - log changes to overall figures every week
-      Proportion of due trials that are late
-      Proportion of all trials that have inconsistent data
-
+  - move data to own repository
+  - automatic commit and push to git
   - code to email sheet of new trials to Nick
-  - just run it every day
+
+  - just run it every day on cron
   - consider removing data files from then on in pipeline from github
 
-  - make sure update schedule of scraper is weekly, and confirm day ends
-    started 2017-05-05 ended 2017-05-07
-    started 2017-05-17 ended 2017-05-19
-    ??? may have been another here, but don't think so
-    started 2017-06-06 ended 2017-06-08
-  - run data loading on an appropriate cron job
-
-  - why are there old trials that haven't updated? (their meta_updated)
-    https://github.com/opentrials/opentrials/issues/821
-  - "check the registration dates are largely since jan 2017"
-
 All/None look odd with "Late reporting" title
+"We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
+Add proportion of all trials that have inconsistent data to headline and headline-history
 
 Social sharing stuff
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
@@ -33,12 +22,13 @@ Social sharing stuff
 
 Test on IE11 and Edge 
   - search box on IE11
+  - BrowserStack account
 Test both pages without Javascript - do any links need to work or should be hidden?
 For scaling, do we need to cache front page or other pages
 
 Error monitoring
   Back-end errors, zero tolerance
-  Errorception
+  Errorception - dropped
   "New Relic"
 Google Analytics
 
@@ -58,6 +48,16 @@ Launch
     - histogram on the right three stacked bars:
       1) late/reported split (red/green same as pie), 2) not due, 3) inconsistent data
       still headline the inconsistent data part
+
+OpenTrials questions
+  - make sure update schedule of scraper is weekly, and confirm day ends
+    started 2017-05-05 ended 2017-05-07
+    started 2017-05-17 ended 2017-05-19
+    ??? may have been another here, but don't think so
+    started 2017-06-06 ended 2017-06-08
+
+  Why are there old trials that haven't updated? (their meta_updated)
+    https://github.com/opentrials/opentrials/issues/821
 
 
 Later
