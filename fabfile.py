@@ -53,7 +53,7 @@ def setup_nginx():
     run('nginx -t && service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start')
 
 def setup_cron():
-    run('ln -sf %s/euctr-tracker-code/deploy/%s_cron /etc/cron.daily/%s_cron' % (env.path, env.app, env.app))
+    run('cp %s/euctr-tracker-code/deploy/%s_cron /etc/cron.daily/%s_cron; chmod a+x /etc/cron.daily/%s_cron' % (env.path, env.app, env.app, env.app))
 
 #def run_migrations():
 #    if env.environment == 'live':
@@ -84,6 +84,7 @@ def deploy(environment, branch='master'):
 	update_from_git()
         pip_install()
 	setup_nginx()
+	setup_cron()
 
 
 

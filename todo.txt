@@ -1,9 +1,11 @@
-*** Scraping 
-  - automatic commit and push to git
-  - code to email sheet of new trials to Nick
+Google Analytics
 
-  - just run it every day on cron
-  - consider removing data files from then on in pipeline from github
+Daily update
+  Check the cron runs
+  Consider what happens when it runs half way through a partial scrape
+  Consider making it not write other files if new_trials.csv has stuff in?
+  Notify Nick if there are entrie sin the new_trials.csv
+  Notification if updates stop happening
 
 All/None look odd with "Late reporting" title
 "We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
@@ -29,7 +31,6 @@ Error monitoring
   Back-end errors, zero tolerance
   Errorception - dropped
   "New Relic"
-Google Analytics
 Change chown to root:www-data - ghostdriver.log a problem and pycache
 
 Improve design 
