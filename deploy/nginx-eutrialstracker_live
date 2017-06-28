@@ -81,7 +81,7 @@ server {
     }
 
     location /static {
-        alias   /var/www/eutrialstracker_live/euctr/static;
+        alias   /var/www/eutrialstracker_live/euctr-tracker-code/euctr/static;
         expires max;
         access_log off;
     }

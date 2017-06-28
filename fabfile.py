@@ -1,7 +1,7 @@
 from fabric.api import run, sudo, put
 from fabric.api import prefix, warn, abort
 from fabric.api import settings, task, env, shell_env
-from fabric.contrib.project import rsync_project
+from fabric.contrib.files import exists
 from fabric.context_managers import cd
 
 from datetime import datetime
@@ -28,18 +28,27 @@ def venv_init():
 
 def pip_install():
     with prefix('source venv/bin/activate'):
-	run('pip install -q -r requirements.txt')
+	run('pip install -q -r euctr-tracker-code/requirements.txt')
 
-def upload_files():
-    put("requirements.txt", ".")
-    rsync_project(env.path, "euctr", extra_opts="--quiet")
-    rsync_project(env.path, "data", extra_opts="--quiet")
-    rsync_project(env.path, "deploy", extra_opts="--quiet")
+def update_from_git():
+    # clone or update code
+    if not exists('euctr-tracker-code/.git'):
+	run(env.git_code_key + "git clone -q git@github.com:ebmdatalab/euctr-tracker-code.git")
+    else:
+	with cd("euctr-tracker-code"):
+	    run(env.git_code_key + "git pull -q")
+
+    # clone or update data
+    if not exists('euctr-tracker-data/.git'):
+	run(env.git_data_key + "git clone -q git@github.com:ebmdatalab/euctr-tracker-data.git")
+    else:
+	with cd("euctr-tracker-data"):
+	    run(env.git_data_key + "git pull -q")
 
 def setup_nginx():
-    run('ln -sf %s/deploy/supervisor-%s.conf /etc/supervisor/conf.d/%s.conf' % (env.path, env.app, env.app))
-    run('ln -sf %s/deploy/nginx-%s /etc/nginx/sites-enabled/%s' % (env.path, env.app, env.app))
-    run('chown -R www-data:www-data /var/www/%s' % (env.app))
+    run('ln -sf %s/euctr-tracker-code/deploy/supervisor-%s.conf /etc/supervisor/conf.d/%s.conf' % (env.path, env.app, env.app))
+    run('ln -sf %s/euctr-tracker-code/deploy/nginx-%s /etc/nginx/sites-enabled/%s' % (env.path, env.app, env.app))
+    run('chown -R www-data:www-data /var/www/%s/{euctr-tracker-code,euctr-tracker-data,letsencrypt,venv}' % (env.app))
     run('service supervisor restart')
     run('nginx -t && service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start')
 
@@ -61,13 +70,17 @@ def deploy(environment, branch='master'):
     env.path = "/var/www/%s" % env.app
     env.branch = branch
 
+    # assumes these are manually made on the server first time setup, and added
+    # as repository keys to github
+    env.git_code_key = "GIT_SSH_COMMAND='ssh -i %s/ssh-keys/id_rsa_eutrialtracker_code' " % env.path
+    env.git_data_key = "GIT_SSH_COMMAND='ssh -i %s/ssh-keys/id_rsa_eutrialtracker_data' " % env.path
+
     make_directory()
     with cd(env.path):
 	venv_init()
-	upload_files()
+	update_from_git()
         pip_install()
 	setup_nginx()
-        #run_migrations()
 
 
 
