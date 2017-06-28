@@ -82,7 +82,7 @@ the `../euctr-tracker-data/` directory. There's no local database.
 1. Set the location of the OpenTrials PostgreSQL database.
 
 ```
-export OPENTRIALS\_DB=postgres://username:password@hostname/dbname
+export EUCTR\_OPENTRIALS\_DB=postgres://username:password@hostname/dbname
 ```
 
 2. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 

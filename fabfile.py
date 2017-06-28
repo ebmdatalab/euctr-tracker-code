@@ -52,6 +52,9 @@ def setup_nginx():
     run('service supervisor restart')
     run('nginx -t && service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start')
 
+def setup_cron():
+    run('ln -sf %s/euctr-tracker-code/deploy/%s_cron /etc/cron.daily/%s_cron' % (env.path, env.app, env.app))
+
 #def run_migrations():
 #    if env.environment == 'live':
 #        with prefix('source .venv/bin/activate'):

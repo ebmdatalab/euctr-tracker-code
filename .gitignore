@@ -4,3 +4,4 @@ euctr/static/CACHE
 .ipynb_checkpoints
 rundev
 euctr/ghostdriver.log
+__pycache__/

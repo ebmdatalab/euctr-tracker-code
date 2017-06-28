@@ -1,6 +1,4 @@
 *** Scraping 
-  - update README
-
   - automatic commit and push to git
   - code to email sheet of new trials to Nick
 
@@ -32,6 +30,7 @@ Error monitoring
   Errorception - dropped
   "New Relic"
 Google Analytics
+Change chown to root:www-data - ghostdriver.log a problem and pycache
 
 Improve design 
 
