@@ -1,6 +1,4 @@
 *** Scraping 
-  - rearrange deployed directory layout to have extra directory of new repo - change deploy/ mentions of var/www
-  - make deployment pull both repos from git
   - update README
 
   - automatic commit and push to git

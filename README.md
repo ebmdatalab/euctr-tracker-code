@@ -63,14 +63,14 @@ We use fabric to deploy over SSH to a pet server.
 fab deploy:live
 ```
 
-WARNING: Currently the code is copied from your local directory.
-When the paper is published, we can perhaps make the github 
-repository public, so the server can easily fetch the code 
-directly.
+The code and data are updated via git from the master branch
+of their repositories.
 
 The configuration is in `fabfile.py` and the `deploy` directory.
 
-Environment settings live in `/etc/profile.d/eutrialstracker_live.sh`
+When settings up a new server:
+* Put environment settings live in `/etc/profile.d/eutrialstracker_live.sh`
+* Put SSH keys for the git repositories in `/var/www/eutrialstracker_live/ssh-keys`
 
 
 Loading new data
