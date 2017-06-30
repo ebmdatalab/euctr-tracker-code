@@ -29,8 +29,13 @@ SECRET_KEY = common.utils.get_env_setting('EUCTR_SECRET_KEY')
 EUCTR_DEBUG = common.utils.get_env_setting('EUCTR_DEBUG')
 assert EUCTR_DEBUG in ['yes', 'no']
 DEBUG = EUCTR_DEBUG == 'yes'
-
 ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1']
+
+
+# Parameters
+
+GOOGLE_TRACKING_ID = common.utils.get_env_setting('EUCTR_GOOGLE_TRACKING_ID')
+
 
 # Application definition
 
@@ -72,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'frontend.context_processors.google_tracking_id',
             ],
         },
     },

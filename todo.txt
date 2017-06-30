@@ -1,4 +1,4 @@
-Google Analytics
+Check Google Analytics working
 
 Daily update
   Check the cron runs
@@ -6,6 +6,7 @@ Daily update
   Consider making it not write other files if new_trials.csv has stuff in?
   Notify Nick if there are entrie sin the new_trials.csv
   Notification if updates stop happening
+  Don't update got_from_db in trials.csv.json if nothing changed
 
 All/None look odd with "Late reporting" title
 "We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
