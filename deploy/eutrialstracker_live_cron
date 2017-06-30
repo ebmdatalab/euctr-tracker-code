@@ -13,6 +13,6 @@ cd euctr-tracker-code/euctr
 ./manage.py update_trials_json
 
 cd /var/www/eutrialstracker_live/euctr-tracker-data
-git commit -qa --message="Automatic commit from eutrialstracker-live-cron"
+git commit -qa --author="Cron <>" --message="Automatic commit from eutrialstracker-live-cron"
 git push -q
 chown -R www-data:www-data .
