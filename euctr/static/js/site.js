@@ -236,7 +236,7 @@ function activate_trials_datatable() {
 
 function activate_charts() {
     /* Charts */
-    Chart.defaults.global.defaultFontFamily = "Georgia, 'Times New Roman', Times, serif"
+    Chart.defaults.global.defaultFontFamily = "Lato, 'Times New Roman', Times, serif"
     Chart.defaults.global.defaultFontSize = 15
     Chart.defaults.global.defaultFontColor = '#333'
 
