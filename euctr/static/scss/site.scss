@@ -7,16 +7,28 @@
 
 /* Load fonts from same domain, not from Google */
 @font-face {
-    font-family: 'News Cycle';
+    font-family: 'Oswald';
     font-style: normal;
     font-weight: 400;
-    src: local('News Cycle'), local('NewsCycle'), url(/static/fonts/NewsCycle-400.ttf) format('truetype');
+    src: local('Oswald'), url(/static/fonts/Oswald-Medium.ttf) format('truetype');
 }
 @font-face {
-    font-family: 'News Cycle';
+    font-family: 'Oswald';
     font-style: normal;
     font-weight: 700;
-    src: local('News Cycle Bold'), local('NewsCycle-Bold'), url(/static/fonts/NewsCycle-700.ttf) format('truetype');
+    src: local('Oswald-Bold'), local('Oswald-Bold'), url(/static/fonts/Oswald-Bold.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato'), url(/static/fonts/Lato-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato-Bold'), local('Lato-Bold'), url(/static/fonts/Lato-Bold.ttf) format('truetype');
 }
 
 @import 'bootswatch';
