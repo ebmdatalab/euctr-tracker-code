@@ -6,6 +6,7 @@ Improve design
 
 Daily update
   Check the cron runs
+    Make it report via New Relic or Mailgun
   Consider what happens when it runs half way through a partial scrape
   Consider making it not write other files if new_trials.csv has stuff in?
   Notify Nick if there are entrie sin the new_trials.csv

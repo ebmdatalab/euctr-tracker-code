@@ -246,8 +246,8 @@ function activate_charts() {
 	datasets: [
 	{
 	    data: [total_due - total_unreported, total_unreported],
-	    backgroundColor: [ "#22B24C", "#EB6864" ],
-	    hoverBackgroundColor: [ "#22B24C", "#EB6864" ]
+	    backgroundColor: [ "#5e7c88", "#ff9638" ],
+	    hoverBackgroundColor: [ "#5e7c88", "#ff9638" ]
        	},
 	]
     }
@@ -268,23 +268,23 @@ function activate_charts() {
 	datasets: [{
 	    label: "Reported results",
 	    data: [total_due - total_unreported, 0, 0, 0],
-	    backgroundColor: "#22B24C",
-	    hoverBackgroundColor: "#22B24C",
+	    backgroundColor: "#5e7c88",
+	    hoverBackgroundColor: "#5e7c88",
        	},{
 	    label: "",
 	    data: [0, not_yet_due_trials, 0, 0],
-	    backgroundColor: "#999",
-	    hoverBackgroundColor: "#999",
+	    backgroundColor: "#b7c1c5",
+	    hoverBackgroundColor: "#b7c1c5",
        	},{
 	    label: "",
 	    data: [0, 0, inconsistent_trials, 0],
-	    backgroundColor: "#B264B2",
-	    hoverBackgroundColor: "#B264B2",
+	    backgroundColor: "#ff9638",
+	    hoverBackgroundColor: "#ff9638",
        	},{
 	    label: "Not reported",
 	    data: [total_unreported, 0, 0, 0 ],
-	    backgroundColor: "#EB6864",
-	    hoverBackgroundColor: "#EB6864",
+	    backgroundColor: "#ff9638",
+	    hoverBackgroundColor: "#ff9638",
 	}]
     }
     var overview_options = {

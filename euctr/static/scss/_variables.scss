@@ -12,7 +12,7 @@ $gray-base:              #000 !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
 $gray:                   #777 !default; // #555
-$gray-light:             lighten($gray-base, 60%) !default;   // #999
+$gray-light:             #b7c1c5; /* Was: lighten($gray-base, 60%) !default;   // #999 */
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 /* Original Journal
@@ -23,11 +23,19 @@ $brand-warning:         #F5E625 !default;
 $brand-danger:          #F57A00 !default;
 */
 
+/* FAI colours
 $brand-primary:         #369 !default;
 $brand-success:         #22B24C !default;
 $brand-info:            #F57A00 !default;
 $brand-warning:         #B264B2 !default;
 $brand-danger:          #EB6864 !default;
+*/
+
+$brand-primary:         #5e7c88 !default; /* NEEDS UPDATING */
+$brand-success:         #5e7c88 !default;
+$brand-info:            #ff9638 !default; /* NEEDS UPDATING - used for "Completed, report not yet due" */ 
+$brand-warning:         #ff9638 !default; /* needs lines */
+$brand-danger:          #ff9638 !default;
 
 
 //== Scaffolding
