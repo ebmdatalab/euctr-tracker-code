@@ -1,4 +1,8 @@
-Check Google Analytics working
+Improve design 
+  Add social sharing buttons for Ayesha
+  Change bootstrap fonts
+  Change bootstrap colours
+
 
 Daily update
   Check the cron runs
@@ -7,6 +11,8 @@ Daily update
   Notify Nick if there are entrie sin the new_trials.csv
   Notification if updates stop happening
   Don't update got_from_db in trials.csv.json if nothing changed
+  Get on tech@ebmdatalab.net - ask Seb
+  Change cron email to tech@ebmdatalab.net
 
 All/None look odd with "Late reporting" title
 "We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
@@ -33,8 +39,6 @@ Error monitoring
   Errorception - dropped
   "New Relic"
 Change chown to root:www-data - ghostdriver.log a problem and pycache
-
-Improve design 
 
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
