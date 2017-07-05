@@ -1,8 +1,4 @@
 Improve design 
-  Spacing left/right better on bar
-  Add tooltips on trials
-  Spacing between bar and text not right when wrapping
-
   Stripes on the emblems in the table for inconsistent data
 
   Add social sharing buttons for Ayesha
