@@ -265,6 +265,10 @@ body#taking-screenshot .jumbotron {
   min-height: 100%;
   position: relative;
 }
+#trials-bar-caption {
+  width: 100%;
+  position: relative;
+}
 
 #reported-bar {
   position: absolute;
@@ -273,13 +277,18 @@ body#taking-screenshot .jumbotron {
   background-color: $brand-success;
   width: 20%;
 }
-
 #not-reported-bar {
   position: absolute;
   bottom: 0px;
   left: 10%;
   background-color: $brand-danger;
   width: 20%;
+}
+#caption-1 {
+  position: absolute;
+  left: 10%;
+  width: 20%;
+  margin-top: 8px;
 }
 
 #not-due-bar {
@@ -288,6 +297,12 @@ body#taking-screenshot .jumbotron {
   left: 40%;
   background-color: $gray-light;
   width: 20%;
+}
+#caption-2 {
+  position: absolute;
+  left: 40%;
+  width: 20%;
+  margin-top: 8px;
 }
 
 #inconsistent-data-bar {
@@ -298,6 +313,12 @@ body#taking-screenshot .jumbotron {
   top: auto;
   background-color: $brand-warning;
   width: 20%;
+}
+#caption-3 {
+  position: absolute;
+  right: 10%;
+  width: 20%;
+  margin-top: 8px;
 }
 
 .caption-bar {
