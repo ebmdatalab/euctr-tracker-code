@@ -269,35 +269,35 @@ body#taking-screenshot .jumbotron {
 #reported-bar {
   position: absolute;
   bottom: 0px;
-  left: 2.5%;
+  left: 10%;
   background-color: $brand-success;
-  width: 25%;
+  width: 20%;
 }
 
 #not-reported-bar {
   position: absolute;
   bottom: 0px;
-  left: 2.5%;
+  left: 10%;
   background-color: $brand-danger;
-  width: 25%;
+  width: 20%;
 }
 
 #not-due-bar {
   position: absolute;
   bottom: 0px;
-  left: 37.5%;
+  left: 40%;
   background-color: $gray-light;
-  width: 25%;
+  width: 20%;
 }
 
 #inconsistent-data-bar {
   position: absolute;
   bottom: 0px;
-  right: 2.5%;
+  right: 10%;
   left: auto;
   top: auto;
   background-color: $brand-warning;
-  width: 25%;
+  width: 20%;
 }
 
 .caption-bar {
