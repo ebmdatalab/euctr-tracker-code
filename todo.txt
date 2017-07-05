@@ -1,4 +1,7 @@
 Improve design 
+  Add tooltips on trials
+  Stripes on the emblems in the table for inconsistent data
+
   Add social sharing buttons for Ayesha
   Change bootstrap fonts
   Change bootstrap colours

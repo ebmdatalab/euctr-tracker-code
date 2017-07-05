@@ -259,6 +259,60 @@ body#taking-screenshot .jumbotron {
     }
 }
 
+#trials-bar-chart {
+  width: 100%;
+  height: 256px;
+  min-height: 100%;
+  position: relative;
+}
+
+#reported-bar {
+  position: absolute;
+  bottom: 0px;
+  left: 2.5%;
+  background-color: $brand-success;
+  width: 25%;
+}
+
+#not-reported-bar {
+  position: absolute;
+  bottom: 0px;
+  left: 2.5%;
+  background-color: $brand-danger;
+  width: 25%;
+}
+
+#not-due-bar {
+  position: absolute;
+  bottom: 0px;
+  left: 37.5%;
+  background-color: $gray-light;
+  width: 25%;
+}
+
+#inconsistent-data-bar {
+  position: absolute;
+  bottom: 0px;
+  right: 2.5%;
+  left: auto;
+  top: auto;
+  background-color: $brand-warning;
+  width: 25%;
+}
+
+.caption-bar {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -32px;
+  width: 100%;
+  left: 0;
+  color: $text-color;
+}
+
+#inconsistent-data-bar .caption-bar {
+  margin-bottom: -56px;
+}
+
 /****************************************************************/
 /* About page */
 
@@ -274,4 +328,84 @@ body#taking-screenshot .jumbotron {
 #about-page + hr + footer {
   margin-bottom: 80em;
 }
+
+/****************************************************************/
+/* Stripes*/
+
+/* From https://codepen.io/lbebber/pen/BzoHi */
+
+/* @import "compass/css3"; */
+
+//Variables here:
+//(alongside with commented suggestions)
+$foreground-color:$brand-danger;//black;
+$background-color:#fff;//white
+$shadow-color:$foreground-color;
+$distance:8px;
+$cut-distance:3px;//$distance/4;
+$strips-size:6px; //10px
+$strips-ratio:50%;//70%
+$strips-angle:45deg;//90deg;
+
+//cray stuff yo. be sure to try (if you please)
+$animate:false;//true
+$fixed:false;//true
+
+.dashed-shadow{
+  position:relative;
+  top:$distance;
+  left:$distance;
+  display:inline-block;
+  color:$shadow-color;
+}
+@keyframes dash-animation{
+  0% {background-position:0 0};
+  100% {background-position:100% 0};
+}
+.dashed-shadow:before{
+  content:" ";
+  display:block;
+  
+  position:absolute;
+  $bleeding-horizontal:10px;
+  $bleeding-vertical:0px;
+  top:-$bleeding-vertical - $distance;
+  left:-$bleeding-vertical - $distance;
+  bottom:-$bleeding-horizontal + $distance;
+  right:-$bleeding-horizontal + $distance;
+  z-index:1;
+  $color:$background-color;
+  $size:$strips-ratio/2;
+  $halfSize:$size/2;
+  $p1:$halfSize;
+  $p2:50%-$halfSize;
+  $p3:50%+$halfSize;
+  $p4:100%-$halfSize;
+  $transparent:transparentize($color,1);
+  /*@include background-image(linear-gradient($strips-angle,$color $p1, $transparent $p1, $transparent $p2,$color $p2, $color $p3, $transparent $p3, $transparent $p4, $color $p4));*/
+  background-image:linear-gradient($strips-angle,$color $p1, $transparent $p1, $transparent $p2,$color $p2, $color $p3, $transparent $p3, $transparent $p4, $color $p4);
+  background-size:$strips-size $strips-size;
+  @if($animate){
+    animation:dash-animation 30s infinite linear; 
+  }
+  @if($fixed){
+    background-attachment:fixed;
+  }
+}
+.dashed-shadow:hover:before{
+  animation:dash-animation 30s infinite linear;
+}
+
+/*
+.dashed-shadow:after{
+  z-index:2;
+  content:attr(data-text);
+  position:absolute;
+  left:-$distance;
+  top:-$distance;
+  color:$foreground-color;
+  text-shadow:$cut-distance $cut-distance $background-color;
+}
+*/
+
 

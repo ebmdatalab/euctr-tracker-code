@@ -1,7 +1,9 @@
 {% load render_nan %}
+{% load bar_chart %}
 
 <script>
   total_unreported = {{ total_unreported }}
+  total_reported = {{ total_reported }}
   total_due = {{ total_due }}
   not_yet_due_trials = {{ not_yet_due_trials }}
   inconsistent_trials = {{ inconsistent_trials }}
@@ -20,11 +22,11 @@
       <canvas id="unreported_chart" height="200px"></canvas>
       {% if percent_unreported == 0 %}
 	<div class="sponsor-number">All</div>
-	<p class="lead">of {{ sponsor_name }}'s {{ total_due}} due trials 
+	<p class="lead">of {{ sponsor_name }}'s {{ total_due }} due trials 
 	have been reported</p>
       {% elif percent_unreported == 100 %}
 	<div class="sponsor-number">None</div>
-	<p class="lead">of {{ sponsor_name }}'s {{ total_due}} due trials 
+	<p class="lead">of {{ sponsor_name }}'s {{ total_due }} due trials 
 	have been reported</p>
       {% elif percent_unreported|custom_percent == "-" %}
 	<div class="sponsor-number">&nbsp;</div>
@@ -38,14 +40,22 @@
       {% endif %}
     </div>
     <div class="col-sm-3 col-sm-push-6 col-xs-6 sponsor-headlines">
-      <!-- <canvas id="inconsistent_chart" height="200px"></canvas> -->
       <div class="sponsor-number">{{inconsistent_trials}}</div>
       <p class="lead">of {{ sponsor_name }}'s {{ total_trials }} register entries
       have <b>inconsistent data</b>, so we can't be sure if they've reported
       on time</p>
     </div>
     <div class="col-sm-6 col-sm-pull-3 col-xs-12 sponsor-headlines">
-      <canvas id="overview_chart" height="200px"></canvas>
+      <div id="trials-bar-chart">
+	<div id="not-reported-bar" style="height: {% calc_bar total_due not_yet_due_trials inconsistent_trials %}%">
+	</div>
+	<div id="reported-bar" style="height: {% calc_bar total_reported total_due not_yet_due_trials inconsistent_trials %}%"><span class="caption-bar">Due trials</span>
+	</div>
+	<div id="not-due-bar" style="height: {% calc_bar not_yet_due_trials total_due inconsistent_trials %}%"><span class="caption-bar">Not due</span>
+	</div>
+	<div class="dashed-shadow" id="inconsistent-data-bar" style="height: {% calc_bar inconsistent_trials total_due not_yet_due_trials %}%"><span class="caption-bar">Inconsistent data</span>
+	</div>
+      </div>
     </div>
     <div class="col-xs-12">
       <p class="lead sponsor-blurb">All clinical trials on the 
