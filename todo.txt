@@ -1,9 +1,5 @@
 Improve design 
-  Animation on hover isn't right
-  Stripes on the emblems in the table for inconsistent data
-
   Add social sharing buttons for Ayesha
-  Finalise how colours set in bootstrap
 
   When zooming for presentation, not enough shows in table (Ben)
 

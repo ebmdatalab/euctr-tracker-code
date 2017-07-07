@@ -33,10 +33,12 @@ $brand-danger:          #EB6864 !default;
 
 $brand-primary:         #414445 !default;
 $brand-success:         #5e7c88 !default;
-$brand-info:            #ff9638 !default; /* NEEDS UPDATING - used for "Completed, report not yet due" */ 
+$brand-info:            #feb41d !default;
 $brand-warning:         #ff9638 !default; /* needs lines */
 $brand-danger:          #ff9638 !default;
 
+/* Colour $brand-success made slightly lighter */
+$brand-success-lighter: #7296a4 !default;
 
 //== Scaffolding
 //

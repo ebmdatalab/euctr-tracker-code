@@ -65,6 +65,15 @@ a > span[data-toggle="tooltip"] {
     margin-left: 6px;
 }
 
+.label-warning {
+  color: $brand-primary;
+  border: 3px solid $brand-warning;
+  background-color: $body-bg;
+}
+
+.label-early {
+  background-color: $brand-success-lighter;
+}
 
 /****************************************************************/
 /* Loading spinner */
@@ -352,7 +361,7 @@ body#taking-screenshot .jumbotron {
 }
 
 /****************************************************************/
-/* Stripes*/
+/* Stripes (mainly on chart on sponsor page) */
 
 /* From https://codepen.io/lbebber/pen/BzoHi */
 
@@ -399,17 +408,4 @@ $strips-angle:45deg;
 .dashed-animation:hover:before{
   animation: dash-animation 30s infinite linear;
 }
-
-/*
-.dashed-animation: after{
-  z-index: 2;
-  content: attr(data-text);
-  position: absolute;
-  left: -$distance;
-  top: -$distance;
-  color: $foreground-color;
-  text-shadow: $cut-distance $cut-distance $background-color;
-}
-*/
-
 
