@@ -1,7 +1,11 @@
 Improve design 
   Add social sharing buttons for Ayesha
 
+  Links need to look different
+
   When zooming for presentation, not enough shows in table (Ben)
+
+  
 
 Daily update
   Check the cron runs

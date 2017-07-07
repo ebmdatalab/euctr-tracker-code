@@ -8,12 +8,10 @@ $bootstrap-sass-asset-helper: false !default;
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-base:              #000 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   #777 !default; // #555
-$gray-light:             #b7c1c5; /* Was: lighten($gray-base, 60%) !default;   // #999 */
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-dark:              #565b5d !default;
+$gray:                   #7c8385 !default; 
+$gray-light:             #b7c1c5 !default; 
+$gray-lighter:           #e3e1e1 !default;
 
 /* Original Journal
 $brand-primary:         #EB6864 !default;
@@ -47,7 +45,7 @@ $brand-success-lighter: #7296a4 !default;
 //** Background color for `<body>`.
 $body-bg:               #fff !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
+$text-color:            $brand-primary !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
@@ -261,7 +259,7 @@ $dropdown-fallback-border:       #ccc !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
 
 //** Dropdown link text color.
-$dropdown-link-color:            $gray-dark !default;
+$dropdown-link-color:            $text-color !default;
 //** Hover color for dropdown links.
 $dropdown-link-hover-color:      #fff !default;
 //** Hover background for dropdown links.
@@ -856,7 +854,7 @@ $kbd-color:                   #fff !default;
 $kbd-bg:                      #333 !default;
 
 $pre-bg:                      #f5f5f5 !default;
-$pre-color:                   $gray-dark !default;
+$pre-color:                   $text-color !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
 

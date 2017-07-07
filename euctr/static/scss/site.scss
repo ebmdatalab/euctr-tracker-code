@@ -75,6 +75,10 @@ a > span[data-toggle="tooltip"] {
   background-color: $brand-success-lighter;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+}
+
 /****************************************************************/
 /* Loading spinner */
 
@@ -178,16 +182,12 @@ li.search-pill a {
     margin-top: 22px !important;
 
     label {
-      font-weight: normal;
+        font-weight: normal;
     }
 }
 
 /****************************************************************/
 /* Front page */
-
-.intro {
-    margin-top: 20px;
-}
 
 .headline-number {
     font-size: 60px; 
@@ -197,12 +197,80 @@ li.search-pill a {
 }
 .jumbotron {
     padding-bottom: 64px;
+
+
+    p {
+        margin-bottom: 21px;
+    }
+
+    h1 {
+        color: $text-color;
+        font-size: 54px;
+        text-align: justify;
+        text-align-last: justify;
+        width: 100%;
+        text-decoration: none;
+        padding-bottom: 8px;
+        border-bottom: 9px solid $text-color;
+    }
+
+    .first-column, .second-column {
+        width: 568px;
+        display: inline-block;
+        text-transform: uppercase;
+        text-align: justify;
+        text-align-last: justify;
+        margin-top: 20px;
+        font-family: $font-family-sans-serif;
+    }
+    .first-column {
+        padding-right: 32px;
+    }
+    .second-column {
+        padding-left: 32px;
+    }
+
+    #preamble-1 {
+        font-size: 60px;
+        color: $gray-dark;
+    }
+    #preamble-2 {
+        font-size: 30px;
+        color: $gray-dark;
+    }
+    #preamble-3 {
+        font-size: 75px;
+        color: $brand-success;
+    }
+    #preamble-4 {
+        font-size: 35px;
+        color: $gray-dark;
+    }
+    #preamble-5 {
+        font-size: 25px;
+        color: $gray-dark;
+    }
+    #preamble-6 {
+        font-size: 90px;
+        color: $brand-success-lighter;
+    }
+    #preamble-7 {
+        font-size: 30px;
+        color: $gray-dark;
+    }
+    #white-line {
+		position: absolute;
+		top: 50%;
+		width: 100px;
+		left: 0;
+		border-top:solid 1px red;
+		z-index:-1;
+    }
 }
-.jumbotron p {
-    margin-bottom: 21px;
-}
+
 @media (max-width: $screen-md-min) {
     .second-column {
+        font-size: 25px;
         margin-top: 40px;
     }
     .jumbotron .second-column {
