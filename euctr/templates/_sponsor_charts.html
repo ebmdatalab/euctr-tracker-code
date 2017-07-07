@@ -52,7 +52,7 @@
 	<div id="reported-bar" style="height: {% calc_bar total_reported total_due not_yet_due_trials inconsistent_trials %}%" data-toggle="tooltip" data-placement="bottom" title="Due to report, have reported: {{ total_reported }} trials">
 	</div>
 	<div id="not-due-bar" style="height: {% calc_bar not_yet_due_trials total_due inconsistent_trials %}%" data-toggle="tooltip" data-placement="bottom" title="Not yet due to report: {{ not_yet_due_trials }} trials">	</div>
-	<div class="dashed-shadow" id="inconsistent-data-bar" style="height: {% calc_bar inconsistent_trials total_due not_yet_due_trials %}%" data-toggle="tooltip" data-placement="bottom" title="Inconsistent data: {{ inconsistent_trials }} trials">	</div>
+	<div class="dashed-animation" id="inconsistent-data-bar" style="height: {% calc_bar inconsistent_trials total_due not_yet_due_trials %}%" data-toggle="tooltip" data-placement="bottom" title="Inconsistent data: {{ inconsistent_trials }} trials">	</div>
       </div>
       <div id="trials-bar-caption">
 	<span id="caption-1">Due trials</span>

@@ -356,77 +356,59 @@ body#taking-screenshot .jumbotron {
 
 /* From https://codepen.io/lbebber/pen/BzoHi */
 
-/* @import "compass/css3"; */
-
-//Variables here:
-//(alongside with commented suggestions)
-$foreground-color:$brand-danger;//black;
-$background-color:#fff;//white
-$shadow-color:$foreground-color;
+$foreground-color:$brand-danger;
+$background-color:#fff;
 $distance:8px;
-$cut-distance:3px;//$distance/4;
-$strips-size:6px; //10px
-$strips-ratio:50%;//70%
-$strips-angle:45deg;//90deg;
+$cut-distance:3px;
+$strips-size:12px;
+$strips-ratio:50%;
+$strips-angle:45deg;
 
-//cray stuff yo. be sure to try (if you please)
-$animate:false;//true
-$fixed:false;//true
-
-.dashed-shadow{
-  position:relative;
-  top:$distance;
-  left:$distance;
-  display:inline-block;
-  color:$shadow-color;
+.dashed-animation {
+  position: relative;
+  display: inline-block;
+  color: $foreground-color;
 }
-@keyframes dash-animation{
-  0% {background-position:0 0};
-  100% {background-position:100% 0};
+@keyframes dash-animation {
+  0% { background-position: 0 0 };
+  100% { background-position: 700% 0 };
 }
-.dashed-shadow:before{
-  content:" ";
-  display:block;
+.dashed-animation:before{
+  content: " ";
+  display: block;
   
-  position:absolute;
-  $bleeding-horizontal:10px;
-  $bleeding-vertical:0px;
-  top:-$bleeding-vertical - $distance;
-  left:-$bleeding-vertical - $distance;
-  bottom:-$bleeding-horizontal + $distance;
-  right:-$bleeding-horizontal + $distance;
-  z-index:1;
-  $color:$background-color;
-  $size:$strips-ratio/2;
-  $halfSize:$size/2;
-  $p1:$halfSize;
-  $p2:50%-$halfSize;
-  $p3:50%+$halfSize;
-  $p4:100%-$halfSize;
-  $transparent:transparentize($color,1);
-  /*@include background-image(linear-gradient($strips-angle,$color $p1, $transparent $p1, $transparent $p2,$color $p2, $color $p3, $transparent $p3, $transparent $p4, $color $p4));*/
-  background-image:linear-gradient($strips-angle,$color $p1, $transparent $p1, $transparent $p2,$color $p2, $color $p3, $transparent $p3, $transparent $p4, $color $p4);
-  background-size:$strips-size $strips-size;
-  @if($animate){
-    animation:dash-animation 30s infinite linear; 
-  }
-  @if($fixed){
-    background-attachment:fixed;
-  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  $color: $background-color;
+  $size: $strips-ratio/2;
+  $halfSize: $size/2;
+  $p1: $halfSize;
+  $p2: 50%-$halfSize;
+  $p3: 50%+$halfSize;
+  $p4: 100%-$halfSize;
+  $transparent: transparentize($color,1);
+
+  background-image: linear-gradient($strips-angle, $color $p1, $transparent $p1, $transparent $p2, $color $p2, $color $p3, $transparent $p3, $transparent $p4, $color $p4);
+  background-size: $strips-size $strips-size;
 }
-.dashed-shadow:hover:before{
-  animation:dash-animation 30s infinite linear;
+.dashed-animation:hover:before{
+  animation: dash-animation 30s infinite linear;
 }
 
 /*
-.dashed-shadow:after{
-  z-index:2;
-  content:attr(data-text);
-  position:absolute;
-  left:-$distance;
-  top:-$distance;
-  color:$foreground-color;
-  text-shadow:$cut-distance $cut-distance $background-color;
+.dashed-animation: after{
+  z-index: 2;
+  content: attr(data-text);
+  position: absolute;
+  left: -$distance;
+  top: -$distance;
+  color: $foreground-color;
+  text-shadow: $cut-distance $cut-distance $background-color;
 }
 */
 
