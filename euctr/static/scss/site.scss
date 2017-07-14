@@ -218,6 +218,7 @@ li.search-pill a {
         text-decoration: none;
         padding-bottom: 8px;
         border-bottom: 9px solid $text-color;
+	margin-bottom: 16px;
     }
 
     .first-column, .second-column {
@@ -314,6 +315,7 @@ li.search-pill a {
         color: $gray-dark;
     }
     #learn-more {
+	font-size: 30px;
         text-align: right;
         text-align-last: right;
 	a {
@@ -335,6 +337,8 @@ li.search-pill a {
       line-height: 230px;
       font-family: $font-family-brash;
       color: $brand-brash-number;
+      margin-top: 20px;
+      margin-bottom: 24px;
     }
     #preamble-brash-percent {
       font-size: 175px;
@@ -344,13 +348,19 @@ li.search-pill a {
       vertical-align: top;
     }
     #preamble-due-trials {
-      font-size: 30px;
+      font-size: 21px;
       line-height: 30px;
       color: $gray-dark;
+      width: 160px;
+      position: relative;
+      top: -83px;
+      left: 380px;
+      margin-bottom: -45px;
     }
     .first-subcolumn, .second-subcolumn {
         width: 266px;
         display: inline-block;
+	color: $gray-dark;
     }
     .first-subcolumn {
         padding-right: 20px;
@@ -378,15 +388,39 @@ li.search-pill a {
       margin-top: 5px;
     }
 
-}
-
-@media (max-width: $screen-md-min) {
-    .second-column {
-        font-size: 25px;
-        margin-top: 40px;
-    }
-    .jumbotron .second-column {
-        margin-top: 50px;
+    @media (max-width: 1200px) {
+        h1 {
+            position: relative;
+	    text-align: center;
+	    text-align-last: center;
+	    padding-left: 45px;
+	    padding-right: 45px;
+	    border-bottom: none;
+	}
+	h1:before {
+	    content : "";
+	    position: absolute;
+	    left    : 0;
+	    bottom  : -8px;
+	    height  : 1px;
+	    width   : 50%;
+            margin-left: 25%;
+	    border-bottom: 9px solid $text-color;
+	}
+	.first-column {
+            display: block;
+	    margin-top: 45px;
+	    padding-right: 0px;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	.second-column {
+            display: block;
+	    margin-top: 45px;
+            padding-left: 0px;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
     }
 }
 
