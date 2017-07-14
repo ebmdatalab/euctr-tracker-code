@@ -83,6 +83,8 @@ a > span[data-toggle="tooltip"] {
 
 h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
+  color: $brand-primary;
+  font-weight: normal;
 }
 
 /****************************************************************/
@@ -123,10 +125,27 @@ h1, h2, h3, h4, h5, h6 {
     vertical-align: middle;
 }
 
-.nav-pills > .active > a .badge {
-  color: $brand-primary;
+.nav-pills > li.active a h2 {
+  background-color: $gray !important;
+}
+.nav-pills > li.active a {
+  background-color: $gray !important;
+}
+
+.nav-pills > li a h2 {
+  color: $gray;
+}
+
+.nav-pills > li.active > a .badge {
+  color: $gray;
   background-color: $component-active-color;
 }
+
+.nav-pills > li > a .badge {
+  background-color: $gray;
+  color: $component-active-color;
+}
+
 
 .table .label {
     line-height: 20px;
