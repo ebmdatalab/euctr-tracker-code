@@ -1,9 +1,7 @@
 Improve design 
-  Make front page work on narrow screen
   Add white pill graphic to front page
   Check front page on multiple browsers
-
-  Makr frontn page work for browser widths
+  Make front page work for phone widths
 
   Add social sharing buttons for Ayesha
 

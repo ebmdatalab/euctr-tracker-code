@@ -28,7 +28,7 @@
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
-    src: local('Lato-Bold'), local('Lato-Bold'), url(/static/fonts/Lato-Bold.ttf) format('truetype');
+    src: local('Lato-Black'), local('Lato-Black'), url(/static/fonts/Lato-Black.ttf) format('truetype');
 }
 @font-face {
     font-family: 'Lora';
@@ -318,8 +318,10 @@ li.search-pill a {
 	font-size: 30px;
         text-align: right;
         text-align-last: right;
+	margin-right: 40px;
+ 	margin-top: 16px;
 	a {
-	  color: $gray-light;	
+	  color: $brand-learn-more;	
 	}
     }
     #preamble-11 {
