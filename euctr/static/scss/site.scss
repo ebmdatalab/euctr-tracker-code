@@ -30,6 +30,12 @@
     font-weight: 700;
     src: local('Lato-Bold'), local('Lato-Bold'), url(/static/fonts/Lato-Bold.ttf) format('truetype');
 }
+@font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lora'), url(/static/fonts/Lora-Regular.ttf) format('truetype');
+}
 
 @import 'bootswatch';
 
@@ -221,51 +227,157 @@ li.search-pill a {
         text-align: justify;
         text-align-last: justify;
         margin-top: 20px;
-        font-family: $font-family-sans-serif;
     }
     .first-column {
         padding-right: 32px;
+        font-family: $font-family-sans-serif;
     }
     .second-column {
         padding-left: 32px;
+        font-family: $font-family-serif;
+	vertical-align: top;
     }
 
+    #wrap-0 {
+        font-size: 60px;
+	line-height: 60px;
+    }
     #preamble-1 {
         font-size: 60px;
+	line-height: 60px;
         color: $gray-dark;
     }
     #preamble-2 {
         font-size: 30px;
+	line-height: 30px;
         color: $gray-dark;
     }
     #preamble-3 {
         font-size: 75px;
+	line-height: 75px;
         color: $brand-success;
     }
     #preamble-4 {
         font-size: 35px;
+        line-height: 45px;
         color: $gray-dark;
     }
     #preamble-5 {
         font-size: 25px;
+        line-height: 25px;
         color: $gray-dark;
     }
     #preamble-6 {
         font-size: 90px;
+        line-height: 90px;
         color: $brand-success-lighter;
     }
-    #preamble-7 {
-        font-size: 30px;
-        color: $gray-dark;
+    #wrap-1 {
+        text-align: left;
+        text-align-last: left;
+	margin-top: 18px;
+	margin-bottom: -22px;
     }
     #white-line {
-		position: absolute;
-		top: 50%;
-		width: 100px;
-		left: 0;
-		border-top:solid 1px red;
-		z-index:-1;
+	border-bottom: solid 5px white;
+        text-align: left;
+        text-align-last: left;
+	font-size: 15px;
+	right: 32px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
     }
+    #preamble-7 {
+	position: relative;
+	top: -24px;
+        font-size: 30px;
+        color: $gray-dark;
+        text-align: left;
+        text-align-last: left;
+	background-color: $gray-lighter;
+	padding-right: 8px;
+    }
+    #preamble-8 {
+        font-size: 25px;
+	line-height: 25px;
+        color: $gray-dark;
+    }
+    #preamble-9 {
+        font-size: 44px;
+	line-height: 50px;
+        color: $gray-dark;
+    }
+    #preamble-10 {
+        font-size: 35px;
+	line-height: 40px;
+        color: $gray-dark;
+    }
+    #learn-more {
+        text-align: right;
+        text-align-last: right;
+	a {
+	  color: $gray-light;	
+	}
+    }
+    #preamble-11 {
+      font-size: 50px;
+      line-height: 55px;
+      color: $brand-sharp;
+    }
+    #preamble-12 {
+      font-size: 64px;
+      line-height: 70px;
+      color: $gray-dark;
+    }
+    #preamble-brash-number {
+      font-size: 230px;
+      line-height: 230px;
+      font-family: $font-family-brash;
+      color: $brand-brash-number;
+    }
+    #preamble-brash-percent {
+      font-size: 175px;
+      line-height: 175px;
+      font-family: $font-family-brash;
+      color: $brand-brash-number;
+      vertical-align: top;
+    }
+    #preamble-due-trials {
+      font-size: 30px;
+      line-height: 30px;
+      color: $gray-dark;
+    }
+    .first-subcolumn, .second-subcolumn {
+        width: 266px;
+        display: inline-block;
+    }
+    .first-subcolumn {
+        padding-right: 20px;
+    }
+    .second-subcolumn {
+        padding-left: 16px;
+	vertical-align: top;
+	border-left: 6px solid $text-color;
+    }
+    #preamble-13 {
+      font-size: 25px;
+      line-height: 29px;
+    }
+    #preamble-14 {
+      font-size: 30px;
+      line-height: 34px;
+    }
+    #preamble-15 {
+      font-size: 23px;
+      line-height: 29px;
+    }
+    #preamble-16 {
+      font-size: 24px;
+      line-height: 29px;
+      margin-top: 5px;
+    }
+
 }
 
 @media (max-width: $screen-md-min) {

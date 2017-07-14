@@ -13,22 +13,6 @@ $gray:                   #7c8385 !default;
 $gray-light:             #b7c1c5 !default; 
 $gray-lighter:           #e3e1e1 !default;
 
-/* Original Journal
-$brand-primary:         #EB6864 !default;
-$brand-success:         #22B24C !default;
-$brand-info:            #369 !default;
-$brand-warning:         #F5E625 !default;
-$brand-danger:          #F57A00 !default;
-*/
-
-/* FAI colours
-$brand-primary:         #369 !default;
-$brand-success:         #22B24C !default;
-$brand-info:            #F57A00 !default;
-$brand-warning:         #B264B2 !default;
-$brand-danger:          #EB6864 !default;
-*/
-
 $brand-primary:         #414445 !default;
 $brand-success:         #5e7c88 !default;
 $brand-info:            #feb41d !default;
@@ -37,6 +21,8 @@ $brand-danger:          #ff9638 !default;
 
 /* Colour $brand-success made slightly lighter */
 $brand-success-lighter: #7296a4 !default;
+$brand-sharp: #494e50 !default;
+$brand-brash-number: #feb41d !default;
 
 //== Scaffolding
 //
@@ -61,6 +47,7 @@ $link-hover-decoration: underline !default;
 
 $font-family-sans-serif:  "Oswald", "Arial Narrow Bold", sans-serif !default;
 $font-family-serif:       "Lato", "Times New Roman", Times, serif !default;
+$font-family-brash:       "Lora", "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-serif !default;
