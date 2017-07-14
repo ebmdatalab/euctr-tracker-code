@@ -222,7 +222,7 @@ li.search-pill a {
     }
 
     .first-column, .second-column {
-        width: 568px;
+        width: 536px;
         display: inline-block;
         text-transform: uppercase;
         text-align: justify;
@@ -230,11 +230,11 @@ li.search-pill a {
         margin-top: 20px;
     }
     .first-column {
-        padding-right: 32px;
+        margin-right: 32px;
         font-family: $font-family-sans-serif;
     }
     .second-column {
-        padding-left: 32px;
+        margin-left: 32px;
         font-family: $font-family-serif;
 	vertical-align: top;
     }
@@ -410,14 +410,12 @@ li.search-pill a {
 	.first-column {
             display: block;
 	    margin-top: 45px;
-	    padding-right: 0px;
 	    margin-left: auto;
 	    margin-right: auto;
 	}
 	.second-column {
             display: block;
 	    margin-top: 45px;
-            padding-left: 0px;
 	    margin-left: auto;
 	    margin-right: auto;
 	}
