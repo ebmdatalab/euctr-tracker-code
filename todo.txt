@@ -1,5 +1,4 @@
 Improve design 
-  Add white pill graphic to front page
   Check front page on multiple browsers
   Make front page work for phone widths
   Consider changing to no decimal place in main headline front page figure

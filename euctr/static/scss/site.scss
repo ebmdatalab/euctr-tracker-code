@@ -295,7 +295,7 @@ li.search-pill a {
     #wrap-1 {
         text-align: left;
         text-align-last: left;
-	margin-top: 18px;
+	margin-top: -4px;
 	margin-bottom: -22px;
     }
     #white-line {
@@ -307,6 +307,17 @@ li.search-pill a {
 	width: 100%;
 	margin: 0;
 	padding: 0;
+    }
+    #white-line:after {
+	content: "\200B";
+	background-image: url("/static/images/pill-for-line-trans.svg?2608b20807f5");
+	position: relative;
+	left: 300px;
+	background-color: $gray-lighter;
+	min-width: 70px;
+	display: inline-block;
+	top: 13px;
+
     }
     #preamble-7 {
 	position: relative;
