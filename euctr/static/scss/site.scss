@@ -93,6 +93,22 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+body#taking-screenshot .jumbotron {
+    margin-bottom: 0;
+    padding-top: 16px;
+    padding-bottom: 24px;
+}
+
+.jumbotron {
+   h1 {
+      color: $text-color;
+      font-size: 54px;
+      width: 100%;
+      text-decoration: none;
+      margin-bottom: 16px;
+   }
+}
+
 /****************************************************************/
 /* Loading spinner */
 
@@ -221,28 +237,17 @@ li.search-pill a {
 /****************************************************************/
 /* Front page */
 
-.headline-number {
-    font-size: 60px; 
-    margin-bottom: -10px;
-    margin-top: -30px;
-    text-align: center; 
-}
-.jumbotron {
+.frontpage-preamble {
     padding-bottom: 64px;
 
     h1 {
-        color: $text-color;
-        font-size: 54px;
-        text-align: justify;
-        text-align-last: justify;
-        width: 100%;
-        text-decoration: none;
-        padding-bottom: 8px;
-        border-bottom: 9px solid $text-color;
-	margin-bottom: 16px;
-    }
+      border-bottom: 9px solid $text-color;
+      text-align: justify;
+      text-align-last: justify;
+      padding-bottom: 8px;
+    } 
 
-    .first-column, .second-column {
+     .first-column, .second-column {
         width: 536px;
         display: inline-block;
         text-transform: uppercase;
@@ -457,13 +462,6 @@ li.search-pill a {
     }
 }
 
-body#taking-screenshot .jumbotron {
-    margin-bottom: 0;
-    padding-top: 16px;
-    padding-bottom: 24px;
-}
-
-
 .sponsor_table_loading {
     display: none;
 }
@@ -513,6 +511,7 @@ body#taking-screenshot .jumbotron {
   left: 10%;
   background-color: $brand-success;
   width: 20%;
+  border-top: 1px solid white;
 }
 #not-reported-bar {
   position: absolute;
@@ -622,7 +621,7 @@ body#taking-screenshot .jumbotron {
       content: "{";
       position: absolute;
       right: -40px;
-      top: 172px;
+      top: 160px;
     }
     #chartcopy-1 {
       font-size: 36px;
@@ -652,15 +651,16 @@ body#taking-screenshot .jumbotron {
       top: 191px;
     }
     #chartcopy-4 {
+      margin-top: -12px;
       font-size: 32px;
-      line-height: 32px;
+      line-height: 48px;
       color: $gray-dark;
       text-align: center;
       text-align-last: center;
     }
     #chartcopy-5 {
-      font-size: 36px;
-      line-height: 36px;
+      font-size: 40px;
+      line-height: 46px;
       color: $gray-dark;
     }
     #chartcopy-spacer-0 {
@@ -686,6 +686,7 @@ body#taking-screenshot .jumbotron {
       font-size: 44px;
       line-height: 44px;
       color: $gray-dark;
+      font-weight: 500; 
     }
     #chartcopy-spacer-1 {
       min-width: 100%;
@@ -695,13 +696,13 @@ body#taking-screenshot .jumbotron {
     }
     #chartcopy-8 {
       padding-top: 42px;
-      font-size: 40px;
-      line-height: 40px;
+      font-size: 43px;
+      line-height: 43px;
       color: $gray-dark;
     }
     #chartcopy-9 {
-      font-size: 28px;
-      line-height: 28px;
+      font-size: 32px;
+      line-height: 32px;
       color: $gray-dark;
     }
 /*    @media (max-width: 1200px) {
