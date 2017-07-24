@@ -155,6 +155,17 @@ body#taking-screenshot .jumbotron {
 .navbar {
   font-family: $font-family-lato;
   font-weight: 400;
+
+  @media (min-width: 1370px) {
+    .container {
+        width: 1370px;
+    }
+  }
+
+  li {
+    margin-top: 4px;
+    margin-bottom: -4px;
+  }
 }
 
 .navbar-brand {
@@ -650,14 +661,14 @@ li.search-pill a {
 
 .sponsor-charts:before {
   content: "";
-  background-image: url("/static/images/white-45degree-syringe-trans.svg");
+  background-image: url("/static/images/white-45degree-syringe-trans2.svg");
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.35;
+  opacity: 0.3;
   position: absolute;
-  top: 0;
+  top: -125px;
   width: 100%;
-  height: 800px;
+  height: 1050px;
 }
 
 .sponsor-charts {
@@ -746,7 +757,7 @@ li.search-pill a {
     content: "}";
     position: absolute;
     left: -48px;
-    top: 191px;
+    bottom: 77px;
   }
 
   #chartcopy-4 {

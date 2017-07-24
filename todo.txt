@@ -7,13 +7,15 @@ Improve design
   Sponsor page:
     Test all for combinations of % reported if statement - 0% etc.
     Long sponsor names - what happens to formatting of text?
+      https://841a402f.ngrok.io/sponsor/medical-university-of-vienna
+      Syringe overlaps
 
-  Fix CSS file's tab size
+    Make jitter faster on bar chart
+
   "page-header" style on About
   What fonts default to - Times New Roman?
 
   Add social sharing buttons for Ayesha
-
   Links need to look different
 
   When zooming for presentation, not enough shows in table (Ben)
