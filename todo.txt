@@ -5,7 +5,6 @@ Improve design
   OR consider adding spacing
 
   Sponsor page:
-    Dashed anim either side of "have"
     Colour and font of caption text below bar chart
     Position of text below bar chart should be lower
     Background colour should be grey? Down to where?
