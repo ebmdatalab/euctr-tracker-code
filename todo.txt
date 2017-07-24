@@ -4,6 +4,18 @@ Improve design
   Consider changing to no decimal place in main headline front page figure
   OR consider adding spacing
 
+  Sponsor page:
+    Colour and font of caption text below bar chart
+    Position of text below bar chart should be lower
+    Background colour should be grey? Down to where?
+    "Letter spacing up a bit" for sponsor page heading, all <h1>s?
+    Colour of sponsor page heading
+    Test all for combinations of % reported if statement - 0% etc.
+    Long sponsor names - what happens to formatting of text?
+
+  Fix CSS tab size
+  "page-header" style on About
+
   Add social sharing buttons for Ayesha
 
   Links need to look different

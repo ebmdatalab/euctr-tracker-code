@@ -223,11 +223,6 @@ li.search-pill a {
 .jumbotron {
     padding-bottom: 64px;
 
-
-    p {
-        margin-bottom: 21px;
-    }
-
     h1 {
         color: $text-color;
         font-size: 54px;
@@ -480,28 +475,6 @@ body#taking-screenshot .jumbotron {
     display: none;
 }
 
-.sponsor-headlines {
-    text-align: center;
-}
-
-.sponsor-number {
-    font-size: 60px; 
-    margin-bottom: -16px;
-    margin-top: -16px;
-}
-
-@media (max-width: $screen-sm-min) {
-    .sponsor-number {
-      font-size: 36px;
-      margin-top: 2px;
-      margin-bottom: 2px;
-    }
-}
-
-.sponsor-blurb {
-    margin-top: 24px;
-}
-
 .related-sponsors {
     margin-top: 48px;
 
@@ -587,6 +560,162 @@ body#taking-screenshot .jumbotron {
 #inconsistent-data-bar .caption-bar {
   margin-bottom: -56px;
 }
+
+.sponsor-blurb {
+    margin-top: 24px;
+}
+
+.sponsor-charts {
+    padding-bottom: 64px;
+
+    .first-column, .second-column, .third-column {
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .first-column, .third-column {
+        text-transform: uppercase;
+        text-align: justify;
+        text-align-last: justify;
+    }
+    .first-column {
+        width: 378px; 
+	margin-left: 16px;
+	margin-right: 16px;
+    }
+    .second-column {
+        width: 314px;	 
+        text-align: center;
+        text-align-last: center;
+    }
+    .first-column, .second-column {
+        font-family: $font-family-serif;
+    }
+    .third-column,  {
+        width: 362px; 
+	margin-left: 24px;
+	margin-right: 24px;
+        font-family: $font-family-sans-serif;
+    }
+
+    #chartcopy-brash-1, #chartcopy-brash-2, .first-column:after, .third-column:before {
+      font-size: 135px;
+      line-height: 135px;
+      font-family: $font-family-brash;
+      color: $brand-warning;
+      text-align: center;
+      text-align-last: center;
+    }
+    .first-column {
+      position: relative;
+    }
+    .first-column:after {
+      content: "{";
+      position: absolute;
+      right: -40px;
+      top: 172px;
+    }
+    #chartcopy-1 {
+      font-size: 32px;
+      line-height: 32px;
+      color: $gray-dark;
+      text-align: center;
+      text-align-last: center;
+    }
+    #chartcopy-2 {
+      font-size: 32px;
+      line-height: 32px;
+      color: $gray-dark;
+    }
+    #chartcopy-3 {
+      font-size: 40px;
+      line-height: 40px;
+      color: $gray-dark;
+    }
+    .third-column {
+      position: relative;
+    }
+    .third-column:before {
+      color: $gray-dark;
+      content: "}";
+      position: absolute;
+      left: -48px;
+      top: 176px;
+    }
+    #chartcopy-4 {
+      font-size: 32px;
+      line-height: 32px;
+      color: $gray-dark;
+      text-align: center;
+      text-align-last: center;
+    }
+    #chartcopy-5 {
+      font-size: 32px;
+      line-height: 32px;
+      color: $gray-dark;
+    }
+    #chartcopy-6 {
+      font-size: 32px;
+      line-height: 32px;
+      color: $gray-dark;
+      text-align: center;
+      text-align-last: center;
+    }
+    #chartcopy-7 {
+      font-size: 40px;
+      line-height: 48px;
+      color: $gray-dark;
+    }
+    #chartcopy-spacer-1 {
+      min-width: 100%;
+      position: absolute;
+      line-height: 40px;
+      background-color: $brand-warning;
+    }
+    #chartcopy-8 {
+      padding-top: 42px;
+      font-size: 40px;
+      line-height: 40px;
+      color: $gray-dark;
+    }
+    #chartcopy-9 {
+      font-size: 28px;
+      line-height: 28px;
+      color: $gray-dark;
+    }
+/*    @media (max-width: 1200px) {
+        h1 {
+            position: relative;
+	    text-align: center;
+	    text-align-last: center;
+	    padding-left: 45px;
+	    padding-right: 45px;
+	    border-bottom: none;
+	}
+	h1:before {
+	    content : "";
+	    position: absolute;
+	    left    : 0;
+	    bottom  : -8px;
+	    height  : 1px;
+	    width   : 50%;
+            margin-left: 25%;
+	    border-bottom: 9px solid $text-color;
+	}
+	.first-column {
+            display: block;
+	    margin-top: 45px;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	.second-column {
+            display: block;
+	    margin-top: 45px;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+    } */
+}
+
 
 /****************************************************************/
 /* About page */

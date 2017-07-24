@@ -11,41 +11,36 @@
 </script>
 
 <div class="container">
-  <div class="page-header">
-    <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
-      EU clinical trials</h1>
-  </div>
+  <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
+    EU clinical trials</h1>
 
   {% if total_trials > 0 %}
-  <div class="row">
-    <div class="col-sm-3 col-xs-6 sponsor-headlines">
-      <canvas id="unreported_chart" height="200px"></canvas>
+  <div class="sponsor-charts">
+    <div class="first-column">
+      <canvas id="unreported_chart" height="140px"></canvas>
       {% if percent_unreported == 0 %}
-	<div class="sponsor-number">All</div>
-	<p class="lead">of {{ sponsor_name }}'s {{ total_due }} due trials 
-	have been reported</p>
+	<div id="chartcopy-brash-1">All</div>
+	<div id="chartcopy-1">of {{ sponsor_name }}'s</div>
+	<div id="chartcopy-2"><b>{{ total_due }}</b> due trials have</div>
+	<div id="chartcopy-3"><b>been reported</b></div>
       {% elif percent_unreported == 100 %}
-	<div class="sponsor-number">None</div>
-	<p class="lead">of {{ sponsor_name }}'s {{ total_due }} due trials 
-	have been reported</p>
+	<div id="chartcopy-brash-1">None</div>
+	<div id="chartcopy-1">of {{ sponsor_name }}'s</div>
+	<div id="chartcopy-2">{{ total_due }} due trials have</div>
+	<div id="chartcopy-3"><b>been reported</b></div>
       {% elif percent_unreported|custom_percent == "-" %}
-	<div class="sponsor-number">&nbsp;</div>
-	<p class="lead">{{ sponsor_name }} has no due trials, so none
-	are late reporting</p>
+	<div id="chartcopy-brash-1">&nbsp;</div>
+	<div id="chartcopy-1">{{ sponsor_name }}</div>
+	<div id="chartcopy-2">has no due trials so none are</div>
+	<div id="chartcopy-3"><b>late reporting</b></div>
       {% else %}
-	<div class="sponsor-number">{{percent_unreported | custom_percent}}</div>
-	<p class="lead">of {{ sponsor_name }}'s {{ total_due}} due trials 
-	<b>are late reporting</b>
-	</p>
+	<div id="chartcopy-brash-1">{{percent_unreported | custom_percent}}</div>
+	<div id="chartcopy-1">of {{ sponsor_name }}'s</div>
+	<div id="chartcopy-2"><b>{{ total_due}}</b> due trials are</div>
+	<div id="chartcopy-3"><b>late reporting</b></div>
       {% endif %}
     </div>
-    <div class="col-sm-3 col-sm-push-6 col-xs-6 sponsor-headlines">
-      <div class="sponsor-number">{{inconsistent_trials}}</div>
-      <p class="lead">of {{ sponsor_name }}'s {{ total_trials }} register entries
-      have <b>inconsistent data</b>, so we can't be sure if they've reported
-      on time</p>
-    </div>
-    <div class="col-sm-6 col-sm-pull-3 col-xs-12 sponsor-headlines">
+    <div class="second-column">
       <div id="trials-bar-chart">
 	<div id="not-reported-bar" style="height: {% calc_bar total_due not_yet_due_trials inconsistent_trials %}%" data-toggle="tooltip" data-placement="bottom" title="Due to report, but not reported: {{ total_unreported }} trials">
 	</div>
@@ -60,6 +55,19 @@
 	<span id="caption-3">Inconsistent data</span>
       </div>
     </div>
+    <div class="third-column">
+      <div id="chartcopy-brash-2">{{inconsistent_trials}}</div>
+      <div id="chartcopy-4">of {{ sponsor_name }}'s </div>
+      <div id="chartcopy-5"><b>{{ total_trials }}</b> register entries</div>
+      <div id="chartcopy-6">have</div>
+      <div id="chartcopy-7"><b>inconsistent data</b></div>
+      <div id="chartcopy-spacer-1" class="dashed-animation">Hello&nbsp;</div>
+      <div id="chartcopy-8">so we can't be sure</div>
+      <div id="chartcopy-9">if they've reported on time</div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-xs-12">
       <p class="lead sponsor-blurb">All clinical trials on the 
       <a href="https://www.clinicaltrialsregister.eu/">
