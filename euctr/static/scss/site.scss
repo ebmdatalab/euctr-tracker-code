@@ -668,7 +668,6 @@ li.search-pill a {
       position: absolute;
       line-height: 36px;
       background-color: $brand-warning;
-      z-index: -10;
     }
     #chartcopy-6 {
       font-size: 36px;
@@ -676,11 +675,13 @@ li.search-pill a {
       color: $gray-dark;
       text-align: center;
       text-align-last: center;
-      background-color: $body-bg;
+      background-color: $gray-lighter;
       width: 92px;
       margin-left: auto;
       margin-right: auto;
       padding-bottom: 3px;
+      position: relative;
+      z-index: 100;
     }
     #chartcopy-7 {
       font-size: 44px;
