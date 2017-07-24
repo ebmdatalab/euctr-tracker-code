@@ -665,7 +665,7 @@ li.search-pill a {
   background-image: url("/static/images/white-45degree-syringe-trans2.svg");
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.3;
+  opacity: 0.2;
   position: absolute;
   top: -125px;
   width: 100%;
@@ -674,6 +674,12 @@ li.search-pill a {
 
 .sponsor-charts {
   padding-bottom: 64px;
+
+  #canvas-sub {
+    padding-top: 87px;
+    padding-bottom: 87px;
+    line-height: 1px;
+  }
 
   .first-column, .second-column, .third-column {
     display: inline-block;
@@ -716,6 +722,10 @@ li.search-pill a {
     color: $brand-warning;
     text-align: center;
     text-align-last: center;
+  }
+  .chartcopy-none {
+    font-size: 120px !important;
+    line-height: 120px !important;
   }
 
   .first-column {

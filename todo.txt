@@ -6,10 +6,10 @@ Improve design
 
   Sponsor page:
     Test all for combinations of % reported if statement - 0% etc.
-      http://127.0.0.1:8000/sponsor/agostino-gemelli-university-polyclinic
+      http://127.0.0.1:8000/sponsor/bayer - ALL
+      http://127.0.0.1:8000/sponsor/leiden-university - NONE
+      http://127.0.0.1:8000/sponsor/university-of-groningen - unknown
 
-    Long sponsor names - what happens to formatting of text?
-      Syringe overlaps
 
     Make jitter faster on bar chart
 

@@ -15,23 +15,25 @@
   <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
     EU clinical trials</h1>
   <div class="first-column">
-    <canvas id="unreported_chart" height="140px"></canvas>
     {% if percent_unreported == 0 %}
+      <div id="canvas-sub">&nbsp;</div>
       <div id="chartcopy-brash-1">All</div>
       <div id="chartcopy-1">of {{ sponsor_name }}'s</div>
       <div id="chartcopy-2"><b>{{ total_due }}</b> due trials have</div>
       <div id="chartcopy-3"><b>been reported</b></div>
     {% elif percent_unreported == 100 %}
-      <div id="chartcopy-brash-1">None</div>
+      <div id="canvas-sub">&nbsp;</div>
+      <div id="chartcopy-brash-1" class="chartcopy-none">None</div>
       <div id="chartcopy-1">of {{ sponsor_name }}'s</div>
-      <div id="chartcopy-2">{{ total_due }} due trials have</div>
+      <div id="chartcopy-2"><b>{{ total_due }}</b> due trials have</div>
       <div id="chartcopy-3"><b>been reported</b></div>
     {% elif percent_unreported|custom_percent == "-" %}
-      <div id="chartcopy-brash-1">&nbsp;</div>
-      <div id="chartcopy-1">{{ sponsor_name }}</div>
-      <div id="chartcopy-2">has no due trials so none are</div>
-      <div id="chartcopy-3"><b>late reporting</b></div>
+      <div id="canvas-sub">&nbsp;</div>
+      <div id="chartcopy-brash-1">All</div>
+      <div id="chartcopy-1">of {{ sponsor_name }}'s trials are</div>
+      <div id="chartcopy-3"><b>not yet due</b></div>
     {% else %}
+      <canvas id="unreported_chart" height="140px"></canvas>
       <div id="chartcopy-brash-1">{{percent_unreported | custom_percent}}</div>
       <div id="chartcopy-1">of {{ sponsor_name }}'s</div>
       <div id="chartcopy-2"><b>{{ total_due}}</b> due trials are</div>
