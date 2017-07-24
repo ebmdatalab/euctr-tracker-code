@@ -6,8 +6,9 @@ Improve design
 
   Sponsor page:
     Test all for combinations of % reported if statement - 0% etc.
+      http://127.0.0.1:8000/sponsor/agostino-gemelli-university-polyclinic
+
     Long sponsor names - what happens to formatting of text?
-      https://841a402f.ngrok.io/sponsor/medical-university-of-vienna
       Syringe overlaps
 
     Make jitter faster on bar chart
