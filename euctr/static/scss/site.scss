@@ -495,14 +495,16 @@ body#taking-screenshot .jumbotron {
 
 #trials-bar-chart {
   width: 100%;
-  height: 256px;
+  height: 384px;
   min-height: 100%;
   position: relative;
 }
 #trials-bar-caption {
-  width: 100%;
+  width: 314px;	 
+  margin-left: 410px;
   position: relative;
   padding-bottom: 2em;
+  text-align: center;
 }
 
 #reported-bar {
@@ -574,7 +576,7 @@ body#taking-screenshot .jumbotron {
 }
 
 .sponsor-charts {
-    padding-bottom: 64px;
+    padding-bottom: 16px;
 
     .first-column, .second-column, .third-column {
         display: inline-block;
@@ -647,7 +649,7 @@ body#taking-screenshot .jumbotron {
       content: "}";
       position: absolute;
       left: -48px;
-      top: 176px;
+      top: 191px;
     }
     #chartcopy-4 {
       font-size: 32px;
