@@ -5,6 +5,7 @@ Improve design
   OR consider adding spacing
 
   Sponsor page:
+    Dashed anim either side of "have"
     Colour and font of caption text below bar chart
     Position of text below bar chart should be lower
     Background colour should be grey? Down to where?
@@ -12,6 +13,8 @@ Improve design
     Colour of sponsor page heading
     Test all for combinations of % reported if statement - 0% etc.
     Long sponsor names - what happens to formatting of text?
+  
+  Staging site
 
   Fix CSS tab size
   "page-header" style on About

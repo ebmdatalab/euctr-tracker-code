@@ -46,12 +46,16 @@ $link-hover-decoration: underline !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Oswald", "Arial Narrow Bold", sans-serif !default;
-$font-family-serif:       "Lato", "Times New Roman", Times, serif !default;
-$font-family-brash:       "Lora", "Times New Roman", Times, serif !default;
+$font-family-oswald:      "Oswald", "Arial Narrow Bold", sans-serif !default;
+$font-family-lato:        "Lato", "Times New Roman", Times, serif !default;
+$font-family-lora:        "Lora", "Times New Roman", Times, serif !default;
+
+// Override Bootstrap standard fonts with these two as decent defaults
+$font-family-sans-serif:  $font-family-oswald;
+$font-family-serif:       $font-family-lato; // It doesn't actually have serifs
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
-$font-family-base:        $font-family-serif !default;
+$font-family-base:        $font-family-lato !default;
 
 $font-size-base:          15px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
@@ -70,7 +74,7 @@ $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 //** By default, this inherits from the `<body>`.
-$headings-font-family:    $font-family-sans-serif !default;
+$headings-font-family:    $font-family-oswald !default;
 $headings-font-weight:    700 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          #000 !default;

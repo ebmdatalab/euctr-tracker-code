@@ -10,6 +10,12 @@
     font-family: 'Oswald';
     font-style: normal;
     font-weight: 400;
+    src: local('Oswald'), url(/static/fonts/Oswald-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 500;
     src: local('Oswald'), url(/static/fonts/Oswald-Medium.ttf) format('truetype');
 }
 @font-face {
@@ -184,6 +190,7 @@ li.search-pill a {
 }
 #table-pills h2 {
     margin-top: 6px;
+    font-weight: 500; /* Use Oswald Medium (not Regular) */
 }
 #table-pills .badge {
     margin-left: 8px;
@@ -245,11 +252,12 @@ li.search-pill a {
     }
     .first-column {
         margin-right: 32px;
-        font-family: $font-family-sans-serif;
+        font-family: $font-family-oswald;
+	font-weight: 500;
     }
     .second-column {
         margin-left: 32px;
-        font-family: $font-family-serif;
+        font-family: $font-family-lato;
 	vertical-align: top;
     }
 
@@ -362,7 +370,7 @@ li.search-pill a {
     #preamble-brash-number {
       font-size: 230px;
       line-height: 230px;
-      font-family: $font-family-brash;
+      font-family: $font-family-lora;
       color: $brand-brash-number;
       margin-top: 20px;
       margin-bottom: 24px;
@@ -370,7 +378,7 @@ li.search-pill a {
     #preamble-brash-percent {
       font-size: 175px;
       line-height: 175px;
-      font-family: $font-family-brash;
+      font-family: $font-family-lora;
       color: $brand-brash-number;
       vertical-align: top;
     }
@@ -588,19 +596,19 @@ body#taking-screenshot .jumbotron {
         text-align-last: center;
     }
     .first-column, .second-column {
-        font-family: $font-family-serif;
+        font-family: $font-family-lato;
     }
     .third-column,  {
         width: 362px; 
 	margin-left: 24px;
 	margin-right: 24px;
-        font-family: $font-family-sans-serif;
+        font-family: $font-family-oswald;
     }
 
     #chartcopy-brash-1, #chartcopy-brash-2, .first-column:after, .third-column:before {
       font-size: 135px;
       line-height: 135px;
-      font-family: $font-family-brash;
+      font-family: $font-family-lora;
       color: $brand-warning;
       text-align: center;
       text-align-last: center;
@@ -649,20 +657,20 @@ body#taking-screenshot .jumbotron {
       text-align-last: center;
     }
     #chartcopy-5 {
-      font-size: 32px;
-      line-height: 32px;
+      font-size: 36px;
+      line-height: 36px;
       color: $gray-dark;
     }
     #chartcopy-6 {
-      font-size: 32px;
-      line-height: 32px;
+      font-size: 36px;
+      line-height: 36px;
       color: $gray-dark;
       text-align: center;
       text-align-last: center;
     }
     #chartcopy-7 {
-      font-size: 40px;
-      line-height: 48px;
+      font-size: 44px;
+      line-height: 52px;
       color: $gray-dark;
     }
     #chartcopy-spacer-1 {
