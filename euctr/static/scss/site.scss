@@ -12,36 +12,42 @@
     font-weight: 400;
     src: local('Oswald'), url(/static/fonts/Oswald-Regular.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Oswald';
     font-style: normal;
     font-weight: 500;
     src: local('Oswald'), url(/static/fonts/Oswald-Medium.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Oswald';
     font-style: normal;
     font-weight: 700;
     src: local('Oswald-Bold'), local('Oswald-Bold'), url(/static/fonts/Oswald-Bold.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
     src: local('Lato'), url(/static/fonts/Lato-Regular.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     src: local('Lato-Black'), local('Lato-Black'), url(/static/fonts/Lato-Black.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Lora';
     font-style: normal;
     font-weight: 400;
     src: local('Lora'), url(/static/fonts/Lora-Regular.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'FiraSans';
     font-style: normal;
@@ -84,19 +90,19 @@ a > span[data-toggle="tooltip"] {
 }
 
 .label-warning {
-  color: $brand-primary;
-  border: 3px solid $brand-warning;
-  background-color: $body-bg;
+    color: $brand-primary;
+    border: 3px solid $brand-warning;
+    background-color: $body-bg;
 }
 
 .label-early {
-  background-color: $brand-success-lighter;
+    background-color: $brand-success-lighter;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  text-transform: uppercase;
-  color: $brand-primary;
-  font-weight: normal;
+    text-transform: uppercase;
+    color: $brand-primary;
+    font-weight: normal;
 }
 
 body#taking-screenshot .jumbotron {
@@ -106,13 +112,13 @@ body#taking-screenshot .jumbotron {
 }
 
 .jumbotron {
-   h1 {
+    h1 {
       color: $text-color;
-      font-size: 54px;
-      width: 100%;
-      text-decoration: none;
-      margin-bottom: 16px;
-   }
+    font-size: 54px;
+    width: 100%;
+    text-decoration: none;
+    margin-bottom: 16px;
+}
 }
 
 /****************************************************************/
@@ -124,17 +130,27 @@ body#taking-screenshot .jumbotron {
 }
 
 .glyphicon-refresh.spinning {
-    transform-origin: 50% 49%; 
+    transform-origin: 50% 49%;
 }
 
 @keyframes spin {
-    from { transform: scale(1) rotate(0deg); }
-    to { transform: scale(1) rotate(360deg); }
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1) rotate(360deg);
+    }
 }
 
 @-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 .navbar {
@@ -161,31 +177,32 @@ body#taking-screenshot .jumbotron {
     margin-top: 24px;
     margin-bottom: 12px;
 }
+
 #table-pills li {
     vertical-align: middle;
 }
 
 .nav-pills > li.active a h2 {
-  background-color: $gray !important;
+    background-color: $gray !important;
 }
+
 .nav-pills > li.active a {
-  background-color: $gray !important;
+    background-color: $gray !important;
 }
 
 .nav-pills > li a h2 {
-  color: $gray;
+    color: $gray;
 }
 
 .nav-pills > li.active > a .badge {
-  color: $gray;
-  background-color: $component-active-color;
+    color: $gray;
+    background-color: $component-active-color;
 }
 
 .nav-pills > li > a .badge {
-  background-color: $gray;
-  color: $component-active-color;
+    background-color: $gray;
+    color: $component-active-color;
 }
-
 
 .table .label {
     line-height: 20px;
@@ -208,13 +225,13 @@ body#taking-screenshot .jumbotron {
 }
 
 @media (min-width: $screen-sm-min) {
-  .search-pill {
-      margin-top: -55px;
-  }
+    .search-pill {
+        margin-top: -55px;
+    }
 }
 
 #table-pills li.search-pill {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 li.search-pill a {
@@ -222,13 +239,17 @@ li.search-pill a {
     padding-top: 18px;
     padding-bottom: 14px;
 }
+
 #table-pills h2 {
     margin-top: 6px;
-    font-weight: 500; /* Use Oswald Medium (not Regular) */
+    font-weight: 500;
+ /* Use Oswald Medium (not Regular) */
 }
+
 #table-pills .badge {
     margin-left: 8px;
 }
+
 .nav-pills > li.active a h2, 
 .nav-pills > li.active a:hover h2, 
 .nav-pills > li.active a:focus h2 {
@@ -246,10 +267,9 @@ li.search-pill a {
 .dataTables_wrapper .dataTables_length {
     float: right !important;
     margin-top: 22px !important;
-
     label {
         font-weight: normal;
-    }
+}
 }
 
 /****************************************************************/
@@ -257,227 +277,256 @@ li.search-pill a {
 
 .frontpage-preamble {
     padding-bottom: 64px;
-
     h1 {
       border-bottom: 9px solid $text-color;
-      text-align: justify;
-      text-align-last: justify;
-      padding-bottom: 8px;
-    } 
+    text-align: justify;
+    text-align-last: justify;
+    padding-bottom: 8px;
+}
 
-     .first-column, .second-column {
-        width: 536px;
-        display: inline-block;
-        text-transform: uppercase;
-        text-align: justify;
-        text-align-last: justify;
-        margin-top: 20px;
+.first-column, .second-column {
+    width: 536px;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: justify;
+    text-align-last: justify;
+    margin-top: 20px;
+}
+
+.first-column {
+    margin-right: 32px;
+    font-family: $font-family-oswald;
+    font-weight: 500;
+}
+
+.second-column {
+    margin-left: 32px;
+    font-family: $font-family-lato;
+    vertical-align: top;
+}
+
+#wrap-0 {
+    font-size: 60px;
+    line-height: 60px;
+}
+
+#preamble-1 {
+    font-size: 60px;
+    line-height: 60px;
+    color: $gray-dark;
+}
+
+#preamble-2 {
+    font-size: 30px;
+    line-height: 30px;
+    color: $gray-dark;
+}
+
+#preamble-3 {
+    font-size: 75px;
+    line-height: 75px;
+    color: $brand-success;
+}
+
+#preamble-4 {
+    font-size: 35px;
+    line-height: 45px;
+    color: $gray-dark;
+}
+
+#preamble-5 {
+    font-size: 25px;
+    line-height: 25px;
+    color: $gray-dark;
+}
+
+#preamble-6 {
+    font-size: 90px;
+    line-height: 90px;
+    color: $brand-success-lighter;
+}
+
+#wrap-1 {
+    text-align: left;
+    text-align-last: left;
+    margin-top: -4px;
+    margin-bottom: -22px;
+}
+
+#white-line {
+    border-bottom: solid 5px white;
+    text-align: left;
+    text-align-last: left;
+    font-size: 15px;
+    right: 32px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#white-line:after {
+    content: "\200B";
+    background-image: url("/static/images/pill-for-line-trans.svg");
+    position: relative;
+    left: 300px;
+    background-color: $gray-lighter;
+    min-width: 70px;
+    display: inline-block;
+    top: 13px;
+}
+
+#preamble-7 {
+    position: relative;
+    top: -24px;
+    font-size: 30px;
+    color: $gray-dark;
+    text-align: left;
+    text-align-last: left;
+    background-color: $gray-lighter;
+    padding-right: 8px;
+}
+
+#preamble-8 {
+    font-size: 25px;
+    line-height: 25px;
+    color: $gray-dark;
+}
+
+#preamble-9 {
+    font-size: 44px;
+    line-height: 50px;
+    color: $gray-dark;
+}
+
+#preamble-10 {
+    font-size: 35px;
+    line-height: 40px;
+    color: $gray-dark;
+}
+
+#learn-more {
+    font-size: 30px;
+    text-align: right;
+    text-align-last: right;
+    margin-right: 40px;
+    margin-top: 16px;
+    a {
+	  color: $brand-learn-more;
+}
     }
+
+#preamble-11 {
+    font-size: 50px;
+    line-height: 55px;
+    color: $brand-sharp;
+}
+
+#preamble-12 {
+    font-size: 64px;
+    line-height: 70px;
+    color: $gray-dark;
+}
+
+#preamble-brash-number {
+    font-size: 230px;
+    line-height: 230px;
+    font-family: $font-family-lora;
+    color: $brand-brash-number;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+
+#preamble-brash-percent {
+    font-size: 175px;
+    line-height: 175px;
+    font-family: $font-family-lora;
+    color: $brand-brash-number;
+    vertical-align: top;
+}
+
+#preamble-due-trials {
+    font-size: 21px;
+    line-height: 30px;
+    color: $gray-dark;
+    width: 160px;
+    position: relative;
+    top: -83px;
+    left: 380px;
+    margin-bottom: -45px;
+}
+
+.first-subcolumn, .second-subcolumn {
+    width: 266px;
+    display: inline-block;
+    color: $gray-dark;
+}
+
+.first-subcolumn {
+    padding-right: 19px;
+}
+
+.second-subcolumn {
+    padding-left: 16px;
+    vertical-align: top;
+    border-left: 4px solid $text-color;
+}
+
+#preamble-13 {
+    font-size: 25px;
+    line-height: 29px;
+}
+
+#preamble-14 {
+    font-size: 30px;
+    line-height: 34px;
+}
+
+#preamble-15 {
+    font-size: 23px;
+    line-height: 29px;
+}
+
+#preamble-16 {
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 5px;
+}
+
+@media (max-width: 1200px) {
+    h1 {
+        position: relative;
+        text-align: center;
+        text-align-last: center;
+        padding-left: 45px;
+        padding-right: 45px;
+        border-bottom: none;
+    }
+
+    h1:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        height: 1px;
+        width: 50%;
+        margin-left: 25%;
+        border-bottom: 9px solid $text-color;
+    }
+
     .first-column {
-        margin-right: 32px;
-        font-family: $font-family-oswald;
-	font-weight: 500;
+        display: block;
+        margin-top: 45px;
+        margin-left: auto;
+        margin-right: auto;
     }
+
     .second-column {
-        margin-left: 32px;
-        font-family: $font-family-lato;
-	vertical-align: top;
+        display: block;
+        margin-top: 45px;
+        margin-left: auto;
+        margin-right: auto;
     }
-
-    #wrap-0 {
-        font-size: 60px;
-	line-height: 60px;
-    }
-    #preamble-1 {
-        font-size: 60px;
-	line-height: 60px;
-        color: $gray-dark;
-    }
-    #preamble-2 {
-        font-size: 30px;
-	line-height: 30px;
-        color: $gray-dark;
-    }
-    #preamble-3 {
-        font-size: 75px;
-	line-height: 75px;
-        color: $brand-success;
-    }
-    #preamble-4 {
-        font-size: 35px;
-        line-height: 45px;
-        color: $gray-dark;
-    }
-    #preamble-5 {
-        font-size: 25px;
-        line-height: 25px;
-        color: $gray-dark;
-    }
-    #preamble-6 {
-        font-size: 90px;
-        line-height: 90px;
-        color: $brand-success-lighter;
-    }
-    #wrap-1 {
-        text-align: left;
-        text-align-last: left;
-	margin-top: -4px;
-	margin-bottom: -22px;
-    }
-    #white-line {
-	border-bottom: solid 5px white;
-        text-align: left;
-        text-align-last: left;
-	font-size: 15px;
-	right: 32px;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-    }
-    #white-line:after {
-	content: "\200B";
-	background-image: url("/static/images/pill-for-line-trans.svg");
-	position: relative;
-	left: 300px;
-	background-color: $gray-lighter;
-	min-width: 70px;
-	display: inline-block;
-	top: 13px;
-
-    }
-    #preamble-7 {
-	position: relative;
-	top: -24px;
-        font-size: 30px;
-        color: $gray-dark;
-        text-align: left;
-        text-align-last: left;
-	background-color: $gray-lighter;
-	padding-right: 8px;
-    }
-    #preamble-8 {
-        font-size: 25px;
-	line-height: 25px;
-        color: $gray-dark;
-    }
-    #preamble-9 {
-        font-size: 44px;
-	line-height: 50px;
-        color: $gray-dark;
-    }
-    #preamble-10 {
-        font-size: 35px;
-	line-height: 40px;
-        color: $gray-dark;
-    }
-    #learn-more {
-	font-size: 30px;
-        text-align: right;
-        text-align-last: right;
-	margin-right: 40px;
- 	margin-top: 16px;
-	a {
-	  color: $brand-learn-more;	
-	}
-    }
-    #preamble-11 {
-      font-size: 50px;
-      line-height: 55px;
-      color: $brand-sharp;
-    }
-    #preamble-12 {
-      font-size: 64px;
-      line-height: 70px;
-      color: $gray-dark;
-    }
-    #preamble-brash-number {
-      font-size: 230px;
-      line-height: 230px;
-      font-family: $font-family-lora;
-      color: $brand-brash-number;
-      margin-top: 20px;
-      margin-bottom: 24px;
-    }
-    #preamble-brash-percent {
-      font-size: 175px;
-      line-height: 175px;
-      font-family: $font-family-lora;
-      color: $brand-brash-number;
-      vertical-align: top;
-    }
-    #preamble-due-trials {
-      font-size: 21px;
-      line-height: 30px;
-      color: $gray-dark;
-      width: 160px;
-      position: relative;
-      top: -83px;
-      left: 380px;
-      margin-bottom: -45px;
-    }
-    .first-subcolumn, .second-subcolumn {
-        width: 266px;
-        display: inline-block;
-	color: $gray-dark;
-    }
-    .first-subcolumn {
-        padding-right: 19px;
-    }
-    .second-subcolumn {
-        padding-left: 16px;
-	vertical-align: top;
-	border-left: 4px solid $text-color;
-    }
-    #preamble-13 {
-      font-size: 25px;
-      line-height: 29px;
-    }
-    #preamble-14 {
-      font-size: 30px;
-      line-height: 34px;
-    }
-    #preamble-15 {
-      font-size: 23px;
-      line-height: 29px;
-    }
-    #preamble-16 {
-      font-size: 24px;
-      line-height: 29px;
-      margin-top: 5px;
-    }
-
-    @media (max-width: 1200px) {
-        h1 {
-            position: relative;
-	    text-align: center;
-	    text-align-last: center;
-	    padding-left: 45px;
-	    padding-right: 45px;
-	    border-bottom: none;
-	}
-	h1:before {
-	    content : "";
-	    position: absolute;
-	    left    : 0;
-	    bottom  : -8px;
-	    height  : 1px;
-	    width   : 50%;
-            margin-left: 25%;
-	    border-bottom: 9px solid $text-color;
-	}
-	.first-column {
-            display: block;
-	    margin-top: 45px;
-	    margin-left: auto;
-	    margin-right: auto;
-	}
-	.second-column {
-            display: block;
-	    margin-top: 45px;
-	    margin-left: auto;
-	    margin-right: auto;
-	}
-    }
+}
 }
 
 .sponsor_table_loading {
@@ -501,97 +550,100 @@ li.search-pill a {
 
 .related-sponsors {
     margin-top: 48px;
-
     .glyphicon {
       font-size: 12px;
-      margin-top: -4px;
-      vertical-align: middle;
-    }
+    margin-top: -4px;
+    vertical-align: middle;
+}
 }
 
 #trials-bar-chart {
-  width: 100%;
-  height: 384px;
-  min-height: 100%;
-  position: relative;
+    width: 100%;
+    height: 384px;
+    min-height: 100%;
+    position: relative;
 }
+
 #trials-bar-caption {
-  width: 314px;	 
-  margin-left: 410px;
-  position: relative;
-  padding-bottom: 2em;
-  text-align: center;
+    width: 314px;
+    margin-left: 410px;
+    position: relative;
+    padding-bottom: 2em;
+    text-align: center;
 }
 
 #reported-bar {
-  position: absolute;
-  bottom: 0px;
-  left: 10%;
-  background-color: $brand-success;
-  width: 20%;
-  border-top: 1px solid white;
+    position: absolute;
+    bottom: 0px;
+    left: 10%;
+    background-color: $brand-success;
+    width: 20%;
+    border-top: 1px solid white;
 }
+
 #not-reported-bar {
-  position: absolute;
-  bottom: 0px;
-  left: 10%;
-  background-color: $brand-danger;
-  width: 20%;
+    position: absolute;
+    bottom: 0px;
+    left: 10%;
+    background-color: $brand-danger;
+    width: 20%;
 }
+
 #caption-1 {
-  position: absolute;
-  left: 5%;
-  width: 30%;
-  margin-top: 8px;
+    position: absolute;
+    left: 5%;
+    width: 30%;
+    margin-top: 8px;
 }
 
 #not-due-bar {
-  position: absolute;
-  bottom: 0px;
-  left: 40%;
-  background-color: $gray-light;
-  width: 20%;
+    position: absolute;
+    bottom: 0px;
+    left: 40%;
+    background-color: $gray-light;
+    width: 20%;
 }
+
 #caption-2 {
-  position: absolute;
-  left: 35%;
-  width: 30%;
-  margin-top: 8px;
+    position: absolute;
+    left: 35%;
+    width: 30%;
+    margin-top: 8px;
 }
 
 #inconsistent-data-bar {
-  position: absolute;
-  bottom: 0px;
-  right: 10%;
-  left: auto;
-  top: auto;
-  background-color: $brand-warning;
-  width: 20%;
+    position: absolute;
+    bottom: 0px;
+    right: 10%;
+    left: auto;
+    top: auto;
+    background-color: $brand-warning;
+    width: 20%;
 }
+
 #caption-3 {
-  position: absolute;
-  right: 5%;
-  width: 30%;
-  margin-top: 8px;
+    position: absolute;
+    right: 5%;
+    width: 30%;
+    margin-top: 8px;
 }
 
 .caption-bar {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: -32px;
-  width: 100%;
-  left: 0;
-  color: $text-color;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -32px;
+    width: 100%;
+    left: 0;
+    color: $text-color;
 }
 
 #inconsistent-data-bar .caption-bar {
-  margin-bottom: -56px;
+    margin-bottom: -56px;
 }
 
 .sponsor-blurb {
     margin-top: 24px;
 }
-
 
 .sponsor-charts:before {
     content: "";
@@ -607,136 +659,155 @@ li.search-pill a {
 
 .sponsor-charts {
     padding-bottom: 64px;
-
     .first-column, .second-column, .third-column {
         display: inline-block;
-        margin-top: 20px;
-    }
-    .first-column, .third-column {
-        text-transform: uppercase;
-        text-align: justify;
-        text-align-last: justify;
-    }
-    .first-column {
-        width: 377px; 
-	margin-left: 16px;
-	margin-right: 16px;
-    }
-    .second-column {
-        width: 314px;	 
-        text-align: center;
-        text-align-last: center;
-    }
-    .first-column, .second-column {
-        font-family: $font-family-lato;
-    }
-    .third-column,  {
-        width: 361px; 
-	margin-left: 24px;
-	margin-right: 24px;
-        font-family: $font-family-oswald;
-    }
+    margin-top: 20px;
+}
 
-    #chartcopy-brash-1, #chartcopy-brash-2, .first-column:after, .third-column:before {
-      font-size: 135px;
-      line-height: 135px;
-      font-family: $font-family-lora;
-      color: $brand-warning;
-      text-align: center;
-      text-align-last: center;
-    }
-    .first-column {
-      position: relative;
-    }
-    .first-column:after {
-      content: "{";
-      position: absolute;
-      right: -40px;
-      top: 160px;
-    }
-    #chartcopy-1 {
-      font-size: 36px;
-      line-height: 36px;
-      color: $gray-dark;
-      text-align: center;
-      text-align-last: center;
-    }
-    #chartcopy-2 {
-      font-size: 36px;
-      line-height: 36px;
-      color: $gray-dark;
-    }
-    #chartcopy-3 {
-      font-size: 44px;
-      line-height: 44px;
-      color: $gray-dark;
-    }
-    .third-column {
-      position: relative;
-    }
-    .third-column:before {
-      color: $gray-dark;
-      content: "}";
-      position: absolute;
-      left: -48px;
-      top: 191px;
-    }
-    #chartcopy-4 {
-      margin-top: -12px;
-      font-size: 32px;
-      line-height: 48px;
-      color: $gray-dark;
-      text-align: center;
-      text-align-last: center;
-    }
-    #chartcopy-5 {
-      font-size: 38px;
-      line-height: 44px;
-      color: $gray-dark;
-    }
-    #chartcopy-spacer-0 {
-      width: 100%;
-      position: absolute;
-      line-height: 36px;
-      background-color: $brand-warning;
-    }
-    #chartcopy-6 {
-      font-size: 36px;
-      line-height: 36px;
-      color: $gray-dark;
-      text-align: center;
-      text-align-last: center;
-      background-color: $gray-lighter;
-      width: 92px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-bottom: 3px;
-      position: relative;
-      z-index: 100;
-    }
-    #chartcopy-7 {
-      font-size: 44px;
-      line-height: 44px;
-      color: $gray-dark;
-      font-weight: 500; 
-    }
-    #chartcopy-spacer-1 {
-      min-width: 100%;
-      position: absolute;
-      line-height: 40px;
-      background-color: $brand-warning;
-    }
-    #chartcopy-8 {
-      padding-top: 42px;
-      font-size: 43px;
-      line-height: 43px;
-      color: $gray-dark;
-    }
-    #chartcopy-9 {
-      font-size: 30px;
-      line-height: 30px;
-      color: $gray-dark;
-    }
+.first-column, .third-column {
+    text-transform: uppercase;
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.first-column {
+    width: 377px;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.second-column {
+    width: 314px;
+    text-align: center;
+    text-align-last: center;
+}
+
+.first-column, .second-column {
+    font-family: $font-family-lato;
+}
+
+.third-column, {
+    width: 361px;
+    margin-left: 24px;
+    margin-right: 24px;
+    font-family: $font-family-oswald;
+}
+
+#chartcopy-brash-1, #chartcopy-brash-2, .first-column:after, .third-column:before {
+    font-size: 135px;
+    line-height: 135px;
+    font-family: $font-family-lora;
+    color: $brand-warning;
+    text-align: center;
+    text-align-last: center;
+}
+
+.first-column {
+    position: relative;
+}
+
+.first-column:after {
+    content: "{";
+    position: absolute;
+    right: -40px;
+    top: 160px;
+}
+
+#chartcopy-1 {
+    font-size: 36px;
+    line-height: 36px;
+    color: $gray-dark;
+    text-align: center;
+    text-align-last: center;
+}
+
+#chartcopy-2 {
+    font-size: 36px;
+    line-height: 36px;
+    color: $gray-dark;
+}
+
+#chartcopy-3 {
+    font-size: 44px;
+    line-height: 44px;
+    color: $gray-dark;
+}
+
+.third-column {
+    position: relative;
+}
+
+.third-column:before {
+    color: $gray-dark;
+    content: "}";
+    position: absolute;
+    left: -48px;
+    top: 191px;
+}
+
+#chartcopy-4 {
+    margin-top: -12px;
+    font-size: 32px;
+    line-height: 48px;
+    color: $gray-dark;
+    text-align: center;
+    text-align-last: center;
+}
+
+#chartcopy-5 {
+    font-size: 38px;
+    line-height: 44px;
+    color: $gray-dark;
+}
+
+#chartcopy-spacer-0 {
+    width: 100%;
+    position: absolute;
+    line-height: 36px;
+    background-color: $brand-warning;
+}
+
+#chartcopy-6 {
+    font-size: 36px;
+    line-height: 36px;
+    color: $gray-dark;
+    text-align: center;
+    text-align-last: center;
+    background-color: $gray-lighter;
+    width: 92px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 3px;
+    position: relative;
+    z-index: 100;
+}
+
+#chartcopy-7 {
+    font-size: 44px;
+    line-height: 44px;
+    color: $gray-dark;
+    font-weight: 500;
+}
+
+#chartcopy-spacer-1 {
+    min-width: 100%;
+    position: absolute;
+    line-height: 40px;
+    background-color: $brand-warning;
+}
+
+#chartcopy-8 {
+    padding-top: 42px;
+    font-size: 43px;
+    line-height: 43px;
+    color: $gray-dark;
+}
+
+#chartcopy-9 {
+    font-size: 30px;
+    line-height: 30px;
+    color: $gray-dark;
+}
 /*    @media (max-width: 1200px) {
         h1 {
             position: relative;
@@ -775,17 +846,17 @@ li.search-pill a {
 /****************************************************************/
 /* About page */
 
-// https://github.com/twbs/bootstrap/issues/1768
-#about-page *[id]:before { 
-  display: block; 
-  content: " "; 
-  margin-top: -75px; 
-  height: 75px; 
-  visibility: hidden; 
+//https://github.com/twbs/bootstrap/issues/1768
+#about-page *[id]:before {
+    display: block;
+    content: " ";
+    margin-top: -75px;
+    height: 75px;
+    visibility: hidden;
 }
 
 #about-page + hr + footer {
-  margin-bottom: 80em;
+    margin-bottom: 80em;
 }
 
 /****************************************************************/
@@ -802,38 +873,43 @@ $strips-ratio:50%;
 $strips-angle:45deg;
 
 .dashed-animation {
-  position: relative;
-  display: inline-block;
-  color: $foreground-color;
+    position: relative;
+    display: inline-block;
+    color: $foreground-color;
 }
+
 @keyframes dash-animation {
-  0% { background-position: 0 0 };
-  100% { background-position: 700% 0 };
+    0% {
+        background-position: 0 0
+    };
+    100% {
+        background-position: 700% 0
+    };
 }
-.dashed-animation:before{
-  content: " ";
-  display: block;
-  
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
 
-  $color: $background-color;
-  $size: $strips-ratio/2;
-  $halfSize: $size/2;
-  $p1: $halfSize;
-  $p2: 50%-$halfSize;
-  $p3: 50%+$halfSize;
-  $p4: 100%-$halfSize;
-  $transparent: transparentize($color,1);
+.dashed-animation:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    $color: $background-color;
+    $size: $strips-ratio/2;
+    $halfSize: $size/2;
+    $p1: $halfSize;
+    $p2: 50%-$halfSize;
+    $p3: 50%+$halfSize;
+    $p4: 100%-$halfSize;
+    $transparent: transparentize($color,1);
+    background-image: linear-gradient($strips-angle, $color $p1, $transparent $p1, $transparent $p2, $color $p2, $color $p3, $transparent $p3, $transparent $p4, $color $p4);
+    background-size: $strips-size $strips-size;
+}
 
-  background-image: linear-gradient($strips-angle, $color $p1, $transparent $p1, $transparent $p2, $color $p2, $color $p3, $transparent $p3, $transparent $p4, $color $p4);
-  background-size: $strips-size $strips-size;
+.dashed-animation:hover:before {
+    animation: dash-animation 30s infinite linear;
 }
-.dashed-animation:hover:before{
-  animation: dash-animation 30s infinite linear;
-}
+
 

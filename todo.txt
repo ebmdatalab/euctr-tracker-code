@@ -8,7 +8,7 @@ Improve design
     Test all for combinations of % reported if statement - 0% etc.
     Long sponsor names - what happens to formatting of text?
 
-  Fix CSS tab size
+  Fix CSS file's tab size
   "page-header" style on About
   What fonts default to - Times New Roman?
 
