@@ -42,6 +42,12 @@
     font-weight: 400;
     src: local('Lora'), url(/static/fonts/Lora-Regular.ttf) format('truetype');
 }
+@font-face {
+    font-family: 'FiraSans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('FiraSans-Bold'), local('FarSans-Bold'), url(/static/fonts/FiraSans-Bold.ttf) format('truetype');
+}
 
 @import 'bootswatch';
 
@@ -129,6 +135,18 @@ body#taking-screenshot .jumbotron {
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg); }
     to { -webkit-transform: rotate(360deg); }
+}
+
+.navbar {
+    font-family: $font-family-lato;
+    font-weight: 400;
+}
+
+.navbar-brand {
+    font-family: $font-family-firasans;
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: none;
 }
 
 
@@ -580,7 +598,7 @@ li.search-pill a {
     background-image: url("/static/images/white-45degree-syringe-trans.svg");
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.4;
+    opacity: 0.35;
     position: absolute;
     top: 0;
     width: 100%;
