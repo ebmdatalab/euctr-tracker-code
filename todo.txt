@@ -5,8 +5,6 @@ Improve design
   OR consider adding spacing
 
   Sponsor page:
-    Background image of syringe
-
     Test all for combinations of % reported if statement - 0% etc.
     Long sponsor names - what happens to formatting of text?
 
