@@ -5,19 +5,10 @@ Improve design
   OR consider adding spacing
 
   Sponsor page:
-    Colour and font of caption text below bar chart
-
-    Background colour should be grey? Down to where?
-
-    "Letter spacing up a bit" for sponsor page heading, all <h1>s?
-    Colour of sponsor page heading
-
     Background image of syringe
 
     Test all for combinations of % reported if statement - 0% etc.
     Long sponsor names - what happens to formatting of text?
-  
-  Staging site
 
   Fix CSS tab size
   "page-header" style on About
