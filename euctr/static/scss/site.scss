@@ -541,6 +541,20 @@ li.search-pill a {
       margin-right: auto;
     }
   }
+
+  @media (max-width: 536px) {
+    .first-column, .second-column {
+      width: auto;
+      text-align: center;
+      text-align-last: center;
+    }
+    #preamble-brash-number {
+      font-size: 175px;
+      line-height: 175px;
+    }
+  }
+
+
 }
 
 .sponsor_table_loading {

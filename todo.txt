@@ -1,8 +1,12 @@
 Improve design 
-  Check front page on multiple browsers
-  Make front page work for phone widths
+  Front page
+    Check on multiple browsers
+    Make work for phone widths
   Consider changing to no decimal place in main headline front page figure
-  OR consider adding spacing
+    OR consider adding spacing
+
+  Change font - too Americana (Ben)
+  Change braces to friendly arrows
 
   Sponsor page:
     Test all for combinations of % reported if statement - 0% etc.
@@ -33,6 +37,7 @@ Daily update
   Don't update got_from_db in trials.csv.json if nothing changed
   Get on tech@ebmdatalab.net - ask Seb
   Change cron email to tech@ebmdatalab.net
+Important update is monthly after site is live (otherwise don't worry)
 
 All/None look odd with "Late reporting" title
 "We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
