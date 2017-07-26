@@ -595,8 +595,7 @@ li.search-pill a {
 
 #trials-bar-caption {
   width: 314px;
-  margin-left: 410px;
-  position: relative;
+  position: absolute;
   padding-bottom: 2em;
   text-align: center;
 }
@@ -850,38 +849,24 @@ li.search-pill a {
     color: $gray-dark;
   }
 
-  /*    @media (max-width: 1200px) {
-          h1 {
-              position: relative;
+  @media (max-width: 1200px) {
+    h1 {
   	    text-align: center;
   	    text-align-last: center;
-  	    padding-left: 45px;
-  	    padding-right: 45px;
-  	    border-bottom: none;
   	}
-  	h1:before {
-  	    content : "";
-  	    position: absolute;
-  	    left    : 0;
-  	    bottom  : -8px;
-  	    height  : 1px;
-  	    width   : 50%;
-              margin-left: 25%;
-  	    border-bottom: 9px solid $text-color;
-  	}
-  	.first-column {
-              display: block;
+  	.first-column, .second-column, .third-column {
+        display: block;
   	    margin-top: 45px;
   	    margin-left: auto;
   	    margin-right: auto;
   	}
-  	.second-column {
-              display: block;
-  	    margin-top: 45px;
-  	    margin-left: auto;
-  	    margin-right: auto;
-  	}
-      } */
+    .first-column:after {
+      display: none;
+    }
+    .third-column:before {
+      display: none;
+    }
+  }
 }
 
 /****************************************************************/
