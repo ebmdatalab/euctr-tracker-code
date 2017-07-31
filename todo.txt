@@ -1,21 +1,22 @@
 Improve design 
   Front page
     Check on multiple browsers
-    Make work for phone widths
+    Polish narrow phone width version 
   Consider changing to no decimal place in main headline front page figure
     OR consider adding spacing
 
   Change font - too Americana (Ben)
-  Change braces to friendly arrows
 
   Sponsor page:
-    Test all for combinations of % reported if statement - 0% etc.
+    Make jitter faster on bar chart
+
+    Change braces to friendly arrows
+    Add arrows to mobile version
+
+    Check all combinations of % reported if statement - 0% etc with Ayesha
       http://127.0.0.1:8000/sponsor/bayer - ALL
       http://127.0.0.1:8000/sponsor/leiden-university - NONE
       http://127.0.0.1:8000/sponsor/university-of-groningen - unknown
-
-
-    Make jitter faster on bar chart
 
   "page-header" style on About
   What fonts default to - Times New Roman?
