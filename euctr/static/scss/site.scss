@@ -748,13 +748,6 @@ li.search-pill a {
     position: relative;
   }
 
-  .first-column:after {
-    content: "{";
-    position: absolute;
-    right: -40px;
-    top: 160px;
-  }
-
   #chartcopy-1 {
     font-size: 36px;
     line-height: 36px;
@@ -871,6 +864,44 @@ li.search-pill a {
     }
   }
 }
+
+/* Funky orange dynamic stretching pointers */
+#lhs-pointer-top {
+  background-image: url("/static/images/lhs-pointer-red-top.png");
+  background-repeat: no-repeat;
+  background-size: 60px 32px;
+  position: absolute;
+  left: -30px;
+  width: 60px;
+  height: 32px;
+}
+#lhs-pointer-mid {
+  background-image: url("/static/images/lhs-pointer-red-mid.png");
+  background-repeat: repeat;
+  background-size: 60px 15px;
+  position: absolute;
+  left: -30px;
+  width: 60px;
+  height: 200px;
+}
+#lhs-pointer-bottom {
+  background-image: url("/static/images/lhs-pointer-red-bottom.png");
+  background-repeat: no-repeat;
+  background-size: 60px 32px;
+  position: absolute;
+  left: -30px;
+  width: 60px;
+  height: 32px;
+}
+
+#lhs-pointer {
+/* transform: scaleX(-1); */
+}
+
+
+
+
+
 
 /****************************************************************/
 /* About page */
