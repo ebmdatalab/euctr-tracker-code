@@ -42,10 +42,10 @@
 }
 
 @font-face {
-  font-family: 'Lora';
+  font-family: 'Hind';
   font-style: normal;
-  font-weight: 400;
-  src: local("Lora"), url(/static/fonts/Lora-Regular.ttf) format("truetype");
+  font-weight: 700;
+  src: local("Hind-Bold"), url(/static/fonts/Hind-Bold.ttf) format("truetype");
 }
 
 @font-face {
@@ -356,7 +356,7 @@ li.search-pill a {
   #preamble-6 {
     font-size: 90px;
     line-height: 90px;
-    color: $brand-success-lighter;
+    color: $brand-success;
   }
 
   #wrap-1 {
@@ -444,8 +444,9 @@ li.search-pill a {
   #preamble-brash-number {
     font-size: 230px;
     line-height: 230px;
-    font-family: $font-family-lora;
-    color: $brand-brash-number;
+    font-family: $font-family-hind;
+    font-weight: 700;
+    color: $brand-danger;
     margin-top: 20px;
     margin-bottom: 24px;
   }
@@ -453,8 +454,9 @@ li.search-pill a {
   #preamble-brash-percent {
     font-size: 175px;
     line-height: 175px;
-    font-family: $font-family-lora;
-    color: $brand-brash-number;
+    font-family: $font-family-hind;
+    font-weight: 700;
+    color: $brand-danger;
     vertical-align: top;
   }
 
@@ -731,7 +733,8 @@ li.search-pill a {
   #chartcopy-brash-1, #chartcopy-brash-2, .first-column:after, .third-column:before {
     font-size: 135px;
     line-height: 135px;
-    font-family: $font-family-lora;
+    font-family: $font-family-hind;
+    font-weight: 700;
     color: $brand-warning;
     text-align: center;
     text-align-last: center;

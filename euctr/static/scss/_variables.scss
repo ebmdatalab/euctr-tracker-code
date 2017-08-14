@@ -14,15 +14,14 @@ $gray-light:             #b7c1c5 !default;
 $gray-lighter:           #e3e1e1 !default;
 
 $brand-primary:         #414445 !default;
-$brand-success:         #5e7c88 !default;
+$brand-success:         #343434 !default;
 $brand-info:            #feb41d !default;
-$brand-warning:         #ff9638 !default; /* needs lines */
-$brand-danger:          #ff9638 !default;
+$brand-warning:         #e95436 !default; /* needs lines */
+$brand-danger:          #e95436 !default;
 
 /* Colour $brand-success made slightly lighter */
-$brand-success-lighter: #7296a4 !default;
+$brand-success-lighter: #454545 !default;
 $brand-sharp: #494e50 !default;
-$brand-brash-number: #feb41d !default;
 $brand-learn-more: #9fa8ab !default;
 
 //== Scaffolding
@@ -48,7 +47,7 @@ $link-hover-decoration: underline !default;
 
 $font-family-oswald:      "Oswald", "Arial Narrow Bold", sans-serif !default;
 $font-family-lato:        "Lato", "Times New Roman", Times, serif !default;
-$font-family-lora:        "Lora", "Times New Roman", Times, serif !default;
+$font-family-hind:        "Hind", "Times New Roman", Times, serif !default;
 $font-family-firasans:    "FiraSans", "Times New Roman", Times, serif !default;
 
 // Override Bootstrap standard fonts with these two as decent defaults
