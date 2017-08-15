@@ -1,4 +1,7 @@
 Improve design 
+  Resize while pointers on screen
+
+
   Front page
     Check on multiple browsers
     Polish narrow phone width version 

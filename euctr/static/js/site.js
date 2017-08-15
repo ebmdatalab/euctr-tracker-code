@@ -234,7 +234,7 @@ function activate_trials_datatable() {
     $('#trials_table').show()
 }
 
-function make_pointer(el, x, y1, y2) {
+function make_pointer(el, x, y1, y2, colour) {
     holderclass = ""
     if (y1 > y2) {
 	holderclass = "pointer-xflip"
@@ -244,6 +244,8 @@ function make_pointer(el, x, y1, y2) {
 	y2 = y2 + 20
 	y1 = y1 - 10
     }
+
+    holderclass = holderclass + " pointer-" + colour
 
     if (y2 - y1 < 64) {
 	var missing = 64 - (y2 - y1)
@@ -265,7 +267,13 @@ function make_pointers() {
     var y1 = ($('#not-reported-bar').offset().top + $('#reported-bar').offset().top) / 2 - par.offset().top - 10
     var y2 = $('#chartcopy-brash-1').offset().top - par.offset().top + $('#chartcopy-brash-1').height() / 2 - 10 
     var x = $('#not-reported-bar').offset().left - par.offset().left - 30
-    make_pointer(par, x, y1, y2)
+    make_pointer(par, x, y1, y2, "default")
+
+    par = $('#inconsistent-data-column')
+    var y1 = $('#inconsistent-data-bar').offset().top - par.offset().top + $('#inconsistent-data-bar').height() / 2 + 10
+    var y2 = $('#chartcopy-7').offset().top - par.offset().top + $('#chartcopy-7').height() / 2 - 10
+    var x = $('#inconsistent-data-bar').offset().left - par.offset().left + $('#inconsistent-data-bar').width() + 30
+    make_pointer(par, x, y2, y1, "grey")
 }
 
 function activate_charts() {

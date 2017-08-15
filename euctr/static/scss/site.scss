@@ -773,14 +773,6 @@ li.search-pill a {
     position: relative;
   }
 
-  .third-column:before {
-    color: $gray-dark;
-    content: "}";
-    position: absolute;
-    left: -48px;
-    bottom: 77px;
-  }
-
   #chartcopy-4 {
     margin-top: -4px;
     font-size: 32px;
@@ -900,6 +892,17 @@ li.search-pill a {
 .pointer-xflip {
   .pointer-top, .pointer-bottom {
     transform: scaleX(-1);
+  }
+}
+.pointer-grey {
+  .pointer-top {
+    background-image: url("/static/images/lhs-pointer-grey-top.png");
+  }
+  .pointer-mid {
+    background-image: url("/static/images/lhs-pointer-grey-mid.png");
+  }
+  .pointer-bottom {
+    background-image: url("/static/images/lhs-pointer-grey-bottom.png");
   }
 }
 
