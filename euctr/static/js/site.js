@@ -234,6 +234,40 @@ function activate_trials_datatable() {
     $('#trials_table').show()
 }
 
+function make_pointer(el, x, y1, y2) {
+    holderclass = ""
+    if (y1 > y2) {
+	holderclass = "pointer-xflip"
+	var swap = y1
+	y1 = y2
+	y2 = swap
+	y2 = y2 + 20
+	y1 = y1 - 10
+    }
+
+    if (y2 - y1 < 64) {
+	var missing = 64 - (y2 - y1)
+	    y2 = y2 + (missing / 2)
+	    y1 = y1 - (missing / 2)
+    }
+
+    var holder_start = "<div class='" + holderclass + " pointer-holder' style='left: " + x + "px; top: " + y1 + "px; height: "+ (y2 - y1) + "px'>"
+    var top_html = "<div class='pointer-top'></div>"
+    var mid_html = "<div class='pointer-mid' style='top:32px; height:" + (y2 - y1 - 64) + "px'></div>"
+    var bottom_html = "<div class='pointer-bottom' style='top:" + (y2 - y1 - 32) + "px'></div>"
+    var holder_end = "</div>"
+    var new_el = jQuery(holder_start + top_html + mid_html + bottom_html + holder_end)
+    new_el.appendTo(el)
+}
+
+function make_pointers() {
+    var par = $('#late-reporting-column')
+    var y1 = ($('#not-reported-bar').offset().top + $('#reported-bar').offset().top) / 2 - par.offset().top - 10
+    var y2 = $('#chartcopy-brash-1').offset().top - par.offset().top + $('#chartcopy-brash-1').height() / 2 - 10 
+    var x = $('#not-reported-bar').offset().left - par.offset().left - 30
+    make_pointer(par, x, y1, y2)
+}
+
 function activate_charts() {
     /* Charts */
     Chart.defaults.global.defaultFontFamily = "Lato, 'Times New Roman', Times, serif"
@@ -261,5 +295,12 @@ function activate_charts() {
 	data: unreported_data,
 	options: unreported_options
     });
+
+    /* Pointers on bar chart */
+    make_pointers()
+
 }
+
+
+
 

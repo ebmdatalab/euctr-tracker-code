@@ -689,6 +689,7 @@ li.search-pill a {
 
 .sponsor-charts {
   padding-bottom: 64px;
+  position: relative;
 
   #canvas-sub {
     padding-top: 87px;
@@ -866,25 +867,28 @@ li.search-pill a {
 }
 
 /* Funky orange dynamic stretching pointers */
-#lhs-pointer-top {
+.pointer-holder {
+  position: absolute;
+}
+.pointer-top {
   background-image: url("/static/images/lhs-pointer-red-top.png");
   background-repeat: no-repeat;
   background-size: 60px 32px;
-  position: absolute;
+  position: relative;
+  top: 0px;
   left: -30px;
   width: 60px;
   height: 32px;
 }
-#lhs-pointer-mid {
+.pointer-mid {
   background-image: url("/static/images/lhs-pointer-red-mid.png");
   background-repeat: repeat;
   background-size: 60px 15px;
   position: absolute;
   left: -30px;
   width: 60px;
-  height: 200px;
 }
-#lhs-pointer-bottom {
+.pointer-bottom {
   background-image: url("/static/images/lhs-pointer-red-bottom.png");
   background-repeat: no-repeat;
   background-size: 60px 32px;
@@ -893,14 +897,11 @@ li.search-pill a {
   width: 60px;
   height: 32px;
 }
-
-#lhs-pointer {
-/* transform: scaleX(-1); */
+.pointer-xflip {
+  .pointer-top, .pointer-bottom {
+    transform: scaleX(-1);
+  }
 }
-
-
-
-
 
 
 /****************************************************************/

@@ -14,7 +14,7 @@
 <div class="sponsor-charts jumbotron"><div class="container">
   <h1>{{ sponsor_name }}{% if sponsor_name|slice:"-1:" == "s" %}'{% else %}'s{% endif %}
     EU clinical trials</h1>
-  <div class="first-column">
+  <div class="first-column" id="late-reporting-column">
     {% if percent_unreported == 0 %}
       <div id="canvas-sub">&nbsp;</div>
       <div id="chartcopy-brash-1">All</div>
@@ -42,12 +42,6 @@
   </div>
   <div class="second-column">
     <div id="trials-bar-chart">
-      <div id="lhs-pointer">
-	<div id="lhs-pointer-top" style="top: calc(100% - {% calc_mid_bar total_due total_reported not_yet_due_trials inconsistent_trials %}% - 13px)"></div>
-	<div id="lhs-pointer-mid" style="top: calc(100% - {% calc_mid_bar total_due total_reported not_yet_due_trials inconsistent_trials %}% + 19px); height: calc(148px - 100% + {% calc_mid_bar total_due total_reported not_yet_due_trials inconsistent_trials %}%)"></div>
-	<div id="lhs-pointer-bottom" style="top: calc(164px);"></div>
-      </div>
-
       <div id="not-reported-bar" style="height: {% calc_bar total_due not_yet_due_trials inconsistent_trials %}%" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Late reporting results:<br>{{ total_unreported }} trials">
       </div>
       <div id="reported-bar" style="height: {% calc_bar total_reported total_due not_yet_due_trials inconsistent_trials %}%" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Reported on time:<br>{{ total_reported }} trials">
