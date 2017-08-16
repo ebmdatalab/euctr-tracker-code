@@ -265,13 +265,16 @@ function make_pointer(el, x, y1, y2, colour) {
 function make_pointers() {
     $('.pointer-holder').remove()
 
-    var par = $('#late-reporting-column')
-    var y1 = ($('#not-reported-bar').offset().top + $('#reported-bar').offset().top) / 2 - par.offset().top - 10
-    var y2 = $('#chartcopy-brash-1').offset().top - par.offset().top + $('#chartcopy-brash-1').height() / 2 - 10 
-    var x = $('#not-reported-bar').offset().left - par.offset().left - 30
-    make_pointer(par, x, y1, y2, "default")
+    /* Don't show pointer for the all/none extreme cases where there's no pie */
+    if ($('#unreported_chart').length) {
+	var par = $('#late-reporting-column')
+	var y1 = ($('#not-reported-bar').offset().top + $('#reported-bar').offset().top) / 2 - par.offset().top - 10
+	var y2 = $('#chartcopy-brash-1').offset().top - par.offset().top + $('#chartcopy-brash-1').height() / 2 - 10
+	var x = $('#not-reported-bar').offset().left - par.offset().left - 30
+	make_pointer(par, x, y1, y2, "default")
+    }
 
-    par = $('#inconsistent-data-column')
+    var par = $('#inconsistent-data-column')
     var y1 = $('#inconsistent-data-bar').offset().top - par.offset().top + $('#inconsistent-data-bar').height() / 2 + 10
     var y2 = $('#chartcopy-7').offset().top - par.offset().top + $('#chartcopy-7').height() / 2 - 10
     var x = $('#inconsistent-data-bar').offset().left - par.offset().left + $('#inconsistent-data-bar').width() + 30

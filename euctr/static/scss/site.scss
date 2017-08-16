@@ -627,6 +627,10 @@ li.search-pill a {
   height: 384px;
   min-height: 100%;
   position: relative;
+
+  div {
+    white-space: pre-line;
+  }
 }
 
 #trials-bar-caption {
