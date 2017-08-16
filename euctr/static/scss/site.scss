@@ -840,19 +840,41 @@ li.search-pill a {
 
   @media (max-width: 1200px) {
     h1 {
-  	    text-align: center;
-  	    text-align-last: center;
+  	  text-align: center;
+  	  text-align-last: center;
   	}
   	.first-column, .second-column, .third-column {
-        display: block;
-  	    margin-top: 45px;
-  	    margin-left: auto;
-  	    margin-right: auto;
+      display: block;
+  	  margin-top: 45px;
+  	  margin-left: auto;
+  	  margin-right: auto;
   	}
     .first-column:after {
-      display: none;
+      display: block;
+      content: " ";
+      background-image: url("/static/images/mobile-arrow-red.svg");
+      background-repeat: no-repeat;
+      position: relative;
+      width: 86px;
+      height: 41px;
+      bottom: -16px;     
+      left: 58px;
+      line-height: 36px;
     }
     .third-column:before {
+      display: block;
+      content: " ";
+      background-image: url("/static/images/mobile-arrow-grey.svg");
+      background-repeat: no-repeat;
+      position: relative;
+      width: 86px;
+      height: 41px;
+      top: 8px;     
+      left: 238px;
+      margin-bottom: 16px;
+      line-height: 36px;
+    }
+    .pointer-holder {
       display: none;
     }
   }
