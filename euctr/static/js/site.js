@@ -263,6 +263,8 @@ function make_pointer(el, x, y1, y2, colour) {
 }
 
 function make_pointers() {
+    $('.pointer-holder').remove()
+
     var par = $('#late-reporting-column')
     var y1 = ($('#not-reported-bar').offset().top + $('#reported-bar').offset().top) / 2 - par.offset().top - 10
     var y2 = $('#chartcopy-brash-1').offset().top - par.offset().top + $('#chartcopy-brash-1').height() / 2 - 10 
@@ -275,6 +277,10 @@ function make_pointers() {
     var x = $('#inconsistent-data-bar').offset().left - par.offset().left + $('#inconsistent-data-bar').width() + 30
     make_pointer(par, x, y2, y1, "grey")
 }
+
+$( window ).resize(function() {
+    make_pointers()
+});
 
 function activate_charts() {
     /* Charts */
@@ -304,9 +310,10 @@ function activate_charts() {
 	options: unreported_options
     });
 
-    /* Pointers on bar chart */
+    /* Pointers on bar chart - needs to be done after document ready
+       or has wrong sizes on Chrome */
     make_pointers()
-
+    $(document).ready(make_pointers)
 }
 
 
