@@ -304,11 +304,13 @@ function activate_charts() {
 	animation: { animateRotate: false, duration: 0 },
     }
     var unreported_ctx = document.getElementById("unreported_chart");
-    window.unreported_chart = new Chart(unreported_ctx, {
-	type: 'pie' ,
-	data: unreported_data,
-	options: unreported_options
-    });
+    if (unreported_ctx) {
+	window.unreported_chart = new Chart(unreported_ctx, {
+	    type: 'pie' ,
+	    data: unreported_data,
+	    options: unreported_options
+	});
+    }
 
     /* Pointers on bar chart - needs to be done after document ready
        or has wrong sizes on Chrome */
