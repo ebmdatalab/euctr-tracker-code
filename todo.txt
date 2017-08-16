@@ -1,15 +1,14 @@
 Improve design 
-  Check front page on 
-      chrome
-      multiple browsers
-  Check sponsor page on 
-      multiple browsers
+  Check front page on multiple browsers
+  Check sponsor page on multiple browsers
 
   Sponsor page:
     Check all combinations of % reported if statement - 0% etc with Ayesha
       http://127.0.0.1:8000/sponsor/bayer - ALL
       http://127.0.0.1:8000/sponsor/leiden-university - NONE. Space above in mobile
       http://127.0.0.1:8000/sponsor/university-of-groningen - unknown
+
+  Check screenshots all look good
 
   Links need to look different
   "page-header" style on About

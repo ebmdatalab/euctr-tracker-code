@@ -29,9 +29,9 @@
       <div id="chartcopy-3"><b>been reported</b></div>
     {% elif percent_unreported|custom_percent == "-" %}
       <div id="canvas-sub">&nbsp;</div>
-      <div id="chartcopy-brash-1">All</div>
-      <div id="chartcopy-1">of {{ sponsor_name }}'s trials are</div>
-      <div id="chartcopy-3"><b>not yet due</b></div>
+      <div id="chartcopy-brash-1"></div>
+      <div id="chartcopy-1">None of {{ sponsor_name }}'s trials are</div>
+      <div id="chartcopy-3"><b>due to report</b></div>
     {% else %}
       <canvas id="unreported_chart" height="140px"></canvas>
       <div id="chartcopy-brash-1">{{percent_unreported | custom_percent}}</div>
