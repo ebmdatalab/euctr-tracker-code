@@ -328,6 +328,11 @@ li.search-pill a {
     line-height: 60px;
     color: $gray-dark;
   }
+  #preamble-comma {
+    font-size: 30px;
+    line-height: 30px;
+    color: $gray-dark;
+  }
 
   #preamble-2 {
     font-size: 30px;
@@ -550,9 +555,38 @@ li.search-pill a {
       text-align: center;
       text-align-last: center;
     }
+    #preamble-2 {
+      display: block;
+    }
     #preamble-brash-number {
       font-size: 175px;
       line-height: 175px;
+    }
+    #white-line {
+      display: none;
+    }
+    #preamble-7 {
+      display: block;
+      position: static;
+      top: 0px;
+      text-align: center;
+      text-align-last: center;
+      padding-right: 0;
+      line-height: 30px;
+      margin-bottom: 26px;
+    }
+    #preamble-due-trials {
+      position: static;
+      width: auto;
+      margin-bottom: 8px;
+      margin-top: -50px;
+    }
+    .first-subcolumn {
+      padding-right: 0;
+    }
+    .second-subcolumn {
+      border-left: none;
+      padding-left: 0;
     }
   }
 
@@ -970,7 +1004,7 @@ $strips-angle: 45deg;
   }
 
   100% {
-    background-position: 700% 0;
+    background-position: 550% -550%;
   }
 }
 

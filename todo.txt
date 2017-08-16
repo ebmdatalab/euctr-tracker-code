@@ -1,18 +1,14 @@
 Improve design 
   Resize while pointers on screen
 
-
-  Front page
-    Check on multiple browsers
-    Polish narrow phone width version 
-  Consider changing to no decimal place in main headline front page figure
-    OR consider adding spacing
-
-  Change font - too Americana (Ben)
+  Check front page on 
+      chrome
+      multiple browsers
+  Check sponsor page on 
+      chrome
+      multiple browsers
 
   Sponsor page:
-    Make jitter faster on bar chart
-
     Change braces to friendly arrows
     Add arrows to mobile version
 
