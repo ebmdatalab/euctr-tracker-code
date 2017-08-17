@@ -82,7 +82,8 @@ class Command(BaseCommand):
             print("Inconsistent parents: %r" % incorrect_parents)
             print("For these sponsors:")
             for p in incorrect_parents:
-                print(set(differing_parent[differing_parent['normalized_name_only'] == p]['name_of_sponsor']))
+                print("Names of these:", set(differing_parent[differing_parent['normalized_name_only'] == p]['name_of_sponsor']))
+                print("Conflict with parent names of these:", set(differing_parent[differing_parent['normalized_name'] == p]['name_of_sponsor']))
             sys.exit(1)
         # ... first join on trial_id
         all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
