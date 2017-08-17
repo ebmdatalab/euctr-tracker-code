@@ -8,37 +8,20 @@ $bootstrap-sass-asset-helper: false !default;
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-base:              #000 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   #777 !default; // #555
-$gray-light:             #b7c1c5; /* Was: lighten($gray-base, 60%) !default;   // #999 */
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
-
-/* Original Journal
-$brand-primary:         #EB6864 !default;
-$brand-success:         #22B24C !default;
-$brand-info:            #369 !default;
-$brand-warning:         #F5E625 !default;
-$brand-danger:          #F57A00 !default;
-*/
-
-/* FAI colours
-$brand-primary:         #369 !default;
-$brand-success:         #22B24C !default;
-$brand-info:            #F57A00 !default;
-$brand-warning:         #B264B2 !default;
-$brand-danger:          #EB6864 !default;
-*/
+$gray-dark:              #565b5d !default;
+$gray:                   #7c8385 !default; 
+$gray-light:             #b7c1c5 !default; 
+$gray-lighter:           #e3e1e1 !default;
 
 $brand-primary:         #414445 !default;
-$brand-success:         #5e7c88 !default;
+$brand-success:         #343434 !default;
 $brand-info:            #feb41d !default;
-$brand-warning:         #ff9638 !default; /* needs lines */
-$brand-danger:          #ff9638 !default;
+$brand-warning:         #e95436 !default; /* needs lines */
+$brand-danger:          #e95436 !default;
 
 /* Colour $brand-success made slightly lighter */
-$brand-success-lighter: #7296a4 !default;
+$brand-sharp: #494e50 !default;
+$brand-learn-more: #9fa8ab !default;
 
 //== Scaffolding
 //
@@ -47,7 +30,7 @@ $brand-success-lighter: #7296a4 !default;
 //** Background color for `<body>`.
 $body-bg:               #fff !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
+$text-color:            $brand-primary !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
@@ -61,11 +44,17 @@ $link-hover-decoration: underline !default;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Oswald", "Arial Narrow Bold", sans-serif !default;
-$font-family-serif:       "Lato", "Times New Roman", Times, serif !default;
+$font-family-oswald:      "Oswald", "Arial Narrow Bold", sans-serif !default;
+$font-family-lato:        "Lato", "Times New Roman", Times, serif !default;
+$font-family-hind:        "Hind", "Times New Roman", Times, serif !default;
+$font-family-firasans:    "FiraSans", "Times New Roman", Times, serif !default;
+
+// Override Bootstrap standard fonts with these two as decent defaults
+$font-family-sans-serif:  $font-family-oswald;
+$font-family-serif:       $font-family-lato; // It doesn't actually have serifs
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
-$font-family-base:        $font-family-serif !default;
+$font-family-base:        $font-family-lato !default;
 
 $font-size-base:          15px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
@@ -84,7 +73,7 @@ $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 //** By default, this inherits from the `<body>`.
-$headings-font-family:    $font-family-sans-serif !default;
+$headings-font-family:    $font-family-oswald !default;
 $headings-font-weight:    700 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          #000 !default;
@@ -261,7 +250,7 @@ $dropdown-fallback-border:       #ccc !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
 
 //** Dropdown link text color.
-$dropdown-link-color:            $gray-dark !default;
+$dropdown-link-color:            $text-color !default;
 //** Hover color for dropdown links.
 $dropdown-link-hover-color:      #fff !default;
 //** Hover background for dropdown links.
@@ -856,7 +845,7 @@ $kbd-color:                   #fff !default;
 $kbd-bg:                      #333 !default;
 
 $pre-bg:                      #f5f5f5 !default;
-$pre-color:                   $gray-dark !default;
+$pre-color:                   $text-color !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
 

@@ -1,7 +1,6 @@
 venv
-euctr/static/CACHE
 .~lock*
 .ipynb_checkpoints
 rundev
-euctr/ghostdriver.log
+ghostdriver.log
 __pycache__/

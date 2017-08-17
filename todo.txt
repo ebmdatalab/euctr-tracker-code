@@ -1,7 +1,23 @@
 Improve design 
+  Check front page on multiple browsers
+  Check sponsor page on multiple browsers
+
+  Check all combinations of % reported if statement - 0% etc with Ayesha
+    http://127.0.0.1:8000/sponsor/bayer - ALL
+    http://127.0.0.1:8000/sponsor/leiden-university - NONE
+    http://127.0.0.1:8000/sponsor/university-of-groningen - unknown XXX worst
+
+  Check screenshots all look good
+
+  Links need to look different
+  "page-header" style on About
+  What fonts default to - Times New Roman?
+
   Add social sharing buttons for Ayesha
 
   When zooming for presentation, not enough shows in table (Ben)
+
+  
 
 Daily update
   Check the cron runs
@@ -13,6 +29,7 @@ Daily update
   Don't update got_from_db in trials.csv.json if nothing changed
   Get on tech@ebmdatalab.net - ask Seb
   Change cron email to tech@ebmdatalab.net
+Important update is monthly after site is live (otherwise don't worry)
 
 All/None look odd with "Late reporting" title
 "We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
