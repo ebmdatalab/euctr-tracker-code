@@ -1,19 +1,15 @@
 Improve design 
   Links need to look different
+  "About" when you hover
+
   Make all screenshots all look good
+  "page-header" style on About
+
+  What fonts default to - Times New Roman?
+  Add social sharing buttons for Ayesha
 
   Check front page on multiple browsers
   Check sponsor page on multiple browsers
-
-  Check all combinations of % reported if statement - 0% etc with Ayesha
-    http://127.0.0.1:8000/sponsor/bayer - ALL Ayesha says "make it dark colour as nothing to draw but keep large" #343434
-    http://127.0.0.1:8000/sponsor/leiden-university - NONE
-    http://127.0.0.1:8000/sponsor/university-of-groningen - unknown XXX worst
-
-  "page-header" style on About
-  What fonts default to - Times New Roman?
-
-  Add social sharing buttons for Ayesha
 
   Double check with Ben how important mobile is
   When zooming for presentation, not enough shows in table (Ben)
@@ -58,13 +54,13 @@ Error monitoring
   "New Relic"
 Change chown to root:www-data - ghostdriver.log a problem and pycache
 
-Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
-
-Spec and notes:
-https://docs.google.com/document/d/1j2UsDf98fSuKJYqFblx3orNozmhPAGNItl-EGVNdkMs/edit
-
 Launch
   Link to "Methods" in navigation, going to the paper on BMJ or similar site
+
+  Test before live on
+    http://127.0.0.1:8000/sponsor/bayer
+    http://127.0.0.1:8000/sponsor/leiden-university
+    http://127.0.0.1:8000/sponsor/university-of-groningen
 
 *** Visulisation improvement - two figures to highlight
   Try 
@@ -86,6 +82,8 @@ OpenTrials questions
 
 Later
 =====
+
+Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
 Display history
   Do this a few months, or a year in 

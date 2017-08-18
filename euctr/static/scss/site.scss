@@ -79,6 +79,17 @@ body#taking-screenshot {
   padding-bottom: 0px;
 }
 
+a {
+  font-weight: bold;
+   &:hover, &:focus {
+	  color: #fff;
+	  background-color: $gray-dark;
+	}
+}
+.nav a {
+  font-weight: normal;
+}
+
 .prominent_link {
   margin-top: 24px;
   font-size: 21px;
