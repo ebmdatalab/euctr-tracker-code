@@ -281,10 +281,6 @@ function make_pointers() {
     make_pointer(par, x, y2, y1, "grey")
 }
 
-$( window ).resize(function() {
-    make_pointers()
-});
-
 function activate_charts() {
     /* Charts */
     Chart.defaults.global.defaultFontFamily = "Lato, 'Times New Roman', Times, serif"
@@ -319,6 +315,9 @@ function activate_charts() {
        or has wrong sizes on Chrome */
     make_pointers()
     $(document).ready(make_pointers)
+    $( window ).resize(function() {
+	make_pointers()
+    });
 }
 
 
