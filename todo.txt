@@ -1,6 +1,5 @@
 Improve design 
   Make all screenshots all look good
-  "page-header" style on About
 
   What fonts default to - Times New Roman?
   Add social sharing buttons for Ayesha
