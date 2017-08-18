@@ -983,29 +983,29 @@ by <html> element's pix value. */
 .pointer-top {
   background-image: url("/static/images/lhs-pointer-red-top.png");
   background-repeat: no-repeat;
-  background-size: 60px 32px;
+  background-size: 45px 24px;
   position: relative;
   top: 0px;
-  left: -30px;
-  width: 60px;
-  height: 32px;
+  left: -22px;
+  width: 45px;
+  height: 24px;
 }
 .pointer-mid {
   background-image: url("/static/images/lhs-pointer-red-mid.png");
   background-repeat: repeat;
-  background-size: 60px 15px;
+  background-size: 45px 15px;
   position: absolute;
-  left: -30px;
-  width: 60px;
+  left: -22px;
+  width: 45px;
 }
 .pointer-bottom {
   background-image: url("/static/images/lhs-pointer-red-bottom.png");
   background-repeat: no-repeat;
-  background-size: 60px 32px;
+  background-size: 45px 24px;
   position: absolute;
-  left: -30px;
-  width: 60px;
-  height: 32px;
+  left: -22px;
+  width: 45px;
+  height: 24px;
 }
 .pointer-xflip {
   .pointer-top, .pointer-bottom {

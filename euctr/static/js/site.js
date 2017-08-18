@@ -241,22 +241,22 @@ function make_pointer(el, x, y1, y2, colour) {
 	var swap = y1
 	y1 = y2
 	y2 = swap
-	y2 = y2 + 20
-	y1 = y1 - 10
+	y2 = y2 + 15
+	y1 = y1 - 7
     }
 
     holderclass = holderclass + " pointer-" + colour
 
-    if (y2 - y1 < 64) {
-	var missing = 64 - (y2 - y1)
+    if (y2 - y1 < 48) {
+	var missing = 48 - (y2 - y1)
 	    y2 = y2 + (missing / 2)
 	    y1 = y1 - (missing / 2)
     }
 
     var holder_start = "<div class='" + holderclass + " pointer-holder' style='left: " + x + "px; top: " + y1 + "px; height: "+ (y2 - y1) + "px'>"
     var top_html = "<div class='pointer-top'></div>"
-    var mid_html = "<div class='pointer-mid' style='top:32px; height:" + (y2 - y1 - 64) + "px'></div>"
-    var bottom_html = "<div class='pointer-bottom' style='top:" + (y2 - y1 - 32) + "px'></div>"
+    var mid_html = "<div class='pointer-mid' style='top:24px; height:" + (y2 - y1 - 48) + "px'></div>"
+    var bottom_html = "<div class='pointer-bottom' style='top:" + (y2 - y1 - 24) + "px'></div>"
     var holder_end = "</div>"
     var new_el = jQuery(holder_start + top_html + mid_html + bottom_html + holder_end)
     new_el.appendTo(el)
@@ -268,16 +268,16 @@ function make_pointers() {
     /* Don't show pointer for the all/none extreme cases where there's no pie */
     if ($('#unreported_chart').length) {
 	var par = $('#late-reporting-column')
-	var y1 = ($('#not-reported-bar').offset().top + $('#reported-bar').offset().top) / 2 - par.offset().top - 10
-	var y2 = $('#chartcopy-brash-1').offset().top - par.offset().top + $('#chartcopy-brash-1').height() / 2 - 10
-	var x = $('#not-reported-bar').offset().left - par.offset().left - 30
+	var y1 = ($('#not-reported-bar').offset().top + $('#reported-bar').offset().top) / 2 - par.offset().top - 7
+	var y2 = $('#chartcopy-brash-1').offset().top - par.offset().top + $('#chartcopy-brash-1').height() / 2 - 7
+	var x = $('#not-reported-bar').offset().left - par.offset().left - 23
 	make_pointer(par, x, y1, y2, "default")
     }
 
     var par = $('#inconsistent-data-column')
-    var y1 = $('#inconsistent-data-bar').offset().top - par.offset().top + $('#inconsistent-data-bar').height() / 2 + 10
-    var y2 = $('#chartcopy-7').offset().top - par.offset().top + $('#chartcopy-7').height() / 2 - 10
-    var x = $('#inconsistent-data-bar').offset().left - par.offset().left + $('#inconsistent-data-bar').width() + 30
+    var y1 = $('#inconsistent-data-bar').offset().top - par.offset().top + $('#inconsistent-data-bar').height() / 2 + 8
+    var y2 = $('#chartcopy-7').offset().top - par.offset().top + $('#chartcopy-7').height() / 2 - 7
+    var x = $('#inconsistent-data-bar').offset().left - par.offset().left + $('#inconsistent-data-bar').width() + 24
     make_pointer(par, x, y2, y1, "grey")
 }
 
