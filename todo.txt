@@ -1,7 +1,10 @@
 Improve design 
-  Make all screenshots all look good
+  Make all screenshots all look good - check on live site first
   Check front page on multiple browsers
   Check sponsor page on multiple browsers
+
+
+  Maybe make orange arrow thicker again to match font
 
   Add social sharing buttons
     The chart. - sharing the chart.
@@ -10,8 +13,17 @@ Improve design
 
   Double check with Ben how important mobile is
   When zooming for presentation, not enough shows in table (Ben)
+  LATE REPORTING on companies page --> NOT REPORTED (Helen)
+    do we think LATE REPORTING is the most obvious headline on the companies pages?
+    they are basically NOT REPORTED, right? we don't include trials which have been
+    reported but were done so late (outside of the 12 mo timescale)
+  When you toggle to ALL SPONSORS on the home page it jumps up to the top of the page
+  Clarify the difference between *publishing* a trial and *reporting results*
+      in the register in the FAQs, in particular this bit:  (Helen)
+      >Non-publication of clinical trial results is an ongoing global public health problem.
+      >By EU law, from December 2016, all trials on the European Union Clinical Trials Register (EUCTR) must post results within 12 months of completion. This is the first legislation enacted anywhere in the world which requires such trial publication.
 
-  
+    
 
 Daily update
   Check the cron runs
