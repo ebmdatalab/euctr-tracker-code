@@ -798,18 +798,21 @@ by <html> element's pix value. */
     font-family: $font-family-oswald;
   }
 
-  #chartcopy-brash-1, #chartcopy-brash-2, .first-column:after, .third-column:before {
+  #chartcopy-brash-1, #chartcopy-brash-1grey, #chartcopy-brash-2, .first-column:after, .third-column:before {
     font-size: 135rem;
     line-height: 135rem;
     font-family: $font-family-hind;
     font-weight: 700;
-    color: $brand-warning;
     text-align: center;
     text-align-last: center;
+    color: $brand-warning;
   }
   .chartcopy-none {
-    font-size: 120em !important;
-    line-height: 120em !important;
+    font-size: 120rem !important;
+    line-height: 120rem !important;
+  }
+  .chartcopy-bland {
+    color: $brand-success !important;
   }
 
   .first-column {
