@@ -60,6 +60,15 @@
 /****************************************************************/
 /* All pages */
 
+/* Used as base size for measuring rem sizes against.
+   For much of the page, this is overriden by the <body>
+   font-size, and we use px for fonts. For the front page
+   and sponsor page infographics we use rem, so this can 
+   easily adjust size of them */
+html {
+  font-size: 0.8px;
+}
+
 body {
   padding-top: 50px;
   padding-bottom: 20px;
@@ -287,96 +296,107 @@ li.search-pill a {
 /****************************************************************/
 /* Front page */
 
+/* Measurements in rem's relative to width of 1200em. Scaled
+by <html> element's pix value. */
+
 .frontpage-preamble {
-  padding-bottom: 64px;
+  padding-bottom: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  .container {
+    width: 944px;
+  }
 
   h1 {
-    border-bottom: 9px solid $text-color;
+    font-size: 54rem;
+    width: 100%;
+    border-bottom: 9rem solid $text-color;
     text-align: center; /* for Safari, which doesn't support text-align-last */
     text-align-last: justify;
-    padding-bottom: 8px;
+    padding-bottom: 8rem;
   }
 
   .first-column, .second-column {
-    width: 536px;
+    width: 536rem;
     display: inline-block;
     text-transform: uppercase;
     text-align: center; /* for Safari, which doesn't support text-align-last */
     text-align-last: justify;
-    margin-top: 20px;
+    margin-top: 20rem;
   }
 
   .first-column {
-    margin-right: 32px;
+    margin-right: 32rem;
     font-family: $font-family-oswald;
     font-weight: 500;
   }
 
   .second-column {
-    margin-left: 32px;
+    margin-left: 32rem;
     font-family: $font-family-lato;
     vertical-align: top;
   }
 
   #wrap-0 {
-    font-size: 60px;
-    line-height: 60px;
+    font-size: 60rem;
+    line-height: 60rem;
   }
 
   #preamble-1 {
-    font-size: 60px;
-    line-height: 60px;
+    font-size: 60rem;
+    line-height: 60rem;
     color: $gray-dark;
   }
   #preamble-comma {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 30rem;
+    line-height: 30rem;
     color: $gray-dark;
   }
 
   #preamble-2 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 30rem;
+    line-height: 30rem;
     color: $gray-dark;
   }
 
   #preamble-3 {
-    font-size: 75px;
-    line-height: 75px;
+    font-size: 75rem;
+    line-height: 75rem;
     color: $brand-success;
   }
 
   #preamble-4 {
-    font-size: 35px;
-    line-height: 45px;
+    font-size: 35rem;
+    line-height: 45rem;
     color: $gray-dark;
   }
 
   #preamble-5 {
-    font-size: 25px;
-    line-height: 25px;
+    font-size: 25rem;
+    line-height: 25rem;
     color: $gray-dark;
   }
 
   #preamble-6 {
-    font-size: 90px;
-    line-height: 90px;
+    font-size: 90rem;
+    line-height: 90rem;
     color: $brand-success;
   }
 
   #wrap-1 {
     text-align: left;
     text-align-last: left;
-    margin-top: -4px;
-    margin-bottom: -22px;
+    margin-top: -4rem;
+    margin-bottom: -22rem;
   }
 
   #white-line {
-    border-bottom: solid 5px white;
+    border-bottom: solid 5rem white;
     text-align: left;
     text-align-last: left;
-    font-size: 15px;
-    right: 32px;
+    font-size: 15rem;
+    right: 32rem;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -386,48 +406,48 @@ li.search-pill a {
     content: "\200B";
     background-image: url("/static/images/pill-for-line-trans.svg");
     position: relative;
-    left: 300px;
+    left: 300rem;
     background-color: $gray-lighter;
-    min-width: 70px;
+    min-width: 70rem;
     display: inline-block;
-    top: 13px;
+    top: 13rem;
   }
 
   #preamble-7 {
     position: relative;
-    top: -24px;
-    font-size: 30px;
+    top: -24rem;
+    font-size: 30rem;
     color: $gray-dark;
     text-align: left;
     text-align-last: left;
     background-color: $gray-lighter;
-    padding-right: 8px;
+    padding-right: 8rem;
   }
 
   #preamble-8 {
-    font-size: 25px;
-    line-height: 25px;
+    font-size: 25rem;
+    line-height: 25rem;
     color: $gray-dark;
   }
 
   #preamble-9 {
-    font-size: 44px;
-    line-height: 50px;
+    font-size: 44rem;
+    line-height: 50rem;
     color: $gray-dark;
   }
 
   #preamble-10 {
-    font-size: 35px;
-    line-height: 40px;
+    font-size: 35rem;
+    line-height: 40rem;
     color: $gray-dark;
   }
 
   #learn-more {
-    font-size: 30px;
+    font-size: 30rem;
     text-align: right;
     text-align-last: right;
-    margin-right: 40px;
-    margin-top: 16px;
+    margin-right: 40rem;
+    margin-top: 16rem;
 
     a {
       color: $brand-learn-more;
@@ -435,30 +455,30 @@ li.search-pill a {
   }
 
   #preamble-11 {
-    font-size: 50px;
-    line-height: 55px;
+    font-size: 50rem;
+    line-height: 55rem;
     color: $brand-sharp;
   }
 
   #preamble-12 {
-    font-size: 64px;
-    line-height: 70px;
+    font-size: 64rem;
+    line-height: 70rem;
     color: $gray-dark;
   }
 
   #preamble-brash-number {
-    font-size: 230px;
-    line-height: 230px;
+    font-size: 230rem;
+    line-height: 230rem;
     font-family: $font-family-hind;
     font-weight: 700;
     color: $brand-danger;
-    margin-top: 20px;
-    margin-bottom: 24px;
+    margin-top: 20rem;
+    margin-bottom: 24rem;
   }
 
   #preamble-brash-percent {
-    font-size: 175px;
-    line-height: 175px;
+    font-size: 175rem;
+    line-height: 175rem;
     font-family: $font-family-hind;
     font-weight: 700;
     color: $brand-danger;
@@ -466,60 +486,60 @@ li.search-pill a {
   }
 
   #preamble-due-trials {
-    font-size: 21px;
-    line-height: 30px;
+    font-size: 21rem;
+    line-height: 30rem;
     color: $gray-dark;
-    width: 160px;
+    width: 160rem;
     position: relative;
-    top: -83px;
-    left: 380px;
-    margin-bottom: -45px;
+    top: -83rem;
+    left: 380rem;
+    margin-bottom: -45rem;
   }
 
   .first-subcolumn, .second-subcolumn {
-    width: 266px;
+    width: 266rem;
     display: inline-block;
     color: $gray-dark;
   }
 
   .first-subcolumn {
-    padding-right: 19px;
+    padding-right: 19rem;
   }
 
   .second-subcolumn {
-    padding-left: 16px;
+    padding-left: 16rem;
     vertical-align: top;
-    border-left: 4px solid $text-color;
+    border-left: 4rem solid $text-color;
   }
 
   #preamble-13 {
-    font-size: 25px;
-    line-height: 29px;
+    font-size: 25rem;
+    line-height: 29rem;
   }
 
   #preamble-14 {
-    font-size: 30px;
-    line-height: 34px;
+    font-size: 30rem;
+    line-height: 34rem;
   }
 
   #preamble-15 {
-    font-size: 23px;
-    line-height: 29px;
+    font-size: 23rem;
+    line-height: 29rem;
   }
 
   #preamble-16 {
-    font-size: 24px;
-    line-height: 29px;
-    margin-top: 5px;
+    font-size: 24rem;
+    line-height: 29rem;
+    margin-top: 5rem;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 990px) {
     h1 {
       position: relative;
       text-align: center;
       text-align-last: center;
-      padding-left: 45px;
-      padding-right: 45px;
+      padding-left: 45rem;
+      padding-right: 45rem;
       border-bottom: none;
     }
 
@@ -527,29 +547,29 @@ li.search-pill a {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -8px;
-      height: 1px;
+      bottom: -8rem;
+      height: 1rem;
       width: 50%;
       margin-left: 25%;
-      border-bottom: 9px solid $text-color;
+      border-bottom: 9rem solid $text-color;
     }
 
     .first-column {
       display: block;
-      margin-top: 45px;
+      margin-top: 45rem;
       margin-left: auto;
       margin-right: auto;
     }
 
     .second-column {
       display: block;
-      margin-top: 45px;
+      margin-top: 45rem;
       margin-left: auto;
       margin-right: auto;
     }
   }
 
-  @media (max-width: 536px) {
+  @media (max-width: 428px) {
     .first-column, .second-column {
       width: auto;
       text-align: center;
@@ -559,8 +579,8 @@ li.search-pill a {
       display: block;
     }
     #preamble-brash-number {
-      font-size: 175px;
-      line-height: 175px;
+      font-size: 175rem;
+      line-height: 175rem;
     }
     #white-line {
       display: none;
@@ -568,18 +588,18 @@ li.search-pill a {
     #preamble-7 {
       display: block;
       position: static;
-      top: 0px;
+      top: 0rem;
       text-align: center;
       text-align-last: center;
       padding-right: 0;
-      line-height: 30px;
-      margin-bottom: 26px;
+      line-height: 30rem;
+      margin-bottom: 26rem;
     }
     #preamble-due-trials {
       position: static;
       width: auto;
-      margin-bottom: 8px;
-      margin-top: -50px;
+      margin-bottom: 8rem;
+      margin-top: -50rem;
     }
     .first-subcolumn {
       padding-right: 0;
@@ -713,6 +733,9 @@ li.search-pill a {
   margin-top: 24px;
 }
 
+/* Measurements in rem's relative to width of 1200em. Scaled
+by <html> element's pix value. */
+
 .sponsor-charts:before {
   content: "";
   background-image: url("/static/images/white-45degree-syringe-trans2.svg");
@@ -720,24 +743,30 @@ li.search-pill a {
   background-position: center;
   opacity: 0.2;
   position: absolute;
-  top: -125px;
+  top: -125rem;
   width: 100%;
-  height: 1050px;
+  height: 1050rem;
 }
 
 .sponsor-charts {
-  padding-bottom: 64px;
+  padding-bottom: 64rem;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
+
+  .container {
+    width: 960px;
+  }
 
   #canvas-sub {
-    padding-top: 87px;
-    padding-bottom: 87px;
-    line-height: 1px;
+    padding-top: 87rem;
+    padding-bottom: 87rem;
+    line-height: 1rem;
   }
 
   .first-column, .second-column, .third-column {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 20rem;
   }
 
   .first-column, .third-column {
@@ -747,13 +776,13 @@ li.search-pill a {
   }
 
   .first-column {
-    width: 377px;
-    margin-left: 16px;
-    margin-right: 16px;
+    width: 377rem;
+    margin-left: 16rem;
+    margin-right: 16rem;
   }
 
   .second-column {
-    width: 314px;
+    width: 314rem;
     text-align: center;
     text-align-last: center;
   }
@@ -763,15 +792,15 @@ li.search-pill a {
   }
 
   .third-column {
-    width: 361px;
-    margin-left: 24px;
-    margin-right: 24px;
+    width: 361rem;
+    margin-left: 24rem;
+    margin-right: 24rem;
     font-family: $font-family-oswald;
   }
 
   #chartcopy-brash-1, #chartcopy-brash-2, .first-column:after, .third-column:before {
-    font-size: 135px;
-    line-height: 135px;
+    font-size: 135rem;
+    line-height: 135rem;
     font-family: $font-family-hind;
     font-weight: 700;
     color: $brand-warning;
@@ -779,8 +808,8 @@ li.search-pill a {
     text-align-last: center;
   }
   .chartcopy-none {
-    font-size: 120px !important;
-    line-height: 120px !important;
+    font-size: 120em !important;
+    line-height: 120em !important;
   }
 
   .first-column {
@@ -788,22 +817,22 @@ li.search-pill a {
   }
 
   #chartcopy-1 {
-    font-size: 36px;
-    line-height: 36px;
+    font-size: 36rem;
+    line-height: 36rem;
     color: $gray-dark;
     text-align: center;
     text-align-last: center;
   }
 
   #chartcopy-2 {
-    font-size: 36px;
-    line-height: 36px;
+    font-size: 36rem;
+    line-height: 36rem;
     color: $gray-dark;
   }
 
   #chartcopy-3 {
-    font-size: 44px;
-    line-height: 44px;
+    font-size: 44rem;
+    line-height: 44rem;
     color: $gray-dark;
   }
 
@@ -812,18 +841,18 @@ li.search-pill a {
   }
 
   #chartcopy-4 {
-    margin-top: -4px;
-    font-size: 32px;
-    line-height: 32px;
-    margin-bottom: 8px;
+    margin-top: -4rem;
+    font-size: 32rem;
+    line-height: 32rem;
+    margin-bottom: 8rem;
     color: $gray-dark;
     text-align: center;
     text-align-last: center;
   }
 
   #chartcopy-5 {
-    font-size: 38px;
-    line-height: 44px;
+    font-size: 38rem;
+    line-height: 44rem;
     color: $gray-dark;
   }
 
@@ -831,55 +860,55 @@ li.search-pill a {
     left: 0;
     width: 100%;
     position: absolute;
-    line-height: 36px;
+    line-height: 36rem;
     background-color: $brand-warning;
   }
 
   #chartcopy-6 {
-    font-size: 36px;
-    line-height: 36px;
+    font-size: 36rem;
+    line-height: 36rem;
     color: $gray-dark;
     text-align: center;
     text-align-last: center;
     background-color: $gray-lighter;
-    width: 92px;
+    width: 92rem;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 3px;
+    padding-bottom: 3rem;
     position: relative;
     z-index: 100;
   }
 
   #chartcopy-7 {
-    font-size: 44px;
-    line-height: 44px;
+    font-size: 44rem;
+    line-height: 44rem;
     color: $gray-dark;
     font-weight: 500;
-    padding-bottom: 6px;
+    padding-bottom: 6rem;
   }
 
   #chartcopy-spacer-1 {
     left: 0;
     min-width: 100%;
     position: absolute;
-    line-height: 40px;
+    line-height: 40rem;
     background-color: $brand-warning;
   }
 
   #chartcopy-8 {
-    padding-top: 42px;
-    font-size: 43px;
-    line-height: 43px;
+    padding-top: 42rem;
+    font-size: 43rem;
+    line-height: 43rem;
     color: $gray-dark;
   }
 
   #chartcopy-9 {
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 30rem;
+    line-height: 30rem;
     color: $gray-dark;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 990px) {
     h1 {
   	  text-align: center;
   	  text-align-last: center;
@@ -889,7 +918,7 @@ li.search-pill a {
     }
   	.first-column, .second-column, .third-column {
       display: block;
-  	  margin-top: 45px;
+  	  margin-top: 45rem;
   	  margin-left: auto;
   	  margin-right: auto;
   	}
@@ -899,11 +928,11 @@ li.search-pill a {
       background-image: url("/static/images/mobile-arrow-red.svg");
       background-repeat: no-repeat;
       position: relative;
-      width: 86px;
-      height: 41px;
-      bottom: -16px;     
-      left: 58px;
-      line-height: 36px;
+      width: 86rem;
+      height: 41rem;
+      bottom: -16rem;     
+      left: 58rem;
+      line-height: 36rem;
     }
     .third-column:before {
       display: block;
@@ -911,12 +940,12 @@ li.search-pill a {
       background-image: url("/static/images/mobile-arrow-grey.svg");
       background-repeat: no-repeat;
       position: relative;
-      width: 86px;
-      height: 41px;
-      top: 8px;     
-      left: 238px;
-      margin-bottom: 16px;
-      line-height: 36px;
+      width: 86rem;
+      height: 41rem;
+      top: 8rem;     
+      left: 238rem;
+      margin-bottom: 16rem;
+      line-height: 36rem;
     }
     .pointer-holder {
       display: none;
