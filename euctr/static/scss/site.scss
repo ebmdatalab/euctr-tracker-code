@@ -292,7 +292,7 @@ li.search-pill a {
 
   h1 {
     border-bottom: 9px solid $text-color;
-    text-align: justify;
+    text-align: center; /* for Safari, which doesn't support text-align-last */
     text-align-last: justify;
     padding-bottom: 8px;
   }
@@ -301,7 +301,7 @@ li.search-pill a {
     width: 536px;
     display: inline-block;
     text-transform: uppercase;
-    text-align: justify;
+    text-align: center; /* for Safari, which doesn't support text-align-last */
     text-align-last: justify;
     margin-top: 20px;
   }
@@ -742,7 +742,7 @@ li.search-pill a {
 
   .first-column, .third-column {
     text-transform: uppercase;
-    text-align: justify;
+    text-align: center; /* for Safari, which doesn't support text-align-last */
     text-align-last: justify;
   }
 
@@ -828,6 +828,7 @@ li.search-pill a {
   }
 
   #chartcopy-spacer-0 {
+    left: 0;
     width: 100%;
     position: absolute;
     line-height: 36px;
@@ -857,6 +858,7 @@ li.search-pill a {
   }
 
   #chartcopy-spacer-1 {
+    left: 0;
     min-width: 100%;
     position: absolute;
     line-height: 40px;
