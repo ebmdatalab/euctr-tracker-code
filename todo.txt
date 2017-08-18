@@ -1,10 +1,12 @@
 Improve design 
   Make all screenshots all look good
-
-  Add social sharing buttons for Ayesha
-
   Check front page on multiple browsers
   Check sponsor page on multiple browsers
+
+  Add social sharing buttons
+    The chart. - sharing the chart.
+    (what is the ratio of the image on twitter/ tweetdeck, so making sure it
+    looks good there, and doesn’t get truncated)
 
   Double check with Ben how important mobile is
   When zooming for presentation, not enough shows in table (Ben)
