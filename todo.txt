@@ -1,7 +1,4 @@
 Improve design 
-  Links need to look different
-  "About" when you hover
-
   Make all screenshots all look good
   "page-header" style on About
 
