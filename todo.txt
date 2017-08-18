@@ -1,7 +1,6 @@
 Improve design 
   Make all screenshots all look good
 
-  What fonts default to - Times New Roman?
   Add social sharing buttons for Ayesha
 
   Check front page on multiple browsers
