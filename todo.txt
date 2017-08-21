@@ -1,18 +1,24 @@
-Improve design 
+Testing
   Make all screenshots all look good - check on live site first
+    - white margin on local site
+    - arrow not drawing right on local site
+    - not rednering at all on live
+  Front page screenshot
+
   Check front page on multiple browsers
   Check sponsor page on multiple browsers
 
-
   Maybe make orange arrow thicker again to match font
 
-  Add social sharing buttons
-    The chart. - sharing the chart.
-    (what is the ratio of the image on twitter/ tweetdeck, so making sure it
-    looks good there, and doesn’t get truncated)
+Test on IE11 and Edge 
+  - search box on IE11
+  - BrowserStack account
+Test both pages without Javascript - do any links need to work or should be hidden?
 
-  Double check with Ben how important mobile is
+Check with Ben
+  Mobile, worth polishing more or not
   When zooming for presentation, not enough shows in table (Ben)
+
   LATE REPORTING on companies page --> NOT REPORTED (Helen)
     do we think LATE REPORTING is the most obvious headline on the companies pages?
     they are basically NOT REPORTED, right? we don't include trials which have been
@@ -23,7 +29,7 @@ Improve design
       >Non-publication of clinical trial results is an ongoing global public health problem.
       >By EU law, from December 2016, all trials on the European Union Clinical Trials Register (EUCTR) must post results within 12 months of completion. This is the first legislation enacted anywhere in the world which requires such trial publication.
 
-    
+Run tests    
 
 Daily update
   Check the cron runs
@@ -51,17 +57,17 @@ Social sharing stuff
     <meta name="twitter:image:width" content= "..." />
     <meta name="twitter:image:height" content= "..." />
 
-Test on IE11 and Edge 
-  - search box on IE11
-  - BrowserStack account
-Test both pages without Javascript - do any links need to work or should be hidden?
-For scaling, do we need to cache front page or other pages
+  Add social sharing buttons (talk to Ben)
+    The chart. - sharing the chart.
+    (what is the ratio of the image on twitter/ tweetdeck, so making sure it
+    looks good there, and doesn’t get truncated)
 
 Error monitoring
   Back-end errors, zero tolerance
   Errorception - dropped
   "New Relic"
 Change chown to root:www-data - ghostdriver.log a problem and pycache
+For scaling, do we need to cache front page or other pages
 
 Launch
   Link to "Methods" in navigation, going to the paper on BMJ or similar site
