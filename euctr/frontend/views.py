@@ -1,4 +1,5 @@
 import logging
+import time
 
 from django.shortcuts import render
 from django.conf import settings
@@ -13,6 +14,7 @@ driver = selenium.webdriver.PhantomJS()
 def _capture_screenshot(width, url):
     driver.set_window_size(width, 100)
     driver.get(url)
+    time.sleep(1)
     png_binary = driver.get_screenshot_as_png()
     return HttpResponse(png_binary, 'image/png')
 
