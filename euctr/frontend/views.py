@@ -75,7 +75,7 @@ def _sponsor(request, slug, template_name, taking_screenshot):
     return render(request, template_name, context=context)
 
 def sponsor_screenshot_png(request, slug):
-    return _capture_screenshot(1280, request.build_absolute_uri(
+    return _capture_screenshot(1024, request.build_absolute_uri(
         reverse("sponsor_screenshot", kwargs={"slug": slug}))
     )
 

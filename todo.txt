@@ -1,8 +1,7 @@
 Testing
   Make all screenshots all look good - check on live site first
     - arrow not drawing right on local site
-    - not rednering at all on live
-  Front page screenshot
+    - detect error condition that auth refused
 
   Check front page on multiple browsers
   Check sponsor page on multiple browsers
