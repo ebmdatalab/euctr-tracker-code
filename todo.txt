@@ -1,11 +1,18 @@
-Testing
-  Make all screenshots all look good - check on live site first
-    - arrow not drawing right on local site
+Daily update
+  Check the cron runs
+    Make it report via New Relic or Mailgun
+  Consider what happens when it runs half way through a partial scrape
+  Consider making it not write other files if new_trials.csv has stuff in?
+  Notify Nick if there are entrie sin the new_trials.csv
+  Notification if updates stop happening
+  Don't update got_from_db in trials.csv.json if nothing changed
+  Get on tech@ebmdatalab.net - ask Seb
+  Change cron email to tech@ebmdatalab.net
+Important update is monthly after site is live (otherwise don't worry)
 
-  Check front page on multiple browsers
-  Check sponsor page on multiple browsers
-
-  Maybe make orange arrow thicker again to match font
+Run tests    
+"We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
+Add proportion of all trials that have inconsistent data to headline and headline-history
 
 Test on IE11 and Edge 
   - search box on IE11
@@ -25,24 +32,6 @@ Check with Ben
       in the register in the FAQs, in particular this bit:  (Helen)
       >Non-publication of clinical trial results is an ongoing global public health problem.
       >By EU law, from December 2016, all trials on the European Union Clinical Trials Register (EUCTR) must post results within 12 months of completion. This is the first legislation enacted anywhere in the world which requires such trial publication.
-
-Run tests    
-
-Daily update
-  Check the cron runs
-    Make it report via New Relic or Mailgun
-  Consider what happens when it runs half way through a partial scrape
-  Consider making it not write other files if new_trials.csv has stuff in?
-  Notify Nick if there are entrie sin the new_trials.csv
-  Notification if updates stop happening
-  Don't update got_from_db in trials.csv.json if nothing changed
-  Get on tech@ebmdatalab.net - ask Seb
-  Change cron email to tech@ebmdatalab.net
-Important update is monthly after site is live (otherwise don't worry)
-
-All/None look odd with "Late reporting" title
-"We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
-Add proportion of all trials that have inconsistent data to headline and headline-history
 
 Social sharing stuff
   Screenshot image too slow to make for Twitter? https://cards-dev.twitter.com/validator
@@ -95,6 +84,9 @@ OpenTrials questions
 Later
 =====
 
+Use new filename for screenshots as the numbers change
+
+Maybe make orange arrow thicker again to match font (Ayesha prefers)
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
 Display history
