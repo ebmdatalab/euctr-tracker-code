@@ -235,6 +235,8 @@ function activate_trials_datatable() {
 }
 
 function make_pointer(el, x, y1, y2, colour) {
+    console.log("make_pointer " + colour + ": x=" + x + " y: " + y1 + "-->" + y2)
+
     holderclass = ""
     if (y1 > y2) {
 	holderclass = "pointer-xflip"
@@ -300,7 +302,12 @@ function activate_charts() {
     }
     var unreported_options = {
 	legend: { display: false },
-	animation: { animateRotate: false, duration: 0 },
+	animation: {
+	    animateRotate: false,
+	    duration: 0,
+	    /* Make the pointers after the pie rendered so layout right */
+	    onComplete: function() { make_pointers() }
+	}
     }
     var unreported_ctx = document.getElementById("unreported_chart");
     if (unreported_ctx) {
@@ -310,11 +317,8 @@ function activate_charts() {
 	    options: unreported_options
 	});
     }
-
-    /* Pointers on bar chart - needs to be done after document ready
-       or has wrong sizes on Chrome */
-    make_pointers()
-    $(document).ready(make_pointers)
+    /* Pointers on bar chart move when window resizes - e.g. if it 
+     * started at a narrow mobile size, expanded to wholes creen */
     $( window ).resize(function() {
 	make_pointers()
     });
