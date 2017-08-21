@@ -1009,8 +1009,11 @@ by <html> element's pix value. */
   height: 24px;
 }
 .pointer-xflip {
-  .pointer-top, .pointer-bottom {
-    transform: scaleX(-1);
+  .pointer-top {
+    background-image: url("/static/images/lhs-pointer-red-xflip-top.png");
+  }
+  .pointer-bottom {
+    background-image: url("/static/images/lhs-pointer-red-xflip-bottom.png");
   }
 }
 .pointer-grey {
@@ -1022,6 +1025,14 @@ by <html> element's pix value. */
   }
   .pointer-bottom {
     background-image: url("/static/images/lhs-pointer-grey-bottom.png");
+  }
+}
+.pointer-grey.pointer-xflip {
+  .pointer-top {
+    background-image: url("/static/images/lhs-pointer-grey-xflip-top.png");
+  }
+  .pointer-bottom {
+    background-image: url("/static/images/lhs-pointer-grey-xflip-bottom.png");
   }
 }
 

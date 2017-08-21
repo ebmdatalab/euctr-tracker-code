@@ -304,9 +304,7 @@ function activate_charts() {
 	legend: { display: false },
 	animation: {
 	    animateRotate: false,
-	    duration: 0,
-	    /* Make the pointers after the pie rendered so layout right */
-	    onComplete: function() { make_pointers() }
+	    duration: 0
 	}
     }
     var unreported_ctx = document.getElementById("unreported_chart");
@@ -319,9 +317,8 @@ function activate_charts() {
     }
     /* Pointers on bar chart move when window resizes - e.g. if it 
      * started at a narrow mobile size, expanded to wholes creen */
-    $( window ).resize(function() {
-	make_pointers()
-    });
+    $(window).on("load", make_pointers)
+    $(window).resize(make_pointers)
 }
 
 
