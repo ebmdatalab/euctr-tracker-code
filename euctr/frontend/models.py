@@ -23,7 +23,7 @@ def get_all_sponsors():
     global all_sponsors_data
     if not all_sponsors_data:
         all_sponsors_data = json.load(open('../../euctr-tracker-data/all_sponsors.json'))
-        all_sponsors_data.sort(key=lambda s: s['percent_reported'], reverse=True)
+        all_sponsors_data.sort(key=lambda s: s['total_due'], reverse=True)
     return all_sponsors_data
 
 def get_major_sponsors():
@@ -32,6 +32,7 @@ def get_major_sponsors():
     if not major_sponsors_data:
         all_sponsors = get_all_sponsors()
         major_sponsors_data = [ x for x in all_sponsors if x['major'] == 1 ]
+        major_sponsors_data.sort(key=lambda s: s['total_trials'], reverse=True)
 
     return major_sponsors_data
 
