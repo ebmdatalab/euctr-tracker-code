@@ -224,6 +224,7 @@ function activate_trials_datatable() {
 	$('li.active').removeClass('active')
 	$('#search_trials').addClass('active')
 	$('.trials_preamble > *').hide()
+	$('#search_trials input').focus()
 	return false
     }
  
