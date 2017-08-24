@@ -13,6 +13,7 @@ function hide_sponsor_datatable() {
     $('#sponsor_table').hide()
     $('#sponsor_table_loading').show()
     $('#table-pills').hide()
+    $('#search_sponsors').show()
 }
 
 const DEFAULT_SPONSOR_ORDER = 2

@@ -263,16 +263,6 @@ body#taking-screenshot .jumbotron {
   margin-left: 8px;
 }
 
-@media (min-width: $screen-sm-min) {
-  .search-pill {
-    margin-top: -55px;
-  }
-}
-
-#table-pills li.search-pill {
-  vertical-align: middle;
-}
-
 li.search-pill a {
   margin-bottom: -1px;
   padding-top: 18px;
@@ -639,6 +629,10 @@ by <html> element's pix value. */
 
 .dataTable thead tr th:not(.dt-right) {
   background-position: center left;
+}
+
+#search_sponsors {
+  display: none;
 }
 
 #search_sponsors input.not-showing-all {
