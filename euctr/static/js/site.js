@@ -315,9 +315,15 @@ function activate_charts() {
 	    options: unreported_options
 	});
     }
+
+    /* Make pointers - done with Javscript because complexity of relative
+     * positions needed isn't possible in CSS3 */
+    make_pointers()
+    /* Redraw pointers when document ready, in case layout changes need to
+     * shift them */
+    $(window).ready(make_pointers)
     /* Pointers on bar chart move when window resizes - e.g. if it 
      * started at a narrow mobile size, expanded to wholes creen */
-    $(window).on("load", make_pointers)
     $(window).resize(make_pointers)
 }
 
