@@ -14,12 +14,10 @@ Important update is monthly after site is live (otherwise don't worry)
 
 Add proportion of all trials that have inconsistent data to headline and headline-history
 
-Run tests    
 "We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
 
 Test on IE11 and Edge 
   - search box on IE11
-  - BrowserStack account
 Test both pages without Javascript - do any links need to work or should be hidden?
 
 Regarding social share images:
