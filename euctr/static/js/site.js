@@ -123,7 +123,6 @@ function activate_sponsor_datatable() {
 	    show_major(null);
 	}
     }
-    initial_tab()
 
     window.onpopstate = function(ev) {
 	if (ev.state == "search") {
@@ -142,6 +141,7 @@ function activate_sponsor_datatable() {
     $('#table-pills').show()
     $('#sponsor_table').show()
     $('#sponsor_table').show()
+    initial_tab()
     t.draw()
 }
 
