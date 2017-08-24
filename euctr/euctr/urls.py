@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
 from django.views.generic import TemplateView
 
 import frontend.views
@@ -29,6 +28,4 @@ urlpatterns = [
     url(r'^sponsor/(?P<slug>[a-z0-9-]+)/screenshot.png$', frontend.views.sponsor_screenshot_png, name="sponsor_screenshot_png"),
 
     url(r'^about$', frontend.views.about),
-
-    url(r'^admin/', admin.site.urls),
 ]

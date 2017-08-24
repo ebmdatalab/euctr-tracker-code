@@ -40,7 +40,6 @@ GOOGLE_TRACKING_ID = common.utils.get_env_setting('EUCTR_GOOGLE_TRACKING_ID')
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
