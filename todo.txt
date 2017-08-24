@@ -12,13 +12,11 @@ Daily update
   Change cron email to tech@ebmdatalab.net
 Important update is monthly after site is live (otherwise don't worry)
 
+When you toggle to ALL SPONSORS on the home page it jumps up to the top of the page (Helen)
+
 Add proportion of all trials that have inconsistent data to headline and headline-history
 
 "We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
-
-Test on IE11 and Edge 
-  - search box on IE11
-Test both pages without Javascript - do any links need to work or should be hidden?
 
 Regarding social share images:
   Say in small letters underneath "that's XX trials unreported" (Helen)
@@ -32,7 +30,6 @@ Check with Ben
     do we think LATE REPORTING is the most obvious headline on the companies pages?
     they are basically NOT REPORTED, right? we don't include trials which have been
     reported but were done so late (outside of the 12 mo timescale)
-  When you toggle to ALL SPONSORS on the home page it jumps up to the top of the page
   Clarify the difference between *publishing* a trial and *reporting results*
       in the register in the FAQs, in particular this bit:  (Helen)
       >Non-publication of clinical trial results is an ongoing global public health problem.
