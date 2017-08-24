@@ -36,17 +36,17 @@
       <span class="glyphicon glyphicon-refresh spinning"></span>
     </div>
    
-    <ul class="nav nav-pills" id="table-pills">
-      <li id="due_trials" role="presentation" class="active">
+    <ul class="nav nav-pills trials-pills" id="table-pills">
+      <li id="due_trials" role="presentation" class="active full-interface-tab">
 	<a href="#"><h2>Due trials<span class="badge">{{ total_due }}</span></h2></a>
       </li>
-      <li id="not_yet_due_trials" role="presentation">
+      <li id="not_yet_due_trials" role="presentation" class="full-interface-tab">
 	<a href="#"><h2>Not due<span class="badge">{{ not_yet_due_trials }}</span></h2></a>
       </li>
-      <li id="bad_data_trials" role="presentation">
+      <li id="bad_data_trials" role="presentation" class="full-interface-tab">
 	<a href="#"><h2>Inconsistent data<span class="badge">{{ inconsistent_trials }}</span></h2></a>
       </li>
-      <li id="search_trials" class="search-pill" role="presentation">
+      <li id="search_trials" class="search-pill full-interface-tab" role="presentation">
 	<a href="#">
 	<div class="input-group">
 	  <input type="text" class="form-control" placeholder="Search trials">
@@ -58,6 +58,9 @@
 	  </span>
 	</div>
       </a></li>
+      <li id="all_trials" role="presentation" class="active">
+	<a href="#"><h2>All trials<span class="badge">{{ total_trials }}</span></h2></a>
+      </li>
     </ul>
 
     <div class="trials_preamble">

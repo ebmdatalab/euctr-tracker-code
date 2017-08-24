@@ -646,6 +646,18 @@ by <html> element's pix value. */
   display: none;
 }
 
+.nav > li.full-interface-tab {
+  display: none;
+}
+
+.trials_preamble > * {
+  display: none;
+}
+
+#all_trials {
+  display: visible;
+}
+
 #search_trials {
   display: none;
 }

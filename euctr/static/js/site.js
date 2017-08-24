@@ -155,6 +155,8 @@ function hide_trials_datatable() {
     $('#trials_table_loading').show()
 
     $('#search_trials').show()
+    $('.nav > li.full-interface-tab').show()
+    $('#all_trials').hide()
 }
 
 function activate_trials_datatable() {
@@ -239,8 +241,6 @@ function activate_trials_datatable() {
 }
 
 function make_pointer(el, x, y1, y2, colour) {
-    console.log("make_pointer " + colour + ": x=" + x + " y: " + y1 + "-->" + y2)
-
     holderclass = ""
     if (y1 > y2) {
 	holderclass = "pointer-xflip"
