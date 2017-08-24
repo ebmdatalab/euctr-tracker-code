@@ -13,6 +13,7 @@ function hide_sponsor_datatable() {
     $('#sponsor_table').hide()
     $('#sponsor_table_loading').show()
     $('#table-pills').hide()
+
     $('#search_sponsors').show()
 }
 
@@ -152,6 +153,8 @@ function hide_trials_datatable() {
     /* Hide while loading to prevent style change jitter */
     $('#trials_table').hide()
     $('#trials_table_loading').show()
+
+    $('#search_trials').show()
 }
 
 function activate_trials_datatable() {
