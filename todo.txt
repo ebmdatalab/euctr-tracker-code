@@ -27,12 +27,6 @@ Regarding social share images:
   Say in small letters underneath "that's XX trials unreported" (Helen)
   Titles below the bars are very small (Helen)
 
-Check with Ben
-  Make columns look at initial zoom more like when zoomed now
-      Make the fonts a bit bigger
-      Less white space between columns
-      Center columns and numbers?
-
 Add social sharing buttons (talk to Ben)
 Error monitoring
   Back-end errors, zero tolerance
@@ -56,7 +50,6 @@ OpenTrials questions
 
 Use new filename for screenshots as the numbers change
 
-Maybe make orange arrow thicker again to match font (Ayesha prefers)
 Column widths flicker if you scroll down and up again. https://github.com/DataTables/FixedHeader/issues/94
 
 Display history

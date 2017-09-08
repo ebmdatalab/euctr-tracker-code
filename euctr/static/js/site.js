@@ -35,11 +35,11 @@ function activate_sponsor_datatable() {
 	"dom": "tlpr",
 	"autoWidth": false,
 	"aoColumns": [
-	    { "width": "30%", "orderSequence": [ "asc", "desc" ] },
-	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
-	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
-	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right", "type": "num-fmt" },
-	    { "width": "17.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-right"  },
+	    { "width": "26%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "18.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-center" },
+	    { "width": "18.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-center"  },
+	    { "width": "18.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-center", "type": "num-fmt" },
+	    { "width": "18.5%", "orderSequence": [ "desc", "asc" ], "className": "dt-center"  },
 	    { "width": "0%", "orderSequence": [ "asc", "desc" ] }, // Hidden column
 	],
     });
@@ -169,10 +169,10 @@ function activate_trials_datatable() {
 	"dom": "tlpr",
 	"autoWidth": false,
 	"aoColumns": [
-	    { "orderData": [0,1], "width": "23%", "orderSequence": [ "asc", "desc" ] },
-	    { "width": "15%", "orderSequence": [ "asc", "desc" ] },
-	    { "width": "45%", "orderSequence": [ "asc", "desc" ] },
-	    { "width": "17%", "orderSequence": [ "desc", "asc" ], "className": "dt-right" },
+	    { "orderData": [0,1], "width": "20%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "16%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "46%", "orderSequence": [ "asc", "desc" ] },
+	    { "width": "18%", "orderSequence": [ "desc", "asc" ] },
 	    { "width": "0%", "orderSequence": [ "asc", "desc" ] }, // Hidden column
 	]
     });

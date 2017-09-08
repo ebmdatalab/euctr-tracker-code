@@ -70,6 +70,7 @@ html {
 }
 
 body {
+  font-size: 20px;
   padding-top: 50px;
   padding-bottom: 20px;
 }
@@ -644,10 +645,6 @@ by <html> element's pix value. */
 
 #sponsor_table_loading {
   display: none;
-}
-
-.dataTable thead tr th:not(.dt-right) {
-  background-position: center left;
 }
 
 #search_sponsors {
