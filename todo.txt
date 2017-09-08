@@ -40,17 +40,6 @@ Check with Ben
       Less white space between columns
       Center columns and numbers?
 
-  LATE REPORTING on companies page --> NOT REPORTED (Helen) XXX yes - change to "Have not reported"
-    do we think LATE REPORTING is the most obvious headline on the companies pages?
-    they are basically NOT REPORTED, right? we don't include trials which have been
-    reported but were done so late (outside of the 12 mo timescale)
-
-  Clarify the difference between *publishing* a trial and *reporting results*
-      in the register in the FAQs, in particular this bit:  (Helen)
-      >Non-publication of clinical trial results is an ongoing global public health problem.
-      >By EU law, from December 2016, all trials on the European Union Clinical Trials Register (EUCTR) must post results within 12 months of completion. This is the first legislation enacted anywhere in the world which requires such trial publication.
-
-
 Add social sharing buttons (talk to Ben)
 Error monitoring
   Back-end errors, zero tolerance
