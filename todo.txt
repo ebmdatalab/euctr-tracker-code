@@ -1,3 +1,8 @@
+tech@ebmdatalab.net
+send directly and just whitelist the from
+exim4
+
+
 https://github.com/ebmdatalab/euctr-tracker-code/issues/2
 
 Daily update
@@ -23,13 +28,23 @@ Regarding social share images:
   Titles below the bars are very small (Helen)
 
 Check with Ben
-  Mobile, worth polishing more or not
-  When zooming for presentation, not enough shows in table (Ben)
+  Text on left of front page
+    Simplify it to one font
+    Like row "Clinical Trials Register (EUCTR)"
+    Try with double text length
+  "Not reported"  - "Are due to report" make same size
+     Vertical line could be slanted as numerator / denominator
 
-  LATE REPORTING on companies page --> NOT REPORTED (Helen)
+  Make columns look at initial zoom more like when zoomed now
+      Make the fonts a bit bigger
+      Less white space between columns
+      Center columns and numbers?
+
+  LATE REPORTING on companies page --> NOT REPORTED (Helen) XXX yes - change to "Have not reported"
     do we think LATE REPORTING is the most obvious headline on the companies pages?
     they are basically NOT REPORTED, right? we don't include trials which have been
     reported but were done so late (outside of the 12 mo timescale)
+
   Clarify the difference between *publishing* a trial and *reporting results*
       in the register in the FAQs, in particular this bit:  (Helen)
       >Non-publication of clinical trial results is an ongoing global public health problem.
