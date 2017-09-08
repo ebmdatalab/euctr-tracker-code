@@ -28,13 +28,6 @@ Regarding social share images:
   Titles below the bars are very small (Helen)
 
 Check with Ben
-  Text on left of front page
-    Simplify it to one font
-    Like row "Clinical Trials Register (EUCTR)"
-    Try with double text length
-  "Not reported"  - "Are due to report" make same size
-     Vertical line could be slanted as numerator / denominator
-
   Make columns look at initial zoom more like when zoomed now
       Make the fonts a bit bigger
       Less white space between columns

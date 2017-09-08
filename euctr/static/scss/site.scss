@@ -473,14 +473,14 @@ by <html> element's pix value. */
   }
 
   #preamble-11 {
-    font-size: 50rem;
-    line-height: 55rem;
+    font-size: 48rem;
+    line-height: 53rem;
     color: $brand-sharp;
   }
 
   #preamble-12 {
-    font-size: 64rem;
-    line-height: 70rem;
+    font-size: 66rem;
+    line-height: 72rem;
     color: $gray-dark;
   }
 
@@ -491,7 +491,7 @@ by <html> element's pix value. */
     font-weight: 700;
     color: $brand-danger;
     margin-top: 20rem;
-    margin-bottom: 24rem;
+    margin-bottom: 12rem;
   }
 
   #preamble-brash-percent {
@@ -514,21 +514,33 @@ by <html> element's pix value. */
     margin-bottom: -45rem;
   }
 
-  .first-subcolumn, .second-subcolumn {
-    width: 265rem;
+  .first-subcolumn, .slash-subcolumn, .second-subcolumn {
     display: inline-block;
     color: $gray-dark;
   }
-
-  .first-subcolumn {
-    padding-right: 19rem;
+  .first-subcolumn, .second-subcolumn {
+    width: 242rem;
+  }
+  .slash-subcolumn {
+    width: 20rem;
   }
 
-  .second-subcolumn {
+  /* .second-subcolumn {
     padding-left: 16rem;
     vertical-align: top;
     border-left: 4rem solid $text-color;
   }
+  */
+  .slash-subcolumn {
+    content: "/";
+    font-size: 70rem;
+    position: relative;
+    right: 2px;
+    top: 0px;
+    border-left: none;
+    padding-left: 0;
+  }
+
 
   #preamble-13 {
     font-size: 25rem;
@@ -546,9 +558,8 @@ by <html> element's pix value. */
   }
 
   #preamble-16 {
-    font-size: 24rem;
-    line-height: 29rem;
-    margin-top: 5rem;
+    font-size: 30rem;
+    line-height: 34rem;
   }
 
   @media (max-width: 990px) {
