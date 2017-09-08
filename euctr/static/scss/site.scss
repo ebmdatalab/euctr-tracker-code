@@ -348,7 +348,14 @@ by <html> element's pix value. */
     vertical-align: top;
   }
 
-  #wrap-0 {
+  #preamble-frontpage {
+    font-weight: 400;
+    text-align: justify;
+    font-size: 40rem;
+    line-height: 51rem;
+    color: $gray-dark;
+  }
+/*  #wrap-0 {
     font-size: 60rem;
     line-height: 60rem;
   }
@@ -451,6 +458,7 @@ by <html> element's pix value. */
     line-height: 40rem;
     color: $gray-dark;
   }
+  */
 
   #learn-more {
     font-size: 30rem;
