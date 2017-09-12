@@ -104,7 +104,7 @@ function activate_sponsor_datatable() {
     var restore_scroll_position = function() {
     	var scrolltop = $.cookie("sponsor_scrolltop")
 	if (scrolltop) {
-	    $("html").scrollTop(scrolltop)
+	    $(document).scrollTop(scrolltop)
 	    $.removeCookie("sponsor_scrolltop")
 	}
     }
