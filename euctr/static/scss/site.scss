@@ -649,6 +649,10 @@ by <html> element's pix value. */
 
 #search_sponsors {
   display: none;
+  width: 566px;
+  @media (max-width: 566px) {
+    width: 100%;
+  }
 }
 
 #search_sponsors input.not-showing-all {
@@ -676,6 +680,10 @@ by <html> element's pix value. */
 
 #search_trials {
   display: none;
+  width: 428px;
+  @media (max-width: 428px) {
+    width: 100%;
+  }
 }
 
 .related-sponsors {
