@@ -211,7 +211,7 @@
       {% if parents %}
          <p>We think {{ sponsor_name }} is now effectively part of
 	 {% for parent in parents %}
-	   <a href="/sponsor/{{ parent.slug }}">{{ parent.name }}</a>.
+	   <a href="/sponsor/{{ parent.slug }}">{{ parent.name }}</a>{% if forloop.last %}.{% else %}{% ifequal forloop.revcounter 2 %} and {% else %}, {% endifequal %}{% endif %}
 	 {% endfor %}
       {% endif %}
       {% if children %}

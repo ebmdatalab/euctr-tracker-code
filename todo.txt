@@ -1,13 +1,18 @@
 Daily update
-  Fix errors in cron run
-    Make it report via New Relic or Mailgun
+  Check cron running fine
+
   Consider what happens when it runs half way through a partial scrape
-  Consider making it not write other files if new_trials.csv has stuff in?
-  Notify Nick if there are entrie sin the new_trials.csv
+	Maybe make it not write other files if new_trials.csv has stuff in?
+
+  Add proportion of all trials that have inconsistent data to headline and headline-history
+
   Notification if updates stop happening
+    Make it report via New Relic or Mailgun
+	Change cron email to tech@ebmdatalab.net
+
+  Notify Nick if there are entrie sin the new_trials.csv
+
   Don't update got_from_db in trials.csv.json if nothing changed
-  Get on tech@ebmdatalab.net - ask Seb
-  Change cron email to tech@ebmdatalab.net
 Important update is monthly after site is live (otherwise don't worry)
 
 warehouse=> select count(*) as c, date(meta_updated) as d from euctr group by d;
@@ -34,12 +39,6 @@ warehouse=> select count(*) as c, date(meta_updated) as d from euctr group by d;
  14446 | 2017-09-10
   7665 | 2017-09-11
 (20 rows)
-
-Chrome search box too wide on sponsor page
-
-Add proportion of all trials that have inconsistent data to headline and headline-history
-
-"We think Actavis is now effectively part of Aurobindo. Teva. Allergan." should have commas
 
 Regarding social share images:
   Say in small letters underneath "that's XX trials unreported" (Helen)
