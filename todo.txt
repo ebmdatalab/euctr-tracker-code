@@ -5,15 +5,13 @@ Daily update
 	Maybe make it not write other files if new_trials.csv has stuff in?
 
   Add proportion of all trials that have inconsistent data to headline and headline-history
+  Don't update got_from_db in trials.csv.json if nothing changed
+
+  Notify Nick if there are entrie sin the new_trials.csv
 
   Notification if updates stop happening
     Make it report via New Relic or Mailgun
 	Change cron email to tech@ebmdatalab.net
-
-  Notify Nick if there are entrie sin the new_trials.csv
-
-  Don't update got_from_db in trials.csv.json if nothing changed
-Important update is monthly after site is live (otherwise don't worry)
 
 warehouse=> select count(*) as c, date(meta_updated) as d from euctr group by d;
    c   |     d      
@@ -57,6 +55,7 @@ Launch
     http://127.0.0.1:8000/sponsor/leiden-university
     http://127.0.0.1:8000/sponsor/university-of-groningen
 
+  Important to check update is monthly after site is live (otherwise don't worry)
 
 Later
 =====
