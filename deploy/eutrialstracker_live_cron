@@ -2,6 +2,8 @@
 
 export GIT_SSH_COMMAND='ssh -i /var/www/eutrialstracker_live/ssh-keys/id_rsa_eutrialtracker_data' 
 
+. /etc/profile.d/eutrialstracker_live.sh
+
 cd /var/www/eutrialstracker_live/euctr-tracker-data
 git pull -q
 chown -R www-data:www-data .
