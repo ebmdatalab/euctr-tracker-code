@@ -4,9 +4,6 @@ Daily update
   Consider what happens when it runs half way through a partial scrape
 	Maybe make it not write other files if new_trials.csv has stuff in?
 
-  Add proportion of all trials that have inconsistent data to headline and headline-history
-  Don't update got_from_db in trials.csv.json if nothing changed
-
   Notify Nick if there are entrie sin the new_trials.csv
 
   Notification if updates stop happening
@@ -38,11 +35,8 @@ warehouse=> select count(*) as c, date(meta_updated) as d from euctr group by d;
   7665 | 2017-09-11
 (20 rows)
 
-Regarding social share images:
-  Say in small letters underneath "that's XX trials unreported" (Helen)
-  Titles below the bars are very small (Helen)
+Work out spec for social sharing buttons (talk to Ben)
 
-Add social sharing buttons (talk to Ben)
 Error monitoring
   Back-end errors, zero tolerance
   New Relic

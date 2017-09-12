@@ -272,6 +272,13 @@ class Command(BaseCommand):
         headline['percent_without_results'] = round(
                 len(due_without_results) / len(due_trials) * 100, 1
         )
+        # .. trials with inconsistent data
+        headline['inconsistent_trials'] = int(inconsistent_trials_count.sum())
+        assert len(all_trials) == headline['total_trials']
+        headline['percent_inconsistent'] = round(
+            headline['inconsistent_trials'] / headline['total_trials'] * 100, 1
+        )
+
         # ... sponsors counts
         headline["all_sponsors_count"] = len(all_sponsors)
         headline["major_sponsors_count"] = np.count_nonzero(all_sponsors['major'])
