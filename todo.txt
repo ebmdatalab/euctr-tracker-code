@@ -1,12 +1,5 @@
-tech@ebmdatalab.net
-send directly and just whitelist the from
-exim4
-
-
-https://github.com/ebmdatalab/euctr-tracker-code/issues/2
-
 Daily update
-  Check the cron runs
+  Fix errors in cron run
     Make it report via New Relic or Mailgun
   Consider what happens when it runs half way through a partial scrape
   Consider making it not write other files if new_trials.csv has stuff in?
@@ -17,7 +10,32 @@ Daily update
   Change cron email to tech@ebmdatalab.net
 Important update is monthly after site is live (otherwise don't worry)
 
-When you toggle to ALL SPONSORS on the home page it jumps up to the top of the page (Helen)
+warehouse=> select count(*) as c, date(meta_updated) as d from euctr group by d;
+   c   |     d      
+-------+------------
+     1 | 2017-01-20
+     1 | 2017-01-21
+     6 | 2017-01-22
+     1 | 2017-03-28
+     1 | 2017-05-01
+     3 | 2017-05-06
+     1 | 2017-06-07
+     1 | 2017-06-14
+     6 | 2017-06-15
+  1928 | 2017-07-21
+ 15240 | 2017-07-22
+ 11444 | 2017-07-23
+  1775 | 2017-07-24
+     9 | 2017-08-19
+   545 | 2017-08-20
+  7619 | 2017-08-21
+  6783 | 2017-08-27
+  8790 | 2017-09-03
+ 14446 | 2017-09-10
+  7665 | 2017-09-11
+(20 rows)
+
+Chrome search box too wide on sponsor page
 
 Add proportion of all trials that have inconsistent data to headline and headline-history
 

@@ -96,12 +96,34 @@ function activate_sponsor_datatable() {
 	}
 	return false
     }
+
+    // save vertical scrolling in cookie so tabs don't make page jump
+    var save_scroll_position = function() {
+	$.cookie("sponsor_scrolltop", $(window).scrollTop())
+    }
+    var restore_scroll_position = function() {
+    	var scrolltop = $.cookie("sponsor_scrolltop")
+	if (scrolltop) {
+	    $("html").scrollTop(scrolltop)
+	    $.removeCookie("sponsor_scrolltop")
+	}
+    }
+
     var redirect_search = function() {
 	$('#search_sponsors input').blur() 
+	save_scroll_position()
 	$(location).attr('href', '/?search') 
+	return false
     }
     if (showing_all_sponsors) {
 	$('#all_sponsors').on('click', show_all)
+	$(window).ready(restore_scroll_position)
+    } else {
+	$('#all_sponsors').on('click', function() {
+	    save_scroll_position()
+	    $(location).attr('href', '/?all') 
+	    return false
+	})
     }
     $('#major_sponsors').on('click', show_major)
     if (showing_all_sponsors) {
