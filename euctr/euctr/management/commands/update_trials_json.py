@@ -6,6 +6,7 @@ import json
 
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
+slugify_vec = np.vectorize(slugify)
 
 PREFIX = '../../euctr-tracker-data/'
 SOURCE_CSV_FILE = PREFIX + 'trials.csv'
@@ -94,12 +95,12 @@ class Command(BaseCommand):
             new_trials = trials_input.set_index('trial_id')
             new_trials.drop(normalize['trial_id'], inplace=True)
             new_trials.reset_index(inplace=True)
-            new_trials['slug'] = np.vectorize(slugify)(new_trials['name_of_sponsor'])
+            new_trials['slug'] = slugify_vec(new_trials['name_of_sponsor'])
             new_trials.sort_values('trial_id', inplace=True)
 
             # Merge based on slug
             normalize_by_slug = normalize_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name']].copy()
-            normalize_by_slug['slug'] = np.vectorize(slugify)(normalize_by_slug['name_of_sponsor'])
+            normalize_by_slug['slug'] = slugify_vec(normalize_by_slug['name_of_sponsor'])
             del normalize_by_slug['name_of_sponsor']
             normalize_by_slug = normalize_by_slug.drop_duplicates('slug')
 
@@ -120,11 +121,16 @@ class Command(BaseCommand):
             # Add our merge guesses to the main list
             all_trials = all_trials.append(new_trials_merged)
             assert(len(trials_input) == len(all_trials))
+        else:
+            # Everything matched, erase new trials file
+            cols = ['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name']
+            new_trials_merged = pandas.DataFrame(columns=cols)
+            new_trials_merged.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=cols, index=False)
 
         # All trials list
         # ... add slug fields
-        all_trials['slug'] = np.vectorize(slugify)(all_trials['normalized_name_only'])
-        all_trials['parent_slug'] = np.vectorize(slugify)(all_trials['normalized_name'])
+        all_trials['slug'] = slugify_vec(all_trials['normalized_name_only'])
+        all_trials['parent_slug'] = slugify_vec(all_trials['normalized_name'])
         # ... add count of total number of trials for the sponsor (this is used to
         # distinguish major sponsors so is a useful field to have at row level)
         all_trials['total_trials'] = all_trials.groupby(
