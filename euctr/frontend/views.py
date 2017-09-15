@@ -42,7 +42,7 @@ def index(request):
     return render(request, "index.html", context=context)
 
 def index_screenshot(request):
-    context = models.get_headlines()
+    context = models.get_headlines().copy()
     context['taking_screenshot'] = True
     return render(request, "index_screenshot.html", context=context)
 
@@ -62,7 +62,7 @@ def sponsor_screenshot(request, slug):
     return _sponsor(request, slug, "sponsor_screenshot.html", True)
 
 def _sponsor(request, slug, template_name, taking_screenshot):
-    context = models.get_sponsor(slug)
+    context = models.get_sponsor(slug).copy()
 
     context['trials'] = models.get_trials(slug)
     context['load_js_at_start'] = True
