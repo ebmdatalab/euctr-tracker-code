@@ -1,45 +1,4 @@
-Daily update
-  Check cron running fine
-
-  Consider what happens when it runs half way through a partial scrape
-	Maybe make it not write other files if new_trials.csv has stuff in?
-
-  Notify Nick if there are entrie sin the new_trials.csv
-
-  Notification if updates stop happening
-    Make it report via New Relic or Mailgun
-	Change cron email to tech@ebmdatalab.net
-
-warehouse=> select count(*) as c, date(meta_updated) as d from euctr group by d;
-   c   |     d      
--------+------------
-     1 | 2017-01-20
-     1 | 2017-01-21
-     6 | 2017-01-22
-     1 | 2017-03-28
-     1 | 2017-05-01
-     3 | 2017-05-06
-     1 | 2017-06-07
-     1 | 2017-06-14
-     6 | 2017-06-15
-  1928 | 2017-07-21
- 15240 | 2017-07-22
- 11444 | 2017-07-23
-  1775 | 2017-07-24
-     9 | 2017-08-19
-   545 | 2017-08-20
-  7619 | 2017-08-21
-  6783 | 2017-08-27
-  8790 | 2017-09-03
- 14446 | 2017-09-10
-  7665 | 2017-09-11
-(20 rows)
-
 Work out spec for social sharing buttons (talk to Ben)
-
-Error monitoring
-  Back-end errors, zero tolerance
-  New Relic
 
 Launch
   Link to "Methods" in navigation, going to the paper on BMJ or similar site
@@ -49,7 +8,14 @@ Launch
     http://127.0.0.1:8000/sponsor/leiden-university
     http://127.0.0.1:8000/sponsor/university-of-groningen
 
+Updates sound after launch
   Important to check update is monthly after site is live (otherwise don't worry)
+
+  Tell Nick when there are new updates
+  Notification if updates stop happening
+    Make it report via New Relic or Mailgun
+    Change cron email to tech@ebmdatalab.net
+
 
 Later
 =====

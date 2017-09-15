@@ -28,11 +28,20 @@ class Command(BaseCommand):
         # The "count(*) > 100" part can be removed when
         # https://github.com/opentrials/opentrials/issues/821 is fixed
         cur.execute("""select count(*) as c, date(meta_updated) as d from euctr
-                group by d
-                having count(*) > 100
-                order by d limit 1""")
+                group by d having count(*) > 100 order by d limit 1""")
         scrape_date = cur.fetchone()[1]
         print("Scrape start date:", scrape_date)
+
+        # See if we have a clear new enough scrape. It takes maybe 4 days
+        # for OpenTrials to do a full scrape. So if the scrape started more
+        # than a week ago it's either:
+        # a) already been fully logged so nothing to do
+        # b) some new data has arrived, but not a full set - we don't want to mix in
+        #    order to have a reasonable quality historical record
+        # For now, give up. TODO: Fix scraper to run with reliable regularity.
+        if scrape_date + datetime.timedelta(days=7) < datetime.date.today():
+            print("Abandoning import from database: Scrape started too long ago to use data for new history point")
+            return
 
         # Date for reporting to be due has cutoff is 1 year (365 days) (by law,
         # trials must report a year after finishing) plus 3 weeks (21 days)
