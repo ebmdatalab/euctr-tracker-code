@@ -252,6 +252,7 @@ class Command(BaseCommand):
         )
         all_sponsors['major'] = np.where(
             (all_sponsors['total_trials'] >= MAJOR_SPONSORS_THRESHOLD) &
+            (all_sponsors['total_due'] > 0) &
             (all_sponsors['sponsor_name'] != "Unknown Sponsor")
         , 1, 0)
         # ... write to a file
