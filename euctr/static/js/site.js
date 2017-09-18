@@ -303,11 +303,13 @@ function make_pointers() {
 	make_pointer(par, x, y1, y2, "default")
     }
 
-    var par = $('#inconsistent-data-column')
-    var y1 = $('#inconsistent-data-bar').offset().top - par.offset().top + $('#inconsistent-data-bar').height() / 2 + 8
-    var y2 = $('#chartcopy-7').offset().top - par.offset().top + $('#chartcopy-7').height() / 2 - 7
-    var x = $('#inconsistent-data-bar').offset().left - par.offset().left + $('#inconsistent-data-bar').width() + 24
-    make_pointer(par, x, y2, y1, "grey")
+    if (inconsistent_trials > 0) {
+	var par = $('#inconsistent-data-column')
+	var y1 = $('#inconsistent-data-bar').offset().top - par.offset().top + $('#inconsistent-data-bar').height() / 2 + 8
+	var y2 = $('#chartcopy-7').offset().top - par.offset().top + $('#chartcopy-7').height() / 2 - 7
+	var x = $('#inconsistent-data-bar').offset().left - par.offset().left + $('#inconsistent-data-bar').width() + 24
+	make_pointer(par, x, y2, y1, "grey")
+    }
 }
 
 function activate_charts() {

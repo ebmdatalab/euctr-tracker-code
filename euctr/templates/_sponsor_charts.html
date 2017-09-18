@@ -56,15 +56,24 @@
     </div>
   </div>
   <div class="third-column" id="inconsistent-data-column">
-    <div id="chartcopy-brash-2">{{inconsistent_trials}}</div>
-    <div id="chartcopy-4">of {{ sponsor_name }}'s </div>
-    <div id="chartcopy-5"><b>{{ total_trials }}</b> register entries</div>
-    <div id="chartcopy-spacer-0" class="dashed-animation">&nbsp;</div>
-    <div id="chartcopy-6">have</div>
-    <div id="chartcopy-7">inconsistent data</div>
-    <div id="chartcopy-spacer-1" class="dashed-animation">&nbsp;</div>
-    <div id="chartcopy-8">so we can't be sure</div>
-    <div id="chartcopy-9">if they've reported on time</div>
+    {% if inconsistent_trials == 0 %}
+      <div id="chartcopy-brash-2" class="chartcopy-bland">All</div>
+    {% else %}
+      <div id="chartcopy-brash-2">{{inconsistent_trials}}</div>
+    {% endif %}
+    {% if inconsistent_trials == 0 %}
+    <div id="chartcopy-4">of {{ sponsor_name }}'s <b>{{ total_trials }}</b> register entries have</div>
+      <div id="chartcopy-7">consistent data</div>
+    {% else %}
+      <div id="chartcopy-4">of {{ sponsor_name }}'s </div>
+      <div id="chartcopy-5"><b>{{ total_trials }}</b> register entries</div>
+      <div id="chartcopy-spacer-0" class="dashed-animation">&nbsp;</div>
+      <div id="chartcopy-6">have</div>
+      <div id="chartcopy-7">inconsistent data</div>
+      <div id="chartcopy-spacer-1" class="dashed-animation">&nbsp;</div>
+      <div id="chartcopy-8">so we can't be sure</div>
+      <div id="chartcopy-9">if they've reported on time</div>
+    {% endif %}
   </div>
 
   </div>
