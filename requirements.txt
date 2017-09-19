@@ -9,3 +9,4 @@ psycopg2==2.7.1
 selenium==3.5.0
 atomicwrites==1.1.5
 xlrd==1.0.0
+scrapy==1.4.0
