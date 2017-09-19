@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-from urllib import urlencode
+from urllib.parse import urlencode
 from functools import partial
 from collections import OrderedDict
 from datetime import date, timedelta
 from scrapy.spiders import Rule
 from scrapy.spiders import CrawlSpider
 from scrapy.linkextractors import LinkExtractor
-from .parser import parse_record
+from crawl.parser import parse_record
 
 
 # Module API

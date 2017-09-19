@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-from .. import base
-from ..base.fields import Text, Date, Boolean, Integer, Json
+from crawl import base
+from crawl.base.fields import Text, Date, Boolean, Integer, Json
 
 
 # Module API
