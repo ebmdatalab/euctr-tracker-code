@@ -11,6 +11,7 @@ class Warehouse(object):
     # Public
 
     def open_spider(self, spider):
+        print("------ open_spider", spider.conf, spider.conn)
         if spider.conf and spider.conn:
             self.__conf = spider.conf
             self.__conn = spider.conn

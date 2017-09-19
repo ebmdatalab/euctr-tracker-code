@@ -66,13 +66,7 @@ class Record(scrapy.Item):
                 continue
             if value is None:
                 continue
-            try:
-                value = field.parse(value)
-            except Exception as e:
-                print("----- exception")
-                print(e)
-                #config.SENTRY.captureException()
-                continue
+            value = field.parse(value)
             self[key] = value
         for key in undefined:
             logger.warning('Undefined field: %s - %s' % (self, key))

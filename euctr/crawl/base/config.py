@@ -17,20 +17,12 @@ WAREHOUSE_URL = os.environ['EUCTR_OPENTRIALS_DB']
 # Scrapy
 SCRAPY_SETTINGS = {
     'SPIDER_MODULES': [
-        'collectors.actrn.spider',
-        'collectors.euctr.spider',
-        'collectors.gsk.spider',
-        'collectors.ictrp.spider',
-        'collectors.isrctn.spider',
-        'collectors.jprn.spider',
-        'collectors.pfizer.spider',
-        'collectors.pubmed.spider',
-        'collectors.takeda.spider',
+        'crawl.spider',
     ],
     'DOWNLOAD_DELAY': float(os.getenv('DOWNLOAD_DELAY', 1)),
     'AUTOTHROTTLE_ENABLED': True,
     'ITEM_PIPELINES': {
-        'collectors.base.pipelines.Warehouse': 100,
+        'crawl.base.pipelines.Warehouse': 100,
     },
 }
 

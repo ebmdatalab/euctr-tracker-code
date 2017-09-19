@@ -11,3 +11,4 @@ atomicwrites==1.1.5
 xlrd==1.0.0
 scrapy==1.4.0
 sqlalchemy==1.1.14
+dataset==1.0.1

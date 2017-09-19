@@ -1,6 +1,8 @@
 Crawl:
   base/config.py - sort out test and CI modes at top
   base/* - check all needed
+  Move alembic migrations over
+  Error logging
 
 Work out spec for social sharing buttons (talk to Ben)
   "Tell everyone" as CTA title with Twitter | Facebook buttons
