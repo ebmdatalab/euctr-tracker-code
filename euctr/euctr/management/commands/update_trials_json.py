@@ -18,6 +18,7 @@ OUTPUT_ALL_SPONSORS_FILE = PREFIX + 'all_sponsors.json'
 MAJOR_SPONSORS_THRESHOLD = 50
 OUTPUT_ALL_TRIALS_FILE = PREFIX + 'all_trials.json'
 OUTPUT_NEW_TRIALS_FILE = PREFIX + 'new_trials.csv'
+SOCIAL_HANDLES_FILE = PREFIX + 'social_handles.csv'
 
 # For given row of trial data, work out the overall status for display in the
 # user interface in rows of the table.
@@ -187,8 +188,6 @@ class Command(BaseCommand):
             })
             return ret
         sponsor_counts = sponsor_grouped.apply(do_counts)
-        #import pdb; pdb.set_trace()
-        #sponsor_counts.index.rename('name_for_index', inplace=True)
 
         # Work out sponsors which are parents only and don't have own trials
         all_parents = pandas.DataFrame({
@@ -255,8 +254,15 @@ class Command(BaseCommand):
             (all_sponsors['total_due'] > 0) &
             (all_sponsors['sponsor_name'] != "Unknown Sponsor")
         , 1, 0)
+        # ... merge in social media handles
+        social_handles = pandas.read_csv(SOCIAL_HANDLES_FILE)
+        social_handles['slug'] = slugify_vec(social_handles['name'])
+        print(all_sponsors.sample(10))
+        print(social_handles.sample(10))
+        all_sponsors = all_sponsors.merge(social_handles, on="slug", how="left")
         # ... write to a file
         all_sponsors.sort_values('slug', inplace=True)
+        #print(all_sponsors.sample(10))
         json.dump(all_sponsors.to_dict(orient='records'),
                 open(OUTPUT_ALL_SPONSORS_FILE, 'w'),
                 indent=4, sort_keys=True
