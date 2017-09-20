@@ -15,15 +15,28 @@ else:
 WAREHOUSE_URL = os.environ['EUCTR_OPENTRIALS_DB']
 
 # Scrapy
+CRAWLERA_APIKEY = os.getenv('EUCTR_CRAWLERA_APIKEY', None)
 SCRAPY_SETTINGS = {
     'SPIDER_MODULES': [
         'crawl.spider',
     ],
     'DOWNLOAD_DELAY': float(os.getenv('DOWNLOAD_DELAY', 1)),
-    'AUTOTHROTTLE_ENABLED': True,
+    'CONCURRENT_REQUESTS_PER_DOMAIN': 32,
+    'CONCURRENT_REQUESTS': 10,
+
+    #'AUTOTHROTTLE_ENABLED': True,
+    #'AUTOTHROTTLE_TARGET_CONCURRENCY': 5,
+    #'AUTOTHROTTLE_DEBUG': True,
+
+    'RETRY_ENABLED': True,
+    'RETRY_TIMES': 20,
+
     'ITEM_PIPELINES': {
         'crawl.base.pipelines.Warehouse': 100,
     },
+    'DOWNLOADER_MIDDLEWARES': {'scrapy_crawlera.CrawleraMiddleware': 600},
+    'CRAWLERA_ENABLED': CRAWLERA_APIKEY != None,
+    'CRAWLERA_APIKEY': CRAWLERA_APIKEY
 }
 
 

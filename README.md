@@ -33,6 +33,7 @@ export EUCTR_DEBUG= # yes or no
 export EUCTR_OPENTRIALS_DB=postgres://<account_name>:<password>@<servername>/warehouse
 
 export EUCTR_GOOGLE_TRACKING_ID= # optional Analytics id, e.g. UA-nnnnnnnn-n
+export EUCTR_CRAWLERA_APIKEY= # for crawler proxying
 ```
 
 Checkout the data respository.
