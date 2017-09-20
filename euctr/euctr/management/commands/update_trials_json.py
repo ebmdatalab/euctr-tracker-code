@@ -93,7 +93,7 @@ class Command(BaseCommand):
         if len(trials_input) != len(all_trials):
             # Work out which trials are new
             new_trials = trials_input.set_index('trial_id')
-            new_trials.drop(normalize['trial_id'], inplace=True)
+            new_trials.drop(normalize['trial_id'], inplace=True, errors="ignore") # TODO: put errosr back
             new_trials.reset_index(inplace=True)
             new_trials['slug'] = slugify_vec(new_trials['name_of_sponsor'])
             new_trials.sort_values('trial_id', inplace=True)
