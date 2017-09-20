@@ -18,7 +18,7 @@ class Spider(CrawlSpider):
     name = 'euctr'
     allowed_domains = ['clinicaltrialsregister.eu']
 
-    def __init__(self, conf=None, conn=None, date_from=None, date_to=None):
+    def __init__(self, conf=None, conn=None, date_from=None, date_to=None, query=None):
 
         # Save conf/conn
         self.conf = conf
@@ -27,7 +27,7 @@ class Spider(CrawlSpider):
         # Make start urls
         self.start_urls = _make_start_urls(
                 prefix='https://www.clinicaltrialsregister.eu/ctr-search/search',
-                date_from=date_from, date_to=date_to)
+                date_from=date_from, date_to=date_to, query=query)
 
         # Make rules
         self.rules = [
@@ -53,18 +53,16 @@ class Spider(CrawlSpider):
 
 # Internal
 
-def _make_start_urls(prefix, date_from=None, date_to=None):
+def _make_start_urls(prefix, date_from=None, date_to=None, query=None):
     """ Return start_urls.
     """
-    if date_from is None:
-        date_from = str(date.today() - timedelta(days=1))
-    if date_to is None:
-        date_to = str(date.today())
-    query = OrderedDict()
-    query['query'] = ''
-    query['dateFrom'] = date_from
-    query['dateTo'] = date_to
-    return [prefix + '?' + urlencode(query)]
+    q = OrderedDict()
+    q['query'] = query or ""
+    if date_from:
+        q['dateFrom'] = date_from
+    if date_to:
+        q['dateTo'] = date_to
+    return [prefix + '?' + urlencode(q)]
 
 
 def _process_links(start_urls, links):

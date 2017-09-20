@@ -10,6 +10,26 @@ Crawl:
   When import from db to JSON happens, make sure DOESN'T write files if any trials missing from normalisation
   - it should notify Nick but that is all
 
+  Watch for new scrapes no updating old data - why do some trials get missed in crawl next time?
+
+Put error handling back
+  new_trials.drop(normalize['trial_id'], inplace=True, errors="ignore") # TODO: put errosr back
+
+
+Missing trials
+
+  These trials are missing now, in normalize spreadsheet
+  2013-001720-19
+  2012-002260-26
+  2010-020197-42
+  2016-004426-41
+
+  This one is in the registry, but gives an error when you click through
+  to the protocol:
+  https://www.clinicaltrialsregister.eu/ctr-search/search?query=2011-004159-38
+  https://www.clinicaltrialsregister.eu/ctr-search/trial/2011-004159-38/BE
+
+
 Work out spec for social sharing buttons (talk to Ben)
   "Tell everyone" as CTA title with Twitter | Facebook buttons
    Just include not reported trials

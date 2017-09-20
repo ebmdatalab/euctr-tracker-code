@@ -91,11 +91,18 @@ export EUCTR\_OPENTRIALS\_DB=postgres://username:password@hostname/dbname
 
 If you need the schema, look in `euctr/crawl/schema.sql`.
 
-2. Run the EUCTR crawler to populate the PostgreSQL database by running:
+2. Run the EUCTR crawler to populate the PostgreSQL database by running
+with a date range:
 
 ```
 cd euctr
-./manage.py run_crawler 2004-01-01 2017-08-31
+./manage.py run_crawler 2004-01-01 2017-09-19
+```
+
+Or update results from a particular query, e.g. a specific trial id:
+
+```
+./manage.py run_crawler --query=2004-000012-13
 ```
 
 3. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 
