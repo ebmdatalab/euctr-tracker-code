@@ -2,7 +2,13 @@ Crawl:
   base/config.py - sort out test and CI modes at top
   base/* - check all needed
   Move alembic migrations over
-  Error logging
+  Error logging to a log file
+  Check that retry works now when there is a 404 
+  - tweak params so it retries in sensible pattern
+  Consider using https://doc.scrapy.org/en/latest/topics/jobs.html for re-entrancy
+
+  When import from db to JSON happens, make sure DOESN'T write files if any trials missing from normalisation
+  - it should notify Nick but that is all
 
 Work out spec for social sharing buttons (talk to Ben)
   "Tell everyone" as CTA title with Twitter | Facebook buttons

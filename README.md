@@ -42,8 +42,7 @@ Checkout the data respository.
 cd ..
 git clone git@github.com:ebmdatalab/euctr-tracker-data.git
 cd -
-```
-
+``` 
 Run the application.
 
 ```
@@ -80,26 +79,36 @@ Loading new data
 ================
 
 The frontend application reads data from static JSON files in 
-the `../euctr-tracker-data/` directory. There's no local database.
+the `../euctr-tracker-data/` directory. 
 
-1. Set the location of the OpenTrials PostgreSQL database.
+1. Set the location of a PostgreSQL database. This is only used as
+an intermediate store for the crawler to keep data in. The live website
+doesn't use it.
 
 ```
 export EUCTR\_OPENTRIALS\_DB=postgres://username:password@hostname/dbname
 ```
 
-2. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 
-database by running:
+If you need the schema, look in `euctr/crawl/schema.sql`.
+
+2. Run the EUCTR crawler to populate the PostgreSQL database by running:
 
 ```
 cd euctr
+./manage.py run_crawler 2004-01-01 2017-08-31
+```
+
+3. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 
+database by running:
+
+```
 ./manage.py get_trials_from_db
 ```
 
 This assumes the table is called "euctr". It uses the SQL script
 `opentrials-to-csv.sql` for the calculations and conversions needed.
 
-3. Regenerate the JSON files from the CSV file by running:
+4. Regenerate the JSON files from the CSV file by running:
 
 ```
 ./manage.py update_trials_json
