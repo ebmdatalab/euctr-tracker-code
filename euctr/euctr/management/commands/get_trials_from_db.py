@@ -16,6 +16,7 @@ from django.template.defaultfilters import slugify
 
 TRIALS_CSV_FILE = '../../euctr-tracker-data/trials.csv'
 TRIALS_META_FILE = '../../euctr-tracker-data/trials.csv.json'
+PAPER_CSV_FILE = '../../euctr-tracker-data/paper_query.csv'
 
 class Command(BaseCommand):
     help = 'Fetches trials data from OpenTrials PostgredSQL database and saves to trials.csv'
@@ -23,11 +24,11 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         opentrials_db = os.environ['EUCTR_OPENTRIALS_DB']
         conn = psycopg2.connect(opentrials_db)
-        cur = conn.cursor()
 
         # Find out the earliest date of current scrape.
         # The "count(*) > 100" part can be removed when
         # https://github.com/opentrials/opentrials/issues/821 is fixed
+        cur = conn.cursor()
         cur.execute("""select count(*) as c, date(meta_updated) as d from euctr
                 group by d having count(*) > 100 order by d limit 1""")
         scrape_date = cur.fetchone()[1]
@@ -50,8 +51,10 @@ class Command(BaseCommand):
         due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 21)
         print("Due date cutoff:", due_date_cutoff)
 
+        # Generate the CSV file we later use in the web application
         query = open("euctr/management/commands/opentrials-to-csv.sql").read()
         params = { 'due_date_cutoff': due_date_cutoff }
+        cur = conn.cursor()
         cur.execute(query, params)
 
         before_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
@@ -74,6 +77,15 @@ class Command(BaseCommand):
                 f.write(json.dumps(out, indent=4, sort_keys=True))
         else:
             print("No changes, not updating meta file")
+
+        # Generate the CSV file we later use in the web application
+        paper_query = open("euctr/management/commands/opentrials-to-paper-csv.sql").read()
+        cur = conn.cursor()
+        cur.execute(paper_query)
+        with atomic_write(PAPER_CSV_FILE, overwrite=True) as f:
+            writer = csv.writer(f, lineterminator="\n")
+            writer.writerow([i[0] for i in cur.description])
+            writer.writerows(cur)
 
 
 
