@@ -93,7 +93,7 @@ class Command(BaseCommand):
         if len(trials_input) != len(all_trials):
             # Work out which trials are new
             new_trials = trials_input.set_index('trial_id')
-            new_trials.drop(normalize['trial_id'], inplace=True)
+            new_trials.drop(normalize['trial_id'], inplace=True, errors="ignore") # TODO: put errosr back
             new_trials.reset_index(inplace=True)
             new_trials['slug'] = slugify_vec(new_trials['name_of_sponsor'])
             new_trials.sort_values('trial_id', inplace=True)
@@ -173,7 +173,11 @@ class Command(BaseCommand):
             parent_slugs = list(g['parent_slug'].unique())
             parent_names = list(g['normalized_name'].unique())
             if slug in parent_slugs:
+                if slug not in parent_slugs:
+                    print("Unexpected parent slug not found", slug)
                 parent_slugs.remove(slug)
+                if sponsor_name not in parent_names:
+                    print("Unexpected parent name not found", sponsor_name)
                 parent_names.remove(sponsor_name)
             parents = [ { 'slug': a[0], 'name': a[1]} for a in zip(parent_slugs, parent_names) ]
 

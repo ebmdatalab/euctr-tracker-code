@@ -33,6 +33,7 @@ export EUCTR_DEBUG= # yes or no
 export EUCTR_OPENTRIALS_DB=postgres://<account_name>:<password>@<servername>/warehouse
 
 export EUCTR_GOOGLE_TRACKING_ID= # optional Analytics id, e.g. UA-nnnnnnnn-n
+export EUCTR_CRAWLERA_APIKEY= # for crawler proxying
 ```
 
 Checkout the data respository.
@@ -41,8 +42,7 @@ Checkout the data respository.
 cd ..
 git clone git@github.com:ebmdatalab/euctr-tracker-data.git
 cd -
-```
-
+``` 
 Run the application.
 
 ```
@@ -79,26 +79,43 @@ Loading new data
 ================
 
 The frontend application reads data from static JSON files in 
-the `../euctr-tracker-data/` directory. There's no local database.
+the `../euctr-tracker-data/` directory. 
 
-1. Set the location of the OpenTrials PostgreSQL database.
+1. Set the location of a PostgreSQL database. This is only used as
+an intermediate store for the crawler to keep data in. The live website
+doesn't use it.
 
 ```
 export EUCTR\_OPENTRIALS\_DB=postgres://username:password@hostname/dbname
 ```
 
-2. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 
-database by running:
+If you need the schema, look in `euctr/crawl/schema.sql`.
+
+2. Run the EUCTR crawler to populate the PostgreSQL database by running
+with a date range:
 
 ```
 cd euctr
+./manage.py run_crawler 2004-01-01 2017-09-19
+```
+
+Or update results from a particular query, e.g. a specific trial id:
+
+```
+./manage.py run_crawler --query=2004-000012-13
+```
+
+3. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 
+database by running:
+
+```
 ./manage.py get_trials_from_db
 ```
 
 This assumes the table is called "euctr". It uses the SQL script
 `opentrials-to-csv.sql` for the calculations and conversions needed.
 
-3. Regenerate the JSON files from the CSV file by running:
+4. Regenerate the JSON files from the CSV file by running:
 
 ```
 ./manage.py update_trials_json
