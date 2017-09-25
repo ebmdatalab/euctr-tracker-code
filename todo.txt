@@ -1,22 +1,22 @@
 Crawl:
+  Check that retry works now when there is a 404 
+  - tweak params so it retries in sensible pattern
+  Turn off use of proxy
+
   base/config.py - sort out test and CI modes at top
   base/* - check all needed
   Move alembic migrations over
   Error logging to a log file
-  Check that retry works now when there is a 404 
-  - tweak params so it retries in sensible pattern
   Consider using https://doc.scrapy.org/en/latest/topics/jobs.html for re-entrancy
 
   When import from db to JSON happens, make sure DOESN'T write files if any trials missing from normalisation
   - it should notify Nick but that is all
 
-  Watch for new scrapes no updating old data - why do some trials get missed in crawl next time?
-
-Put error handling back
-  new_trials.drop(normalize['trial_id'], inplace=True, errors="ignore") # TODO: put errosr back
-
+  Watch for old tries not being updated, implying items removed from database
 
 Missing trials
+  Put error handling back
+    new_trials.drop(normalize['trial_id'], inplace=True, errors="ignore") # TODO: put errosr back
 
   These trials are missing now, in normalize spreadsheet
   2013-001720-19

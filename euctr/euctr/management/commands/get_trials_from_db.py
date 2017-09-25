@@ -6,6 +6,7 @@ import csv
 import datetime
 import json
 import collections
+import hashlib
 
 from atomicwrites import atomic_write
 
@@ -49,22 +50,31 @@ class Command(BaseCommand):
         due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 21)
         print("Due date cutoff:", due_date_cutoff)
 
-        with atomic_write(TRIALS_META_FILE, overwrite=True) as f:
-            out = collections.OrderedDict([
-                ('scrape_date', scrape_date.isoformat()),
-                ('due_date_cutoff', due_date_cutoff.isoformat()),
-                ('got_from_db', datetime.datetime.now().isoformat())
-            ])
-            f.write(json.dumps(out, indent=4, sort_keys=True))
+        query = open("euctr/management/commands/opentrials-to-csv.sql").read()
+        params = { 'due_date_cutoff': due_date_cutoff }
+        cur.execute(query, params)
 
-            query = open("euctr/management/commands/opentrials-to-csv.sql").read()
-            params = { 'due_date_cutoff': due_date_cutoff }
-            cur.execute(query, params)
+        before_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
+        with atomic_write(TRIALS_CSV_FILE, overwrite=True) as f:
+            writer = csv.writer(f, lineterminator="\n")
+            writer.writerow([i[0] for i in cur.description])
+            writer.writerows(cur)
+        after_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
 
-            with atomic_write(TRIALS_CSV_FILE, overwrite=True) as f:
-                writer = csv.writer(f, lineterminator="\n")
-                writer.writerow([i[0] for i in cur.description])
-                writer.writerows(cur)
+        # Update "got_from_db" only if there were changes in database
+        # (to stop git history being contaminated)
+        if before_hash != after_hash:
+            print("Changes being recorded in meta file")
+            with atomic_write(TRIALS_META_FILE, overwrite=True) as f:
+                out = collections.OrderedDict([
+                    ('scrape_date', scrape_date.isoformat()),
+                    ('due_date_cutoff', due_date_cutoff.isoformat()),
+                    ('got_from_db', datetime.datetime.now().isoformat())
+                ])
+                f.write(json.dumps(out, indent=4, sort_keys=True))
+        else:
+            print("No changes, not updating meta file")
+
 
 
 
