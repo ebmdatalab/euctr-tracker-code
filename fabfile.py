@@ -53,7 +53,8 @@ def setup_nginx():
     run('nginx -t && service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start')
 
 def setup_cron():
-    run('cp %s/euctr-tracker-code/deploy/%s_cron /etc/cron.daily/%s_cron; chmod a+x /etc/cron.daily/%s_cron' % (env.path, env.app, env.app, env.app))
+    fabric.contrib.files.upload_template(filename, destination, context=None,
+    run('cp %s/euctr-tracker-code/deploy/crontab-eutrailstracker_live /etc/cron.d/' % (env.path, env.app))
 
 #def run_migrations():
 #    if env.environment == 'live':
