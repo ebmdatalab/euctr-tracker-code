@@ -111,6 +111,7 @@ class Command(BaseCommand):
             # checking, fixing and adding to NORMALIZE_FILE
             new_trials_merged.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
             print("Trials CSV: %d entries  After merge with normalization: %d entries\n\nSee new_trials.csv : %d for list" % (len(trials_input), len(all_trials), len(new_trials)))
+            print("NOT GOING LIVE, until all trials are matched")
 
             # Assume remaining are new sponsors for now
             unmatched = pandas.isnull(new_trials_merged['normalized_name_only'])
