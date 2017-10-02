@@ -186,6 +186,16 @@ CREATE INDEX ix_euctr_86a28cd2542cd0c4 ON euctr USING btree (eudract_number_with
 -- Name: euctr_set_meta_updated; Type: TRIGGER; Schema: public; Owner: warehouse
 --
 
+CREATE OR REPLACE FUNCTION public.set_meta_updated()
+ RETURNS trigger
+ LANGUAGE plpgsql
+AS $function$
+                    BEGIN
+                      NEW.meta_updated := now();
+                      RETURN NEW;
+                    END;
+                    $function$
+
 CREATE TRIGGER euctr_set_meta_updated BEFORE UPDATE ON euctr FOR EACH ROW EXECUTE PROCEDURE set_meta_updated();
 
 
