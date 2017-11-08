@@ -1,3 +1,5 @@
+
+
 Crawl:
   When import from db to JSON happens, make sure DOESN'T write files if any trials missing from normalisation
   - it should notify Nick but that is all
@@ -9,6 +11,16 @@ Crawl:
     euctr_set_meta_updated trigger and set_meta_updated function - make sure never get lost again
 
   Rotate / prune log files
+
+  Document crawl deployment in README
+
+  Check all history in "Tracker Background Data" is stored in a way can get it, even if in git history
+    Is OK to keep using deleted trials in data sets, because kept in database
+    Take care that database will be reused and updated
+
+
+Twitter cards
+  Think need twitter:imag:src and og:title for Twitter  https://cards-dev.twitter.com/validator
 
 Missing trials
   Put error handling back
