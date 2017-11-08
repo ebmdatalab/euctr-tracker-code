@@ -249,6 +249,7 @@ SELECT
         WHEN completed + terminated = Total
         AND comp_date > 0
         AND max_end_date < %(due_date_cutoff)s
+	AND NOT (phase_i_trial = Total AND Includes_PIP = 0)
         THEN 1
         ELSE 0
     END AS results_expected,
