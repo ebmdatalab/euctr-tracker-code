@@ -68,7 +68,7 @@ class Command(BaseCommand):
         # Load in list of trials, list of normalized names, and join together
         trials_input = pandas.read_csv(SOURCE_CSV_FILE)
         normalize_full = pandas.read_excel(
-            NORMALIZE_FILE, "Sheet1",
+            NORMALIZE_FILE, "Final Data",
             keep_default_na=False, na_values=[]
         )
         normalize = normalize_full[['trial_id', 'normalized_name_only', 'normalized_name']]
