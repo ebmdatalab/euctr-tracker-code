@@ -46,9 +46,9 @@ class Command(BaseCommand):
             return
 
         # Date for reporting to be due has cutoff is 1 year (365 days) (by law,
-        # trials must report a year after finishing) plus 3 weeks (21 days)
+        # trials must report a year after finishing) plus 4 weeks (28 days)
         # allowance (it takes that long for submissions to enter register)
-        due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 21)
+        due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 28)
         print("Due date cutoff:", due_date_cutoff)
 
         # Generate the CSV file we later use in the web application
