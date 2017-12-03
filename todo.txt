@@ -8,6 +8,7 @@ Lots of orphaned phantomjs processes using up Gb of RAM in total
   Make sure they die!
 Maybe use headless chrome instead
   https://gist.github.com/rverton/d07a2232f4c0e1c2b9894e9bdb4fa6cf/revisions
+Check correspondence between processes and gunicorn instances
 
 
 Crawl:
