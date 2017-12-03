@@ -6,6 +6,8 @@ Lots of orphaned phantomjs processes using up Gb of RAM in total
   root       913  0.0  0.2 904600  9236 ?        Sl   Sep27   0:13 node /usr/bin/phantomjs --cookies-file=/tmp/tmpfmeztzki --webdriver=43753
   root       919  0.0  0.3 2140824 13800 ?       Sl   Sep27   6:59 /usr/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs --cookies-file=/tmp/tmpfmeztzki --webdriver=43753
   Make sure they die!
+Maybe use headless chrome instead
+  https://gist.github.com/rverton/d07a2232f4c0e1c2b9894e9bdb4fa6cf/revisions
 
 
 Crawl:
