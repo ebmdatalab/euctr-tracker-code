@@ -12,9 +12,6 @@ Check correspondence between processes and gunicorn instances
 
 
 Crawl:
-  When import from db to JSON happens, make sure DOESN'T write files if any trials missing from normalisation
-  - it should notify Nick but that is all
-
   OpenTrials migration tidying
     base/config.py - sort out test and CI modes at top
     base/* - check all needed
@@ -29,9 +26,6 @@ Crawl:
     Is OK to keep using deleted trials in data sets, because kept in database
     Take care that database will be reused and updated
 
-
-Twitter cards
-  Think need twitter:imag:src and og:title for Twitter  https://cards-dev.twitter.com/validator
 
 Missing trials
   Put error handling back
@@ -67,13 +61,17 @@ Launch
     http://127.0.0.1:8000/sponsor/leiden-university
     http://127.0.0.1:8000/sponsor/university-of-groningen
 
-Updates sound after launch
+
+After launch
+  Twitter cards need testing https://cards-dev.twitter.com/validator
+
   Important to check update is monthly after site is live (otherwise don't worry)
 
   Tell Nick when there are new updates
   Notification if updates stop happening
     Make it report via New Relic or Mailgun
     Change cron email to tech@ebmdatalab.net
+
 
 
 Later
