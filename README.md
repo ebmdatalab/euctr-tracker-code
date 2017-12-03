@@ -7,7 +7,7 @@ Install these Python development packages before you begin. For
 example, on a Debian-based system:
 
 ```
-apt install python3 python3-venv build-essential python3-dev phantomjs
+apt install python3 python3-venv build-essential python3-dev chromium-chromedriver
 ```
 
 Using Python 3, create and enter a virtualenv, as [described

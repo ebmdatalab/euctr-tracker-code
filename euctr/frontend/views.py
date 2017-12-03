@@ -10,10 +10,17 @@ import selenium.webdriver
 
 from . import models
 
-driver = selenium.webdriver.PhantomJS()
-def _capture_screenshot(width, url):
-    driver.set_window_size(width, 100)
+#driver = selenium.webdriver.PhantomJS()
+chrome_options = selenium.webdriver.chrome.options.Options()
+chrome_options.add_argument("--headless")
+driver = selenium.webdriver.Chrome(
+    chrome_options=chrome_options
+)
+def _capture_screenshot(url):
+    driver.set_window_size(1024, 1024)
     driver.get(url)
+    height = driver.execute_script("return document.body.scrollHeight;")
+    driver.set_window_size(1024, height)
     png_binary = driver.get_screenshot_as_png()
     return HttpResponse(png_binary, 'image/png')
 
@@ -47,7 +54,7 @@ def index_screenshot(request):
     return render(request, "index_screenshot.html", context=context)
 
 def index_screenshot_png(request):
-    return _capture_screenshot(1024, request.build_absolute_uri(
+    return _capture_screenshot(request.build_absolute_uri(
         reverse("index_screenshot"))
     )
 
@@ -75,7 +82,7 @@ def _sponsor(request, slug, template_name, taking_screenshot):
     return render(request, template_name, context=context)
 
 def sponsor_screenshot_png(request, slug):
-    return _capture_screenshot(1024, request.build_absolute_uri(
+    return _capture_screenshot(request.build_absolute_uri(
         reverse("sponsor_screenshot", kwargs={"slug": slug}))
     )
 
