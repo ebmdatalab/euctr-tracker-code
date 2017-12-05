@@ -2,7 +2,14 @@
 
 service supervisor restart
 
-# TODO clear correct cache if have multiple instances
-nginx -t && service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start
+if nginx -t
+then
+    service nginx stop 
+    # TODO clear correct cache if have multiple instances
+    rm -fr /var/cache/nginx/eutrialstracker_live/* 
+    # Remove stray orphaned phantomjs processes. XXX not sure why they happen
+    killall -p phantomjs
+    service nginx start
+fi
 
 
