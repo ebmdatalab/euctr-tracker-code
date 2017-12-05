@@ -23,5 +23,4 @@ git push -q
 chown -R www-data:www-data .
 
 # restart web services so new data definitely picked up
-service supervisor restart
-service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start
+/var/www/eutrialstracker_live/euctr-tracker-code/deploy/restart-web-services.sh

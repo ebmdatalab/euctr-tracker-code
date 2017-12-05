@@ -48,9 +48,8 @@ def update_from_git():
 def setup_nginx():
     run('ln -sf %s/euctr-tracker-code/deploy/supervisor-%s.conf /etc/supervisor/conf.d/%s.conf' % (env.path, env.app, env.app))
     run('ln -sf %s/euctr-tracker-code/deploy/nginx-%s /etc/nginx/sites-enabled/%s' % (env.path, env.app, env.app))
-    run('chown -R www-data:www-data /var/www/%s/{euctr-tracker-code,euctr-tracker-data,letsencrypt,venv}' % (env.app))
-    run('service supervisor restart')
-    run('nginx -t && service nginx stop && rm -fr /var/cache/nginx/eutrialstracker_live/* && service nginx start')
+    run('chown -R www-data:www-data /var/www/%s/{euctr-tracker-code,euctr-tracker-data,letsencrypt,venv}' % (env.app,))
+    run('%s/euctr-tracker-code/deploy/restart-web-services.sh' % (env.path,))
 
 def setup_cron():
     run('cp %s/euctr-tracker-code/deploy/crontab-%s /etc/cron.d/' % (env.path, env.app))
