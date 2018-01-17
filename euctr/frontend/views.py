@@ -1,5 +1,7 @@
 import logging
 import time
+import atexit
+import signal
 
 from django.shortcuts import render
 from django.conf import settings
@@ -10,11 +12,20 @@ import selenium.webdriver
 
 from . import models
 
-driver = selenium.webdriver.PhantomJS()
+selenium_driver = None
+def quit_selenium():
+    selenium_driver.service.process.send_signal(signal.SIGTERM)
+    selenium_driver.quit()
 def _capture_screenshot(width, url):
-    driver.set_window_size(width, 100)
-    driver.get(url)
-    png_binary = driver.get_screenshot_as_png()
+    global selenium_driver
+
+    if not selenium_driver:
+        selenium_driver = selenium.webdriver.PhantomJS()
+        atexit.register(quit_selenium)
+
+    selenium_driver.set_window_size(width, 100)
+    selenium_driver.get(url)
+    png_binary = selenium_driver.get_screenshot_as_png()
     return HttpResponse(png_binary, 'image/png')
 
 
