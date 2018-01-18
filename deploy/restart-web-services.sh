@@ -1,14 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 service supervisor restart
 
 if nginx -t
 then
     service nginx stop 
-    # TODO clear correct cache if have multiple instances
+    # TODO clear correct cache if have multiple environments
     rm -fr /var/cache/nginx/eutrialstracker_live/* 
-    # Remove stray orphaned phantomjs processes. XXX not sure why they happen
-    killall -p phantomjs
     service nginx start
 fi
 
