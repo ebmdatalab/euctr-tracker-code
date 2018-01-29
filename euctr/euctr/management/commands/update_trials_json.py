@@ -72,9 +72,6 @@ class Command(BaseCommand):
             keep_default_na=False, na_values=[]
         )
         normalize = normalize_full[['trial_id', 'normalized_name_only', 'normalized_name']]
-        # Apply the clause to remove phase 1s XXX this can be removed when done in opentrials-to-csv.sql
-        phase_1_exception = (trials_input.phase == 1) & (trials_input.includes_pip == 0)
-        trials_input.loc[phase_1_exception, "results_expected"] = 0
         # ... do a consistency check (see README.md for definitions of these columns) - find items
         # which have a sponsor name ('normalized_name_only') that is also a parent name
         # (another sponsor's 'normalized_name') but not this sponsor's parent name
