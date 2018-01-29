@@ -12,7 +12,6 @@ CREATE TEMP TABLE PSpons2 AS
 SELECT
     eudract_number,
     count (*) AS Total,
-    max (CAST (name_of_sponsor AS text)) AS name_of_sponsor_arb,
     count ( CASE
             WHEN status_of_sponsor = '"Non-Commercial"' THEN 1
             ELSE NULL
@@ -41,8 +40,7 @@ SELECT
         WHEN status_of_sponsor_C = Total THEN 1
         WHEN status_of_sponsor_Blank = Total THEN 3
         ELSE 2
-    END AS Sponsor_Status,
-    name_of_sponsor_arb
+    END AS Sponsor_Status
 FROM
     PSpons2;
 
@@ -227,10 +225,7 @@ SELECT
         WHEN terminated > 0 THEN 1
         ELSE 0
     END AS terminated,
-    PSpons3.Sponsor_Status,
-    trim (BOTH '"'
-        FROM
-        PSpons3.name_of_sponsor_arb) AS name_of_sponsor
+    PSpons3.Sponsor_Status
 FROM
     PTemp1
     LEFT JOIN PSpons3 ON PTemp1.eudract_number = PSpons3.Trial_ID;

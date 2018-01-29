@@ -12,7 +12,7 @@ CREATE TEMP TABLE Spons2 AS
 SELECT
     eudract_number,
     count (*) AS Total,
-    max (CAST (name_of_sponsor AS text)) AS name_of_sponsor_arb,
+    json_agg (distinct trim (BOTH '"' from CAST (name_of_sponsor AS text))) AS names_of_sponsors_arb,
     count ( CASE
             WHEN status_of_sponsor = '"Non-Commercial"' THEN 1
             ELSE NULL
@@ -42,7 +42,7 @@ SELECT
         WHEN status_of_sponsor_Blank = Total THEN 3
         ELSE 2
     END AS Sponsor_Status,
-    name_of_sponsor_arb
+    names_of_sponsors_arb
 FROM
     Spons2;
  
@@ -260,9 +260,7 @@ SELECT
         ELSE 0
     END AS all_completed_no_comp_date,     
     Spons3.Sponsor_Status,
-    trim (BOTH '"'
-        FROM
-        Spons3.name_of_sponsor_arb) AS name_of_sponsor,
+    Spons3.names_of_sponsors_arb AS names_of_sponsors,
     CASE
 	WHEN full_title_of_the_trial IS NULL
 	AND abbreviated_trial_name IS NOT NULL 
