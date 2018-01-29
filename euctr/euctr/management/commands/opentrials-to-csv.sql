@@ -1,5 +1,4 @@
-CREATE TEMP TABLE Spons1 ON COMMIT DROP AS
-SELECT
+CREATE TEMP TABLE Spons1 ON COMMIT DROP AS SELECT
     eudract_number,
     eudract_number_with_country,
     s -> 'name_of_sponsor' AS name_of_sponsor,
@@ -12,7 +11,7 @@ CREATE TEMP TABLE Spons2 AS
 SELECT
     eudract_number,
     count (*) AS Total,
-    json_agg (distinct trim (BOTH '"' from CAST (name_of_sponsor AS text))) AS names_of_sponsors_arb,
+    cast(json_agg (distinct trim (BOTH '"' from CAST (name_of_sponsor AS text))) AS text) AS names_of_sponsors_arb,
     count ( CASE
             WHEN status_of_sponsor = '"Non-Commercial"' THEN 1
             ELSE NULL
