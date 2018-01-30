@@ -95,10 +95,11 @@ class Command(BaseCommand):
         normalize.drop_duplicates(['raw_slug'], inplace=True) # TODO remove when the normalize spreadsheet has no duplicates
         normalize['slug'] = slugify_vec(normalize['normalized_name_only'])
         normalize['parent_slug'] = slugify_vec(normalize['normalized_name'])
-        all_trials = pandas.merge(normalize, trials_input, on=['raw_slug'], how='right', suffixes=('', '_orig'))
+        all_trials = pandas.merge(normalize, trials_input, on=['raw_slug'], how='right', suffixes=('', '_orig')).fillna("")
 
         # Did the join find everything?
-        all_trials_matched = all_trials.dropna()
+        all_trials_matched = all_trials[all_trials['normalized_name_only'] != '']
+        all_trials.to_excel(PREFIX + "foo.xls")
         if len(trials_input) != len(all_trials_matched):
             # Write out list of new trials with matches we have, for manual
             # checking, fixing and adding to NORMALIZE_FILE
@@ -119,7 +120,7 @@ class Command(BaseCommand):
             trials_by_name['name_of_sponsor'] = trials_by_name['name_of_sponsor_orig']
             trials_by_name['trials_ids'] = trials_by_name['trial_id']
             trials_by_name.sort_values(['normalized_name', 'normalized_name_only', 'name_of_sponsor', 'trials_ids'], inplace=True)
-            trials_by_name_matched = trials_by_name.dropna()
+            trials_by_name_matched = trials_by_name[trials_by_name['normalized_name_only'] != '']
             trials_by_name_not_matched = trials_by_name[pandas.notnull(trials_by_name)]
             print("Normalise CSV: %d / %d entries complete" % (len(trials_by_name_matched), len(trials_by_name)))
             # ... now output
