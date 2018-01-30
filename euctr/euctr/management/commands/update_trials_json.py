@@ -19,6 +19,9 @@ MAJOR_SPONSORS_THRESHOLD = 50
 OUTPUT_ALL_TRIALS_FILE = PREFIX + 'all_trials.json'
 OUTPUT_NEW_TRIALS_FILE = PREFIX + 'new_trials.csv'
 
+pandas.set_option('display.max_columns', 500)
+pandas.set_option('display.width', 1000)
+
 # For given row of trial data, work out the overall status for display in the
 # user interface in rows of the table.
 def work_out_status(t):
@@ -68,10 +71,10 @@ class Command(BaseCommand):
         # Load in list of trials, list of normalized names, and join together
         trials_input = pandas.read_csv(SOURCE_CSV_FILE)
         normalize_full = pandas.read_excel(
-            NORMALIZE_FILE, "Final Data",
+            NORMALIZE_FILE, "Sheet1",
             keep_default_na=False, na_values=[]
         )
-        normalize = normalize_full[['trial_id', 'normalized_name_only', 'normalized_name']]
+        normalize = normalize_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes']]
         # ... do a consistency check (see README.md for definitions of these columns) - find items
         # which have a sponsor name ('normalized_name_only') that is also a parent name
         # (another sponsor's 'normalized_name') but not this sponsor's parent name
@@ -86,55 +89,57 @@ class Command(BaseCommand):
                 print("Names of these:", set(differing_parent[differing_parent['normalized_name_only'] == p]['name_of_sponsor']))
                 print("Conflict with parent names of these:", set(differing_parent[differing_parent['normalized_name'] == p]['name_of_sponsor']))
             sys.exit(1)
-        # ... first join on trial_id
-        all_trials = pandas.merge(normalize, trials_input, on=['trial_id'])
+        # ... join on slug of name
+        trials_input['raw_slug'] = slugify_vec(trials_input['name_of_sponsor'])
+        normalize['raw_slug'] = slugify_vec(normalize['name_of_sponsor'])
+        normalize.drop_duplicates(['raw_slug'], inplace=True) # TODO remove when the normalize spreadsheet has no duplicates
+        normalize['slug'] = slugify_vec(normalize['normalized_name_only'])
+        normalize['parent_slug'] = slugify_vec(normalize['normalized_name'])
+        all_trials = pandas.merge(normalize, trials_input, on=['raw_slug'], how='right', suffixes=('', '_orig'))
 
         # Did the join find everything?
-        if len(trials_input) != len(all_trials):
-            # Work out which trials are new
-            new_trials = trials_input.set_index('trial_id')
-            new_trials.drop(normalize['trial_id'], inplace=True, errors="ignore") # TODO: put errosr back
-            new_trials.reset_index(inplace=True)
-            new_trials['slug'] = slugify_vec(new_trials['name_of_sponsor'])
-            new_trials.sort_values('trial_id', inplace=True)
-
-            # Merge based on slug
-            normalize_by_slug = normalize_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name']].copy()
-            normalize_by_slug['slug'] = slugify_vec(normalize_by_slug['name_of_sponsor'])
-            del normalize_by_slug['name_of_sponsor']
-            normalize_by_slug = normalize_by_slug.drop_duplicates('slug')
-
-            new_trials_merged = pandas.merge(normalize_by_slug, new_trials, on=['slug'], how='right')
-            new_trials_merged.sort_values(['normalized_name_only', 'name_of_sponsor'], inplace=True)
-
+        all_trials_matched = all_trials.dropna()
+        if len(trials_input) != len(all_trials_matched):
             # Write out list of new trials with matches we have, for manual
             # checking, fixing and adding to NORMALIZE_FILE
-            new_trials_merged.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False)
-            print("Trials CSV: %d entries  After merge with normalization: %d entries\n\nSee new_trials.csv : %d for list" % (len(trials_input), len(all_trials), len(new_trials)))
+            print("Trials CSV: %d / %d entries matched" % (len(all_trials_matched), len(trials_input)))
+
+            # ... first get a list of all the trials
+            def join_it(x):
+                return ",".join(map(str, x))
+            trials_by_name = all_trials.groupby('raw_slug').agg({
+                'trial_id': join_it,
+                'name_of_sponsor_orig': 'max',
+                'normalized_name_only': 'max',
+                'normalized_name': 'max',
+                'Proof': 'max', # this throws away info if proofs vary for same name, but they don't seem to
+                'Description': 'max',
+                'Notes': 'max',
+            })
+            trials_by_name['name_of_sponsor'] = trials_by_name['name_of_sponsor_orig']
+            trials_by_name['trials_ids'] = trials_by_name['trial_id']
+            trials_by_name.sort_values(['normalized_name', 'normalized_name_only', 'name_of_sponsor', 'trials_ids'], inplace=True)
+            trials_by_name_matched = trials_by_name.dropna()
+            trials_by_name_not_matched = trials_by_name[pandas.notnull(trials_by_name)]
+            print("Normalise CSV: %d / %d entries complete" % (len(trials_by_name_matched), len(trials_by_name)))
+            # ... now output
+            trials_by_name_not_matched.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes'], index=False)
             print("NOT GOING LIVE, until all trials are matched")
             sys.exit(1)
-
-            # Assume remaining are new sponsors for now
-            unmatched = pandas.isnull(new_trials_merged['normalized_name_only'])
-            new_trials_merged.loc[unmatched, 'normalized_name_only'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
-            new_trials_merged.loc[unmatched, 'normalized_name'] = new_trials_merged.loc[unmatched, 'name_of_sponsor']
-            #new_trials_merged.to_csv(PREFIX + 'n.csv', columns=['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name'], index=False) # debugging
-
-            # Add our merge guesses to the main list
-            all_trials = all_trials.append(new_trials_merged)
-            assert(len(trials_input) == len(all_trials))
         else:
             # Everything matched, erase new trials file
-            cols = ['trial_id', 'name_of_sponsor', 'normalized_name_only', 'normalized_name']
-            new_trials_merged = pandas.DataFrame(columns=cols)
-            new_trials_merged.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=cols, index=False)
+            cols = ['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes']
+            trials_by_name_not_matched = pandas.DataFrame(columns=cols)
+            trials_by_name_not_matched.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=cols, index=False)
+
+        # temp stop for now
+        print("ONWARDS TODO")
+        sys.exit(1)
 
         # All trials list
-        # ... add slug fields
-        all_trials['slug'] = slugify_vec(all_trials['normalized_name_only'])
-        all_trials['parent_slug'] = slugify_vec(all_trials['normalized_name'])
         # ... add count of total number of trials for the sponsor (this is used to
         # distinguish major sponsors so is a useful field to have at row level)
+        all_trials.sort_values(['normalized_name_only', 'name_of_sponsor', 'trial_id'], inplace=True)
         all_trials['total_trials'] = all_trials.groupby(
             ['slug']
         )['trial_id'].transform('count') # XXX could just do ).size() ?
