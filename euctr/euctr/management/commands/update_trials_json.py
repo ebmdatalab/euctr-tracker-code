@@ -17,7 +17,7 @@ OUTPUT_HEADLINE_HISTORY = PREFIX + 'headline-history.json'
 OUTPUT_ALL_SPONSORS_FILE = PREFIX + 'all_sponsors.json'
 MAJOR_SPONSORS_THRESHOLD = 50
 OUTPUT_ALL_TRIALS_FILE = PREFIX + 'all_trials.json'
-OUTPUT_NEW_TRIALS_FILE = PREFIX + 'new_trials.csv'
+OUTPUT_NEW_NORMALIZE_FILE = PREFIX + 'new_trials.csv'
 
 pandas.set_option('display.max_columns', 500)
 pandas.set_option('display.width', 1000)
@@ -99,7 +99,6 @@ class Command(BaseCommand):
 
         # Did the join find everything?
         all_trials_matched = all_trials[all_trials['normalized_name_only'] != '']
-        all_trials.to_excel(PREFIX + "foo.xls")
         if len(trials_input) != len(all_trials_matched):
             # Write out list of new trials with matches we have, for manual
             # checking, fixing and adding to NORMALIZE_FILE
@@ -121,17 +120,11 @@ class Command(BaseCommand):
             trials_by_name['trials_ids'] = trials_by_name['trial_id']
             trials_by_name.sort_values(['normalized_name', 'normalized_name_only', 'name_of_sponsor', 'trials_ids'], inplace=True)
             trials_by_name_matched = trials_by_name[trials_by_name['normalized_name_only'] != '']
-            trials_by_name_not_matched = trials_by_name[pandas.notnull(trials_by_name)]
             print("Normalise CSV: %d / %d entries complete" % (len(trials_by_name_matched), len(trials_by_name)))
             # ... now output
-            trials_by_name_not_matched.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes'], index=False)
+            trials_by_name.to_csv(OUTPUT_NEW_NORMALIZE_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes'], index=False)
             print("NOT GOING LIVE, until all trials are matched")
             sys.exit(1)
-        else:
-            # Everything matched, erase new trials file
-            cols = ['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes']
-            trials_by_name_not_matched = pandas.DataFrame(columns=cols)
-            trials_by_name_not_matched.to_csv(OUTPUT_NEW_TRIALS_FILE, columns=cols, index=False)
 
         # temp stop for now
         print("ONWARDS TODO")
