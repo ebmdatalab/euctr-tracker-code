@@ -69,12 +69,14 @@ class Command(BaseCommand):
         trials_meta = json.load(open(SOURCE_META_FILE))
 
         # Load in list of trials, list of normalized names, and join together
-        trials_input = pandas.read_csv(SOURCE_CSV_FILE)
+        trials_input = pandas.read_csv(SOURCE_CSV_FILE,
+            keep_default_na=False, na_values=[]
+        )
         normalize_full = pandas.read_excel(
             NORMALIZE_FILE, "Sheet1",
             keep_default_na=False, na_values=[]
         )
-        normalize = normalize_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes']]
+        normalize = normalize_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes']].copy()
         # ... do a consistency check (see README.md for definitions of these columns) - find items
         # which have a sponsor name ('normalized_name_only') that is also a parent name
         # (another sponsor's 'normalized_name') but not this sponsor's parent name
