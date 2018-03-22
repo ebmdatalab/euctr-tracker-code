@@ -233,4 +233,4 @@ SELECT
         PSpons3.name_of_sponsor_arb) AS name_of_sponsor
 FROM
     PTemp1
-    INNER JOIN PSpons3 ON PTemp1.eudract_number = PSpons3.Trial_ID;
+    LEFT JOIN PSpons3 ON PTemp1.eudract_number = PSpons3.Trial_ID;
