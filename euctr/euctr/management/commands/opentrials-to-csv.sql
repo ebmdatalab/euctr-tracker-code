@@ -284,4 +284,4 @@ SELECT
     END AS comp_date_while_ongoing
 FROM
     temp1
-    INNER JOIN Spons3 ON temp1.eudract_number = Spons3.Trial_ID;
+    LEFT JOIN Spons3 ON temp1.eudract_number = Spons3.Trial_ID;
