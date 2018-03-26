@@ -105,15 +105,14 @@ STATICFILES_FINDERS = (
 
 WSGI_APPLICATION = 'euctr.wsgi.application'
 
-
+TEST_RUNNER = 'frontend.tests.databaseless_runner.DatabaselessTestRunner'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
+# We wont use Django databases
 DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #}
+    'default': {
+        'ENGINE': 'django.db.backends.dummy',
+    }
 }
 
 
@@ -161,3 +160,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Location of various data files
+
+PREFIX = '../../euctr-tracker-data/'
+SOURCE_CSV_FILE = PREFIX + 'trials.csv'
+SOURCE_META_FILE = PREFIX + 'trials.csv.json'
+NORMALIZE_FILE = PREFIX + 'normalized_sponsor_names.xlsx'
+OUTPUT_HEADLINE_FILE = PREFIX + 'headline.json'
+OUTPUT_HEADLINE_HISTORY = PREFIX + 'headline-history.json'
+OUTPUT_ALL_SPONSORS_FILE = PREFIX + 'all_sponsors.json'
+MAJOR_SPONSORS_THRESHOLD = 50
+OUTPUT_ALL_TRIALS_FILE = PREFIX + 'all_trials.json'
+OUTPUT_NEW_NORMALIZE_FILE = PREFIX + 'new_trials.csv'

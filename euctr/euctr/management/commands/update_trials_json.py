@@ -4,20 +4,10 @@ import json
 import numpy as np
 import json
 
+from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 slugify_vec = np.vectorize(slugify)
-
-PREFIX = '../../euctr-tracker-data/'
-SOURCE_CSV_FILE = PREFIX + 'trials.csv'
-SOURCE_META_FILE = PREFIX + 'trials.csv.json'
-NORMALIZE_FILE = PREFIX + 'normalized_sponsor_names.xlsx'
-OUTPUT_HEADLINE_FILE = PREFIX + 'headline.json'
-OUTPUT_HEADLINE_HISTORY = PREFIX + 'headline-history.json'
-OUTPUT_ALL_SPONSORS_FILE = PREFIX + 'all_sponsors.json'
-MAJOR_SPONSORS_THRESHOLD = 50
-OUTPUT_ALL_TRIALS_FILE = PREFIX + 'all_trials.json'
-OUTPUT_NEW_NORMALIZE_FILE = PREFIX + 'new_trials.csv'
 
 pandas.set_option('display.max_columns', 500)
 pandas.set_option('display.width', 1000)
@@ -76,7 +66,7 @@ def assert_no_grandparents(normalize_df):
 
 def get_trials():
     trials = pandas.read_csv(
-        SOURCE_CSV_FILE,
+        settings.SOURCE_CSV_FILE,
         keep_default_na=False, na_values=[]
     )
     trials['raw_slug'] = slugify_vec(trials['name_of_sponsor'])
@@ -99,7 +89,7 @@ def get_normalized_sponsors():
     #   parent_slug: slug of normalized_name
 
     sponsors_full = pandas.read_excel(
-        NORMALIZE_FILE, "Sheet1",
+        settings.NORMALIZE_FILE, "Sheet1",
         keep_default_na=False, na_values=[]
     )
     sponsors = sponsors_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes']].copy()
@@ -138,9 +128,9 @@ def assert_all_trials_matched(all_trials, trials_and_sponsors):
         trials_by_name_matched = trials_by_name[trials_by_name['normalized_name_only'] != '']
         print("Normalise CSV: %d / %d entries complete" % (len(trials_by_name_matched), len(trials_by_name)))
         # ... now output
-        trials_by_name.to_csv(OUTPUT_NEW_NORMALIZE_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes'], index=False)
+        trials_by_name.to_csv(settings.OUTPUT_NEW_NORMALIZE_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes'], index=False)
         print("NOT GOING LIVE, until all trials are matched.")
-        print("See {} for trials requiring normalisation".format(OUTPUT_NEW_NORMALIZE_FILE))
+        print("See {} for trials requiring normalisation".format(settings.OUTPUT_NEW_NORMALIZE_FILE))
         sys.exit(1)
 
 def merge_trials_and_sponsors(all_trials, sponsors):
@@ -178,7 +168,7 @@ def make_trials_json(trials_with_sponsors):
     # ... write to a file
     trials_with_sponsors.sort_values('trial_id', inplace=True)
     json.dump(trials_with_sponsors.to_dict(orient='records'),
-            open(OUTPUT_ALL_TRIALS_FILE, 'w'),
+            open(settings.OUTPUT_ALL_TRIALS_FILE, 'w'),
             indent=4, sort_keys=True
     )
 
@@ -289,21 +279,21 @@ def make_sponsors_json(df):
         all_sponsors['total_trials'] * 100, 1
     )
     all_sponsors['major'] = np.where(
-        (all_sponsors['total_trials'] >= MAJOR_SPONSORS_THRESHOLD) &
+        (all_sponsors['total_trials'] >= settings.MAJOR_SPONSORS_THRESHOLD) &
         (all_sponsors['total_due'] > 0) &
         (all_sponsors['sponsor_name'] != "Unknown Sponsor")
     , 1, 0)
     # ... write to a file
     all_sponsors.sort_values('slug', inplace=True)
     json.dump(all_sponsors.to_dict(orient='records'),
-            open(OUTPUT_ALL_SPONSORS_FILE, 'w'),
+            open(settings.OUTPUT_ALL_SPONSORS_FILE, 'w'),
             indent=4, sort_keys=True
     )
     return all_sponsors, int(inconsistent_trials_count.sum())
 
 
 def make_headline_json(all_trials, all_sponsors, inconsistent_trials_count):
-    trials_meta = json.load(open(SOURCE_META_FILE))
+    trials_meta = json.load(open(settings.SOURCE_META_FILE))
     # Headline counts file, used for things like front page large numbers
     headline = {}
     headline['scrape_date'] = trials_meta['scrape_date']
@@ -332,12 +322,12 @@ def make_headline_json(all_trials, all_sponsors, inconsistent_trials_count):
     headline["all_sponsors_count"] = len(all_sponsors)
     headline["major_sponsors_count"] = np.count_nonzero(all_sponsors['major'])
     # ... write to a file
-    with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
+    with open(settings.OUTPUT_HEADLINE_FILE, 'w') as outfile:
         json.dump(headline, outfile, indent=4, sort_keys=True)
     # Update headline history file
-    headline_history = json.load(open(OUTPUT_HEADLINE_HISTORY, 'r'))
+    headline_history = json.load(open(settings.OUTPUT_HEADLINE_HISTORY, 'r'))
     headline_history[headline['scrape_date']] = headline
-    with open(OUTPUT_HEADLINE_HISTORY, 'w') as outfile:
+    with open(settings.OUTPUT_HEADLINE_HISTORY, 'w') as outfile:
         json.dump(headline_history, outfile, indent=4, sort_keys=True)
 
 class Command(BaseCommand):
