@@ -302,16 +302,16 @@ def make_sponsors_json(df):
     return all_sponsors, int(inconsistent_trials_count.sum())
 
 
-def make_headline_json(df, all_sponsors, inconsistent_trials_count):
+def make_headline_json(all_trials, all_sponsors, inconsistent_trials_count):
     trials_meta = json.load(open(SOURCE_META_FILE))
     # Headline counts file, used for things like front page large numbers
     headline = {}
     headline['scrape_date'] = trials_meta['scrape_date']
     headline['due_date_cutoff'] = trials_meta['due_date_cutoff']
-    headline['total_trials'] = len(df)
+    headline['total_trials'] = len(all_trials)
     # ... trials which have declared completed everywhere with a date, and a
     # year has passed
-    due_trials = df[df.results_expected == 1]
+    due_trials = all_trials[all_trials.results_expected == 1]
     headline['due_trials'] = len(due_trials)
     # ... trials which have or have not posted results
     due_with_results = due_trials[due_trials.has_results == 1]
@@ -323,19 +323,17 @@ def make_headline_json(df, all_sponsors, inconsistent_trials_count):
     )
     # .. trials with inconsistent data
     headline['inconsistent_trials'] = inconsistent_trials_count
-    assert len(df) == headline['total_trials']
+    assert len(all_trials) == headline['total_trials']
     headline['percent_inconsistent'] = round(
         headline['inconsistent_trials'] / headline['total_trials'] * 100, 1
     )
 
     # ... sponsors counts
-    headline["all_sponsors_count"] = len(df)
-
-    #headline["major_sponsors_count"] = np.count_nonzero(df['major'])
+    headline["all_sponsors_count"] = len(all_sponsors)
+    headline["major_sponsors_count"] = np.count_nonzero(all_sponsors['major'])
     # ... write to a file
     with open(OUTPUT_HEADLINE_FILE, 'w') as outfile:
         json.dump(headline, outfile, indent=4, sort_keys=True)
-
     # Update headline history file
     headline_history = json.load(open(OUTPUT_HEADLINE_HISTORY, 'r'))
     headline_history[headline['scrape_date']] = headline
