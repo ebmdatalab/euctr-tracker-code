@@ -52,7 +52,7 @@ SELECT
     eudract_number,
     min (CAST (full_title_of_the_trial AS text)) AS full_title_of_the_trial,
     max (CAST (name_or_abbreviated_title_of_the_trial_where_available as text)) AS abbreviated_trial_name,
-    count (*) AS Total,
+    count (distinct(eudract_number_with_country)) AS Total,
     count ( CASE
             WHEN end_of_trial_status = 'Completed' THEN 1
             ELSE NULL
