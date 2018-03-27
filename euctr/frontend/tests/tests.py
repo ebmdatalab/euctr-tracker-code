@@ -37,17 +37,17 @@ class BasicLoadTestCase(SimpleTestCase):
 
     def test_sponsor_page_loads(self):
         c = Client()
-        r = c.get('/sponsor/4sc-ag')
+        r = c.get('/sponsor/pirkanmaa-hospital')
         self.assertEqual(r.status_code, 200)
 
     def test_sponsor_screenshot_page_loads(self):
         c = Client()
-        r = c.get('/sponsor/4sc-ag/screenshot')
+        r = c.get('/sponsor/pirkanmaa-hospital/screenshot')
         self.assertEqual(r.status_code, 200)
 
     def test_sponsor_screenshot_image_loads(self):
         c = Client()
-        r = c.get('/sponsor/4sc-ag/screenshot.png')
+        r = c.get('/sponsor/pirkanmaa-hospital/screenshot.png')
         self.assertEqual(r.status_code, 200)
 
 
@@ -67,6 +67,3 @@ class BasicLoadTestCase(SimpleTestCase):
         c = Client()
         r = c.get('/xxx')
         self.assertEqual(r.status_code, 404)
-
-
-
