@@ -82,15 +82,3 @@ class Command(BaseCommand):
         else:
             if verbosity > 1:
                 print("No changes, not updating meta file")
-
-        # Generate the CSV file we later use in the web application
-        paper_query = open("euctr/management/commands/opentrials-to-paper-csv.sql").read()
-        cur.execute(paper_query)
-        with atomic_write(PAPER_CSV_FILE, overwrite=True) as f:
-            writer = csv.writer(f, lineterminator="\n")
-            writer.writerow([i[0] for i in cur.description])
-            writer.writerows(cur)
-
-
-
-
