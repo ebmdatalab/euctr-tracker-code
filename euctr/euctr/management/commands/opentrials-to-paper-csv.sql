@@ -49,7 +49,7 @@ FROM
 CREATE TEMP TABLE PTemp1 AS
 SELECT
     eudract_number,
-    count (*) AS Total,
+    count (distinct(eudract_number_with_country)) AS Total,
     count ( CASE
             WHEN end_of_trial_status = 'Completed' THEN 1
             ELSE NULL
