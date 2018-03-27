@@ -73,5 +73,6 @@ class UpdateTrialsJSONTestCase(SimpleTestCase):
             '')
 
     def tearDown(self):
-        for p in [x for x in TEST_SETTINGS.keys() if x.startswith('OUTPUT_')]:
+        for p in [x for x in TEST_SETTINGS.keys()
+                  if x.startswith('OUTPUT_')]:
             os.remove(TEST_SETTINGS[p])
