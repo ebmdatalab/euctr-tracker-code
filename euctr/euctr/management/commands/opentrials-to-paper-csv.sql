@@ -49,7 +49,7 @@ FROM
 CREATE TEMP TABLE PTemp1 AS
 SELECT
     eudract_number,
-    count (*) AS Total,
+    count (distinct(eudract_number_with_country)) AS Total,
     count ( CASE
             WHEN end_of_trial_status = 'Completed' THEN 1
             ELSE NULL
@@ -233,4 +233,4 @@ SELECT
         PSpons3.name_of_sponsor_arb) AS name_of_sponsor
 FROM
     PTemp1
-    INNER JOIN PSpons3 ON PTemp1.eudract_number = PSpons3.Trial_ID;
+    LEFT JOIN PSpons3 ON PTemp1.eudract_number = PSpons3.Trial_ID;
