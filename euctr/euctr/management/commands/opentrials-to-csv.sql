@@ -240,10 +240,14 @@ SELECT
         WHEN empty = total THEN 4
         ELSE 3
     END AS Trial_status,
-    CASE
+       CASE
         WHEN terminated > 0 THEN 1
         ELSE 0
-    END AS terminated,
+    END AS any_terminated,
+    CASE
+        WHEN terminated = Total THEN 1
+        ELSE 0
+    END AS all_terminated,
     CASE
         WHEN completed + terminated = Total
         AND comp_date > 0
