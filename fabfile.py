@@ -28,22 +28,22 @@ def venv_init():
 
 def pip_install():
     with prefix('source venv/bin/activate'):
-	run('pip install -q -r euctr-tracker-code/requirements.txt')
+        run('pip install -q -r euctr-tracker-code/requirements.txt')
 
 def update_from_git():
     # clone or update code
     if not exists('euctr-tracker-code/.git'):
-	run(env.git_code_key + "git clone -q git@github.com:ebmdatalab/euctr-tracker-code.git")
+        run(env.git_code_key + "git clone -q git@github.com:ebmdatalab/euctr-tracker-code.git")
     else:
-	with cd("euctr-tracker-code"):
-	    run(env.git_code_key + "git pull -q")
+        with cd("euctr-tracker-code"):
+            run(env.git_code_key + "git pull -q")
 
     # clone or update data
     if not exists('euctr-tracker-data/.git'):
-	run(env.git_data_key + "git clone -q git@github.com:ebmdatalab/euctr-tracker-data.git")
+        run(env.git_data_key + "git clone -q git@github.com:ebmdatalab/euctr-tracker-data.git")
     else:
-	with cd("euctr-tracker-data"):
-	    run(env.git_data_key + "git pull -q")
+        with cd("euctr-tracker-data"):
+            run(env.git_data_key + "git pull -q")
 
 def setup_nginx():
     run('ln -sf %s/euctr-tracker-code/deploy/supervisor-%s.conf /etc/supervisor/conf.d/%s.conf' % (env.path, env.app, env.app))
@@ -79,12 +79,8 @@ def deploy(environment, branch='master'):
 
     make_directory()
     with cd(env.path):
-	venv_init()
-	update_from_git()
+        venv_init()
+        update_from_git()
         pip_install()
-	setup_nginx()
-	setup_cron()
-
-
-
-
+        setup_nginx()
+        setup_cron()
