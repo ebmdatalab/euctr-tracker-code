@@ -230,7 +230,7 @@ SELECT
     CASE
         WHEN terminated = Total THEN 1
         ELSE 0
-    END AS all_terminated
+    END AS all_terminated,
     PSpons3.Sponsor_Status,
     trim (BOTH '"'
         FROM
