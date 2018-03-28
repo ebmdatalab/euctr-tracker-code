@@ -152,30 +152,36 @@ def merge_trials_and_sponsors(all_trials, sponsors):
         assert_all_trials_matched(all_trials, trials_and_sponsors)
     else:
         trials_and_sponsors = trials_and_sponsors[trials_and_sponsors['normalized_name_only'] != '']
-    return trials_and_sponsors
-
-def make_trials_json(trials_with_sponsors):
-    trials_with_sponsors.sort_values(['normalized_name_only', 'name_of_sponsor', 'trial_id'], inplace=True)
-    trials_with_sponsors['total_trials'] = trials_with_sponsors.groupby(
+    cols = trials_and_sponsors.columns
+    trial_agg = {}
+    for col in cols:
+        trial_agg[col] = 'max'
+    trials_and_sponsors = trials_and_sponsors.groupby(['slug', 'trial_id']).agg(trial_agg)
+    trials_and_sponsors['total_trials'] = trials_and_sponsors.groupby(
         ['slug']
     )['trial_id'].transform('count') # XXX could just do ).size() ?
+    # XXX here we should groupby and then do max over everything else
     # (check the group and count worked, e.g. all have a slug)
-    null_counts = trials_with_sponsors[trials_with_sponsors['total_trials'].isnull()]
+    null_counts = trials_and_sponsors[trials_and_sponsors['total_trials'].isnull()]
     assert len(null_counts) == 0
-    trials_with_sponsors['total_trials'] = trials_with_sponsors['total_trials'].astype(int)
+    trials_and_sponsors['total_trials'] = trials_and_sponsors['total_trials'].astype(int)
     # ... add various other fields
-    trials_with_sponsors['overall_status'] = trials_with_sponsors.apply(work_out_status, axis=1)
+    trials_and_sponsors['overall_status'] = trials_and_sponsors.apply(work_out_status, axis=1)
+    return trials_and_sponsors
+
+
+def make_trials_json(trials_and_sponsors):
     # ... write to a file
-    trials_with_sponsors.sort_values('trial_id', inplace=True)
-    json.dump(trials_with_sponsors.to_dict(orient='records'),
+    trials_and_sponsors.sort_values('trial_id', inplace=True)
+    json.dump(trials_and_sponsors.to_dict(orient='records'),
             open(settings.OUTPUT_ALL_TRIALS_FILE, 'w'),
             indent=4, sort_keys=True
     )
 
 
-def make_sponsors_json(df):
+def make_sponsors_json(trials_and_sponsors):
     # Sponsor list file, with all relevant counts
-    sponsors = df[[
+    sponsors = trials_and_sponsors[[
         'slug',
         'parent_slug',
         'normalized_name_only',
@@ -251,10 +257,10 @@ def make_sponsors_json(df):
                     "name": child["sponsor_name"]
                 })
     # ... count number of trials with inconsistent data
-    inconsistent_trials = df[
-        (df['overall_status'] == 'error-completed-no-comp-date') |
-        (df['overall_status'] == 'error-ongoing-has-comp-date') |
-        (df['overall_status'] == 'no-trial-status')
+    inconsistent_trials = trials_and_sponsors[
+        (trials_and_sponsors['overall_status'] == 'error-completed-no-comp-date') |
+        (trials_and_sponsors['overall_status'] == 'error-ongoing-has-comp-date') |
+        (trials_and_sponsors['overall_status'] == 'no-trial-status')
     ]
     inconsistent_trials_count = inconsistent_trials.groupby('slug').size()
     all_sponsors['inconsistent_trials'] = inconsistent_trials_count
@@ -289,16 +295,16 @@ def make_sponsors_json(df):
             open(settings.OUTPUT_ALL_SPONSORS_FILE, 'w'),
             indent=4, sort_keys=True
     )
-    return all_sponsors, int(inconsistent_trials_count.sum())
+    return all_sponsors
 
 
-def make_headline_json(all_trials, all_sponsors, inconsistent_trials_count):
+def make_headline_json(all_trials, all_sponsors):
     trials_meta = json.load(open(settings.SOURCE_META_FILE))
     # Headline counts file, used for things like front page large numbers
     headline = {}
     headline['scrape_date'] = trials_meta['scrape_date']
     headline['due_date_cutoff'] = trials_meta['due_date_cutoff']
-    headline['total_trials'] = len(all_trials)
+    headline['total_trials'] = len(all_trials.trial_id.unique())  # XXX
     # ... trials which have declared completed everywhere with a date, and a
     # year has passed
     due_trials = all_trials[all_trials.results_expected == 1]
@@ -312,8 +318,12 @@ def make_headline_json(all_trials, all_sponsors, inconsistent_trials_count):
             len(due_without_results) / len(due_trials) * 100, 1
     )
     # .. trials with inconsistent data
-    headline['inconsistent_trials'] = inconsistent_trials_count
-    assert len(all_trials) == headline['total_trials']
+    headline['inconsistent_trials'] = len(
+        all_trials[all_trials.overall_status.isin(
+            ['error-completed-no-comp-date',
+             'error-ongoing-has-comp-date',
+             'no-trial-status'])
+        ].trial_id.unique())
     headline['percent_inconsistent'] = round(
         headline['inconsistent_trials'] / headline['total_trials'] * 100, 1
     )
@@ -337,9 +347,8 @@ class Command(BaseCommand):
         # All trials metadata file
         all_trials = get_trials()
         sponsors = get_normalized_sponsors()
-        trials_with_sponsors = merge_trials_and_sponsors(all_trials, sponsors)
+        trials_and_sponsors = merge_trials_and_sponsors(all_trials, sponsors)
         # At this stage, we now have one row per trial,
-        make_trials_json(trials_with_sponsors)
-
-        all_sponsors, inconsistent_trials_count = make_sponsors_json(trials_with_sponsors)
-        make_headline_json(trials_with_sponsors, all_sponsors, inconsistent_trials_count)
+        make_trials_json(trials_and_sponsors)
+        all_sponsors = make_sponsors_json(trials_and_sponsors)
+        make_headline_json(trials_and_sponsors, all_sponsors)

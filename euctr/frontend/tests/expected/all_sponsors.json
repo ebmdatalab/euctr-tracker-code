@@ -1,7 +1,7 @@
 [
     {
         "children": [],
-        "inconsistent_trials": 2,
+        "inconsistent_trials": 1,
         "major": 0,
         "not_yet_due_trials": 0,
         "parents": [
@@ -17,12 +17,12 @@
         "sponsor_name": "Actelion Pharmaceuticals Ltd",
         "total_due": 0,
         "total_reported": 0,
-        "total_trials": 2,
+        "total_trials": 1,
         "total_unreported": 0
     },
     {
         "children": [],
-        "inconsistent_trials": 2,
+        "inconsistent_trials": 1,
         "major": 0,
         "not_yet_due_trials": 0,
         "parents": [],
@@ -33,12 +33,28 @@
         "sponsor_name": "Astrazeneca",
         "total_due": 0,
         "total_reported": 0,
-        "total_trials": 2,
+        "total_trials": 1,
         "total_unreported": 0
     },
     {
         "children": [],
-        "inconsistent_trials": 4,
+        "inconsistent_trials": 0,
+        "major": 1,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": 0.0,
+        "percent_reported": 100.0,
+        "percent_unreported": 0.0,
+        "slug": "bristol-myers-squib",
+        "sponsor_name": "Bristol Myers Squib",
+        "total_due": 1,
+        "total_reported": 1,
+        "total_trials": 1,
+        "total_unreported": 0
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 1,
         "major": 0,
         "not_yet_due_trials": 0,
         "parents": [],
@@ -49,7 +65,7 @@
         "sponsor_name": "GlaxoSmithKline",
         "total_due": 0,
         "total_reported": 0,
-        "total_trials": 4,
+        "total_trials": 1,
         "total_unreported": 0
     },
     {
@@ -76,18 +92,34 @@
     {
         "children": [],
         "inconsistent_trials": 0,
-        "major": 0,
+        "major": 1,
         "not_yet_due_trials": 0,
         "parents": [],
         "percent_bad_data": 0.0,
         "percent_reported": 0.0,
         "percent_unreported": 100.0,
-        "slug": "pirkanmaa-hospital",
-        "sponsor_name": "Pirkanmaa Hospital",
+        "slug": "lilly",
+        "sponsor_name": "Lilly",
         "total_due": 1,
         "total_reported": 0,
         "total_trials": 1,
         "total_unreported": 1
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 0,
+        "major": 0,
+        "not_yet_due_trials": 1,
+        "parents": [],
+        "percent_bad_data": 0.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "pirkanmaa-hospital",
+        "sponsor_name": "Pirkanmaa Hospital",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 1,
+        "total_unreported": 0
     },
     {
         "children": [],
@@ -167,16 +199,16 @@
         "children": [],
         "inconsistent_trials": 0,
         "major": 0,
-        "not_yet_due_trials": 0,
+        "not_yet_due_trials": 1,
         "parents": [],
         "percent_bad_data": 0.0,
-        "percent_reported": 0.0,
-        "percent_unreported": 100.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
         "slug": "university-of-liverpool",
         "sponsor_name": "University of Liverpool",
-        "total_due": 1,
+        "total_due": 0,
         "total_reported": 0,
         "total_trials": 1,
-        "total_unreported": 1
+        "total_unreported": 0
     }
 ]

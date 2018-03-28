@@ -57,7 +57,7 @@ def get_trials(sponsor_slug):
     if not trials_by_sponsor_slug:
         all_trials_data = get_all_trials()
         # group trials by trial id and normalised sponsor name
-        trials_by_sponsor_slug = collections.defaultdict(collections.defaultdict)
+        trials_by_sponsor_slug = collections.defaultdict(list)
         for trial in all_trials_data:
-            trials_by_sponsor_slug[trial["slug"]][trial["trial_id"]] = trial
-    return list(trials_by_sponsor_slug[sponsor_slug].values())
+            trials_by_sponsor_slug[trial["slug"]].append(trial)
+    return trials_by_sponsor_slug[sponsor_slug]

@@ -50,29 +50,44 @@ TEST_SETTINGS={
     'OUTPUT_ALL_SPONSORS_FILE': temp_path(),
     'OUTPUT_ALL_TRIALS_FILE': temp_path(),
     'OUTPUT_NEW_NORMALIZE_FILE': temp_path(),
+    'MAJOR_SPONSORS_THRESHOLD': 1
 }
 
 class UpdateTrialsJSONTestCase(SimpleTestCase):
+    maxDiff = 8000
+    @classmethod
     @override_settings(**TEST_SETTINGS)
-    def test_all_variables(self):
+    def setUpClass(cls):
         call_command('update_trials_json')
+
+    def test_all_trials(self):
         self.assertEqual(
             generated('OUTPUT_ALL_TRIALS_FILE'),
             expected('all_trials.json'))
+
+    def test_headline(self):
         self.assertEqual(
             generated('OUTPUT_HEADLINE_FILE'),
             expected('headline.json'))
+
+    def test_headline_history(self):
         self.assertEqual(
             generated('OUTPUT_HEADLINE_HISTORY'),
             expected('headline-history.json'))
+
+    def test_all_sponsors(self):
         self.assertEqual(
             generated('OUTPUT_ALL_SPONSORS_FILE'),
             expected('all_sponsors.json'))
+
+    def test_new_trials_to_normalize(self):
+        # XXX make this a  useful test
         self.assertEqual(
             open(TEST_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE']).read(),
             '')
 
-    def tearDown(self):
+    @classmethod
+    def tearDownClass(cls):
         for p in [x for x in TEST_SETTINGS.keys()
                   if x.startswith('OUTPUT_')]:
             os.remove(TEST_SETTINGS[p])

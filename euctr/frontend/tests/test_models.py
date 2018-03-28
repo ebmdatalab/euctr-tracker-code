@@ -31,12 +31,12 @@ def all_sponsors():
 
 class TrialsTestCase(SimpleTestCase):
     @patch('frontend.models.get_all_trials', all_trials)
-    def test_trial_in_several_countries_by_one_parent_appears_once(self):
+    def test_trial(self):
         slug = 'glaxosmithkline'
         trials = get_trials(slug)
         self.assertEqual(len(trials), 1)
         self.assertEqual(trials[0]['slug'], slug)
-        self.assertEqual(trials[0]['total_trials'], 4)
+        self.assertEqual(trials[0]['total_trials'], 1)
 
 
 @patch('frontend.models.get_all_sponsors', all_sponsors)
