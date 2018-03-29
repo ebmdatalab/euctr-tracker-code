@@ -87,22 +87,20 @@ class UpdateTrialsJSONTestCase(SimpleTestCase):
             expected('all_sponsors.json'))
 
     def test_no_trials_to_normalize(self):
-        # XXX make this a  useful test
         self.assertEqual(
             open(TEST_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE']).read(),
             '')
 
     @override_settings(**NEW_TRIALS_SETTINGS)
     def test_new_trials_to_normalize(self):
-        # XXX TODO: test this fails if I change it
         with self.assertRaises(SystemExit):
             call_command('update_trials_json')
-            normalize_file = list(csv.DictReader(open(TEST_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE'])))
-            self.assertEqual(normalize_file[0]['name_of_sponsor'], 'normalize_file')
-            self.assertEqual(normalize_file[0]['normalized_name'], '')
-            self.assertEqual(normalize_file[1]['name_of_sponsor'], 'Lilly S.A')
-            self.assertEqual(normalize_file[1]['normalized_name'], 'Lilly')
-            self.assertEqual(normalize_file[1]['normalized_parent_name'], 'Lilly')
+        normalize_file = list(csv.DictReader(open(NEW_TRIALS_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE'])))
+        self.assertEqual(normalize_file[0]['name_of_sponsor'], 'unmatched')
+        self.assertEqual(normalize_file[0]['normalized_name'], '')
+        self.assertEqual(normalize_file[1]['name_of_sponsor'], 'Lilly S.A')
+        self.assertEqual(normalize_file[1]['normalized_name'], 'Lilly')
+        self.assertEqual(normalize_file[1]['normalized_parent_name'], 'Lilly Megacorp')
 
     @classmethod
     def tearDownClass(cls):
