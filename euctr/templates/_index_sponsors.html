@@ -43,6 +43,7 @@
     </thead>
 
     {% for sponsor in table %}
+      {% if  sponsor.total_trials > 0 %}
       <tr>
         <td> <a href="/sponsor/{{ sponsor.slug }}">{{ sponsor.sponsor_name }}</a></td>
         <td> {{ sponsor.total_trials }} </td>
@@ -55,6 +56,7 @@
         <td class="hidden_column">minor</td>
         {% endif %}
       </tr>
+      {% endif %}
     {% endfor %}
 
   </table>

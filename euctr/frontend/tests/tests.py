@@ -16,6 +16,11 @@ class BasicLoadTestCase(SimpleTestCase):
         r = c.get('/?all')
         self.assertEqual(r.status_code, 200)
 
+    def test_sponsors_with_no_trials_not_shown(self):
+        c = Client()
+        r = c.get('/?all')
+        self.assertNotContains(r, '<a href="/sponsor/unclear-sponsor-name-given">')
+
     def test_front_page_search_loads(self):
         c = Client()
         r = c.get('/?search')
