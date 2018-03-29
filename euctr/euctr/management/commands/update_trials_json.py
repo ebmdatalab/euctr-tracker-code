@@ -5,6 +5,7 @@ import numpy as np
 import json
 
 from django.conf import settings
+from django.core.mail import send_mail
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 slugify_vec = np.vectorize(slugify)
@@ -135,12 +136,23 @@ def assert_all_trials_matched(all_trials, trials_and_sponsors):
         trials_by_name['trials_ids'] = trials_by_name['trial_id']
         trials_by_name.sort_values(['normalized_parent_name', 'normalized_name', 'name_of_sponsor', 'trials_ids'], inplace=True)
         trials_by_name_matched = trials_by_name[trials_by_name['normalized_name'] != '']
-        print("Normalise CSV: %d / %d entries complete" % (len(trials_by_name_matched), len(trials_by_name)))
+        msg = ""
+        msg += "Normalise CSV: %d / %d entries complete\n\n" % (len(trials_by_name_matched), len(trials_by_name))
+        msg += "NOT GOING LIVE, until all trials are matched.\n\n"
+        msg += "See {} for trials requiring normalisation".format(settings.OUTPUT_NEW_NORMALIZE_FILE)
         # ... now output
-        trials_by_name.to_csv(settings.OUTPUT_NEW_NORMALIZE_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name', 'normalized_parent_name', 'Proof', 'Description', 'Notes'], index=False)
-        print("NOT GOING LIVE, until all trials are matched.")
-        print("See {} for trials requiring normalisation".format(settings.OUTPUT_NEW_NORMALIZE_FILE))
-        sys.exit(1)
+        trials_by_name.to_csv(
+            settings.OUTPUT_NEW_NORMALIZE_FILE,
+            columns=['trials_ids', 'name_of_sponsor', 'normalized_name',
+                     'normalized_parent_name', 'Proof', 'Description', 'Notes'],
+            index=False)
+        send_mail('EUCTR: New file to normalize',
+                  msg,
+                  'tech@ebmdatalab.net',
+                  [settings.NORMALIZE_EMAIL_RECIPIENT],
+                  fail_silently=False)
+        print(msg)  # this is read by the shell script called by cron
+        sys.exit(0)
 
 def merge_trials_and_sponsors(all_trials, sponsors):
     """Merge trials and normalised sponsors dataframes.

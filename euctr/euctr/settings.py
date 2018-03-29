@@ -161,7 +161,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 # Location of various data files
 
 PREFIX = '../../euctr-tracker-data/'
@@ -174,3 +173,4 @@ OUTPUT_ALL_SPONSORS_FILE = PREFIX + 'all_sponsors.json'
 MAJOR_SPONSORS_THRESHOLD = 50
 OUTPUT_ALL_TRIALS_FILE = PREFIX + 'all_trials.json'
 OUTPUT_NEW_NORMALIZE_FILE = PREFIX + 'new_trials.csv'
+NORMALIZE_EMAIL_RECIPIENT = 'nicholas.devito@phc.ox.ac.uk'
