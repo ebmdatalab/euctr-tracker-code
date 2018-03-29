@@ -52,16 +52,16 @@ def work_out_status(t):
 
 
 def assert_no_grandparents(normalize_df):
-    differing_parent = normalize_df[normalize_df['normalized_name_only'] != normalize_df["normalized_name"]]
-    a1 = set(differing_parent['normalized_name_only'])
-    a2 = set(differing_parent['normalized_name'])
+    differing_parent = normalize_df[normalize_df['normalized_name'] != normalize_df["normalized_parent_name"]]
+    a1 = set(differing_parent['normalized_name'])
+    a2 = set(differing_parent['normalized_parent_name'])
     incorrect_parents = a1.intersection(a2)
     if len(incorrect_parents) > 0:
         print("Inconsistent parents: %r" % incorrect_parents)
         print("For these sponsors:")
         for p in incorrect_parents:
-            print("Names of these:", set(differing_parent[differing_parent['normalized_name_only'] == p]['name_of_sponsor']))
-            print("Conflict with parent names of these:", set(differing_parent[differing_parent['normalized_name'] == p]['name_of_sponsor']))
+            print("Names of these:", set(differing_parent[differing_parent['normalized_name'] == p]['name_of_sponsor']))
+            print("Conflict with parent names of these:", set(differing_parent[differing_parent['normalized_parent_name'] == p]['name_of_sponsor']))
         sys.exit(1)
 
 def get_trials():
@@ -92,11 +92,16 @@ def get_normalized_sponsors():
         settings.NORMALIZE_FILE, "Sheet1",
         keep_default_na=False, na_values=[]
     )
-    sponsors = sponsors_full[['name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes']].copy()
+    sponsors_full.rename(columns={
+        'normalized_name':'normalized_parent_name',
+        'normalized_name_only': 'normalized_name'
+    }, inplace = True)
+    sponsors = sponsors_full[['name_of_sponsor', 'normalized_name', 'normalized_parent_name', 'Proof', 'Description', 'Notes']].copy()
+    # handle any legacy spreadsheet column names
     assert_no_grandparents(sponsors)
     sponsors['raw_slug'] = slugify_vec(sponsors['name_of_sponsor'])
-    sponsors['slug'] = slugify_vec(sponsors['normalized_name_only'])
-    sponsors['parent_slug'] = slugify_vec(sponsors['normalized_name'])
+    sponsors['slug'] = slugify_vec(sponsors['normalized_name'])
+    sponsors['parent_slug'] = slugify_vec(sponsors['normalized_parent_name'])
     if sponsors.duplicated('raw_slug').any():
         print("There were duplicates in raw names in the spreadsheet")
         sys.exit(1)
@@ -104,7 +109,7 @@ def get_normalized_sponsors():
 
 
 def assert_all_trials_matched(all_trials, trials_and_sponsors):
-    matched_trials = trials_and_sponsors[trials_and_sponsors['normalized_name_only'] != '']
+    matched_trials = trials_and_sponsors[trials_and_sponsors['normalized_name'] != '']
     if len(matched_trials) != len(all_trials):
         # Write out list of new trials with matches we have, for manual
         # checking, fixing and adding to NORMALIZE_FILE
@@ -113,22 +118,23 @@ def assert_all_trials_matched(all_trials, trials_and_sponsors):
         # ... first get a list of all the trials
         def join_it(x):
             return ",".join(map(str, x))
+
         trials_by_name = trials_and_sponsors.groupby('raw_slug').agg({
             'trial_id': join_it,
             'name_of_sponsor_orig': 'max',
-            'normalized_name_only': 'max',
             'normalized_name': 'max',
+            'normalized_parent_name': 'max',
             'Proof': 'max', # this throws away info if proofs vary for same name, but they don't seem to
             'Description': 'max',
             'Notes': 'max',
         })
         trials_by_name['name_of_sponsor'] = trials_by_name['name_of_sponsor_orig']
         trials_by_name['trials_ids'] = trials_by_name['trial_id']
-        trials_by_name.sort_values(['normalized_name', 'normalized_name_only', 'name_of_sponsor', 'trials_ids'], inplace=True)
-        trials_by_name_matched = trials_by_name[trials_by_name['normalized_name_only'] != '']
+        trials_by_name.sort_values(['normalized_parent_name', 'normalized_name', 'name_of_sponsor', 'trials_ids'], inplace=True)
+        trials_by_name_matched = trials_by_name[trials_by_name['normalized_name'] != '']
         print("Normalise CSV: %d / %d entries complete" % (len(trials_by_name_matched), len(trials_by_name)))
         # ... now output
-        trials_by_name.to_csv(settings.OUTPUT_NEW_NORMALIZE_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name_only', 'normalized_name', 'Proof', 'Description', 'Notes'], index=False)
+        trials_by_name.to_csv(settings.OUTPUT_NEW_NORMALIZE_FILE, columns=['trials_ids', 'name_of_sponsor', 'normalized_name', 'normalized_parent_name', 'Proof', 'Description', 'Notes'], index=False)
         print("NOT GOING LIVE, until all trials are matched.")
         print("See {} for trials requiring normalisation".format(settings.OUTPUT_NEW_NORMALIZE_FILE))
         sys.exit(1)
@@ -148,10 +154,7 @@ def merge_trials_and_sponsors(all_trials, sponsors):
             suffixes=('', '_orig')) \
         .fillna('')
     # Did the join find everything?
-    if False: # XXX
-        assert_all_trials_matched(all_trials, trials_and_sponsors)
-    else:
-        trials_and_sponsors = trials_and_sponsors[trials_and_sponsors['normalized_name_only'] != '']
+    assert_all_trials_matched(all_trials, trials_and_sponsors)
     cols = trials_and_sponsors.columns
     trial_agg = {}
     for col in cols:
@@ -184,8 +187,8 @@ def make_sponsors_json(trials_and_sponsors):
     sponsors = trials_and_sponsors[[
         'slug',
         'parent_slug',
-        'normalized_name_only',
         'normalized_name',
+        'normalized_parent_name',
         'has_results',
         'results_expected',
         'total_trials'
@@ -200,9 +203,9 @@ def make_sponsors_json(trials_and_sponsors):
         assert len(g['total_trials'].value_counts()) == 1
 
         slug = g['slug'].max()
-        sponsor_name = g['normalized_name_only'].max()
+        sponsor_name = g['normalized_name'].max()
         parent_slugs = list(g['parent_slug'].unique())
-        parent_names = list(g['normalized_name'].unique())
+        parent_names = list(g['normalized_parent_name'].unique())
         if slug in parent_slugs:
             if slug not in parent_slugs:
                 print("Unexpected parent slug not found", slug)
@@ -231,7 +234,7 @@ def make_sponsors_json(trials_and_sponsors):
         # effectively, these parents with no trials have a slug
         # the same as their parent_slug
         'slug': sponsors['parent_slug'],
-        'sponsor_name': sponsors['normalized_name']
+        'sponsor_name': sponsors['normalized_parent_name']
     })
     all_parents = all_parents.set_index('slug')
     all_parents = all_parents.drop_duplicates()
