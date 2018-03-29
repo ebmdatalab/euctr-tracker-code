@@ -16,6 +16,11 @@ class BasicLoadTestCase(SimpleTestCase):
         r = c.get('/?all')
         self.assertEqual(r.status_code, 200)
 
+    def test_sponsors_with_no_trials_not_shown(self):
+        c = Client()
+        r = c.get('/?all')
+        self.assertNotContains(r, '<a href="/sponsor/unclear-sponsor-name-given">')
+
     def test_front_page_search_loads(self):
         c = Client()
         r = c.get('/?search')
@@ -37,17 +42,27 @@ class BasicLoadTestCase(SimpleTestCase):
 
     def test_sponsor_page_loads(self):
         c = Client()
-        r = c.get('/sponsor/4sc-ag')
+        r = c.get('/sponsor/pirkanmaa-hospital')
         self.assertEqual(r.status_code, 200)
+
+    def test_sponsor_page_includes_parent(self):
+        c = Client()
+        r = c.get('/sponsor/actelion-pharmaceuticals-ltd')
+        self.assertContains(r, '<a href="/sponsor/johnson-johnson">')
+
+    def test_sponsor_page_includes_child(self):
+        c = Client()
+        r = c.get('/sponsor/johnson-johnson')
+        self.assertContains(r, '<a href="/sponsor/actelion-pharmaceuticals-ltd">')
 
     def test_sponsor_screenshot_page_loads(self):
         c = Client()
-        r = c.get('/sponsor/4sc-ag/screenshot')
+        r = c.get('/sponsor/pirkanmaa-hospital/screenshot')
         self.assertEqual(r.status_code, 200)
 
     def test_sponsor_screenshot_image_loads(self):
         c = Client()
-        r = c.get('/sponsor/4sc-ag/screenshot.png')
+        r = c.get('/sponsor/pirkanmaa-hospital/screenshot.png')
         self.assertEqual(r.status_code, 200)
 
 
@@ -67,6 +82,3 @@ class BasicLoadTestCase(SimpleTestCase):
         c = Client()
         r = c.get('/xxx')
         self.assertEqual(r.status_code, 404)
-
-
-

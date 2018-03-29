@@ -1,5 +1,4 @@
-CREATE TEMP TABLE Spons1 ON COMMIT DROP AS
-SELECT
+CREATE TEMP TABLE Spons1 ON COMMIT DROP AS SELECT
     eudract_number,
     eudract_number_with_country,
     s -> 'name_of_sponsor' AS name_of_sponsor,
@@ -12,7 +11,7 @@ CREATE TEMP TABLE Spons2 AS
 SELECT
     eudract_number,
     count (*) AS Total,
-    max (CAST (name_of_sponsor AS text)) AS name_of_sponsor_arb,
+    TRIM (BOTH '"' FROM CAST(name_of_sponsor AS text)) AS name_of_sponsor,
     count ( CASE
             WHEN status_of_sponsor = '"Non-Commercial"' THEN 1
             ELSE NULL
@@ -31,18 +30,18 @@ SELECT
 FROM
     Spons1
 GROUP BY
-    eudract_number;
+    eudract_number, name_of_sponsor;
 
 CREATE TEMP TABLE Spons3 AS
 SELECT
     eudract_number AS Trial_ID,
+    name_of_sponsor,
     CASE
         WHEN status_of_sponsor_NC = Total THEN 0
         WHEN status_of_sponsor_C = Total THEN 1
         WHEN status_of_sponsor_Blank = Total THEN 3
         ELSE 2
-    END AS Sponsor_Status,
-    name_of_sponsor_arb
+    END AS Sponsor_Status
 FROM
     Spons2;
  
@@ -264,9 +263,7 @@ SELECT
         ELSE 0
     END AS all_completed_no_comp_date,     
     Spons3.Sponsor_Status,
-    trim (BOTH '"'
-        FROM
-        Spons3.name_of_sponsor_arb) AS name_of_sponsor,
+    Spons3.name_of_sponsor AS name_of_sponsor,
     CASE
 	WHEN full_title_of_the_trial IS NULL
 	AND abbreviated_trial_name IS NOT NULL 

@@ -1,0 +1,182 @@
+[
+    {
+        "children": [],
+        "inconsistent_trials": 2,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [
+            {
+                "name": "Johnson & Johnson",
+                "slug": "johnson-johnson"
+            }
+        ],
+        "percent_bad_data": 100.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "actelion-pharmaceuticals-ltd",
+        "sponsor_name": "Actelion Pharmaceuticals Ltd",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 2,
+        "total_unreported": 0
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 2,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": 100.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "astrazeneca",
+        "sponsor_name": "Astrazeneca",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 2,
+        "total_unreported": 0
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 4,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": 100.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "glaxosmithkline",
+        "sponsor_name": "GlaxoSmithKline",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 4,
+        "total_unreported": 0
+    },
+    {
+        "children": [
+            {
+                "name": "Actelion Pharmaceuticals Ltd",
+                "slug": "actelion-pharmaceuticals-ltd"
+            }
+        ],
+        "inconsistent_trials": 0,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": NaN,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "johnson-johnson",
+        "sponsor_name": "Johnson & Johnson",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 0,
+        "total_unreported": 0
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 0,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": 0.0,
+        "percent_reported": 0.0,
+        "percent_unreported": 100.0,
+        "slug": "pirkanmaa-hospital",
+        "sponsor_name": "Pirkanmaa Hospital",
+        "total_due": 1,
+        "total_reported": 0,
+        "total_trials": 1,
+        "total_unreported": 1
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 0,
+        "major": 0,
+        "not_yet_due_trials": 1,
+        "parents": [],
+        "percent_bad_data": 0.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "royal-liverpool-and-broadgreen-university-hospitals-nhs-trust",
+        "sponsor_name": "Royal Liverpool and Broadgreen University Hospitals NHS Trust",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 1,
+        "total_unreported": 0
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 1,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": 100.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "sepsicure-llc",
+        "sponsor_name": "Sepsicure LLC",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 1,
+        "total_unreported": 0
+    },
+    {
+        "children": [
+            {
+                "name": "Unclear Sponsor Name Given - Medicines Development (Infectious Diseases)",
+                "slug": "unclear-sponsor-name-given-medicines-development-infectious-diseases"
+            }
+        ],
+        "inconsistent_trials": 0,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": NaN,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "unclear-sponsor-name-given",
+        "sponsor_name": "Unclear Sponsor Name Given",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 0,
+        "total_unreported": 0
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 1,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [
+            {
+                "name": "Unclear Sponsor Name Given",
+                "slug": "unclear-sponsor-name-given"
+            }
+        ],
+        "percent_bad_data": 100.0,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "unclear-sponsor-name-given-medicines-development-infectious-diseases",
+        "sponsor_name": "Unclear Sponsor Name Given - Medicines Development (Infectious Diseases)",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 1,
+        "total_unreported": 0
+    },
+    {
+        "children": [],
+        "inconsistent_trials": 0,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": 0.0,
+        "percent_reported": 0.0,
+        "percent_unreported": 100.0,
+        "slug": "university-of-liverpool",
+        "sponsor_name": "University of Liverpool",
+        "total_due": 1,
+        "total_reported": 0,
+        "total_trials": 1,
+        "total_unreported": 1
+    }
+]

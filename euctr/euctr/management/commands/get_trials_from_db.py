@@ -22,6 +22,8 @@ class Command(BaseCommand):
     help = 'Fetches trials data from OpenTrials PostgredSQL database and saves to trials.csv'
 
     def handle(self, *args, **options):
+        verbosity = int(options['verbosity'])
+
         opentrials_db = os.environ['EUCTR_OPENTRIALS_DB']
         conn = psycopg2.connect(opentrials_db)
         cur = conn.cursor()
@@ -32,7 +34,8 @@ class Command(BaseCommand):
         cur.execute("""select count(*) as c, date(meta_updated) as d from euctr
                 group by d having count(*) > 100 order by d limit 1""")
         scrape_date = cur.fetchone()[1]
-        print("Scrape start date:", scrape_date)
+        if verbosity > 1:
+            print("Scrape start date:", scrape_date)
 
         # See if we have a clear new enough scrape. It takes maybe 4 days
         # for OpenTrials to do a full scrape. So if the scrape started more
@@ -49,7 +52,8 @@ class Command(BaseCommand):
         # trials must report a year after finishing) plus 4 weeks (28 days)
         # allowance (it takes that long for submissions to enter register)
         due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 28)
-        print("Due date cutoff:", due_date_cutoff)
+        if verbosity > 1:
+            print("Due date cutoff:", due_date_cutoff)
 
         # Generate the CSV file we later use in the web application
         query = open("euctr/management/commands/opentrials-to-csv.sql").read()
@@ -66,7 +70,8 @@ class Command(BaseCommand):
         # Update "got_from_db" only if there were changes in database
         # (to stop git history being contaminated)
         if before_hash != after_hash:
-            print("Changes being recorded in meta file")
+            if verbosity > 1:
+                print("Changes being recorded in meta file")
             with atomic_write(TRIALS_META_FILE, overwrite=True) as f:
                 out = collections.OrderedDict([
                     ('scrape_date', scrape_date.isoformat()),
@@ -75,16 +80,5 @@ class Command(BaseCommand):
                 ])
                 f.write(json.dumps(out, indent=4, sort_keys=True))
         else:
-            print("No changes, not updating meta file")
-
-        # Generate the CSV file we later use in the web application
-        paper_query = open("euctr/management/commands/opentrials-to-paper-csv.sql").read()
-        cur.execute(paper_query)
-        with atomic_write(PAPER_CSV_FILE, overwrite=True) as f:
-            writer = csv.writer(f, lineterminator="\n")
-            writer.writerow([i[0] for i in cur.description])
-            writer.writerows(cur)
-
-
-
-
+            if verbosity > 1:
+                print("No changes, not updating meta file")

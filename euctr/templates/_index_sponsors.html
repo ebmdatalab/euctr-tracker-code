@@ -43,18 +43,20 @@
     </thead>
 
     {% for sponsor in table %}
+      {% if  sponsor.total_trials > 0 %}
       <tr>
         <td> <a href="/sponsor/{{ sponsor.slug }}">{{ sponsor.sponsor_name }}</a></td>
         <td> {{ sponsor.total_trials }} </td>
         <td> {{ sponsor.total_due }} </td>
         <td> {{ sponsor.percent_unreported | custom_percent }} </td>
         <td> {{ sponsor.inconsistent_trials }} </td>
-        {% if sponsor.total_trials >= 50 %}
+        {% if sponsor.major %}
         <td class="hidden_column">major</td>
         {% else %}
         <td class="hidden_column">minor</td>
         {% endif %}
-      </tr> 
+      </tr>
+      {% endif %}
     {% endfor %}
 
   </table>
