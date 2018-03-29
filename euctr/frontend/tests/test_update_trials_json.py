@@ -1,3 +1,4 @@
+import csv
 import json
 import os
 import tempfile
@@ -53,8 +54,13 @@ TEST_SETTINGS={
     'MAJOR_SPONSORS_THRESHOLD': 1
 }
 
+NEW_TRIALS_SETTINGS = TEST_SETTINGS.copy()
+NEW_TRIALS_SETTINGS['SOURCE_CSV_FILE'] = fixture_path('non_matching_trials.csv')
+NEW_TRIALS_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE'] = temp_path()
+
+
 class UpdateTrialsJSONTestCase(SimpleTestCase):
-    maxDiff = 8000
+    maxDiff = 15000
     @classmethod
     @override_settings(**TEST_SETTINGS)
     def setUpClass(cls):
@@ -80,11 +86,24 @@ class UpdateTrialsJSONTestCase(SimpleTestCase):
             generated('OUTPUT_ALL_SPONSORS_FILE'),
             expected('all_sponsors.json'))
 
-    def test_new_trials_to_normalize(self):
+    def test_no_trials_to_normalize(self):
         # XXX make this a  useful test
         self.assertEqual(
             open(TEST_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE']).read(),
             '')
+
+    @override_settings(**NEW_TRIALS_SETTINGS)
+    def test_new_trials_to_normalize(self):
+        with self.assertRaises(SystemExit):
+            call_command('update_trials_json')
+            normalize_file = list(csv.DictReader(open(TEST_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE'])))
+            import pdb; pdb.set_trace()
+
+            self.assertEqual(normalize_file[0]['name_of_sponsor'], 'normalize_file')
+            self.assertEqual(normalize_file[0]['normalized_name'], '')
+            self.assertEqual(normalize_file[1]['name_of_sponsor'], 'Lilly S.A')
+            self.assertEqual(normalize_file[1]['normalized_name'], 'Lilly')
+            self.assertEqual(normalize_file[1]['normalized_parent_name'], 'Lilly')
 
     @classmethod
     def tearDownClass(cls):
