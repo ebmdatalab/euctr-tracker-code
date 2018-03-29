@@ -94,11 +94,10 @@ class UpdateTrialsJSONTestCase(SimpleTestCase):
 
     @override_settings(**NEW_TRIALS_SETTINGS)
     def test_new_trials_to_normalize(self):
+        # XXX TODO: test this fails if I change it
         with self.assertRaises(SystemExit):
             call_command('update_trials_json')
             normalize_file = list(csv.DictReader(open(TEST_SETTINGS['OUTPUT_NEW_NORMALIZE_FILE'])))
-            import pdb; pdb.set_trace()
-
             self.assertEqual(normalize_file[0]['name_of_sponsor'], 'normalize_file')
             self.assertEqual(normalize_file[0]['normalized_name'], '')
             self.assertEqual(normalize_file[1]['name_of_sponsor'], 'Lilly S.A')

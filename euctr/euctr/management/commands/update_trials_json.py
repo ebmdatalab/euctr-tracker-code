@@ -44,9 +44,11 @@ def work_out_status(t):
             else:
                 overall_status = "completed-due"
     elif t.trial_status == 3:
-        overall_status = "other" # suspended, withdrawn, not authorised, prohibited by CA
+        # suspended, withdrawn, not authorised, prohibited by CA
+        overall_status = "other"
     elif t.trial_status == 4:
-        overall_status = "no-trial-status" # a blank trial status usually indicated a paediatric trial taking place wholly outside of the EU/EEA
+        # a blank trial status usually indicated a paediatric trial taking place wholly outside of the EU/EEA
+        overall_status = "no-trial-status"
 
     return overall_status
 
@@ -64,6 +66,7 @@ def assert_no_grandparents(normalize_df):
             print("Conflict with parent names of these:", set(differing_parent[differing_parent['normalized_parent_name'] == p]['name_of_sponsor']))
         sys.exit(1)
 
+
 def get_trials():
     trials = pandas.read_csv(
         settings.SOURCE_CSV_FILE,
@@ -74,11 +77,11 @@ def get_trials():
 
 def get_normalized_sponsors():
     # XXX TODO: turn source into a google sheet, and rename columns
-    #
+    # TODO: rename the columns in the first input spreadsheet, then remove the "rename" from below
     # Each row is a normalised sponsor name. Columns of interest are:
     #   name_of_sponsor: The name as a raw string which appears in a trial record
-    #   normalized_name_only: A normalized version of this name
-    #   normalized_name: ultimate parent company of the legal entity
+    #   normalized_name: A normalized version of this name
+    #   normalized_parent_name: ultimate parent company of the legal entity
     #   Proof: URL showing ownership implied by normalized_name
     #   Description: Description of what Proof shows
     #   Notes: further notes on the Proof
@@ -163,7 +166,6 @@ def merge_trials_and_sponsors(all_trials, sponsors):
     trials_and_sponsors['total_trials'] = trials_and_sponsors.groupby(
         ['slug']
     )['trial_id'].transform('count') # XXX could just do ).size() ?
-    # XXX here we should groupby and then do max over everything else
     # (check the group and count worked, e.g. all have a slug)
     null_counts = trials_and_sponsors[trials_and_sponsors['total_trials'].isnull()]
     assert len(null_counts) == 0
