@@ -94,7 +94,7 @@
         "inconsistent_trials": 0,
         "major": 1,
         "not_yet_due_trials": 0,
-        "parents": [],
+        "parents": [{"name": "Lilly Megacorp", "slug": "lilly-megacorp"}],
         "percent_bad_data": 0.0,
         "percent_reported": 0.0,
         "percent_unreported": 100.0,
@@ -104,6 +104,22 @@
         "total_reported": 0,
         "total_trials": 1,
         "total_unreported": 1
+    },
+    {
+        "children": [{"name": "Lilly", "slug": "lilly"}],
+        "inconsistent_trials": 0,
+        "major": 0,
+        "not_yet_due_trials": 0,
+        "parents": [],
+        "percent_bad_data": NaN,
+        "percent_reported": NaN,
+        "percent_unreported": NaN,
+        "slug": "lilly-megacorp",
+        "sponsor_name": "Lilly Megacorp",
+        "total_due": 0,
+        "total_reported": 0,
+        "total_trials": 0,
+        "total_unreported": 0
     },
     {
         "children": [],
