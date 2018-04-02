@@ -96,10 +96,6 @@ def get_normalized_sponsors():
         settings.NORMALIZE_FILE, "Sheet1",
         keep_default_na=False, na_values=[]
     )
-    sponsors_full.rename(columns={
-        'normalized_name':'normalized_parent_name',
-        'normalized_name_only': 'normalized_name'
-    }, inplace = True)
     sponsors = sponsors_full[['name_of_sponsor', 'normalized_name', 'normalized_parent_name', 'Proof', 'Description', 'Notes']].copy()
     # handle any legacy spreadsheet column names
     assert_no_grandparents(sponsors)
