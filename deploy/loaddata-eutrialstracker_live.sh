@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 export GIT_SSH_COMMAND='ssh -i /var/www/eutrialstracker_live/ssh-keys/id_rsa_eutrialtracker_data'
 
