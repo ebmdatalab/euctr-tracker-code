@@ -311,24 +311,27 @@ def make_sponsors_json(trials_and_sponsors):
     return all_sponsors
 
 
+def unique_trials_count(df):
+    return len(df.trial_id.unique())
+
 def make_headline_json(all_trials, all_sponsors):
     trials_meta = json.load(open(settings.SOURCE_META_FILE))
     # Headline counts file, used for things like front page large numbers
     headline = {}
     headline['scrape_date'] = trials_meta['scrape_date']
     headline['due_date_cutoff'] = trials_meta['due_date_cutoff']
-    headline['total_trials'] = len(all_trials.trial_id.unique())  # XXX
+    headline['total_trials'] = unique_trials_count(all_trials)
     # ... trials which have declared completed everywhere with a date, and a
     # year has passed
     due_trials = all_trials[all_trials.results_expected == 1]
-    headline['due_trials'] = len(due_trials)
+    headline['due_trials'] = unique_trials_count(due_trials)
     # ... trials which have or have not posted results
     due_with_results = due_trials[due_trials.has_results == 1]
     due_without_results = due_trials[due_trials.has_results == 0]
-    headline['due_trials_with_results'] = len(due_with_results)
-    headline['due_trials_without_results'] = len(due_without_results)
-    headline['percent_without_results'] = round(
-            len(due_without_results) / len(due_trials) * 100, 1
+    headline['due_trials_with_results'] = unique_trials_count(due_with_results)
+    headline['due_trials_without_results'] = unique_trials_count(due_without_results)
+    headline['percent_with_results'] = round(
+            len(due_with_results) / len(due_trials) * 100, 1
     )
     # .. trials with inconsistent data
     headline['inconsistent_trials'] = len(
