@@ -34,10 +34,10 @@
       <div id="chartcopy-3"><b>due to report</b></div>
     {% else %}
       <canvas id="unreported_chart" height="140px"></canvas>
-      <div id="chartcopy-brash-1">{{percent_unreported | custom_percent}}</div>
+      <div id="chartcopy-brash-1">{{percent_reported | custom_percent}}</div>
       <div id="chartcopy-1">of {{ sponsor_name }}'s</div>
-      <div id="chartcopy-2"><b>{{ total_due}}</b> due trials are</div>
-      <div id="chartcopy-3"><b>not reported</b></div>
+      <div id="chartcopy-2"><b>{{ total_due}}</b> due trials</div>
+      <div id="chartcopy-3"><b>have reported</b></div>
     {% endif %}
   </div>
   <div class="second-column">

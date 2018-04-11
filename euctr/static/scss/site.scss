@@ -63,7 +63,7 @@
 /* Used as base size for measuring rem sizes against.
    For much of the page, this is overriden by the <body>
    font-size, and we use px for fonts. For the front page
-   and sponsor page infographics we use rem, so this can 
+   and sponsor page infographics we use rem, so this can
    easily adjust size of them */
 html {
   font-size: 0.8px;
@@ -83,16 +83,16 @@ body#taking-screenshot {
 a {
   font-weight: bold;
    &:hover, &:focus {
-	  color: #fff;
-	  background-color: $gray-dark;
-	}
+          color: #fff;
+          background-color: $gray-dark;
+        }
 }
 .nav a {
   font-weight: normal;
 }
 
 .page-header {
-  border-bottom: none; 
+  border-bottom: none;
   padding-bottom: 0;
 }
 
@@ -474,7 +474,7 @@ by <html> element's pix value. */
   }
 
   #preamble-11 {
-    font-size: 48rem;
+    font-size: 32rem;
     line-height: 53rem;
     color: $brand-sharp;
   }
@@ -720,7 +720,7 @@ by <html> element's pix value. */
   position: absolute;
   bottom: 0px;
   left: 10%;
-  background-color: $brand-success;
+  background-color: $brand-danger;
   width: 20%;
   border-top: 1px solid white;
 }
@@ -729,7 +729,7 @@ by <html> element's pix value. */
   position: absolute;
   bottom: 0px;
   left: 10%;
-  background-color: $brand-danger;
+  background-color: $brand-success;
   width: 20%;
 }
 
@@ -970,18 +970,18 @@ by <html> element's pix value. */
 
   @media (max-width: 990px) {
     h1 {
-  	  text-align: center;
-  	  text-align-last: center;
-  	}
+          text-align: center;
+          text-align-last: center;
+        }
     #canvas-sub {
       display: none;
     }
-  	.first-column, .second-column, .third-column {
+        .first-column, .second-column, .third-column {
       display: block;
-  	  margin-top: 45rem;
-  	  margin-left: auto;
-  	  margin-right: auto;
-  	}
+          margin-top: 45rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
     .first-column:after {
       display: block;
       content: " ";
@@ -990,7 +990,7 @@ by <html> element's pix value. */
       position: relative;
       width: 86rem;
       height: 41rem;
-      bottom: -16rem;     
+      bottom: -16rem;
       left: 58rem;
       line-height: 36rem;
     }
@@ -1002,7 +1002,7 @@ by <html> element's pix value. */
       position: relative;
       width: 86rem;
       height: 41rem;
-      top: 8rem;     
+      top: 8rem;
       left: 238rem;
       margin-bottom: 16rem;
       line-height: 36rem;

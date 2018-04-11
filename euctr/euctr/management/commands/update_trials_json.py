@@ -327,8 +327,8 @@ def make_headline_json(all_trials, all_sponsors):
     due_without_results = due_trials[due_trials.has_results == 0]
     headline['due_trials_with_results'] = len(due_with_results)
     headline['due_trials_without_results'] = len(due_without_results)
-    headline['percent_without_results'] = round(
-            len(due_without_results) / len(due_trials) * 100, 1
+    headline['percent_with_results'] = round(
+            len(due_with_results) / len(due_trials) * 100, 1
     )
     # .. trials with inconsistent data
     headline['inconsistent_trials'] = len(

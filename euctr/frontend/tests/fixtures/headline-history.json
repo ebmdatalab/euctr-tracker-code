@@ -5,7 +5,7 @@
         "due_trials_with_results": 3236,
         "due_trials_without_results": 3438,
         "major_sponsors_count": 88,
-        "percent_without_results": 51.5,
+        "percent_with_results": 48.5,
         "scrape_date": "2017-01-21",
         "total_trials": 29451
     },
@@ -16,7 +16,7 @@
         "due_trials_with_results": 3344,
         "due_trials_without_results": 3581,
         "major_sponsors_count": 92,
-        "percent_without_results": 51.7,
+        "percent_with_results": 48.3,
         "scrape_date": "2017-05-05",
         "total_trials": 30200
     },
@@ -27,7 +27,7 @@
         "due_trials_with_results": 3363,
         "due_trials_without_results": 3593,
         "major_sponsors_count": 92,
-        "percent_without_results": 51.7,
+        "percent_with_results": 48.3,
         "scrape_date": "2017-05-17",
         "total_trials": 30258
     },
@@ -38,7 +38,7 @@
         "due_trials_with_results": 3390,
         "due_trials_without_results": 3605,
         "major_sponsors_count": 92,
-        "percent_without_results": 51.5,
+        "percent_with_results": 48.5,
         "scrape_date": "2017-06-06",
         "total_trials": 30345
     },
@@ -49,7 +49,7 @@
         "due_trials_with_results": 3400,
         "due_trials_without_results": 3609,
         "major_sponsors_count": 92,
-        "percent_without_results": 51.5,
+        "percent_with_results": 48.5,
         "scrape_date": "2017-06-14",
         "total_trials": 30386
     },
@@ -62,7 +62,7 @@
         "inconsistent_trials": 8679,
         "major_sponsors_count": 89,
         "percent_inconsistent": 28.4,
-        "percent_without_results": 51.1,
+        "percent_with_results": 48.9,
         "scrape_date": "2017-07-21",
         "total_trials": 30587
     },
@@ -75,7 +75,7 @@
         "inconsistent_trials": 8832,
         "major_sponsors_count": 88,
         "percent_inconsistent": 28.5,
-        "percent_without_results": 50.8,
+        "percent_with_results": 49.2,
         "scrape_date": "2017-09-20",
         "total_trials": 30976
     },
@@ -88,7 +88,7 @@
         "inconsistent_trials": 9219,
         "major_sponsors_count": 89,
         "percent_inconsistent": 29.3,
-        "percent_without_results": 50.7,
+        "percent_with_results": 49.3,
         "scrape_date": "2017-12-03",
         "total_trials": 31507
     },
@@ -101,7 +101,7 @@
         "inconsistent_trials": 10,
         "major_sponsors_count": 0,
         "percent_inconsistent": 76.9,
-        "percent_without_results": 100.0,
+        "percent_with_results": 0.0,
         "scrape_date": "2018-01-17",
         "total_trials": 13
     }
