@@ -19,7 +19,7 @@ cd euctr-tracker-code/euctr
 # correct recipient
 NORMALIZE_MESSAGE=$(./manage.py update_trials_json)
 
-if [[ -z "$NORMALIZE_MESSAGE" ]]; then
+if [[ ! -z "$NORMALIZE_MESSAGE" ]]; then
     cd /var/www/eutrialstracker_live/euctr-tracker-data
     # exit if no changes during commit, so doesn't restart services if
     # that's the case
