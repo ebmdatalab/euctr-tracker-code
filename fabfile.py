@@ -30,13 +30,15 @@ def pip_install():
     with prefix('source venv/bin/activate'):
         run('pip install -q -r euctr-tracker-code/requirements.txt')
 
-def update_from_git():
+def update_from_git(branch):
     # clone or update code
     if not exists('euctr-tracker-code/.git'):
         run(env.git_code_key + "git clone -q git@github.com:ebmdatalab/euctr-tracker-code.git")
     else:
         with cd("euctr-tracker-code"):
-            run(env.git_code_key + "git pull -q")
+            run(env.git_code_key + "git fetch --all")
+            run(env.git_code_key + "git reset --hard origin/{}".format(branch))
+
 
     # clone or update data
     if not exists('euctr-tracker-data/.git'):
@@ -80,7 +82,7 @@ def deploy(environment, branch='master'):
     make_directory()
     with cd(env.path):
         venv_init()
-        update_from_git()
+        update_from_git(branch)
         pip_install()
         setup_nginx()
         setup_cron()
