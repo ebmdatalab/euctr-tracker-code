@@ -17,7 +17,9 @@ cd euctr-tracker-code/euctr
 
 # The Django app itself sends a normalization-required message to the
 # correct recipient
-NORMALIZE_MESSAGE=$(./manage.py update_trials_json)
+# TODO: uncomment this line after the paper has been published
+# See https://github.com/ebmdatalab/euctr-tracker-code/issues/30
+# NORMALIZE_MESSAGE=$(./manage.py update_trials_json)
 
 if [[ ! -z "$NORMALIZE_MESSAGE" ]]; then
     cd /var/www/eutrialstracker_live/euctr-tracker-data
