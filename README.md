@@ -1,5 +1,20 @@
 # euctr-tracker
 
+How it works
+============
+
+Once a month, we run a management command that scrapes the EUCTR register, via cron.  This writes to a local postgres database.  It takes up to 4 days to run - it must do a full scrape each time.
+
+Each day, we run a management command, `get_trials_from_db`, which creates a CSV based on this data, if the scrape has finished.
+
+Each day, we run a further management command, `update_trials_json`, which creates a set of JSON files which drive the website.
+
+Any new CSV or JSON files are committed to a dedicated repository, `euctr-tracker-data`, to maintain a full historic record.
+
+The `frontend` Django app in `euctr-tracker-data` loads the contents of the JSON files into memory via code in `models.py`; these are referenced from the views.
+
+Therefore, any change in data requires the Django app to be restarted (via `supervisorctl`).
+
 Development
 ===========
 
@@ -42,7 +57,7 @@ Checkout the data respository.
 cd ..
 git clone git@github.com:ebmdatalab/euctr-tracker-data.git
 cd -
-``` 
+```
 Run the application.
 
 ```
@@ -59,7 +74,7 @@ There are a few tests.
 Deployment
 ==========
 
-We use fabric to deploy over SSH to a pet server. 
+We use fabric to deploy over SSH to a pet server.
 
 ```
 fab deploy:live
@@ -78,8 +93,8 @@ When settings up a new server:
 Loading new data
 ================
 
-The frontend application reads data from static JSON files in 
-the `../euctr-tracker-data/` directory. 
+The frontend application reads data from static JSON files in
+the `../euctr-tracker-data/` directory.
 
 1. Set the location of a PostgreSQL database. This is only used as
 an intermediate store for the crawler to keep data in. The live website
@@ -105,7 +120,7 @@ Or update results from a particular query, e.g. a specific trial id:
 ./manage.py run_crawler --query=2004-000012-13
 ```
 
-3. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL 
+3. Update `../euctr-tracker-data/trials.csv` from the PostgreSQL
 database by running:
 
 ```
@@ -125,7 +140,7 @@ This assumes the table is called "euctr". It uses the SQL script
 Terminology
 ===========
 
-The spreadsheet `../euctr-tracker-data/normalized_sponsor_names.xlsx` contains 
+The spreadsheet `../euctr-tracker-data/normalized_sponsor_names.xlsx` contains
 normalized versions of the names for trials that are listed in the register.
 
 `normalized_name_only`: This column represents normalization based only on
@@ -149,5 +164,4 @@ depth research into mergers, acquisitions and name changes for corporate
 entities. Proof is sought to account changes in corporate ownership and where
 it is believed responsibility for reporting would ultimately be vested. Proof
 of notable acquisitions is given in the spreadsheet for changes made in this
-column. 
-
+column.
