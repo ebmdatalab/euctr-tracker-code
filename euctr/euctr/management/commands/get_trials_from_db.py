@@ -45,8 +45,9 @@ class Command(BaseCommand):
         #    order to have a reasonable quality historical record
         # For now, give up. TODO: Fix scraper to run with reliable regularity.
         if scrape_date + datetime.timedelta(days=7) < datetime.date.today():
-            # Abandoning import from database: Scrape started too long ago to use data for new history point
-            return
+            print("Abandoning import from database: Scrape started too long "
+                  "ago to use data for new history point")
+            sys.exit(1)
 
         # Date for reporting to be due has cutoff is 1 year (365 days) (by law,
         # trials must report a year after finishing) plus 4 weeks (28 days)
