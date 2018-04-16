@@ -14,6 +14,8 @@ cd /var/www/eutrialstracker_live/
 . venv/bin/activate
 cd euctr-tracker-code/euctr
 ./manage.py get_trials_from_db
+git commit -qa --author="Cron <>" --message="Automatic commit from eutrialstracker-live-cron" || exit
+git push -q
 
 # The Django app itself sends a normalization-required message to the
 # correct recipient
