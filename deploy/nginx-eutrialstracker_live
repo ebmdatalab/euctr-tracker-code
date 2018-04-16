@@ -1,24 +1,28 @@
-upstream eutrialstracker_live {  
+upstream eutrialstracker_live {
     server unix:/tmp/gunicorn-eutrialstracker_live.sock fail_timeout=0;
     keepalive 60;
 }
 
 # Redirect HTTP to HTTPS
-server {  
+server {
     listen 80;
     listen [::]:80;
-    server_name eutrialstracker.ebmdatalab.net;
+    server_name eutrialstracker.ebmdatalab.net eu.trialstracker.net;
+
+    location /.well-known/acme-challenge {
+        alias   /var/www/eutrialstracker_live/letsencrypt/.well-known/acme-challenge;
+    }
 
     location / {
-        return 301 https://eutrialstracker.ebmdatalab.net$request_uri;
+        return 301 https://eu.trialstracker.net$request_uri;
     }
 }
 
 # Listen on HTTPS
-server {  
+server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name eutrialstracker.ebmdatalab.net;
+    server_name eu.trialstracker.net;
 
     auth_basic "Private until the paper is published";
     auth_basic_user_file /etc/nginx/htpasswd-eutrialstracker.users;

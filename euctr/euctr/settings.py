@@ -29,7 +29,7 @@ SECRET_KEY = common.utils.get_env_setting('EUCTR_SECRET_KEY')
 EUCTR_DEBUG = common.utils.get_env_setting('EUCTR_DEBUG')
 assert EUCTR_DEBUG in ['yes', 'no']
 DEBUG = EUCTR_DEBUG == 'yes'
-ALLOWED_HOSTS = ['eutrialstracker.ebmdatalab.net', '127.0.0.1', '192.168.0.55', 'localhost']
+ALLOWED_HOSTS = ['eu.trialstracker.net', '127.0.0.1', '192.168.0.55', 'localhost']
 
 
 # Parameters
