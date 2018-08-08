@@ -147,7 +147,7 @@ def assert_all_trials_matched(all_trials, trials_and_sponsors):
                   'tech@ebmdatalab.net',
                   [settings.NORMALIZE_EMAIL_RECIPIENT],
                   fail_silently=False)
-        print(msg)  # this is read by the shell script called by cron
+        print(msg)
         sys.exit(0)
 
 def merge_trials_and_sponsors(all_trials, sponsors):

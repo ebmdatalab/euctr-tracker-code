@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eo pipefail
+
 . /etc/profile.d/eutrialstracker_live.sh
 
 WHEN=`date -d "yesterday 13:00" '+%Y-%m-%d'`
@@ -15,4 +17,10 @@ echo >>$LOG_FILE
 cd /var/www/eutrialstracker_live/
 . venv/bin/activate
 cd euctr-tracker-code/euctr
+
+# Scrape. Takes approx 4 days.
 ./manage.py run_crawler 2004-01-01 $WHEN >>$LOG_FILE 2>&1
+
+# Turns database contents into a CSV and metadata file. Should happen
+# once, after scrape.
+./manage.py get_trials_from_db

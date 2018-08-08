@@ -1,8 +1,4 @@
 # min hour day/month month day/week
 
-# Crawls 
-00 02 1 * * root /var/www/eutrialstracker_live/euctr-tracker-code/deploy/crawl-eutrialstracker_live.sh
-
-# Loads data from the PostgreSQL database into JSON files in git
+00 02 1 * * root /var/www/eutrialstracker_live/euctr-tracker-code/deploy/crawl-and-dump-eutrialstracker_live.sh
 30 * * * * root /var/www/eutrialstracker_live/euctr-tracker-code/deploy/loaddata-eutrialstracker_live.sh
-
