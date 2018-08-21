@@ -20,15 +20,16 @@ maintaining all the historic data in git.
 
 ### Service operation
 
-Once a month, we run a management command that uses `scrapy` to scrape
-the EUCTR register, via cron.  This writes to a local postgres
-database, `euctr`.  It takes up to 4 days to run - it must do a full
-scrape each time, due to the design of the website we are scraping.
+Once a month, we run a shell script
+`crawl-and-dump-eutrialstracker_live.sh` that does two things:
 
-When the scrape finishes the script
-`convertdata-eutrialstracker_live.sh` is run. This runs the management
-command `get_trials_from_db`, which creates a CSV based on this data,
-and writes it to the `euctr-tracker-data` directory.
+1. It executes command that uses `scrapy` to scrape the EUCTR
+register, via cron.  This writes to a local postgres database,
+`euctr`.  It takes up to 4 days to run - it must do a full scrape each
+time, due to the design of the website we are scraping.
+2. It runs the Djano management command `get_trials_from_db`, which
+creates a CSV based on this data, and writes it to the
+`euctr-tracker-data` directory.
 
 Every 30 minutes, `loaddata-eutrialstracker_live.sh` is also run. If
 any uncommitted changes are found in the `euctr-tracker-data`
@@ -36,12 +37,12 @@ directory, it executes the django management command
 `update_trials_json`, to create the set of JSON files which drive the
 website.
 
-However, this does not always run to the end, because there's a
-sponsors CSV file (see *Terminology* section, below) which requires
-manual normalisation every time new sponsors are added to it. If this
-happens, the `update_trials_json` script exits early with a message
-(which is also emailed to a recipient specified in the django settings
-file).
+However, this second shell script will often fail to run to the end,
+because there's a sponsors CSV file (see *Terminology* section, below)
+which requires manual normalisation every time new sponsors are added
+to it. If this happens, the `update_trials_json` script exits early
+with a message (which is also emailed to a recipient specified in the
+django settings file).
 
 The recipient should exit the CSV and update it directly in the
 `euctr-tracker-data` repo; `loaddata-eutrialstracker_live.sh` should

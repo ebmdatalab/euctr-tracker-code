@@ -17,7 +17,7 @@ cd /var/www/eutrialstracker_live/euctr-tracker-data
 # called, which is supposed to be once a month.
 git add -A
 changes=$(git diff-index HEAD)
-if [[ ! -z $changes ]]; then
+if [[ ! -z "$changes" ]]; then
     # There are uncommitted changes: turn CSV into JSON
     json_update_unfinished=$(./manage.py update_trials_json)
 
