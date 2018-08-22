@@ -1,22 +1,57 @@
 # euctr-tracker
 
-How it works
-============
+## How it works
 
-Once a month, we run a management command that scrapes the EUCTR register, via cron.  This writes to a local postgres database.  It takes up to 4 days to run - it must do a full scrape each time.
+### Code and data layout
 
-Each day, we run a management command, `get_trials_from_db`, which creates a CSV based on this data, if the scrape has finished.
+There are two repos which should be checked out in a common directory.
+One is `euctr-tracker-code`, and the other is `euctr-tracker-data`.
 
-Each day, we run a further management command, `update_trials_json`, which creates a set of JSON files which drive the website.
+The latter contains JSON files which are loaded into memory by the
+`frontend` Django app in `euctr-tracker-code` loads the contents of
+the JSON files into memory.
 
-Any new CSV or JSON files are committed to a dedicated repository, `euctr-tracker-data`, to maintain a full historic record.
+Thus we avoid using a database. Originally this design made sense as
+the data structure was simple, and the source data was in a third
+party database over which we had no control.  This makes less sense
+now as we run our own database for the source data, and the model has
+become more complex; we do, however, maintain the advantage of
+maintaining all the historic data in git.
 
-The `frontend` Django app in `euctr-tracker-data` loads the contents of the JSON files into memory via code in `models.py`; these are referenced from the views.
+### Service operation
 
-Therefore, any change in data requires the Django app to be restarted (via `supervisorctl`).
+Once a month, we run a shell script
+`crawl-and-dump-eutrialstracker_live.sh` that does two things:
 
-Development
-===========
+1. It executes command that uses `scrapy` to scrape the EUCTR
+register, via cron.  This writes to a local postgres database,
+`euctr`.  It takes up to 4 days to run - it must do a full scrape each
+time, due to the design of the website we are scraping.
+2. It runs the Djano management command `get_trials_from_db`, which
+creates a CSV based on this data, and writes it to the
+`euctr-tracker-data` directory.
+
+Every 30 minutes, `loaddata-eutrialstracker_live.sh` is also run. If
+any uncommitted changes are found in the `euctr-tracker-data`
+directory, it executes the django management command
+`update_trials_json`, to create the set of JSON files which drive the
+website.
+
+However, this second shell script will often (deliberately) exit
+early, because the sponsors CSV file (see *Terminology* section,
+below) contains rows that have not had the normalised sponsor column
+updated. This will happen every time new sponsors are added. When the
+`update_trials_json` script exits early, it emails a recipient
+specified in the django settings file, telling them intervention is
+needed.
+
+The recipient should edit the CSV and update it directly in the
+`euctr-tracker-data` repo; `loaddata-eutrialstracker_live.sh` will
+then pick this up on the next run.  Finally, this script will commit
+all the latest generated files to the `euctr-tracker-data` repostory.
+
+
+## Development
 
 Install these Python development packages before you begin. For
 example, on a Debian-based system:
@@ -71,8 +106,7 @@ There are a few tests.
 ./manage.py test
 ```
 
-Deployment
-==========
+## Deployment
 
 We use fabric to deploy over SSH to a pet server.
 
@@ -90,8 +124,7 @@ When settings up a new server:
 * Put SSH keys for the git repositories in `/var/www/eutrialstracker_live/ssh-keys`
 
 
-Loading new data
-================
+## Loading new data
 
 The frontend application reads data from static JSON files in
 the `../euctr-tracker-data/` directory.
@@ -137,8 +170,7 @@ This assumes the table is called "euctr". It uses the SQL script
 ```
 
 
-Terminology
-===========
+## Terminology
 
 The spreadsheet `../euctr-tracker-data/normalized_sponsor_names.xlsx` contains
 normalized versions of the names for trials that are listed in the register.
