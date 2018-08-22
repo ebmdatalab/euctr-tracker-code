@@ -13,7 +13,7 @@ chown -R www-data:www-data .
 cd /var/www/eutrialstracker_live/euctr-tracker-data
 
 # Only proceed if there are uncommitted files. These should only exist
-# as a result of convertdata-eutrialstracker_live.sh having been
+# as a result of crawl-and-dump-eutrialstracker_live.sh having been
 # called, which is supposed to be once a month.
 git add -A
 changes=$(git diff-index HEAD)
