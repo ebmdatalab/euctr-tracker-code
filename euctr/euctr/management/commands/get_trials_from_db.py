@@ -30,7 +30,8 @@ class Command(BaseCommand):
 
         # Find out the start date of current scrape.
         cur.execute("""select date(max(meta_updated)) from euctr""")
-        scrape_date = cur.fetchone()[1]
+
+        scrape_date = cur.fetchone()[0]
         if verbosity > 1:
             print("Scrape start date:", scrape_date)
 
