@@ -22,13 +22,15 @@ if [[ ! -z "$changes" ]]; then
     # There are uncommitted changes: turn CSV into JSON
     # activate django environment
     . $SOFTWARE_ROOT/venv/bin/activate
-    json_update_unfinished=$($CODE_REPO/euctr/manage.py update_trials_json)
+    cd $CODE_REPO/euctr
+    json_update_unfinished=$(./manage.py update_trials_json)
 
     # The management command prints output to STDOUT (and emails
     # someone about it) if there are new rows requiring normalisation
     # in the sponsors CSV.
     if [[ -z $json_update_unfinished ]]; then
         # There are no rows requiring normalisation.
+        cd $DATA_REPO
         git commit -qa --author="Cron <>" --message="Automatic commit from eutrialstracker-live-cron"
         git push -q
         chown -R www-data:www-data .

@@ -1,13 +1,11 @@
 #!/bin/sh
 
-service supervisor restart
+/usr/sbin/service supervisor restart
 
 if nginx -t
 then
-    service nginx stop 
+    /usr/sbin/service nginx stop
     # TODO clear correct cache if have multiple environments
-    rm -fr /var/cache/nginx/eutrialstracker_live/* 
-    service nginx start
+    rm -fr /var/cache/nginx/eutrialstracker_live/*
+    /usr/sbin/service nginx start
 fi
-
-
