@@ -1,10 +1,15 @@
 #!/bin/bash
 
 export GIT_SSH_COMMAND='ssh -i /var/www/eutrialstracker_live/ssh-keys/id_rsa_eutrialtracker_data'
+
+SOFTWARE_ROOT=/var/www/eutrialstracker_live
+DATA_REPO=$SOFTWARE_ROOT/euctr-tracker-data
+CODE_REPO=$SOFTWARE_ROOT/euctr-tracker-code
+
 . /etc/profile.d/eutrialstracker_live.sh
 
 # get updates to sponsor name normalization spreadsheet in particular
-cd /var/www/eutrialstracker_live/euctr-tracker-data
+cd $DATA_REPO
 git pull -q
 chown -R www-data:www-data .
 
@@ -16,8 +21,8 @@ changes=$(git diff-index HEAD)
 if [[ ! -z "$changes" ]]; then
     # There are uncommitted changes: turn CSV into JSON
     # activate django environment
-    . /var/www/eutrialstracker_live/venv/bin/activate
-    json_update_unfinished=$(./manage.py update_trials_json)
+    . $SOFTWARE_ROOT/venv/bin/activate
+    json_update_unfinished=$($CODE_REPO/euctr/manage.py update_trials_json)
 
     # The management command prints output to STDOUT (and emails
     # someone about it) if there are new rows requiring normalisation
@@ -28,6 +33,6 @@ if [[ ! -z "$changes" ]]; then
         git push -q
         chown -R www-data:www-data .
         # Restart web services so new data is loaded into memory
-        /var/www/eutrialstracker_live/euctr-tracker-code/deploy/restart-web-services.sh
+        $CODE_REPO/deploy/restart-web-services.sh
     fi
 fi
