@@ -2,7 +2,7 @@
 
 /usr/sbin/service supervisor restart
 
-if nginx -t
+if /usr/sbin/nginx -t
 then
     /usr/sbin/service nginx stop
     # TODO clear correct cache if have multiple environments
