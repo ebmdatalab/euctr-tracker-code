@@ -37,13 +37,13 @@ directory, it executes the django management command
 `update_trials_json`, to create the set of JSON files which drive the
 website.
 
-However, this second shell script will often (deliberately) exit
+However, this second shell script will initially (deliberately) exit
 early, because the sponsors CSV file (see *Terminology* section,
 below) contains rows that have not had the normalised sponsor column
 updated. This will happen every time new sponsors are added. When the
 `update_trials_json` script exits early, it emails a recipient
 specified in the django settings file, telling them intervention is
-needed.
+needed, and attaching the file.
 
 The recipient should edit the CSV and update it directly in the
 `euctr-tracker-data` repo; `loaddata-eutrialstracker_live.sh` will

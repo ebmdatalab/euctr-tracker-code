@@ -6,6 +6,7 @@ import json
 
 from django.conf import settings
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 slugify_vec = np.vectorize(slugify)
@@ -142,12 +143,18 @@ def assert_all_trials_matched(all_trials, trials_and_sponsors):
             columns=['trials_ids', 'name_of_sponsor', 'normalized_name',
                      'normalized_parent_name', 'Proof', 'Description', 'Notes'],
             index=False)
-        send_mail('EUCTR: New file to normalize',
-                  msg,
-                  'tech@ebmdatalab.net',
-                  [settings.NORMALIZE_EMAIL_RECIPIENT],
-                  fail_silently=False)
-        print(msg)
+        with open(settings.OUTPUT_NEW_NORMALIZE_FILE, "r") as new_trials:
+            email = EmailMessage(
+                'EUCTR: New file to normalize',
+                msg,
+                'tech@ebmdatalab.net',
+                [settings.NORMALIZE_EMAIL_RECIPIENT],
+                attachments=[(
+                    settings.OUTPUT_NEW_NORMALIZE_FILE,
+                    new_trials.read(),
+                    "text/csv")])
+            email.send(fail_silently=False)
+            print(msg)
         sys.exit(0)
 
 def merge_trials_and_sponsors(all_trials, sponsors):
