@@ -5,5 +5,6 @@ python:
   - "3.6"
 before_script:
   - cp environment-sample environment
+  - git clone --depth=1 https://github.com/ebmdatalab/euctr-tracker-data.git ../euctr-tracker-data
 script:
   - source environment && cd euctr && ./manage.py test frontend/tests --settings=euctr.settings
