@@ -1,0 +1,6 @@
+export EUCTR_SECRET_KEY=yes
+export EUCTR_DEBUG=yes
+export EUCTR_OPENTRIALS_DB=postgres://postgres:@localhost/euctr
+
+export EUCTR_GOOGLE_TRACKING_ID=
+export EUCTR_CRAWLERA_APIKEY=
