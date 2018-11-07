@@ -1,5 +1,6 @@
 import datetime
 import os
+import subprocess
 import tempfile
 
 from google.cloud import storage
@@ -24,12 +25,16 @@ def upload_file(filename_to_upload):
     Uploads a file to a given Cloud Storage bucket and returns the public url
     to the new object.
     """
-    filename = _safe_filename(filename_to_upload)
-    client = storage.Client(project='ebmdatalab')
-    bucket = client.bucket('euctr')
-    blob = bucket.blob(filename)
-    blob.upload_from_filename(filename_to_upload)
-    return filename
+    target_filename = _safe_filename("euctr_dump.csv")
+    # This will only work if you've run `gcloud auth login` as the
+    # user it's run as.  I tried doing this via Python (see git
+    # history) but encountered buggy google libraries and shortage of
+    # time.
+    subprocess.check_output(
+        ["gsutil",
+         "cp",
+         filename_to_upload,
+         "gs://ebmdatalab/euctr/{}".format(target_filename)])
 
 
 class Command(BaseCommand):

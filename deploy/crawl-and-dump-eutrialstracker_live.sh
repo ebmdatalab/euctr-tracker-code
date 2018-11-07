@@ -24,3 +24,6 @@ cd euctr-tracker-code/euctr
 # Turns database contents into a CSV and metadata file. Should happen
 # once, after scrape.
 ./manage.py get_trials_from_db
+
+# Upload to google cloud
+./manage.py raw_trials_to_cloud
