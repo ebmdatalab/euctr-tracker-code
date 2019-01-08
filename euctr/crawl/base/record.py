@@ -84,12 +84,13 @@ class Record(scrapy.Item):
         """
         db = conn['warehouse']
         if self.table not in db.tables:
-
             if conf['ENV'] in ['development', 'testing']:
                 table = db.create_table(
                         self.table,
                         primary_id=self.__primary_key,
                         primary_type=fields.Text.column_type)
+                # work around a bug whereby the table is not persisted
+                table.table
         table = db[self.table]
         action = 'created'
         if table.find_one(**{self.__primary_key: self[self.__primary_key]}):
