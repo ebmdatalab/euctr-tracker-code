@@ -1,13 +1,13 @@
+import datetime
+import os
+import shutil
+import subprocess
 import tempfile
-import psycopg2
 
 from django.test import SimpleTestCase
-import datetime
-import shutil
-import testing.postgresql
-from pathlib import Path
-import subprocess
+import psycopg2
 import psycopg2.extras
+import testing.postgresql
 
 
 def crawl_report(db, registry_id):
@@ -36,12 +36,12 @@ def query(db, sql, params):
 
 
 def setup_response(desired_gzipped_response):
-    fixture_dir = Path(
+    fixture_dir = (
         'crawl/tests/fixtures/euctr/4f/'
         '4ff2c188ce8d0558bf49ce65ba607b1a84e35f95')
     shutil.copyfile(
-        fixture_dir / desired_gzipped_response,
-        fixture_dir / 'response_body')
+        os.path.join(fixture_dir, desired_gzipped_response),
+        os.path.join(fixture_dir, 'response_body'))
 
 
 class ScrapingTestCase(SimpleTestCase):
