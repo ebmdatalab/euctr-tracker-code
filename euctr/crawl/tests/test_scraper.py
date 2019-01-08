@@ -25,7 +25,7 @@ def crawl_report(db, registry_id):
         )
         f.seek(0)
         output = f.read()
-        assert "['cached']" in output, output + "\n(should be a fixture)"
+    assert "['cached']" in output, output + "\n(should be a fixture)"
 
 
 def query(db, sql, params):
@@ -77,7 +77,11 @@ class ScrapingTestCase(SimpleTestCase):
                          "FROM euctr "
                          "WHERE eudract_number_with_country = %s")
         with testing.postgresql.Postgresql() as postgresql:
-            # First scrape should get a date for the trial end
+            # testing.postgresql creates a temporary postgres database
+            # and drops it again when the context is exited
+
+            # First scrape should get a date for
+            # the trial end
             db = postgresql.url()
             setup_response('response_body_date')
             crawl_report(db, registry_id)

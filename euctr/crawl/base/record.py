@@ -99,11 +99,6 @@ class Record(scrapy.Item):
         ensure_fields = False
         if conf['ENV'] in ['development', 'testing']:
             ensure_fields = True
-        # sqlalchemy.exc.ArgumentError: Trying to redefine primary-key column 'eudract_number_with_country' as a non-primary-key column on table 'euctr'
-        #import pdb; pdb.set_trace()
-        # XXX why is this necessary to make it work?!
-        print(table)
-        print(self.table)
         table.upsert(self, [self.__primary_key], ensure=ensure_fields, types=self.__column_types)
 
         logger.debug('Record - %s: %s - %s fields', action, self, len(self))
