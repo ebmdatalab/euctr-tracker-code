@@ -45,7 +45,10 @@ class Integer(Base):
     column_type = sa.Integer
 
     def parse(self, value):
-        return int(value)
+        if value is None:
+            return None
+        else:
+            return int(value)
 
 
 class Boolean(Base):
@@ -59,9 +62,13 @@ class Boolean(Base):
         self.__true_value = true_value
 
     def parse(self, value):
-        if self.__true_value is not None:
-            value = (value.lower() == self.__true_value.lower())
-        return value
+        if value is not None:
+            if self.__true_value is not None:
+                value = (value.lower() == self.__true_value.lower())
+            return value
+        else:
+            return None
+
 
 
 class Date(Base):
@@ -77,13 +84,17 @@ class Date(Base):
         self.__formats = formats
 
     def parse(self, value):
-        for i, fmt in enumerate(self.__formats):
-            try:
-                return helpers.parse_date(value, format=fmt)
-            except ValueError:
-                pass
-        msg = "time data '{value}' doesn't match any of the formats: {formats}"
-        raise ValueError(msg.format(value=value, formats=self.__formats))
+        if value is not None:
+            for i, fmt in enumerate(self.__formats):
+                try:
+                    return helpers.parse_date(value, format=fmt)
+                except ValueError:
+                    pass
+            msg = "time data '{value}' doesn't match any of the formats: {formats}"
+            raise ValueError(msg.format(value=value, formats=self.__formats))
+        else:
+            return None
+
 
 
 class Datetime(Base):
@@ -97,9 +108,12 @@ class Datetime(Base):
         self.__format = format
 
     def parse(self, value):
-        if self.__format is not None:
-            value = helpers.parse_datetime(value, format=self.__format)
-        return value
+        if value is not None:
+            if self.__format is not None:
+                value = helpers.parse_datetime(value, format=self.__format)
+            return value
+        else:
+            return None
 
 
 class Json(Base):
@@ -125,7 +139,10 @@ class Array(Base):
         return self.__column_type
 
     def parse(self, value):
-        result = []
-        for item in value:
-            result.append(self.__field.parse(item))
-        return result
+        if value is not None:
+            result = []
+            for item in value:
+                result.append(self._field.parse(item))
+            return result
+        else:
+            return None

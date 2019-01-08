@@ -1,0 +1,2547 @@
+
+
+
+<!DOCTYPE html>
+
+
+
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=8" />
+		<meta name="description" content="">
+		<link type="text/css" href="/ctr-search/css/960.css" rel="stylesheet"/>
+		<link type="text/css" href="/ctr-search/css/reset.css" rel="stylesheet"/>
+		<link type="text/css" href="/ctr-search/css/text.css" rel="stylesheet"/>
+		<link type="text/css" href="/ctr-search/css/print.css" rel="stylesheet" media="print"/>
+		<link type="text/css" href="/ctr-search/css/jquery-ui.css" rel="stylesheet" />
+		<link type="text/css" href="/ctr-search/css/styles.css" rel="stylesheet"/>
+		<link type="text/css" href="/ctr-search/css/nav.css" rel="stylesheet"/>
+		<script type="text/javascript">var ctx = "/ctr-search"</script>
+		<script type="text/javascript" src="/ctr-search/js/jquery.js"></script>
+        <script type="text/javascript" src="/ctr-search/js/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="/ctr-search/js/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="/ctr-search/js/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="/ctr-search/js/jquery.ui.tabs.js"></script>
+		<script type="text/javascript" src="/ctr-search/js/wtooltip.js"></script>
+		<script type="text/javascript" src="/ctr-search/js/init.js"></script>
+		<script type="text/javascript">$(searchInit);</script>
+		<title>
+		    
+                
+                
+                
+                    Clinical Trials Register
+                
+            
+		</title>
+		
+	</head>
+	
+	<body>
+		
+
+
+
+
+
+<div id="headerContainer" class="width100">
+
+	<table id="logoContainer" class="container_12">
+		<tbody>
+			<tr>
+				<td width="55">
+					<img alt="Flag of the European Union" height="53" src="/ctr-search/img/euFlag.png" >
+				<td>
+				<td width="586" >
+                    <span class="bannerText" >EU Clinical Trials Register</span>
+                </td>
+                <td width="307" >
+                    <span class="headernav"><a href="/help.html">Help</a></span>
+                </td>
+            </tr>
+		</tbody>
+	</table>
+
+	<table id="mainMenuContainer" class="container_12">
+		<tbody>
+			<tr>
+				<td>
+					<ul id="nav" class="mainMenu width100 margin0">
+						<li class="selected underL">
+							<a title="EU Clinical Trials Register home page" href="/ctr-search/search">Home & Search</a>
+						</li>
+
+						<li class="underL">
+							<a title="Click to view Joining a Clinical Trial page" href="/joiningtrial.html">Joining a trial</a>
+						</li>
+
+						<li class="underL">
+							<a title="Click to view the EU Clinical Trials Register Contacts page" href="/contacts.html">Contacts</a>
+						</li>
+
+						<li class="underL">
+							<a title="About" href="/about.html">About</a>
+							<ul style="width: 250px;">
+								<li><a href="/about.html">About the EU clinical trials register</a></li>
+								<li><a href="/whatsNew.html">What's new</a></li>
+								<li><a href="/dataquality.html">Data quality</a></li>
+								<li><a href="/doc/Sponsor_Contact_Information_EUCTR.pdf">Clinical trial sponsors</a></li>
+								<li><a href="/natauthorities.html">National medicine regulatory authorities</a></li>
+								<li><a href="/links.html">Links</a></li>
+							</ul>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+		
+
+
+
+
+<div class="container_12">
+	<div class="grid_12 marginB12">
+		<h1>
+			
+				
+				
+					Clinical trials			
+				
+			
+		
+		</h1>
+		<span>
+            The European Union Clinical Trials Register allows you to search for protocol and results information on:
+            <br/>
+            <li>
+                interventional clinical trials that are conducted in the European Union (EU) and the European Economic Area (EEA);
+            </li>
+            <li>
+                clinical trials conducted outside the EU / EEA that are linked to European paediatric-medicine development.
+            </li>
+            Learn
+                &nbsp;
+            <a href="/about.html">more about the EU Clinical Trials Register</a>
+                &nbsp;
+            including the source of the information and the legal basis.
+		</span>
+		<br/><br/>
+		<span>
+		    The EU Clinical Trials Register currently displays
+		        &nbsp;
+		    <strong><span id="total">33875</span></strong>
+		        &nbsp;
+		    clinical trials with a EudraCT protocol, of which
+		        &nbsp;
+		    <strong><span id="under18">5489</span></strong>
+		        &nbsp;
+		    are clinical trials conducted with subjects less than 18 years old.
+		    <br/>
+            The register also displays information on
+                &nbsp;
+            <strong><span id="article45Count">18700</span></strong>
+                &nbsp;
+            older paediatric trials (in scope of Article 45 of the Paediatric Regulation (EC) No 1901/2006).
+        </span>
+
+	</div>
+</div>
+
+        <div class="container_12">
+			<div class="grid_2">&nbsp;</div>
+		
+        	<div id="searchContainer" class="grid_8">
+			
+
+
+
+
+<script type="text/javascript" src="/ctr-search/js/jsoup.js"></script>
+
+
+<form id="search-form" action="/ctr-search/search" method="get">
+	<input id="query" class="padding04 alpha omega" name="query" value="" accesskey="s" tabindex="1" autofocus placeholder="Please enter search term..." style="float: left; width: 437px;"/>
+	<input id="reset" type="button" value="X" class="resetButton" accesskey="r" title="Delete search term"/>
+	<span class="submit-button"><input type="submit" value="Search" class="grid_2 omega" accesskey="x" tabindex="2"/></span>
+
+		
+	<div class="hints">
+		<div style="padding-left: 10px;">
+			<strong>Examples:</strong>
+			Cancer AND drug name. Pneumonia AND sponsor name.
+			<br/>
+			<a href="/doc/How_to_Search_EU_CTR.pdf#zoom=100,0,0" target="_blank">
+				How to search [pdf]
+			</a> 
+		</div>
+		<div style="display:none">
+			<strong>Search Tips:</strong>
+			Under advanced search you can use filters for Country, Age Group, Gender, Trial Phase, Trial Status, Date Range, Rare Diseases and Orphan Designation. For these items you should use the filters and not add them to your search terms in the text field.
+		</div>
+	</div>
+	
+		<table id="advancedSearch" class="width40">
+			<tr>
+				<td><strong>Advanced Search:</strong></td>
+				<td><a id="advanced-link" class="" href="javascript:void(0)" accesskey="a" tabindex="3">Search tools</a></td>
+			</tr>
+		</table>
+			<script>
+				$("#advancedSearch").click(function() {
+					$('#advanced-link').toggleClass('clicked');
+					return false;
+				});
+			</script>
+		
+	<div  id="advanced-controls" style="margin: 1em 0em;display:none">
+		<table id="advancedAll" class="width100 advancedOptions">
+			<tr>
+				<td>Select Country:<br/>
+					<select class="search-field advanced" name="country" multiple="multiple" size="4" accesskey="c" tabindex="4">
+						
+							<option value="at" >Austria</option>
+						
+							<option value="be" >Belgium</option>
+						
+							<option value="bg" >Bulgaria</option>
+						
+							<option value="hr" >Croatia</option>
+						
+							<option value="cy" >Cyprus</option>
+						
+							<option value="cz" >Czech Republic</option>
+						
+							<option value="dk" >Denmark</option>
+						
+							<option value="ee" >Estonia</option>
+						
+							<option value="fi" >Finland</option>
+						
+							<option value="fr" >France</option>
+						
+							<option value="de" >Germany</option>
+						
+							<option value="gr" >Greece</option>
+						
+							<option value="hu" >Hungary</option>
+						
+							<option value="is" >Iceland</option>
+						
+							<option value="ie" >Ireland</option>
+						
+							<option value="it" >Italy</option>
+						
+							<option value="lv" >Latvia</option>
+						
+							<option value="li" >Liechtenstein</option>
+						
+							<option value="lt" >Lithuania</option>
+						
+							<option value="lu" >Luxembourg</option>
+						
+							<option value="mt" >Malta</option>
+						
+							<option value="nl" >Netherlands</option>
+						
+							<option value="no" >Norway</option>
+						
+							<option value="pl" >Poland</option>
+						
+							<option value="pt" >Portugal</option>
+						
+							<option value="ro" >Romania</option>
+						
+							<option value="sk" >Slovakia</option>
+						
+							<option value="si" >Slovenia</option>
+						
+							<option value="es" >Spain</option>
+						
+							<option value="se" >Sweden</option>
+						
+							<option value="gb" >United Kingdom</option>
+						
+							<option value="3rd" >Outside EU/EEA</option>
+						
+					</select>
+				</td>
+		
+				<td>Select Age Range:<br/>
+					<select class="search-field advanced" name="age" multiple="multiple" size="4" accesskey="g" tabindex="5">
+					
+							<option value="adolescent" >Adolescent</option>
+						
+							<option value="adult" >Adult</option>
+						
+							<option value="children" >Children</option>
+						
+							<option value="elderly" >Elderly</option>
+						
+							<option value="in-utero" >In-Utero</option>
+						
+							<option value="infant-and-toddler" >Infant and Toddler</option>
+						
+							<option value="newborn" >Newborn</option>
+						
+							<option value="preterm-new-born-infants" >Preterm new born infants</option>
+						
+							<option value="under-18" >Under 18</option>
+						
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Select Trial Status:<br/>
+					<select class="search-field advanced" name="status" multiple="multiple" size="4" accesskey="u" tabindex="6">
+					
+							<option value="completed" >Completed</option>
+						
+							<option value="not-authorised" >Not Authorised</option>
+						
+							<option value="ongoing" >Ongoing</option>
+						
+							<option value="prematurely-ended" >Prematurely Ended</option>
+						
+							<option value="prohibited-by-ca" >Prohibited by CA</option>
+						
+							<option value="restarted" >Restarted</option>
+						
+							<option value="suspended-by-ca" >Suspended by CA</option>
+						
+							<option value="temporarily-halted" >Temporarily Halted</option>
+						
+					</select>
+				</td>
+
+				<td>Select Trial Phase:<br/>
+					<select class="search-field advanced" name="phase" multiple="multiple" size="4" accesskey="f" tabindex="7">
+					
+							<option value="phase-one" >Phase One</option>
+						
+							<option value="phase-two" >Phase Two</option>
+						
+							<option value="phase-three" >Phase Three</option>
+						
+							<option value="phase-four" >Phase Four</option>
+						
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
+					Select Gender:<br/>
+					<select class="search-field advancedSmall advanced" name="gender" size="1" accesskey="t" tabindex="8">
+						
+							<option value="" ></option>
+						
+							<option value="both" >Both</option>
+						
+							<option value="female-only" >Female Only</option>
+						
+							<option value="male-only" >Male Only</option>
+						
+					</select>
+
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">Select Date Range:<br/>
+					<input style="margin-left: 20px" class="search-field advanced calendar" type="text" name="dateFrom" value="" accesskey="r" tabindex="9">
+					to 
+					<input class="search-field advanced calendar" type="text" name="dateTo" value="" ky="t" tabindex="10">
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">Select Rare Disease:
+					<input class="search-field advanced" type="checkbox" name="rare" value="true" tabindex="11" 
+							>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2" style="white-space: nowrap;padding-right:2em">IMP with orphan designation in the indication
+					<input class="search-field advanced" type="checkbox" name="orphanimp" value="true" tabindex="12" 
+							>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">Orphan Designation Number:<br/>
+					<input style="margin-left: 20px" class="search-field advanced orphantext" type="text" name="orphannum" value="">
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">Results Status:<br/>
+					<select class="search-field advancedSmall advanced" name="resultsstatus" size="1" accesskey="t" tabindex="8">
+						
+							<option value="" ></option>
+						
+							<option value="trials-with-results" >Trials with results</option>
+						
+							<option value="trials-without-results" >Trials without results</option>
+						
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td style="border-style:none;padding:20px 2px 0;"><a href="javascript:void(0)" id="advanced-clear">Clear advanced search filters</a></td>
+				<td style="border-style:none;padding:20px 2px 0;" class="submit-button"><input type="submit" value="Search" class="grid_2" accesskey="x" tabindex="13"/></td>
+			</tr>
+		</table>
+		
+	</div>
+
+</form>
+
+			</div>
+			
+			<div class="grid_2">&nbsp;</div>
+		</div>
+
+		<div id="content" class="container_12">
+			
+			
+
+				<div class="detail">
+                    <p>
+                        <a id="backCtaLink" href="#" onclick="javascript:window.history.back(1);return false;"
+                           style="border-bottom:1px solid; margin-bottom:10px; margin-left:10px;">< Back to search results</a>
+                    </p>
+                    
+                       <p>
+                           <a class="print-link" href="javascript:$('#expand').click();window.print()">
+                               <img src="/ctr-search/img/printer.png"/>
+                               Print
+                           </a>
+                           <a id="downloadCTA" class="print-link" href="javascript:void(0)">
+                               Download
+                           </a>
+                       </p>
+                    
+
+				    
+                        
+                        
+                            <script type="text/javascript" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions">$(displayInit)</script><style type="text/css">
+            div.detail table {
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+
+            div.detail .hidden {
+                float: left;
+            }
+        </style><a name="summary"></a><table class="section summary">
+<thead>
+<tr>
+<th colspan="2">
+<div class="title">Summary</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="cellGrey" width="35%">EudraCT Number:</td><td class="cellLighterGrey">2015-000590-12</td>
+</tr>
+<tr>
+<td class="cellGrey" width="35%">Sponsor's Protocol Code Number:</td><td class="cellLighterGrey">CRAD001HDE53</td>
+</tr>
+<tr>
+<td class="cellGrey" width="35%">National Competent Authority:</td><td class="cellLighterGrey">Germany - BfArM</td>
+</tr>
+<tr>
+<td class="cellGrey" width="35%">Clinical Trial Type:</td><td class="cellLighterGrey">EEA CTA</td>
+</tr>
+<tr>
+<td class="cellGrey" width="35%">Trial Status:</td><td class="cellLighterGrey">Completed</td>
+</tr>
+<tr>
+<td class="cellGrey" width="35%">Date on which this record was first entered in the EudraCT database:</td><td class="cellLighterGrey">2015-07-01</td>
+</tr>
+<tr>
+<td class="cellGrey" width="35%">Trial results</td><td class="cellLighterGrey"></td>
+</tr>
+</tbody>
+</table><table class="section index">
+<thead>
+<tr>
+<th>
+<div class="title">Index</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="javascript:window.location.replace('#A')">A. PROTOCOL INFORMATION</a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#B')">B. SPONSOR INFORMATION</a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#C')">C. APPLICANT IDENTIFICATION</a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#D')">D. IMP IDENTIFICATION</a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#D8')">D.8 INFORMATION ON PLACEBO</a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#E')">E. GENERAL INFORMATION ON THE TRIAL</a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#F')">F. POPULATION OF TRIAL SUBJECTS</a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#G')">
+                            G. INVESTIGATOR NETWORKS TO BE INVOLVED IN THE TRIAL
+                        </a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#N')">
+                                N. REVIEW BY THE COMPETENT AUTHORITY OR ETHICS COMMITTEE IN THE COUNTRY CONCERNED
+                            </a></td>
+</tr>
+<tr>
+<td><a href="javascript:window.location.replace('#P')">P. END OF TRIAL</a></td>
+</tr>
+</tbody>
+</table><div class="all-section-controls">
+<span id="expand" class="link" style="padding-right: 1em">Expand All</span>
+            &nbsp;
+            <span id="collapse" class="link" style="padding-left: 1em">Collapse All</span>
+</div><a name="A" class="hidden"></a><table id="section-a" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> A. Protocol Information </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tricell">
+<td class="first">A.1</td><td class="second">Member State Concerned</td><td class="third">Germany - BfArM</td>
+</tr>
+<tr class="tricell">
+<td class="first">A.2</td><td class="second">EudraCT number</td><td class="third">2015-000590-12</td>
+</tr>
+<tr class="tricell">
+<td class="first">A.3</td><td class="second">Full title of the trial</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">A 24-month multi-center, open-label, randomized, controlled study to evaluate the evolution of renal function in maintenance liver transplant recipients receiving either RAD001 (everolimus) plus reduced TAC or RAD001 (everolimus) plus MMF </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">A.3.1</td><td class="second">Title of the trial for lay people, in easily understood, i.e. non-technical, language</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Evaluation of evolution of renal function in maintenance liver transplant recipients receiving either RAD001 (everolimus) plus reduced TAC or RAD001 (everolimus) plus MMF </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">A.3.2</td><td class="second">Name or abbreviated title of the trial where available</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">not applicable</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">A.4.1</td><td class="second">Sponsor's protocol code number</td><td class="third">CRAD001HDE53</td>
+</tr>
+<tr class="tricell">
+<td class="first">A.7</td><td class="second">Trial is part of a Paediatric Investigation Plan</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">A.8</td><td class="second">EMA Decision number of Paediatric Investigation Plan</td><td class="third"></td>
+</tr>
+</tbody>
+</table><a name="B" class="hidden"></a><table id="section-b" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> B. Sponsor Information </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">B.Sponsor: 1</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.1.1</td><td class="second">Name of Sponsor</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.1.3.4</td><td class="second">Country</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.3.1 and B.3.2</td><td class="second">Status of the sponsor</td><td class="third">Commercial</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">
+                            B.4 Source(s) of Monetary or Material Support for the clinical trial:
+                        </td>
+</tr>
+<tr class="tricell">
+<td class="first">B.4.1</td><td class="second">Name of organisation providing support</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.4.2</td><td class="second">Country</td><td class="third">Germany</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">
+                            B.5 Contact point designated by the sponsor for further information on the trial
+                        </td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.1</td><td class="second">Name of organisation</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.2</td><td class="second">Functional name of contact point</td><td class="third">Medical Competence Center</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">B.5.3</td><td colspan="2"> Address: </td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.3.1</td><td class="second">Street Address</td><td class="third">Roonstr.25</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.3.2</td><td class="second">Town/ city</td><td class="third">N&uuml;rnberg</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.3.3</td><td class="second">Post code</td><td class="third">90429 </td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.3.4</td><td class="second">Country</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.4</td><td class="second">Telephone number</td><td class="third">+49 1802232300</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.5</td><td class="second">Fax number</td><td class="third">+49 911 273 12160</td>
+</tr>
+<tr class="tricell">
+<td class="first">B.5.6</td><td class="second">E-mail</td><td class="third">infoservice.novartis@novartis.com</td>
+</tr>
+</tbody>
+</table><a name="D" class="hidden"></a><table id="section-d" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> D. IMP Identification </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 1</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Certican</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Certican 0,25 mg</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.2</td><td class="second">Product code </td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Tablet</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Everolimus</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">159351-69-6</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.2</td><td class="second">Current sponsor code</td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">EVEROLIMUS</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB02065MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">0.25</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 2</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Certican</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Certican 0,5 mg</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.2</td><td class="second">Product code </td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Tablet</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Everolimus</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">159351-69-6</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.2</td><td class="second">Current sponsor code</td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">EVEROLIMUS</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB02065MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">0.5</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 3</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Certican </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Certican 0,75 mg</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.2</td><td class="second">Product code </td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Tablet</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Everolimus</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">159351-69-6</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.2</td><td class="second">Current sponsor code</td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">EVEROLIMUS</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB02065MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">0.75</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 4</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Certican</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Certican 1 mg</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.2</td><td class="second">Product code </td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Tablet</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Everolimus</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">159351-69-6</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.2</td><td class="second">Current sponsor code</td><td class="third">RAD001</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">EVEROLIMUS</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB02065MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">1</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 5</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Comparator</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Tacrolimus Monohydrate</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third"></td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Tacrolimus Monohydrate</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">109581-93-3</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">TACROLIMUS MONOHYDRATE</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB23141</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">range</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">0.5
+                                                to
+                                                5</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 6</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Cellcept</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Roche Registration Limited</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">European Union</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Cellcept 250 mg</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Capsule, hard</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Mycophenolate Mofetil</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">128794-94-5</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">MYCOPHENOLATE MOFETIL</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB03360MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">250</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 7</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Cellcept</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Roche Registration Limited</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">European Union</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Cellcept 500 mg</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Film-coated tablet</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Mycophenolat Mofetil</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">128794-94-5</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">MYCOPHENOLATE MOFETIL</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB03360MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">500</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 8</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Myfortic</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Myfortic 180 mg </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.2</td><td class="second">Product code </td><td class="third">ERL080</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Gastro-resistant tablet</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Mycophenolat Sodium</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">37415-62-6</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">MYCOPHENOLATE SODIUM</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB16447MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">180</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 9</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Test</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.1</td><td class="second">Trade name </td><td class="third">Myfortic</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.1.2</td><td class="second">Name of the Marketing Authorisation holder</td><td class="third">Novartis Pharma GmbH</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Myfortic 360 mg </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.2</td><td class="second">Product code </td><td class="third">ERL080</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third">Gastro-resistant tablet</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">Mycophenolat Sodium</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">37415-62-6</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">MYCOPHENOLATE SODIUM</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB16447MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">equal</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">360</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">D.IMP: 10</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.1.2 and D.1.3</td><td class="second">IMP Role</td><td class="third">Comparator</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.2</td><td colspan="2"> Status of the IMP to be used in the clinical trial </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1</td><td class="second">IMP to be used in the trial has a marketing authorisation</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.1.2</td><td class="second">Country which granted the Marketing Authorisation</td><td class="third">Germany</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5</td><td class="second">The IMP has been designated in this indication as an orphan drug in the Community</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.2.5.1</td><td class="second">Orphan drug designation number</td><td class="third"></td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3 Description of the IMP</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.1</td><td class="second">Product name</td><td class="third">Cyclosporin A</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4</td><td class="second">Pharmaceutical form </td><td class="third"></td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.4.1</td><td class="second">Specific paediatric formulation</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.7</td><td class="second">Routes of administration for this IMP</td><td class="third">Oral use<br>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.8 to D.3.10 IMP Identification Details (Active Substances)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.8</td><td class="second">INN - Proposed INN</td><td class="third">CICLOSPORIN</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.1</td><td class="second">CAS number </td><td class="third">59865-13-3</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.3</td><td class="second">Other descriptive name</td><td class="third">Cyclosporine A</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.9.4</td><td class="second">EV Substance Code</td><td class="third">SUB06250MIG</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">D.3.10</td><td colspan="2"> Strength </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.1</td><td class="second">Concentration unit </td><td class="third">mg milligram(s)</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.2</td><td class="second">Concentration type</td><td class="third">range</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.10.3</td><td class="second">Concentration number</td><td class="third">10
+                                                to
+                                                100</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">D.3.11 The IMP contains an:</td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.1</td><td class="second">Active substance of chemical origin</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.2</td><td class="second">Active substance of biological/ biotechnological origin (other than Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow"></td><td colspan="2"> The IMP is a: </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3</td><td class="second">Advanced Therapy IMP (ATIMP)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.1</td><td class="second">Somatic cell therapy medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.2</td><td class="second">Gene therapy medical product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.3</td><td class="second">Tissue Engineered Product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.4</td><td class="second">Combination ATIMP (i.e. one involving a medical device)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.3.5</td><td class="second">Committee on Advanced therapies (CAT) has issued a classification for this product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.4</td><td class="second">Combination product that includes a device, but does not involve an Advanced Therapy</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.5</td><td class="second">Radiopharmaceutical medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.6</td><td class="second">Immunological medicinal product (such as vaccine, allergen, immune serum)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.7</td><td class="second">Plasma derived medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.8</td><td class="second">Extractive medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.9</td><td class="second">Recombinant medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.10</td><td class="second">Medicinal product containing genetically modified organisms</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.11</td><td class="second">Herbal medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.12</td><td class="second">Homeopathic medicinal product</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">D.3.11.13</td><td class="second">Another type of medicinal product</td><td class="third"> No </td>
+</tr>
+</tbody>
+</table><a name="D8" class="hidden"></a><table id="section-d8" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> D.8 Information on Placebo </div>
+<div class="controls">
+<img id="section-d8-toggle" class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+</table><a name="E" class="hidden"></a><table id="section-e" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> E. General Information on the Trial </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">E.1 Medical condition or disease under investigation</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.1</td><td class="second">Medical condition(s) being investigated </td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">liver transplantation</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.1.1</td><td class="second">Medical condition in easily understood language </td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Transplantation of the liver</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.1.2</td><td class="second">Therapeutic area </td><td class="third">Body processes [G] - Immune system processes [G12]</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">MedDRA Classification</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">E.1.2 Medical condition or disease under investigation</td>
+</tr>
+<tr>
+<td colspan="3">
+<table width="100%">
+<tr class="tricell">
+<td class="first">E.1.2</td><td class="second">Version </td><td class="third">18.0</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.2</td><td class="second">Level </td><td class="third">LLT</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.2</td><td class="second">Classification code </td><td class="third">10050434</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.2</td><td class="second">Term </td><td class="third">Prophylaxis against liver transplant rejection</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.2</td><td class="second">System Organ Class </td><td class="third">100000004865</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.1.3</td><td class="second">Condition being studied is a rare disease </td><td class="third"> No </td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">E.2 Objective of the trial</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.2.1</td><td class="second">Main objective of the trial </td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">The primary objective is to demonstrate that an immunosuppressive regimen based on everolimus plus MMF is superior compared to everolimus plus reduced TAC in preserving kidney function as measured by eGFR (abbreviated Modification of Diet in Renal Disease formula with 4 variables (MDRD-4 formula)) at Month 6 in maintenance liver transplant recipients.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.2.2</td><td class="second">Secondary objectives of the trial </td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Secondary objectives are to evaluate the following:&#13;<br>&bull; Efficacy failure defined as graft loss, tBPAR, death and loss to follow-up.&#13;<br>&bull; Reasons for premature discontinuation of study medication and dose interruptions.&#13;<br>&bull; The incidence of de novo malignant tumors.&#13;<br>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.2.3</td><td class="second">Trial contains a sub-study </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.3</td><td class="second">Principal inclusion criteria </td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Inclusion criteria at Screening Visit (Visit 1):&#13;<br>1. Patients willing and capable of providing written informed consent for study participation and able to participate in the study.&#13;<br>2. Adults 18 to 70 years of age at the time of inclusion, who received a primary liver allo&not;graft from a deceased or living donor and are treated with a CNI containing immuno&not;sup&not;pres&not;sive regimen.&#13;<br>3. Patients who had a liver transplant 6 to 24 months prior to Screening.&#13;<br>4. Estimated kidney function (MDRD 4) between chronic kidney disease (CKD) IIIb/ 30 mL/min &lt; eGFR &lt; CKD II/60 mL/min with deteriorating renal function (at the in&not;ves&not;ti-ga&not;tor&rsquo;s discretion), indicated by earlier local laboratory assessments not older than 3 months previous to Screening.&#13;<br>5. Acceptable graft function (aspartate amino transferase (AST), alanine aminotransferase (ALT) and total bilirubin &le; 3 &times; upper limit of normal (ULN) and alkaline phosphatase (ALP) &le; 5 &times; ULN), indicated by earlier local laboratory assessments not older than 3 months previous to Screening.&#13;<br>&#13;
+<br>Inclusion criteria at Baseline Visit (Visit 2):&#13;<br>1. Estimated kidney function (MDRD 4) between CKD IIIb/ 30 mL/min &lt; eGFR &lt; CKD II/60 mL/min with deteriorating renal function (at the investigator&rsquo;s discretion).&#13;<br>2. Acceptable graft function (AST, ALT and total bilirubin &le; 3 &times; ULN and ALP &le; 5 &times; ULN).&#13;<br>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.4</td><td class="second">Principal exclusion criteria</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Exclusion criteria at Screening Visit (Visit 1):&#13;<br>1. Recipient of multiple solid organ transplants.&#13;<br>2. Patients with active chronic inflammatory bowel disease and recurrent autoimmune hepatitis (at the investigator&rsquo;s discretion).&#13;<br>3. Patients with an mTOR-inhibitor based immunosuppressive therapy.&#13;<br>4. Patient with an identifiable cause of renal dysfunction other than CNI toxicity.&#13;<br>5. Patients who have any sign of malignant diseases other than neoplasms of the skin.&#13;<br>6. Patient who has received an unlicensed drug / therapy within one month prior to study entry or presence of any hypersensitivity to drugs similar to everolimus (e.g. macrolides).&#13;<br>7. Pregnant or nursing (lactating) women, where pregnancy is defined as the state of a female after conception and until the termination of gestation, confirmed by a positive HCG la&not;bo-ra&not;tory test.&#13;<br>8. Women of child-bearing potential, defined as all women physiologically capable of becoming pregnant, unless they are using effective methods of contraception during dosing of study treatment. Effective contraception methods include:&#13;<br>&bull; Total abstinence (when this is in line with the preferred and usual lifestyle of the subject). Periodic abstinence (e.g., calendar, ovulation, symptothermal, post-ovulation methods) and withdrawal are not acceptable methods of contraception.&#13;<br>&bull; Female sterilization (have had surgical bilateral oophorectomy with or without hysterectomy) or tubal ligation at least 6 weeks before taking study treatment. In case of oophorectomy alone, only when the reproductive status of the woman has been confirmed by follow up hormone level assessment.&#13;<br>&bull; Male sterilization (at least 6 months prior to Screening). For female subjects on the study, the vasectomized male partner should be the sole partner for that subject.&#13;<br>&bull; Barrier methods of contraception: Condom or Occlusive cap (diaphragm or cer&not;vi-cal/vault caps) with spermicidal foam/gel/film/cream/ vaginal suppository.&#13;<br>&bull; Use of oral, injected or implanted hormonal methods of contraception or other forms of hormonal contraception that have comparable efficacy (failure rate &lt;1%), for example hormone vaginal ring or transdermal hormone contraception. In case of use of oral contraception, women should have been stable on the same pill for a minimum of three months.&#13;<br>&bull; Placement of an intrauterine device (IUD) or intrauterine system (IUS).&#13;<br>&#13;
+<br>Exclusion criteria at Baseline Visit (Visit 2):&#13;<br>1. Patients with clinically significant or uncontrolled systemic infection requiring active use of intravenous antibiotics/antivirals at baseline.&#13;<br>2. Patients who are in a critical care setting at the time of baseline requiring life support measures, such as mechanical ventilation and dialysis.&#13;<br>3. Patient with platelet count &le; 50 000/mm3, white blood cell (WBC) count &le; 3 000/mm3, ab-so&not;lute neutrophil count &le; 1 000/mm3 and hemoglobin &le; 8 g/dL.&#13;<br>4. Patients with more than one acute rejection 6 months prior to baseline and any acute re-jection within 6 weeks prior to baseline.&#13;<br>5. Patients with uncontrolled hyperlipidemia or proteinuria &ge; 1.0 g/ 24 h (Protein/Creatinine-Ratio).&#13;<br>6. Hepatitis C virus positive patient who needs an active antiviral treatment and/or human immuno&not;deficiency virus (HIV) positive patient. Negative laboratory results for HIV ob-tained 6 months prior to baseline are acceptable.&#13;<br>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">E.5 End points</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.5.1</td><td class="second">Primary end point(s)</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Demonstration that an immunosuppressive regimen based on everolimus plus MMF is superior compared to everolimus plus reduced TAC in preserving kidney function as measured by eGFR in maintenance liver transplant recipients.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.5.1.1</td><td class="second">Timepoint(s) of evaluation of this end point</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Month 6 </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.5.2</td><td class="second">Secondary end point(s)</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">&bull; Efficacy failure defined as graft loss, tBPAR, death and loss to follow-up.&#13;<br>&bull; Reasons for premature discontinuation of study medication and dose interruptions.&#13;<br>&bull; The incidence of de novo malignant tumors.</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.5.2.1</td><td class="second">Timepoint(s) of evaluation of this end point</td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">Month 24</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">E.6 and E.7 Scope of the trial</td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">E.6</td><td colspan="2">Scope of the trial</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.1</td><td class="second">Diagnosis</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.2</td><td class="second">Prophylaxis</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.3</td><td class="second">Therapy</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.4</td><td class="second">Safety</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.5</td><td class="second">Efficacy</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.6</td><td class="second">Pharmacokinetic</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.7</td><td class="second">Pharmacodynamic</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.8</td><td class="second">Bioequivalence</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.9</td><td class="second">Dose response</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.10</td><td class="second">Pharmacogenetic</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.11</td><td class="second">Pharmacogenomic</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.12</td><td class="second">Pharmacoeconomic</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.6.13</td><td class="second">Others</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">E.7</td><td colspan="2">Trial type and phase</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.1</td><td class="second">Human pharmacology (Phase I)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.1.1</td><td class="second">First administration to humans</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.1.2</td><td class="second">Bioequivalence study</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.1.3</td><td class="second">Other</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.1.3.1</td><td class="second">Other trial type description</td><td class="third"></td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.2</td><td class="second">Therapeutic exploratory (Phase II)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.3</td><td class="second">Therapeutic confirmatory (Phase III)</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.7.4</td><td class="second">Therapeutic use (Phase IV)</td><td class="third"> No </td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">E.8 Design of the trial</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1</td><td class="second">Controlled</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1.1</td><td class="second">Randomised</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1.2</td><td class="second">Open</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1.3</td><td class="second">Single blind</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1.4</td><td class="second">Double blind </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1.5</td><td class="second">Parallel group</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1.6</td><td class="second">Cross over </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.1.7</td><td class="second">Other</td><td class="third"> No </td>
+</tr>
+<tr>
+<td width="5%" class="cellYellow">E.8.2</td><td colspan="2"> Comparator of controlled trial</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.2.1</td><td class="second">Other medicinal product(s)</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.2.2</td><td class="second">Placebo </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.2.3</td><td class="second">Other</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.2.4</td><td class="second">Number of treatment arms in the trial</td><td class="third">2</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.3</td><td class="second">
+                                The trial involves single site in the Member State concerned
+                            </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.4</td><td class="second"> The trial involves multiple sites in the Member State concerned </td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.4.1</td><td class="second">Number of sites anticipated in Member State concerned</td><td class="third">6</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.5</td><td class="second">The trial involves multiple Member States</td><td class="third"> No </td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">E.8.6 Trial involving sites outside the EEA</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.6.1</td><td class="second">Trial being conducted both within and outside the EEA</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.6.2</td><td class="second">Trial being conducted completely outside of the EEA</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.7</td><td class="second">Trial has a data monitoring committee</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.8</td><td class="second">
+                        Definition of the end of the trial and justification where it is not the last
+                        visit of the last subject undergoing the trial
+                    </td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">LVLS</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">E.8.9 Initial estimate of the duration of the trial</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.9.1</td><td class="second">In the Member State concerned years</td><td class="third">5</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.9.1</td><td class="second">In the Member State concerned months</td><td class="third">0</td>
+</tr>
+<tr class="tricell">
+<td class="first">E.8.9.1</td><td class="second">In the Member State concerned days</td><td class="third">0</td>
+</tr>
+</tbody>
+</table><a name="F" class="hidden"></a><table id="section-f" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> F. Population of Trial Subjects </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">F.1 Age Range</td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.1</td><td class="second">Trial has subjects under 18</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.1.1</td><td class="second">In Utero</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.1.2</td><td class="second">Preterm newborn infants (up to gestational age &lt; 37 weeks)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.1.3</td><td class="second">Newborns (0-27 days)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.1.4</td><td class="second">Infants and toddlers (28 days-23 months)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.1.5</td><td class="second">Children (2-11years)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.1.6</td><td class="second">Adolescents (12-17 years)</td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.2</td><td class="second">Adults (18-64 years)</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.2.1</td><td class="second">Number of subjects for this age range: </td><td class="third">600</td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.3</td><td class="second">Elderly (&gt;=65 years)</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.1.3.1</td><td class="second">Number of subjects for this age range: </td><td class="third">144</td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">F.2 Gender</td>
+</tr>
+<tr class="tricell">
+<td class="first">F.2.1</td><td class="second">Female </td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.2.2</td><td class="second">Male</td><td class="third"> Yes </td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">F.3 Group of trial subjects</td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.1</td><td class="second">Healthy volunteers </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.2</td><td class="second">Patients </td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3</td><td class="second">Specific vulnerable populations </td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3.1</td><td class="second">Women of childbearing potential not using contraception
+                        </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3.2</td><td class="second">Women of child-bearing potential using contraception</td><td class="third"> Yes </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3.3</td><td class="second">Pregnant women </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3.4</td><td class="second">Nursing women </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3.5</td><td class="second">Emergency situation </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3.6</td><td class="second">Subjects incapable of giving consent personally </td><td class="third"> No </td>
+</tr>
+<tr class="tricell">
+<td class="first">F.3.3.7</td><td class="second">Others </td><td class="third"> No </td>
+</tr>
+<tr>
+<td colspan="3" class="cellBlue">F.4 Planned number of subjects to be included</td>
+</tr>
+<tr class="tricell">
+<td class="first">F.4.1</td><td class="second">In the member state</td><td class="third">744</td>
+</tr>
+<tr class="tricell">
+<td class="first">F.5</td><td class="second">
+                            Plans for treatment or care after the subject has ended the participation in the trial
+                            (if it is different from the expected normal treatment of that condition)
+                        </td><td class="third">
+<table border="1" width="100%">
+<tr>
+<td width="90%">After study completion, treatment of a patient should be according to discretion of the investigator.</td>
+</tr>
+</table>
+</td>
+</tr>
+</tbody>
+</table><a name="G" class="hidden"></a><table id="section-g" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> G. Investigator Networks to be involved in the Trial </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="3" class="cellBlue">G.4 Investigator Network to be involved in the Trial: 1</td>
+</tr>
+</tbody>
+</table><a name="N" class="hidden"></a><table id="section-n" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> N. Review by the Competent Authority or Ethics Committee in the country concerned </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tricell">
+<td class="first">N.</td><td class="second">Competent Authority Decision </td><td class="third">Authorised</td>
+</tr>
+<tr class="tricell">
+<td class="first">N.</td><td class="second">Date of Competent Authority Decision</td><td class="third">2015-07-30</td>
+</tr>
+<tr class="tricell">
+<td class="first">N.</td><td class="second">Ethics Committee Opinion of the trial application</td><td class="third">Favourable</td>
+</tr>
+<tr class="tricell">
+<td class="first">N.</td><td class="second">Ethics Committee Opinion: Reason(s) for unfavourable opinion</td><td class="third">
+<table border="1" width="100%"></table>
+</td>
+</tr>
+<tr class="tricell">
+<td class="first">N.</td><td class="second">Date of Ethics Committee Opinion</td><td class="third">2015-09-03</td>
+</tr>
+</tbody>
+</table><a name="P" class="hidden"></a><table id="section-p" class="section content">
+<thead>
+<tr>
+<th colspan="3">
+<div class="title"> P. End of Trial </div>
+<div class="controls">
+<img class="toggle-button"><a href="javascript:window.location.replace('#summary')"><img class="arrow"></a>
+</div>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tricell">
+<td class="first">P.</td><td class="second">End of Trial Status</td><td class="third">Completed</td>
+</tr>
+</tbody>
+</table>
+
+                        
+                    
+
+				</div>
+
+			
+		</div>
+		
+		
+
+
+<div id="footerContainer" class="width100">
+	<div class="container_12" id="footerMenuContainer">
+
+		<span class="leftFooter">
+			EU Clinical Trials Register Service Desk:
+			<a href="https://servicedesk.ema.europa.eu" class="whitefooterlink"
+					title="Click to open EMA Service Desk website">
+				https://servicedesk.ema.europa.eu
+			</a>
+			<br/>
+            
+            
+			European Medicines Agency &#169; 1995-2019 | 30 Churchill Place, Canary Wharf, London E14 5EU
+		</span>
+
+		<span class="rightFooter">
+			<a href="/disclaimer.html" class="whitefooterlink controls">
+				Legal notice
+			</a>
+		</span>
+	</div>
+</div>
+
+<div id="finalContainer" class="width100">
+	<div class="container_12">
+		<span class="leftFooter"><a href="http://www.ema.europa.eu" target="_blank"><img src="/ctr-search/img/ema_logo.png" width="300" height="48" alt="EMA"></a></span>
+		<span class="rightFooter"><a href="http://www.hma.eu" target="_blank"><img src="/ctr-search/img/hma_logo.png" width="80" height="48" alt="HMA"></a></span>
+	</div>
+</div>
+
+	</body>
+	
+</html>
