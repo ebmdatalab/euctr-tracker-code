@@ -57,20 +57,21 @@ class Record(scrapy.Item):
         self['meta_id'] = ident
         self['meta_source'] = source
 
-        # Add data
+        # Check for existence of fields not defined in our schema
         undefined = []
         for key, value in data.items():
             field = self.fields.get(key)
             if field is None:
                 undefined.append(key)
                 continue
-            if value is None:
-                continue
-            value = field.parse(value)
-            self[key] = value
+
+        # Set values for everything that is in our schema
+        for key, value in self.fields.items():
+            d = value.parse(data.get(key, None))
+            self[key] = d
+
         for key in undefined:
             logger.warning('Undefined field: %s - %s' % (self, key))
-
         return self
 
     def write(self, conf, conn):
@@ -81,18 +82,16 @@ class Record(scrapy.Item):
             conn (dict): connections dictionary
 
         """
-        #config.SENTRY.extra_context({
-        #    'record_table': self.table,
-        #    'record_id': self.__primary_key,
-        #})
-
-        if self.table not in conn['warehouse'].tables:
+        db = conn['warehouse']
+        if self.table not in db.tables:
             if conf['ENV'] in ['development', 'testing']:
-                table = conn['warehouse'].create_table(
+                table = db.create_table(
                         self.table,
                         primary_id=self.__primary_key,
-                        primary_type='String')
-        table = conn['warehouse'][self.table]
+                        primary_type=fields.Text.column_type)
+                # work around a bug whereby the table is not persisted
+                table.table
+        table = db[self.table]
         action = 'created'
         if table.find_one(**{self.__primary_key: self[self.__primary_key]}):
             action = 'updated'
@@ -101,8 +100,6 @@ class Record(scrapy.Item):
         ensure_fields = False
         if conf['ENV'] in ['development', 'testing']:
             ensure_fields = True
-        table.upsert(
-            self, [self.__primary_key],
-            ensure=ensure_fields, types=self.__column_types)
+        table.upsert(self, [self.__primary_key], ensure=ensure_fields, types=self.__column_types)
 
         logger.debug('Record - %s: %s - %s fields', action, self, len(self))

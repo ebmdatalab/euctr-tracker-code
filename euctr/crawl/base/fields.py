@@ -45,6 +45,8 @@ class Integer(Base):
     column_type = sa.Integer
 
     def parse(self, value):
+        if value is None:
+            return None
         return int(value)
 
 
@@ -59,9 +61,12 @@ class Boolean(Base):
         self.__true_value = true_value
 
     def parse(self, value):
+        if value is None:
+            return None
         if self.__true_value is not None:
             value = (value.lower() == self.__true_value.lower())
         return value
+
 
 
 class Date(Base):
@@ -77,6 +82,8 @@ class Date(Base):
         self.__formats = formats
 
     def parse(self, value):
+        if value is None:
+            return None
         for i, fmt in enumerate(self.__formats):
             try:
                 return helpers.parse_date(value, format=fmt)
@@ -97,6 +104,8 @@ class Datetime(Base):
         self.__format = format
 
     def parse(self, value):
+        if value is None:
+            return None
         if self.__format is not None:
             value = helpers.parse_datetime(value, format=self.__format)
         return value
@@ -125,7 +134,9 @@ class Array(Base):
         return self.__column_type
 
     def parse(self, value):
+        if value is None:
+            return None
         result = []
         for item in value:
-            result.append(self.__field.parse(item))
+            result.append(self._field.parse(item))
         return result

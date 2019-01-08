@@ -7,5 +7,5 @@ from .spider import Spider
 
 def collect(conf, conn, date_from=None, date_to=None, query=None):
     process = CrawlerProcess(conf['SCRAPY_SETTINGS'])
-    process.crawl(Spider, conn=conn, date_from=date_from, date_to=date_to, query=query)
+    process.crawl(Spider, conf=conf, conn=conn, date_from=date_from, date_to=date_to, query=query)
     process.start()

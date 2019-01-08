@@ -38,8 +38,6 @@ SCRAPY_SETTINGS = {
         'crawl.base.pipelines.Warehouse': 100,
     },
     'DOWNLOADER_MIDDLEWARES': {'scrapy_crawlera.CrawleraMiddleware': 600},
-    'CRAWLERA_ENABLED': CRAWLERA_APIKEY != None,
+    'CRAWLERA_ENABLED': CRAWLERA_APIKEY or False,
     'CRAWLERA_APIKEY': CRAWLERA_APIKEY
 }
-
-
