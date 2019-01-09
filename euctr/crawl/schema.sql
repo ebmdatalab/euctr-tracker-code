@@ -194,7 +194,7 @@ AS $function$
                       NEW.meta_updated := now();
                       RETURN NEW;
                     END;
-                    $function$
+                    $function$;
 
 CREATE TRIGGER euctr_set_meta_updated BEFORE UPDATE ON euctr FOR EACH ROW EXECUTE PROCEDURE set_meta_updated();
 
@@ -212,4 +212,3 @@ GRANT ALL ON TABLE euctr TO euctr;
 --
 -- PostgreSQL database dump complete
 --
-

@@ -1,5 +1,6 @@
 import datetime
 import os
+import pathlib
 import shutil
 import subprocess
 import tempfile
@@ -28,8 +29,20 @@ def crawl_report(db, registry_id):
     assert "['cached']" in output, output + "\n(should be a fixture)"
 
 
+def create_table(db):
+    """Create a table according to the production schema
+    """
+    # We replace any roles with the `postgres` role used by the
+    # `testing.postgresql` package.
+    with open(pathlib.Path(__file__).parent.parent / 'schema.sql', 'r') as f:
+        sql = f.read().replace("FROM euctr", "FROM postgres")
+        sql = sql.replace("TO euctr", "To postgres")
+        query(db, sql, [])
+
+
 def query(db, sql, params):
     conn = psycopg2.connect(db)
+    conn.autocommit = True
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cur.execute(sql, params)
     return cur
@@ -73,26 +86,30 @@ class ScrapingTestCase(SimpleTestCase):
 
         registry_id = '2015-000590-12'
         registry_id_with_country = "%s-DE" % registry_id
-        trial_end_sql = ("SELECT date_of_the_global_end_of_the_trial "
+        trial_end_sql = ("SELECT "
+                         "meta_updated, date_of_the_global_end_of_the_trial "
                          "FROM euctr "
                          "WHERE eudract_number_with_country = %s")
         with testing.postgresql.Postgresql() as postgresql:
             # testing.postgresql creates a temporary postgres database
             # and drops it again when the context is exited
+            db = postgresql.url()
+            create_table(db)
 
             # First scrape should get a date for
             # the trial end
-            db = postgresql.url()
             setup_response('response_body_date')
             crawl_report(db, registry_id)
             cur = query(db, trial_end_sql, [registry_id_with_country])
-            scrape_date = cur.fetchone()[0]
-            self.assertEqual(scrape_date, datetime.date(2015, 10, 5))
+            res = cur.fetchone()
+            self.assertEqual(res[0].date(), datetime.date.today())
+            self.assertEqual(res[1], datetime.date(2015, 10, 5))
 
             # In the second scrape, there is no value here (it's
             # empty). This should be reflected in the database.
             setup_response('response_body_nodate')
             crawl_report(db, registry_id)
             cur = query(db, trial_end_sql, [registry_id_with_country])
-            scrape_date = cur.fetchone()[0]
-            self.assertEqual(scrape_date, None)
+            res = cur.fetchone()
+            self.assertEqual(res[0].date(), datetime.date.today())
+            self.assertEqual(res[1], None)

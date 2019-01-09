@@ -48,6 +48,21 @@ class Record(scrapy.Item):
         for key, field in self.fields.items():
             self.__column_types[key] = field.column_type
 
+        # Check for existence of fields not defined in our schema
+        undefined = []
+        for key, value in data.items():
+            field = self.fields.get(key)
+            if field is None:
+                undefined.append(key)
+                continue
+        for key in undefined:
+            logger.warning('Undefined field: %s - %s' % (self, key))
+
+        # Set values for everything that is in our schema
+        for key, value in self.fields.items():
+            d = value.parse(data.get(key, None))
+            self[key] = d
+
         # Add metadata
         ident = uuid.uuid1().hex
         self.fields['meta_id'] = fields.Text()
@@ -57,21 +72,6 @@ class Record(scrapy.Item):
         self['meta_id'] = ident
         self['meta_source'] = source
 
-        # Check for existence of fields not defined in our schema
-        undefined = []
-        for key, value in data.items():
-            field = self.fields.get(key)
-            if field is None:
-                undefined.append(key)
-                continue
-
-        # Set values for everything that is in our schema
-        for key, value in self.fields.items():
-            d = value.parse(data.get(key, None))
-            self[key] = d
-
-        for key in undefined:
-            logger.warning('Undefined field: %s - %s' % (self, key))
         return self
 
     def write(self, conf, conn):
@@ -100,6 +100,7 @@ class Record(scrapy.Item):
         ensure_fields = False
         if conf['ENV'] in ['development', 'testing']:
             ensure_fields = True
+
         table.upsert(self, [self.__primary_key], ensure=ensure_fields, types=self.__column_types)
 
         logger.debug('Record - %s: %s - %s fields', action, self, len(self))
