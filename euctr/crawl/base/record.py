@@ -60,8 +60,9 @@ class Record(scrapy.Item):
 
         # Set values for everything that is in our schema
         for key, value in self.fields.items():
-            d = value.parse(data.get(key, None))
-            self[key] = d
+            if not key.startswith('meta_'):
+                d = value.parse(data.get(key, None))
+                self[key] = d
 
         # Add metadata
         ident = uuid.uuid1().hex
