@@ -161,7 +161,7 @@ class ScrapingTestCase(SimpleTestCase):
                  'name_of_sponsor',
                  'trial_title',
                  'trial_url',
-                 'comp_date_while_ongoing'])
+                 'comp_date_while_ongoing', 'contains_non_eu', 'only_non_eu'])
             self.assertEqual(
                 rows[1],
                 ['2015-000590-12', '1', '',
@@ -172,4 +172,4 @@ class ScrapingTestCase(SimpleTestCase):
                  '1', '1',
                  'Novartis Pharma GmbH', 'A 24-month multi-center, open-label, randomized, controlled study to evaluate the evolution of renal function in maintenance liver transplant recipients receiving either RAD001 (everolimus) plus reduc...',
                  'https://www.clinicaltrialsregister.eu/ctr-search/search?query=2015-000590-12',
-                 '0'])
+                 '0', '0', '0'])

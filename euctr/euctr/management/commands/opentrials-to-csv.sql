@@ -49,6 +49,16 @@ FROM
 CREATE TEMP TABLE temp1 AS
 SELECT
     eudract_number,
+        SUM(CASE
+      WHEN eudract_number_with_country LIKE '%%-3rd' THEN 1
+      ELSE 0 END) AS contains_non_eu,
+    CASE
+      WHEN (SUM(CASE
+        WHEN eudract_number_with_country LIKE
+        '%%-3rd' THEN 1
+        ELSE 0 END)) = COUNT(eudract_number) THEN 1
+        ELSE 0
+     END AS only_non_eu,
     min (CAST (full_title_of_the_trial AS text)) AS full_title_of_the_trial,
     max (CAST (name_or_abbreviated_title_of_the_trial_where_available as text)) AS abbreviated_trial_name,
     count (distinct(eudract_number_with_country)) AS Total,
@@ -286,7 +296,9 @@ SELECT
         AND (completed + terminated) < total
         THEN 1
         ELSE 0
-    END AS comp_date_while_ongoing
+    END AS comp_date_while_ongoing,
+    contains_non_eu,
+    only_non_eu
 FROM
     temp1
     LEFT JOIN Spons3 ON temp1.eudract_number = Spons3.Trial_ID;
