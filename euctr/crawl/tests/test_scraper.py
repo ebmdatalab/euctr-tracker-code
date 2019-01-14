@@ -1,3 +1,4 @@
+import csv
 import datetime
 import os
 import pathlib
@@ -6,6 +7,8 @@ import subprocess
 import tempfile
 
 from django.test import SimpleTestCase
+from django.test.utils import override_settings
+from django.core.management import call_command
 import psycopg2
 import psycopg2.extras
 import testing.postgresql
@@ -20,7 +23,7 @@ def crawl_report(db, registry_id):
              'run_crawler',
              '--query=' + registry_id,
              '--config=crawl.base.test_config',
-             '--db=' + db],
+             '--dburl=' + db],
             stdout=f,
             stderr=f
         )
@@ -57,7 +60,27 @@ def setup_response(desired_gzipped_response):
         os.path.join(fixture_dir, 'response_body'))
 
 
+def setup_csv_fixture():
+    """Create an empty file which can be written to by CSV creation
+    command
+    """
+    with tempfile.NamedTemporaryFile() as f:
+        f.write(b"")
+        return f.name
+
+# Setting up a temp file in package namespace means it's not
+# garbage-collected until after the tests are run, meaning we can use
+# it throughout the tests
+f = tempfile.NamedTemporaryFile()
+f.write(b"")
+
+TEST_SETTINGS = {
+    'SOURCE_CSV_FILE': f.name
+}
+
+
 class ScrapingTestCase(SimpleTestCase):
+    @override_settings(**TEST_SETTINGS)
     def test_fields_are_nulled(self):
         """When a field has a value which is absent in a future scrape, its
         value should be nulled in the database.
@@ -113,3 +136,30 @@ class ScrapingTestCase(SimpleTestCase):
             res = cur.fetchone()
             self.assertEqual(res[0].date(), datetime.date.today())
             self.assertEqual(res[1], None)
+
+            # Now convert the database contents to a CSV
+            call_command('get_trials_from_db', dburl=db)
+            rows = list(csv.reader(open(TEST_SETTINGS['SOURCE_CSV_FILE'], "r")))
+            self.assertEqual(
+                rows[0],
+                ['trial_id', 'number_of_countries', 'min_end_date',
+                 'max_end_date', 'comp_date', 'has_results', 'includes_pip',
+                 'exempt', 'single_blind', 'rare_disease', 'phase',
+                 'bioequivalence_study', 'health_volunteers', 'trial_status',
+                 'any_terminated', 'all_terminated', 'results_expected',
+                 'all_completed_no_comp_date', 'sponsor_status',
+                 'name_of_sponsor',
+                 'trial_title',
+                 'trial_url',
+                 'comp_date_while_ongoing'])
+            self.assertEqual(
+                rows[1],
+                ['2015-000590-12', '1', '',
+                 '', '0', '0', '0',
+                 '0', '0', '0', '3',
+                 '0', '0', '1',
+                 '0', '0', '0',
+                 '1', '1',
+                 'Novartis Pharma GmbH', 'A 24-month multi-center, open-label, randomized, controlled study to evaluate the evolution of renal function in maintenance liver transplant recipients receiving either RAD001 (everolimus) plus reduc...',
+                 'https://www.clinicaltrialsregister.eu/ctr-search/search?query=2015-000590-12',
+                 '0'])

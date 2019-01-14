@@ -20,11 +20,16 @@ def work_out_status(t):
     status = None
 
     assert t.results_expected in (0, 1)
+    assert t.exempt in (0, 1)
     assert t.trial_status in (0, 1, 2, 3, 4)
     assert t.comp_date_while_ongoing == 0 or (t.trial_status in (0, 2))
     assert t.all_completed_no_comp_date == 0 or t.trial_status == 1
-
-    if t.trial_status == 0 or t.trial_status == 2: # 0 means none done, 2 means some protocols are done
+    if t.exempt == 1:
+        if t.has_results == 1:
+            overall_status = 'exempt-with-results'
+        else:
+            overall_status = 'exempt'
+    elif t.trial_status == 0 or t.trial_status == 2: # 0 means none done, 2 means some protocols are done
         if t.comp_date_while_ongoing:
             overall_status = "error-ongoing-has-comp-date"
         else:
@@ -33,6 +38,7 @@ def work_out_status(t):
             else:
                 overall_status = "ongoing"
     elif t.trial_status == 1:
+        # everything has been completed or terminated
         if t.all_completed_no_comp_date:
             overall_status = "error-completed-no-comp-date"
         elif t.results_expected == 0:
@@ -49,7 +55,8 @@ def work_out_status(t):
         # suspended, withdrawn, not authorised, prohibited by CA
         overall_status = "other"
     elif t.trial_status == 4:
-        # a blank trial status usually indicated a paediatric trial taking place wholly outside of the EU/EEA
+        # a blank trial status usually indicated a paediatric trial
+        # taking place wholly outside of the EU/EEA
         overall_status = "no-trial-status"
 
     return overall_status
