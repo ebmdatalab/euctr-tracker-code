@@ -80,7 +80,6 @@ TEST_SETTINGS = {
 
 
 class ScrapingTestCase(SimpleTestCase):
-    @override_settings(**TEST_SETTINGS)
     def test_fields_are_nulled(self):
         """When a field has a value which is absent in a future scrape, its
         value should be nulled in the database.
@@ -136,6 +135,17 @@ class ScrapingTestCase(SimpleTestCase):
             res = cur.fetchone()
             self.assertEqual(res[0].date(), datetime.date.today())
             self.assertEqual(res[1], None)
+
+    @override_settings(**TEST_SETTINGS)
+    def test_get_trials_from_db(self):
+        registry_id = '2015-000590-12'
+        with testing.postgresql.Postgresql() as postgresql:
+            # testing.postgresql creates a temporary postgres database
+            # and drops it again when the context is exited
+            db = postgresql.url()
+            create_table(db)
+            setup_response('response_body_nodate')
+            crawl_report(db, registry_id)
 
             # Now convert the database contents to a CSV
             call_command('get_trials_from_db', dburl=db)
