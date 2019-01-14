@@ -125,6 +125,9 @@
             {% elif trial.overall_status == "exempt"%}
               <span class="label label-default label-default">
               Exempt</span>
+            {% elif trial.overall_status == "terminated" %}
+              <span class="label label-default label-default">
+              Terminated</span>
             {% elif trial.overall_status == "exempt-with-results"%}
               <span class="label label-default label-default">
               Exempt, with results</span>
