@@ -155,7 +155,7 @@
               </span>
             {% elif trial.overall_status == "no-trial-status" %}
               <span class="label label-default">
-              No trial status on register</span>
+              No trial status on register{% if trial.has_results%}, and reported results{% endif %}</span>
             {% else %}
               EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
             {% endif %}
