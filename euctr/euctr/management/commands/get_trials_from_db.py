@@ -10,21 +10,27 @@ import hashlib
 
 from atomicwrites import atomic_write
 
-
+from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
-TRIALS_CSV_FILE = '../../euctr-tracker-data/trials.csv'
-TRIALS_META_FILE = '../../euctr-tracker-data/trials.csv.json'
+TRIALS_CSV_FILE = settings.SOURCE_CSV_FILE
+TRIALS_META_FILE = settings.SOURCE_META_FILE
 PAPER_CSV_FILE = '../../euctr-tracker-data/paper_query.csv'
 
 class Command(BaseCommand):
-    help = 'Fetches trials data from OpenTrials PostgredSQL database and saves to trials.csv'
+    help = 'Fetches trials data from OpenTrials PostgreSQL database and saves to trials.csv'
+
+    def add_arguments(self, parser):
+        default_db = os.environ.get('EUCTR_OPENTRIALS_DB', None)
+        parser.add_argument('--dburl',
+                            type=str,
+                            default=default_db)
 
     def handle(self, *args, **options):
         verbosity = int(options['verbosity'])
 
-        opentrials_db = os.environ['EUCTR_OPENTRIALS_DB']
+        opentrials_db = options['dburl']
         conn = psycopg2.connect(opentrials_db)
         cur = conn.cursor()
 

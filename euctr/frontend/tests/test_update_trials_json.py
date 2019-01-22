@@ -42,7 +42,7 @@ def temp_headline_history():
     f.close()
     return p
 
-TEST_SETTINGS={
+TEST_SETTINGS = {
     'SOURCE_CSV_FILE': fixture_path('trials.csv'),
     'SOURCE_META_FILE': fixture_path('trials.csv.json'),
     'NORMALIZE_FILE': fixture_path('normalized_sponsor_names.xlsx'),
@@ -67,9 +67,10 @@ class UpdateTrialsJSONTestCase(SimpleTestCase):
         call_command('update_trials_json')
 
     def test_all_trials(self):
-        self.assertEqual(
-            generated('OUTPUT_ALL_TRIALS_FILE'),
-            expected('all_trials.json'))
+        for pair in zip(
+                generated('OUTPUT_ALL_TRIALS_FILE'),
+                expected('all_trials.json')):
+            self.assertEqual(pair[0], pair[1])
 
     def test_headline(self):
         self.assertEqual(

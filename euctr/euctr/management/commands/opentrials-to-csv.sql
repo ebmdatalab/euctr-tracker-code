@@ -44,11 +44,21 @@ SELECT
     END AS Sponsor_Status
 FROM
     Spons2;
- 
+
 
 CREATE TEMP TABLE temp1 AS
 SELECT
     eudract_number,
+        SUM(CASE
+      WHEN eudract_number_with_country LIKE '%%-3rd' THEN 1
+      ELSE 0 END) AS contains_non_eu,
+    CASE
+      WHEN (SUM(CASE
+        WHEN eudract_number_with_country LIKE
+        '%%-3rd' THEN 1
+        ELSE 0 END)) = COUNT(eudract_number) THEN 1
+        ELSE 0
+     END AS only_non_eu,
     min (CAST (full_title_of_the_trial AS text)) AS full_title_of_the_trial,
     max (CAST (name_or_abbreviated_title_of_the_trial_where_available as text)) AS abbreviated_trial_name,
     count (distinct(eudract_number_with_country)) AS Total,
@@ -202,6 +212,10 @@ SELECT
         ELSE 0
     END AS Includes_PIP,
     CASE
+        WHEN Includes_PIP = 0 AND phase_i_trial = Total THEN 1
+        ELSE 0
+    END AS exempt,
+    CASE
         WHEN Not_Single_Blind = Total THEN 0
         WHEN Single_Blind = Total THEN 1
         ELSE 2
@@ -252,7 +266,7 @@ SELECT
         WHEN completed + terminated = Total
         AND comp_date > 0
         AND max_end_date < %(due_date_cutoff)s
-	AND NOT (phase_i_trial = Total AND Includes_PIP = 0)
+        AND NOT (phase_i_trial = Total AND Includes_PIP = 0)
         THEN 1
         ELSE 0
     END AS results_expected,
@@ -261,28 +275,30 @@ SELECT
         AND comp_date = 0
         THEN 1
         ELSE 0
-    END AS all_completed_no_comp_date,     
+    END AS all_completed_no_comp_date,
     Spons3.Sponsor_Status,
     Spons3.name_of_sponsor AS name_of_sponsor,
     CASE
-	WHEN full_title_of_the_trial IS NULL
-	AND abbreviated_trial_name IS NOT NULL 
-	THEN abbreviated_trial_name
-	WHEN full_title_of_the_trial IS NULL
-	AND abbreviated_trial_name IS NULL
-	THEN 'No Title'
-	WHEN char_length(regexp_replace(full_title_of_the_trial, E'[\n\r].*$', '', 'g')) > 200
-	THEN concat(substring(regexp_replace(full_title_of_the_trial, E'[\n\r].*$', '', 'g'), 1,200), '...')
-	ELSE regexp_replace(full_title_of_the_trial, E'[\n\r].*$', '', 'g')
+        WHEN full_title_of_the_trial IS NULL
+        AND abbreviated_trial_name IS NOT NULL
+        THEN abbreviated_trial_name
+        WHEN full_title_of_the_trial IS NULL
+        AND abbreviated_trial_name IS NULL
+        THEN 'No Title'
+        WHEN char_length(regexp_replace(full_title_of_the_trial, E'[\n\r].*$', '', 'g')) > 200
+        THEN concat(substring(regexp_replace(full_title_of_the_trial, E'[\n\r].*$', '', 'g'), 1,200), '...')
+        ELSE regexp_replace(full_title_of_the_trial, E'[\n\r].*$', '', 'g')
     END AS trial_title,
-    'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' || eudract_number as trial_url,	
-    CASE	
-	WHEN comp_date > 0
-	AND (completed + terminated) > 0
+    'https://www.clinicaltrialsregister.eu/ctr-search/search?query=' || eudract_number as trial_url,
+    CASE
+        WHEN comp_date > 0
+        AND (completed + terminated) > 0
         AND (completed + terminated) < total
-	THEN 1
-	ELSE 0
-    END AS comp_date_while_ongoing
+        THEN 1
+        ELSE 0
+    END AS comp_date_while_ongoing,
+    contains_non_eu,
+    only_non_eu
 FROM
     temp1
     LEFT JOIN Spons3 ON temp1.eudract_number = Spons3.Trial_ID;
