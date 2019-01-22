@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^sponsor/(?P<slug>[a-z0-9-]+)/screenshot.png$', frontend.views.sponsor_screenshot_png, name="sponsor_screenshot_png"),
 
     url(r'^about$', frontend.views.about),
+    url(r'^fund$', frontend.views.fund),
 ]
