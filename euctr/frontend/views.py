@@ -92,7 +92,7 @@ def sponsor_screenshot_png(request, slug):
 
 
 #############################################################################
-# About page
+# Static pages
 
 def about(request):
     context = models.get_headlines()
@@ -102,3 +102,7 @@ def about(request):
     )
 
     return render(request, "about.html", context=context)
+
+
+def fund(request):
+    return render(request, "fund.html")
