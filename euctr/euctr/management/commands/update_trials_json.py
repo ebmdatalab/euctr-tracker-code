@@ -34,8 +34,6 @@ def work_out_status(t):
             overall_status = 'exempt-with-results'
         else:
             overall_status = 'exempt'
-    elif t.all_terminated:
-        overall_status = 'terminated'
     elif t.trial_status == 0 or t.trial_status == 2: # 0 means none done, 2 means some protocols are done
         if t.comp_date_while_ongoing:
             overall_status = "error-ongoing-has-comp-date"
@@ -90,6 +88,7 @@ def get_trials():
     )
     trials['raw_slug'] = slugify_vec(trials['name_of_sponsor'])
     return trials
+
 
 def get_normalized_sponsors():
     # XXX TODO: turn source into a google sheet, and rename columns
