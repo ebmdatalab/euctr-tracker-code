@@ -125,9 +125,6 @@
             {% elif trial.overall_status == "exempt"%}
               <span class="label label-default label-default">
               Exempt</span>
-            {% elif trial.overall_status == "terminated" %}
-              <span class="label label-default label-default">
-              Terminated</span>
             {% elif trial.overall_status == "exempt-with-results"%}
               <span class="label label-default label-default">
               Exempt, with results</span>
@@ -165,6 +162,12 @@
             {% else %}
               EU Trials Tracker internal error &mdash; {{ trial.overall_status }}
             {% endif %}
+
+            <!-- separate label for terminated -->
+            {% if trial.all_terminated %}
+              <span class="label label-warning">Terminated</span>
+            {% endif %}
+
          </td>
 
           <td><a href="{{ trial.trial_url}}">{{ trial.trial_id }}</a></td>
