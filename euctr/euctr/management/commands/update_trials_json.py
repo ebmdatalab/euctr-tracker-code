@@ -293,7 +293,9 @@ def make_sponsors_json(trials_and_sponsors):
     inconsistent_trials = trials_and_sponsors[
         (trials_and_sponsors['overall_status'] == 'error-completed-no-comp-date') |
         (trials_and_sponsors['overall_status'] == 'error-ongoing-has-comp-date') |
-        (trials_and_sponsors['overall_status'] == 'no-trial-status')
+        (trials_and_sponsors['overall_status'] == 'no-trial-status') |
+        (trials_and_sponsors['overall_status'] == 'outside-eu') |
+        (trials_and_sponsors['overall_status'] == 'partly-outside-eu')
     ]
     inconsistent_trials_count = inconsistent_trials.groupby('slug').size()
     all_sponsors['inconsistent_trials'] = inconsistent_trials_count
@@ -359,7 +361,9 @@ def make_headline_json(all_trials, all_sponsors):
         all_trials[all_trials.overall_status.isin(
             ['error-completed-no-comp-date',
              'error-ongoing-has-comp-date',
-             'no-trial-status'])
+             'no-trial-status',
+             'outside-eu',
+             'partly-outside-eu'])
         ].trial_id.unique())
     headline['percent_inconsistent'] = round(
         headline['inconsistent_trials'] / headline['total_trials'] * 100, 1
