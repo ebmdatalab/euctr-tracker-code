@@ -14,6 +14,19 @@ slugify_vec = np.vectorize(slugify)
 pandas.set_option('display.max_columns', 500)
 pandas.set_option('display.width', 1000)
 
+INCONSISTENT_STATUSES = [
+    'error-completed-no-comp-date',
+    'outside-eu',
+    'partly-outside-eu',
+    'error-ongoing-has-comp-date',
+    'no-trial-status']
+
+DUE_STATUSES = [
+    'reported',
+    'completed-due'
+]
+
+
 # For given row of trial data, work out the overall status for display in the
 # user interface in rows of the table.
 def work_out_status(t):
@@ -221,14 +234,13 @@ def make_sponsors_json(trials_and_sponsors):
         'normalized_parent_name',
         'has_results',
         'results_expected',
-        'total_trials'
+        'total_trials',
+        'overall_status',
     ]]
     sponsor_grouped = sponsors.groupby('slug')
     # ... count up totals
     def do_counts(g):
-        due = g[g['results_expected'] == 1]
-
-        # These should be the same for all trials of a sponsor
+        due = g[g.overall_status.isin(DUE_STATUSES)]
         assert len(g['slug'].value_counts()) == 1
         assert len(g['total_trials'].value_counts()) == 1
 
@@ -290,11 +302,10 @@ def make_sponsors_json(trials_and_sponsors):
                     "name": child["sponsor_name"]
                 })
     # ... count number of trials with inconsistent data
+
     inconsistent_trials = trials_and_sponsors[
-        (trials_and_sponsors['overall_status'] == 'error-completed-no-comp-date') |
-        (trials_and_sponsors['overall_status'] == 'error-ongoing-has-comp-date') |
-        (trials_and_sponsors['overall_status'] == 'no-trial-status')
-    ]
+        trials_and_sponsors.overall_status.isin(INCONSISTENT_STATUSES)]
+
     inconsistent_trials_count = inconsistent_trials.groupby('slug').size()
     all_sponsors['inconsistent_trials'] = inconsistent_trials_count
     all_sponsors['inconsistent_trials'].fillna(0.0, inplace=True)
@@ -303,6 +314,7 @@ def make_sponsors_json(trials_and_sponsors):
     all_sponsors.reset_index(level=0, inplace=True)
     # ... count number not yet due
     all_sponsors['not_yet_due_trials'] = all_sponsors['total_trials'] - all_sponsors['total_due'] - all_sponsors['inconsistent_trials']
+
     # ... work out percentages
     all_sponsors['percent_reported'] = np.round(
         all_sponsors['total_reported'] /
@@ -358,11 +370,7 @@ def make_headline_json(all_trials, all_sponsors):
     # .. trials with inconsistent data
     headline['inconsistent_trials'] = len(
         all_trials[all_trials.overall_status.isin(
-            ['error-completed-no-comp-date',
-             'outside-eu',
-             'partly-outside-eu',
-             'error-ongoing-has-comp-date',
-             'no-trial-status'])
+            INCONSISTENT_STATUSES)
         ].trial_id.unique())
     headline['percent_inconsistent'] = round(
         headline['inconsistent_trials'] / headline['total_trials'] * 100, 1
@@ -388,6 +396,7 @@ class Command(BaseCommand):
         # All trials metadata file
         all_trials = get_trials()
         sponsors = get_normalized_sponsors()
+
         trials_and_sponsors = merge_trials_and_sponsors(all_trials, sponsors)
         # At this stage, we now have one row per trial,
         make_trials_json(trials_and_sponsors)
