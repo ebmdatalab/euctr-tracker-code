@@ -4,9 +4,9 @@
     "due_trials": 2,
     "due_trials_with_results": 1,
     "due_trials_without_results": 1,
-    "inconsistent_trials": 4,
+    "inconsistent_trials": 5,
     "major_sponsors_count": 2,
-    "percent_inconsistent": 57.1,
+    "percent_inconsistent": 71.4,
     "percent_with_results": 50.0,
     "scrape_date": "2018-01-17",
     "total_trials": 7

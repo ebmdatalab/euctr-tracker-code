@@ -334,6 +334,7 @@ def make_sponsors_json(trials_and_sponsors):
 def unique_trials_count(df):
     return len(df.trial_id.unique())
 
+
 def make_headline_json(all_trials, all_sponsors):
     trials_meta = json.load(open(settings.SOURCE_META_FILE))
     # Headline counts file, used for things like front page large numbers
@@ -358,6 +359,8 @@ def make_headline_json(all_trials, all_sponsors):
     headline['inconsistent_trials'] = len(
         all_trials[all_trials.overall_status.isin(
             ['error-completed-no-comp-date',
+             'outside-eu',
+             'partly-outside-eu',
              'error-ongoing-has-comp-date',
              'no-trial-status'])
         ].trial_id.unique())
@@ -376,6 +379,7 @@ def make_headline_json(all_trials, all_sponsors):
     headline_history[headline['scrape_date']] = headline
     with open(settings.OUTPUT_HEADLINE_HISTORY, 'w') as outfile:
         json.dump(headline_history, outfile, indent=4, sort_keys=True)
+
 
 class Command(BaseCommand):
     help = 'Converts euctr-tracker-data/trials.csv into various JSON files that the Django app needs'
