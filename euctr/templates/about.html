@@ -27,7 +27,8 @@
         </p>
 
         <p>The best currently available evidence shows that around
-          half of all trials go unreported: this means that doctors
+          <a href="https://www.ncbi.nlm.nih.gov/pubmed/25536072">
+          half of all trials</a> go unreported: this means that doctors
           and patients see only a partial, biased fraction of the true
           evidence. We cannot make informed decisions about treatments
           unless all the data is reported.  Under EU rules, from
@@ -68,32 +69,34 @@
           We use the results of clinical trials to make real-world
           decisions about which treatments work best. We can’t make
           informed choices if the results of clinical trials are
-          withheld from doctors, researchers, and patients.
+          withheld from doctors, researchers, and patients. Read more
+          about this from the <a href="https://alltrials.net">AllTrials Campaign</a>.
         </p>
 
-        <h2 id="journal-paper">Where Can I Read the Journal Paper About This?</h2>
+        <h2 id="journal-paper">Have You Published Anything About This?</h2>
         <p>
-          Full details of our research is published in the academic
-          paper "Compliance With Requirement to Report Results on the
-          EU Clinical Trials Register: a Cohort Study and Web
-          Resource" by Ben Goldacre, Nicholas J DeVito, Carl Heneghan,
-          Francis Irving, Seb Bacon, Jessica Fleminger, Helen Curtis
-          and Open Knowledge International. This is a long and
-          detailed analysis that describes the background and
-          implications of the data at length, gives technical
-          information about our methods, and reports further
-          statistical analyses such as factors associated with
-          reporting, or not reporting, trial results.
+          Yes! You can read our full paper including further statistical
+          analyses, technical details regarding our methods, and a longer
+          discussion of the background and implications of this work in
+          <a href="https://www.bmj.com/content/362/bmj.k3218">The BMJ</a>
+        </p>
+
+          <b>Citation:</b>
+        <p>
+          Goldacre B, DeVito NJ, Heneghan C, et al. Compliance with
+                requirement to report results on the EU Clinical Trials Register:
+                cohort study and web resource. BMJ 2018;<b>362</b>:k3218.
+
         </p>
 
         <h2 id="who">Who Made the EU Trials Tracker?</h2>
-        <p>The <a href="https://ebmdatalab.net/">Evidence-Based
-        Medicine Data Lab</a> at Oxford University: we are a truly
-        multi-disciplinary team of clinicians, academics, and software
+        <p>The <a href="https://ebmdatalab.net/">DataLab</a> at the University of Oxford:
+        we are a truly multi-disciplinary team of clinicians, academics, and software
         engineers working together to make data more impactful in the
-        real world. Francis Irving was the software engineer for the
+        real world. Francis Irving and Seb Bacon were the software engineers for the
         site; Ben Goldacre was the principal investigator; Nick DeVito
-        was the researcher.
+        was the researcher; with contributions from the DataLab team and
+        Open Knowledge International.
         </p>
 
         <h2 id="contact">How Do We Contact You?</h2>
@@ -107,10 +110,9 @@
         clinical trials is current and regularly updated: so that
         sponsors are always motivated to improve; and sponsors who do
         improve can see their good work reflected in public. The
-        current data was taken from the register over a period of a
-        few days starting on {{ scrape_date }}.  All clinical trials
-        on medicinal products (drugs and vaccines) conducted in Europe
-        since 2004 are in the register. For full details, see the
+        current data was taken from the register starting on {{ scrape_date }}.
+        All clinical trials on medicinal products (drugs and vaccines) conducted
+        in Europe since 2004 are in the register. For full details, see the
         register's
         <a href="https://www.clinicaltrialsregister.eu/about.html">about page</a>.
         </p>
@@ -124,8 +126,11 @@
         weeks (the statutory maximum 15 days administrative delay for
         results to be published on the register by the regulator, and
         another 5 days to allow for national holidays and exceptional
-        circumstances). Currently, any trial completed earlier than {{
-        due_date_cutoff }} is due.</p>
+        circumstances). Currently, any trial completed earlier than
+        {{ due_date_cutoff }} is due. You can read a more detailed descriptions
+        of the way we assess an individual trial
+        <a href="https://blogs.bmj.com/bmj/2018/09/27/utotw-gabapentin-for-cerebellar-ataxia-in-degenerative-and-inflammatory-cns-disease/">
+        here</a></p>
 
         <h2 id="major-sponsor">What’s a Major Sponsor?</h2>
         <p>The initial table on the front page shows only sponsors
@@ -138,30 +143,74 @@
 
         <h2 id="inconsistent-data">What does “Inconsistent Data” Mean for a Trial?</h2>
 
-        <p>Some trials have problematic and inconsistent data on the
-        registry which makes it impossible to definitively tell if a
-        trial is “due” or not. These generally represent errors by
-        someone, but it is hard to be certain who is at fault. There
-          are three main categories of inconsistent data:</p>
+        <p>“Inconsistent Data” means that we cannot definitively say the
+           trial is due to report with the data provided on the EUCTR. This
+           could be for any number of reasons involving the sponsor (for not
+           providing timely and accurate information), national competent
+           authorities (for failing to quality control submissions or update entries),
+           and/or the design and implementation of the EUCTR itself:</p>
+
+        <p>Currently, we identify the following issues:
 
         <ol>
-          <li>All the sites where the trial was conducted have listed
-          their status as “completed”, so there should be a completion
-          date; and yet there is no “global end of trial” date given
-          anywhere.</li>
-          <li>There is a date for the “global end of the trial”; and
-          yet some of the sites are still listed as ongoing.</li>
-          <li>For some, the trial status is left entirely blank.</li>
+          <li>A trial in which all sites are either “completed” or “terminated”
+          but no “Date of the global end of the trial” is provided. The results
+          page of a trial may also contain a “global trial end date” field however
+          this is not currently included in our analysis as it is unclear how
+          this date is provided and quality controlled. Information provided in
+          the country protocols, including the “Date of the global end of the trial,”
+          must first pass through a national competent authority.</li>
+          <li>A trial has a “Date of the global end of the trial” listed, however the
+          trial is still listed as “Ongoing” in at least 1 country. As the name
+          suggests, the “global end of trial” field is supposed to only be used once
+          the trial has completed globally, and match for all country protocols.
+          Unfortunately, this is often not the case.</li>
+          <li>For certain trials, a protocol or protocols will have no trial status. While
+          this can occur for protocols in EU countries (Examples
+          <a href= "https://www.clinicaltrialsregister.eu/ctr-search/search?query=2010-022844-19">here<a> and
+          <a href= "https://www.clinicaltrialsregister.eu/ctr-search/search?query=2005-001909-25">here</a>),
+          this will always occur when a trial includes a protocol for the “Outside EU/EEA”
+          portion of the trial (Examples
+          <a href= "https://www.clinicaltrialsregister.eu/ctr-search/search?query=2017-000406-38">here</a> and
+          <a href= "https://www.clinicaltrialsregister.eu/ctr-search/search?query=2015-000104-26">here</a>).
+          According to the EUCTR, these protocols are “linked to European paediatric-medicine development” and
+          due to limitations of the EUCTR, never display a trial status. We have tags
+          to separately indicate “No Trial Status on Register” and when a trial contains
+          an “Outside EU/EEA” protocol.
+          </li>
         </ol>
 
-        <p>These inconsistencies, omissions and errors may be due to
-        errors by: the sponsor (for giving inconsistent information);
-        or the national and European regulators (for not doing
-        consistency checks on the data, or failing to update the
-        information they are given). We think the EU registry managers
-        could and should automatically identify trials with
-        inconsistent data, as we have done; and then require sponsors
-          to correct their records. </p>
+        <p>While we cannot accurately assess the status of these trials,
+        they may still have results. We note this in the label next to the trials.
+        When the fault lies with the sponsor, we think the EU registry managers
+        could and should automatically identify trials with inconsistent data,
+        as we have done; and then require sponsors to correct their records. </p>
+
+        <h2 id="part-of">What Does Terminated Mean?</h2>
+
+        <p>We have included a tag to identify when trials are “Terminated” for all
+        locations (called “Prematurely Ended” on EUCTR). A trial
+        that ends early, but enrolled and collected data on patients, is required
+        to report results under EU Guidelines. In some instances trials are registered
+        on the EUCTR but are withdrawn before starting, and therefore have no data to report.
+        The EUCTR provides no way to indicate that a trial never happened. Certain
+        <a href="https://www.clinicaltrialsregister.eu/ctr-search/trial/2011-001801-29/results">older
+        trials</a> can work around this shortcoming, but newer trials cannot.
+        This is an unfortunate limitation of the EUCTR and may lead to some "withdrawn" trials
+        to be listed as "due" on our tracker. We have added the “Terminated” flag to provide
+        additional context for trials that ended early. We will still evaluate terminated
+        trials as due to report, but those “Terminated” for all locations will have a tag until
+        the EUCTR system is improved to better handle this issue.</p>
+
+        <h2 id="part-of">What Does Exempt Mean?</h2>
+
+        <p>Some trials in our “Not Due” category would never become due because they
+        are identified as a Phase 1 trial that is not part of a Paediatric Investigation Plan.
+        These types of trials are not covered by the reporting guideline and are typically
+        not made public on the EUCTR. Yet some trials meeting this description are available.
+        There may be some reason why these trials are made public and required to report, however
+        to remain conservative, we now identify these trials as “Exempt” and they remain in the
+        “Not Due” category.</p>
 
         <h2 id="part-of">What Happens when Sponsors Merge or Split?</h2>
 
