@@ -33,26 +33,54 @@ class Command(BaseCommand):
         opentrials_db = options['dburl']
         conn = psycopg2.connect(opentrials_db)
         cur = conn.cursor()
-
         # Find out the start date of current scrape.
-        cur.execute("""select date(max(meta_updated)) from euctr""")
-
-        scrape_date = cur.fetchone()[0]
+        cur.execute(
+            "select date(meta_updated) from euctr "
+            "group by meta_updated "
+            "order by meta_updated desc limit 60")
+        scrape_dates = [x[0] for x in cur.fetchall()]
+        # Default to the oldest of the last 60 runs
+        sufficiently_old = scrape_dates[-1]
+        last_scrape_date = scrape_dates.pop(0)
         if verbosity > 1:
-            print("Scrape start date:", scrape_date)
+            print("Late scrape start date:", last_scrape_date)
+
+        # sufficiently_old: the date that is both more than 60 days
+        # ago *and* more than 2 scrapes old. We assume such trials not
+        # longer exist. The hand-waving around 60 days and 2 scrapes
+        # is because some trials apparently reappear. See #66 for
+        # discussion and analysis.
+        scrape_index = 0
+        scrape_window = 3
+        for d in scrape_dates:
+            scrape_index += 1
+            if d > (last_scrape_date - datetime.timedelta(days=60)):
+                # Disregard dates in the last 2 months
+                continue
+            if scrape_index >= scrape_window:
+                sufficiently_old = d
+                break
+        if scrape_index < scrape_window \
+           or last_scrape_date == sufficiently_old:
+            # There's not been enough scrapes to expire anything, so
+            # expire nothing
+            sufficiently_old = sufficiently_old - datetime.timedelta(days=1)
+        if verbosity > 1:
+            print("Will skip trials older than:", sufficiently_old)
 
         # Date for reporting to be due has cutoff is 1 year (365 days) (by law,
         # trials must report a year after finishing) plus 4 weeks (28 days)
         # allowance (it takes that long for submissions to enter register)
-        due_date_cutoff = scrape_date - datetime.timedelta(days=365 + 28)
+        due_date_cutoff = last_scrape_date - datetime.timedelta(days=365 + 28)
         if verbosity > 1:
             print("Due date cutoff:", due_date_cutoff)
 
         # Generate the CSV file we later use in the web application
         query = open("euctr/management/commands/opentrials-to-csv.sql").read()
-        params = { 'due_date_cutoff': due_date_cutoff }
+        params = {
+            'due_date_cutoff': due_date_cutoff,
+            'sufficiently_old': sufficiently_old}
         cur.execute(query, params)
-
         before_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
         with atomic_write(TRIALS_CSV_FILE, overwrite=True) as f:
             writer = csv.writer(f, lineterminator="\n")
@@ -67,7 +95,7 @@ class Command(BaseCommand):
                 print("Changes being recorded in meta file")
             with atomic_write(TRIALS_META_FILE, overwrite=True) as f:
                 out = collections.OrderedDict([
-                    ('scrape_date', scrape_date.isoformat()),
+                    ('scrape_date', last_scrape_date.isoformat()),
                     ('due_date_cutoff', due_date_cutoff.isoformat()),
                     ('got_from_db', datetime.datetime.now().isoformat())
                 ])
