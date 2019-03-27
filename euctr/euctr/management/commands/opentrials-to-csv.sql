@@ -1,11 +1,18 @@
+CREATE TEMP TABLE euctr_filtered ON COMMIT DROP AS SELECT
+   *
+FROM
+   euctr
+WHERE
+   meta_updated > %(sufficiently_old)s;
+
 CREATE TEMP TABLE Spons1 ON COMMIT DROP AS SELECT
     eudract_number,
     eudract_number_with_country,
     s -> 'name_of_sponsor' AS name_of_sponsor,
     s -> 'status_of_the_sponsor' AS status_of_sponsor
 FROM
-    euctr,
-    jsonb_array_elements (euctr.sponsors) AS s;
+    euctr_filtered,
+    jsonb_array_elements (euctr_filtered.sponsors) AS s;
 
 CREATE TEMP TABLE Spons2 AS
 SELECT
@@ -193,7 +200,7 @@ SELECT
             ELSE NULL
         END) AS healthy_volunteers_no
 FROM
-    euctr
+    euctr_filtered
 GROUP BY
     eudract_number;
 

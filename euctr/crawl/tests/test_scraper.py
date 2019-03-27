@@ -43,6 +43,20 @@ def create_table(db):
         query(db, sql, [])
 
 
+def insert_minimal_rows(db, rows):
+    """Add the minimal columns we need to test date-related logic
+    """
+    for pk, meta_date in rows:
+        sql = ("INSERT INTO euctr ("
+               "  eudract_number, "
+               "  eudract_number_with_country, "
+               "  meta_created, "
+               "  meta_updated) "
+               "VALUES ("
+               "  %s, %s, %s, %s)")
+        query(db, sql, [pk, pk, meta_date, meta_date])
+
+
 def query(db, sql, params):
     conn = psycopg2.connect(db)
     conn.autocommit = True
@@ -67,6 +81,7 @@ def setup_csv_fixture():
     with tempfile.NamedTemporaryFile() as f:
         f.write(b"")
         return f.name
+
 
 # Setting up a temp file in package namespace means it's not
 # garbage-collected until after the tests are run, meaning we can use
@@ -104,7 +119,8 @@ class ScrapingTestCase(SimpleTestCase):
         # * Observe the files that are created in the scrapy HTTP cache
         #    * Note that the response_body files are gzipped
         # * Grep these to locate the response_body we want to manipulate
-        # * Make different versions of response_body that we copy into place for each test
+        # * Make different versions of response_body that we copy into place
+        #   for each test
 
         registry_id = '2015-000590-12'
         registry_id_with_country = "%s-DE" % registry_id
@@ -173,3 +189,43 @@ class ScrapingTestCase(SimpleTestCase):
                  'Novartis Pharma GmbH', 'A 24-month multi-center, open-label, randomized, controlled study to evaluate the evolution of renal function in maintenance liver transplant recipients receiving either RAD001 (everolimus) plus reduc...',
                  'https://www.clinicaltrialsregister.eu/ctr-search/search?query=2015-000590-12',
                  '0', '0', '0'])
+
+    @override_settings(**TEST_SETTINGS)
+    def test_trial_removed_when_not_seen_for_a_while(self):
+        with testing.postgresql.Postgresql() as postgresql:
+            # testing.postgresql creates a temporary postgres database
+            # and drops it again when the context is exited
+            db = postgresql.url()
+            create_table(db)
+            # This CSV contains four rows
+            fixture_data = [
+                ['to_expire', '2000-01-01'],
+                ['to_keep_1', '2000-03-05'],
+                ['to_keep_2', '2000-04-01'],
+                ['to_keep_3', '2000-05-01']
+            ]
+            insert_minimal_rows(db, fixture_data)
+            call_command('get_trials_from_db', dburl=db)
+            rows = list(
+                csv.reader(open(TEST_SETTINGS['SOURCE_CSV_FILE'], "r")))
+            self.assertEqual(len(rows), 4)  # including header
+            self.assertNotIn('to_expire', [x[0] for x in rows])
+
+    @override_settings(**TEST_SETTINGS)
+    def test_trial_kept_when_not_seen_for_a_while_but_few_scrapes(self):
+        with testing.postgresql.Postgresql() as postgresql:
+            # testing.postgresql creates a temporary postgres database
+            # and drops it again when the context is exited
+            db = postgresql.url()
+            create_table(db)
+            # This CSV contains four rows
+            fixture_data = [
+                ['not_to_expire', '2000-01-01'],
+                ['to_keep_3', '2000-05-01']
+            ]
+            insert_minimal_rows(db, fixture_data)
+            call_command('get_trials_from_db', dburl=db)
+            rows = list(
+                csv.reader(open(TEST_SETTINGS['SOURCE_CSV_FILE'], "r")))
+            self.assertEqual(len(rows), 3)  # including header
+            self.assertIn('not_to_expire', [x[0] for x in rows])
