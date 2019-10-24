@@ -5,7 +5,8 @@
 {% endblock %}{% endblock %}
 
 {% block social_description %}
-        By EU law, from December 2016, all trials on the European Union Clinical
+        By <a href="https://ec.europa.eu/health/sites/health/files/files/eudralex/vol-10/2012_302-03/2012_302-03_en.pdf">EU law</a>, 
+        from December 2016, all trials on the European Union Clinical
         Trials Register (EUCTR) must post results within 12 months of completion.
         This is the first legislation enacted anywhere in the world which requires
         such trial publication.
@@ -186,21 +187,24 @@
         could and should automatically identify trials with inconsistent data,
         as we have done; and then require sponsors to correct their records. </p>
 
-        <h2 id="part-of">What Does Terminated Mean?</h2>
+        <h2 id="part-of">What Does Terminated Mean? What if my Trial Never Started?</h2>
 
         <p>We have included a tag to identify when trials are “Terminated” for all
         locations (called “Prematurely Ended” on EUCTR). A trial
         that ends early, but enrolled and collected data on patients, is required
         to report results under EU Guidelines. In some instances trials are registered
-        on the EUCTR but are withdrawn before starting, and therefore have no data to report.
-        The EUCTR provides no way to indicate that a trial never happened. Certain
-        <a href="https://www.clinicaltrialsregister.eu/ctr-search/trial/2011-001801-29/results">older
-        trials</a> can work around this shortcoming, but newer trials cannot.
-        This is an unfortunate limitation of the EUCTR and may lead to some "withdrawn" trials
-        to be listed as "due" on our tracker. We have added the “Terminated” flag to provide
-        additional context for trials that ended early. We will still evaluate terminated
-        trials as due to report, so as not to miss legitimate trials due to report, but those “Terminated” for all 
-        locations will have a tag until the EUCTR system is improved to better handle this issue.</p>
+        on the EUCTR but are withdrawn before starting enrollment, and therefore have no data to report.
+        The EUCTR has no reliable way to show that a trial never started, however sponsors may
+        be able to use workarounds to ensure these trials show up as properly reported. If the trial ended
+        prior to July 2013, you should have the ability to upload <a href="https://www.clinicaltrialsregister.eu/ctr-search/trial/2011-001801-29/results">a
+        statement</a> that the trial never began and satisfy the reporting requirement.
+        For trials that ended after July 2013, you may be able to combine a statement with "null" codes for the
+        required areas. An example of this is available <a href="https://www.clinicaltrialsregister.eu/ctr-search/trial/2015-000549-21/results">here</a>.
+        For more details on this see Jackie Pullen's presentation from the QUEST Clinical Trials Workshop 2019 
+        <a href="https://charitede-my.sharepoint.com/personal/peter_grabitz_charite_de/_layouts/15/onedrive.aspx?originalPath=aHR0cHM6Ly9jaGFyaXRlZGUtbXkuc2hhcmVwb2ludC5jb20vOmY6L2cvcGVyc29uYWwvcGV0ZXJfZ3JhYml0el9jaGFyaXRlX2RlL0VpTmNQQ2l5S1pkQWdlQWQycVBxVHA0QmpTRkF5cFE4MGJ6NHRHMW5PQnlzMlE%5FcnRpbWU9bGR1Sng1TlkxMGc&id=%2Fpersonal%2Fpeter%5Fgrabitz%5Fcharite%5Fde%2FDocuments%2FQUEST%20Clinical%20Trials%20Workshop%202019%2FQUEST%20workshop%20%2D%20presentations%20and%20materials"here.</a>
+        We will continue to evaluate terminated trials as due to report, so as not to miss legitimate trials due to report, 
+        and those “Terminated” for all locations will have a tag denoting this. We hope to be able to exempt these trials from the 
+        tracking statistics entirely once the EUCTR system is improved to better handle this issue.</p>
 
         <h2 id="part-of">What Does Exempt Mean?</h2>
 
