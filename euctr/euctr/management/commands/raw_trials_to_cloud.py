@@ -25,16 +25,19 @@ def upload_file(filename_to_upload):
     Uploads a file to a given Cloud Storage bucket and returns the public url
     to the new object.
     """
+    # "crentials" are JSON credentials for a Google Cloud service
+    # account that has a Storage Object Admin role.
     target_filename = _safe_filename("euctr_dump.csv")
-    # This will only work if you've run `gcloud auth login` as the
-    # user it's run as.  I tried doing this via Python (see git
-    # history) but encountered buggy google libraries and shortage of
-    # time.
     subprocess.check_output(
-        ["gsutil",
-         "cp",
-         filename_to_upload,
-         "gs://ebmdatalab/euctr/{}".format(target_filename)])
+        [
+            "gsutil",
+            "-o",
+            "Credentials:gs_service_key_file=/home/seb/euctr-backup-credentials-036e81c59878.json",
+            "cp",
+            filename_to_upload,
+            "gs://ebmdatalab/euctr/{}".format(target_filename),
+        ]
+    )
 
 
 class Command(BaseCommand):
