@@ -27,13 +27,13 @@ Once a month, we run a shell script
 register, via cron.  This writes to a local postgres database,
 `euctr`.  It takes up to a day to run - it must do a full scrape each
 time, due to the design of the website we are scraping.
-2. It runs the Djano management command `get_trials_from_db`, which
+2. It runs the Django management command `get_trials_from_db`, which
 creates a CSV based on this data, and writes it to the
 `euctr-tracker-data` directory.
 
 Every day, `loaddata-eutrialstracker_live.sh` is also run. If
 any uncommitted changes are found in the `euctr-tracker-data`
-directory, it executes the django management command
+directory, it executes the Django management command
 `update_trials_json`, to create the set of JSON files which drive the
 website.
 
