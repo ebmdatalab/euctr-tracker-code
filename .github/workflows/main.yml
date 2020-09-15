@@ -1,0 +1,49 @@
+name: "EUCTR CI"
+
+on: [ pull_request ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: euctr-tracker-code
+
+      - name: Copy test environment
+        run: cp environment-sample environment
+        working-directory: euctr-tracker-code
+
+      - name: Checkout data
+        uses: actions/checkout@v2
+        with:
+          repository: ebmdatalab/euctr-tracker-data
+          path: euctr-tracker-data
+
+      - name: Install Python 3
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+        working-directory: euctr-tracker-code
+
+      - name: Run tests
+        run: source environment && cd euctr && ./manage.py test --settings=euctr.settings
+        working-directory: euctr-tracker-code
