@@ -1,4 +1,4 @@
-# euctr-tracker
+.# euctr-tracker
 
 ## How it works
 
