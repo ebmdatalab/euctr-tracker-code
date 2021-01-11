@@ -173,7 +173,7 @@ class ScrapingTestCase(SimpleTestCase):
                  'exempt', 'single_blind', 'rare_disease', 'phase',
                  'bioequivalence_study', 'health_volunteers', 'trial_status',
                  'any_terminated', 'all_terminated', 'results_expected',
-                 'all_completed_no_comp_date', 'sponsor_status',
+                 'all_completed_no_comp_date', 'sponsor_status', brexit_excluded,
                  'name_of_sponsor',
                  'trial_title',
                  'trial_url',
