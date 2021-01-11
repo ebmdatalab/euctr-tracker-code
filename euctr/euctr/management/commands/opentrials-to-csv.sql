@@ -74,7 +74,7 @@ SELECT
             ELSE NULL
         END) AS completed,
     count ( CASE
-            WHEN end_of_trial_stats = 'GB - no longer in EU/EEA' THEN 1
+            WHEN end_of_trial_status = 'GB - no longer in EU/EEA' THEN 1
             ELSE NULL
         END) AS gb_exclude,
     count ( CASE
