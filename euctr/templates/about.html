@@ -188,7 +188,7 @@
         could and should automatically identify trials with inconsistent data,
         as we have done; and then require sponsors to correct their records. </p>
 
-        <h2 id="part-of">What Does Terminated Mean? What if my Trial Never Started?</h2>
+        <h2 id="terminated">What Does Terminated Mean? What if my Trial Never Started?</h2>
 
         <p>We have included a tag to identify when trials are “Terminated” for all
         locations (called “Prematurely Ended” on EUCTR). A trial
@@ -207,7 +207,7 @@
         and those “Terminated” for all locations will have a tag denoting this. We hope to be able to exempt these trials from the 
         tracking statistics entirely once the EUCTR system is improved to better handle this issue.</p>
 
-        <h2 id="part-of">What Does Exempt Mean?</h2>
+        <h2 id="exempt">What Does Exempt Mean?</h2>
 
         <p>Some trials in our “Not Due” category would never become due because they
         are identified as a Phase 1 trial that is not part of a Paediatric Investigation Plan.
@@ -217,7 +217,7 @@
         to remain conservative, we now identify these trials as “Exempt” and they remain in the
         “Not Due” category.</p>
 
-        <h2 id="part-of">What Happens when Sponsors Merge or Split?</h2>
+        <h2 id="sponsor-changes">What Happens when Sponsors Merge or Split?</h2>
 
         <p>Over time organisations can merge, change names, or split:
         companies may acquire other companies; universities may join
@@ -231,6 +231,20 @@
         right; there is no canonical data source on mergers and
         acquisitions; if you think we should update any of our data on
         this, please <a href="#contact">tell us</a>.
+        </p>
+        
+        <h2 id="brexit">What is the impact of Brexit?</h2>
+            
+        <p>Due to Brexit, as of 1 January 2021, new trials from the UK will no longer be registered on the EUCTR.
+        Any UK protocols that were in "Ongoing" status as of the end of 2020 are now locked in the status "GB - no longer in EU/EEA"
+        and can no longer be updated. This means ongoing trials registered exclusively in the UK will never
+        have completion data appear. While sponsors may still upload results, we will not be able to reliably
+        assess the due date of these trials. For trials registered in more than one location that include the UK,
+        we will ignore the UK protocols in status "GB - no longer in EU/EEA" when determining if a trial is complete
+        or not. As of January 2021, this has not yet been implemented but we are working to adjust our code to
+        incorporate these changes as soon as possible. When this is implemented, some "Not Due - Ongoing" trials will move
+        into the "Due" category if the only outstanding uncompleted trial is a UK trial. We expect this will effect a relatively
+        small number of trials and no assessments of currently due trials should be impacted due to Brexit.
         </p>
 
     </div>
