@@ -21,7 +21,7 @@ google-cloud-storage==1.13.0
 google-api-core==1.16.0
 fabric3
 testing.postgresql==1.3.0
-attrs==18.2.0
+attrs==19.2.0
 Automat==0.8.0
 Twisted==20.3.0
 six==1.11.0
