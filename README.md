@@ -168,6 +168,36 @@ This assumes the table is called "euctr". It uses the SQL script
 ./manage.py update_trials_json
 ```
 
+## Rolling back bad data
+
+In certain conditions, the scraper can currently automatically commit bad data
+into [euctr-tracker-data](https://github.com/ebmdatalab/euctr-tracker-data).
+This will then be continuously deployed, leading to errors in production.
+In this case, you will need to roll-back the data by:
+
+1. remove the offending commit(s)
+
+This can be done by reverting a bad commit, or by re-creating the default
+branch at a known-good commit.
+
+2. push the revised branch to GitHub
+
+This can be done with a PR (in the case of a reversion), or by a force push
+(in the case of re-creating a branch)
+
+3. deploy to production
+
+If using a reversion & PR, this will deploy continuously. If using a
+re-creation & force push, manual fixups will be required on the production
+deployment.
+
+4. re-run the scraper, with appropriate fixes
+
+Note that the scraper initially scrapes into a PostgreSQL database. It updates
+the rows each time it is run (rather than creating new rows). This means that
+old data should be automatically removed from the database, and that although
+data remains from the bad scrape in the database at the time of starting a
+new scrape, it should be completely overwritten by the new scrape.
 
 ## Terminology
 
