@@ -121,7 +121,10 @@ class Command(BaseCommand):
         euctr_cond['trial_single_blind'] = (euctr_cond['trial_single_blind']== True).astype(int)
         euctr_cond['not_healthy_volunteers'] = (euctr_cond['subject_healthy_volunteers']== False).astype(int)
         euctr_cond['subject_healthy_volunteers'] = (euctr_cond['subject_healthy_volunteers']== True).astype(int)
-        euctr_cond['trial_results'] = (pd.notna(euctr_cond['trial_results']).astype(int))
+
+        def euctr_notna(x):
+            return not (x is None)
+        euctr_cond['trial_results'] = (euctr_cond['trial_results'].apply(euctr_notna)).astype(int)
         euctr_cond.rename(columns={'full_title_of_the_trial':'full_title', 'name_or_abbreviated_title_of_the_trial_where_available': 'abbreviated_title'}, inplace=True)
         euctr_cond['non_eu'] = euctr_cond.eudract_number_with_country.str.contains('-3rd').astype(int)
 
@@ -198,8 +201,8 @@ class Command(BaseCommand):
         grouped = euctr_cond.groupby('eudract_number').apply(f).reset_index()
         #some data cleaning
         grouped.replace('nan', np.nan, inplace=True)
-        grouped['full_title'] = grouped.full_title.str.replace(r'\r','', regex=True)
-        grouped['full_title'] = grouped.full_title.str.replace(r'\n','', regex=True)
+        grouped['full_title'] = grouped.full_title.str.replace(r'\r','')
+        grouped['full_title'] = grouped.full_title.str.replace(r'\n','')
         # print(grouped.head())
 
         #Creating most of the final dataframe
