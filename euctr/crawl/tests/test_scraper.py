@@ -165,6 +165,7 @@ class ScrapingTestCase(SimpleTestCase):
 
             # Now convert the database contents to a CSV
             call_command('get_trials_from_db', dburl=db)
+            print(TEST_SETTINGS['SOURCE_CSV_FILE'])
             rows = list(csv.reader(open(TEST_SETTINGS['SOURCE_CSV_FILE'], "r")))
             self.assertEqual(
                 rows[0],

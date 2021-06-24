@@ -309,7 +309,7 @@ class Command(BaseCommand):
         print(euctr_final.head())
 
         before_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
-        euctr_final.to_csv(TRIALS_CSV_FILE)
+        euctr_final.to_csv(TRIALS_CSV_FILE, index=False)
         after_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
 
         # Update "got_from_db" only if there were changes in database
