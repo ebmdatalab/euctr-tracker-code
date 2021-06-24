@@ -122,6 +122,8 @@ class Command(BaseCommand):
         euctr_cond['not_healthy_volunteers'] = (euctr_cond['subject_healthy_volunteers']== False).astype(int)
         euctr_cond['subject_healthy_volunteers'] = (euctr_cond['subject_healthy_volunteers']== True).astype(int)
 
+        # Nick's notebook used pandas.notna, we reimplement a simplified version
+        # here for compatibility with pandas 0.19
         def euctr_notna(x):
             return not (x is None)
         euctr_cond['trial_results'] = (euctr_cond['trial_results'].apply(euctr_notna)).astype(int)
