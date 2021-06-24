@@ -46,15 +46,33 @@ def create_table(db):
 def insert_minimal_rows(db, rows):
     """Add the minimal columns we need to test date-related logic
     """
+    dummy_sponsors = '[ \
+    {\
+        "e_mail": "info@dummydata.com",\
+        "country": "Germany",\
+        "post_code": "12345",\
+        "town_city": "Dummy",\
+        "fax_number": "+4912345678945",\
+        "street_address": "Dummystr. 84",\
+        "name_of_sponsor": "Klinikum der Dümmy",\
+        "telephone_number": "+4912345678946",\
+        "name_of_organisation": "Dummy GmbH",\
+        "status_of_the_sponsor": "Non-Commercial",\
+        "functional_name_of_contact_point": "Dr. Dummy",\
+        "name_of_organisation_providing_support": "Dummy Org"\
+    }\
+]'
     for pk, meta_date in rows:
         sql = ("INSERT INTO euctr ("
                "  eudract_number, "
                "  eudract_number_with_country, "
+               "  sponsors, "
+               "  date_of_the_global_end_of_the_trial, "
                "  meta_created, "
                "  meta_updated) "
                "VALUES ("
-               "  %s, %s, %s, %s)")
-        query(db, sql, [pk, pk, meta_date, meta_date])
+               "  %s, %s, %s, %s, %s, %s)")
+        query(db, sql, [pk, pk, dummy_sponsors, meta_date, meta_date, meta_date])
 
 
 def query(db, sql, params):
