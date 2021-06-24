@@ -103,7 +103,7 @@ class Command(BaseCommand):
                 'name_or_abbreviated_title_of_the_trial_where_available',
                 'trial_results',
                 'sponsors' ]
-        euctr_cond = pd.read_sql_query("SELECT {} FROM public.euctr".format(','.join(cols)), con=engine)
+        euctr_cond = pd.read_sql_query("SELECT {} FROM public.euctr WHERE meta_updated > '{}'".format(','.join(cols), sufficiently_old), con=engine)
 
         #cleaning up the condensed EUCTR dataset and adding the false conditions
         euctr_cond['date_of_the_global_end_of_the_trial'] = pd.to_datetime(euctr_cond['date_of_the_global_end_of_the_trial'])
