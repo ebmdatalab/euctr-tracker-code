@@ -137,8 +137,6 @@ class Command(BaseCommand):
         s_exp = pd.concat([pd.DataFrame(x) for x in s], keys = s.index)
         spons = euctr_spon.drop('sponsors', 1).join(s_exp.reset_index(level=1, drop=True)).reset_index(drop=True)
 
-        # print(spons.head())
-
         #deal with these two parts of the sponsor separately
         spon_name = spons[['eudract_number', "name_of_sponsor"]].reset_index(drop=True)
         spon_type = spons[['eudract_number', 'eudract_number_with_country', 'status_of_the_sponsor']].reset_index(drop=True)
@@ -151,10 +149,7 @@ class Command(BaseCommand):
             st['blank_status'] = np.where(pd.isnull(x.status_of_the_sponsor),1,0).sum()
             return pd.Series(st)
 
-        # UNSURE WHICH OF THESE TWO VERSIONS OF spon_status PRODUCE THE CORRECT VALUE
         spon_status = spon_type.groupby('eudract_number').apply(sp).reset_index()
-        # spon_status = spons[['eudract_number', 'eudract_number_with_country', 'status_of_the_sponsor']].groupby('eudract_number').apply(sp)
-        # print(spon_status.head())
 
         ss_cond = [
             (spon_status.non_commercial == spon_status.trial_count),
@@ -203,7 +198,6 @@ class Command(BaseCommand):
         grouped.replace('nan', np.nan, inplace=True)
         grouped['full_title'] = grouped.full_title.str.replace(r'\r','')
         grouped['full_title'] = grouped.full_title.str.replace(r'\n','')
-        # print(grouped.head())
 
         #Creating most of the final dataframe
 
@@ -305,8 +299,6 @@ class Command(BaseCommand):
                      'comp_date_while_ongoing', 'contains_non_eu', 'only_non_eu']
 
         euctr_final = euctr_final[col_order].reset_index(drop=True)
-
-        print(euctr_final.head())
 
         before_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
         euctr_final.to_csv(TRIALS_CSV_FILE, index=False)
