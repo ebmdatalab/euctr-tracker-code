@@ -266,7 +266,7 @@ class Command(BaseCommand):
         title_cond = [
             ((pd.isnull(grouped.full_title)) & (pd.notnull(grouped.abbreviated_title))),
             ((pd.isnull(grouped.full_title)) & (pd.isnull(grouped.abbreviated_title))),
-            ((pd.notnull(grouped.full_title)) & (len(grouped.full_title) > 200))]
+            ((pd.notnull(grouped.full_title)) & (grouped.full_title.str.len() > 200))]
         title_vals = [grouped.abbreviated_title, 'No Title', grouped.full_title.str.slice(stop=200) + '...']
         grouped['trial_title'] = np.select(title_cond, title_vals, grouped.full_title)
 
