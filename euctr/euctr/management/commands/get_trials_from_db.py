@@ -70,11 +70,12 @@ def cleanup_dataset(euctr_cond):
     def euctr_notna(x):
         return not (x is None)
     euctr_cond['trial_results'] = (euctr_cond['trial_results'].apply(euctr_notna)).astype(int)
+
     euctr_cond.rename(columns={'full_title_of_the_trial':'full_title', 'name_or_abbreviated_title_of_the_trial_where_available': 'abbreviated_title'}, inplace=True)
     euctr_cond['non_eu'] = euctr_cond.eudract_number_with_country.str.contains('-3rd').astype(int)   
 
 def prepare_sponsor_data(euctr_cond):
-    """do some stuff to prepare the sponsor data that we will join in later"""
+    """prepare the sponsor data that we will join in later"""
     spon_cols = ['eudract_number', 'eudract_number_with_country', 'sponsors']
     euctr_spon = euctr_cond[spon_cols].reset_index(drop=True)
 
@@ -84,14 +85,68 @@ def prepare_sponsor_data(euctr_cond):
     s_exp = pd.concat([pd.DataFrame(x) for x in s], keys = s.index)
     return euctr_spon.drop('sponsors', 1).join(s_exp.reset_index(level=1, drop=True)).reset_index(drop=True)
 
-def clean_and_create_dataframe(grouped, due_date_cutoff, euctr_url):
-    """docstring for blah"""
-    #some data cleaning
+def create_spon_status(spon_type):
+    """create the spon_status table"""
+    def sp(x):
+        st = {}
+        st['trial_count'] = x.eudract_number_with_country.count()
+        st['commercial'] = np.where(x.status_of_the_sponsor == 'Commercial',1,0).sum()
+        st['non_commercial'] = np.where(x.status_of_the_sponsor == 'Non-Commercial',1,0).sum()
+        st['blank_status'] = np.where(pd.isnull(x.status_of_the_sponsor),1,0).sum()
+        return pd.Series(st)
+
+    spon_status = spon_type.groupby('eudract_number').apply(sp).reset_index()
+
+    ss_cond = [
+        (spon_status.non_commercial == spon_status.trial_count),
+        (spon_status.commercial == spon_status.trial_count),
+        (spon_status.blank_status == spon_status.trial_count)]
+    ss_vals = [0,1,3]
+    spon_status['sponsor_status'] = np.select(ss_cond, ss_vals, default = 2)
+
+    return spon_status
+
+def create_dataframe(euctr_cond):
+    """Step 1 to the next dataframe"""
+    def f(x):
+        d = {}
+        d['number_of_countries'] = x.eudract_number_with_country.nunique()
+        d['min_end_date'] = x.date_of_the_global_end_of_the_trial.min()
+        d['max_end_date'] = x.date_of_the_global_end_of_the_trial.max()
+        d['comp_date'] = np.where(pd.notnull(x.date_of_the_global_end_of_the_trial),1,0).sum()
+        d['has_results'] = x.trial_results.sum()
+        d['includes_pip'] = x.trial_is_part_of_a_paediatric_investigation_plan.sum()
+        d['single_blind'] = x.trial_single_blind.sum()
+        d['not_single_blind'] = x.not_single_blind.sum()
+        d['rare_disease'] = x.trial_condition_being_studied_is_a_rare_disease.sum()
+        d['not_rare_disease'] = x.not_rare_disease.sum()
+        d['rare_disease_blank'] = x.rare_disease_blank.sum()
+        d['completed'] = np.where(x.end_of_trial_status == 'Completed', 1, 0).sum()
+        d['ongoing'] =  np.where((x.end_of_trial_status == 'Ongoing') | (x.end_of_trial_status == 'Restarted'), 1, 0).sum()
+        d['terminated'] = np.where(x.end_of_trial_status == 'Prematurely Ended', 1, 0).sum()
+        d['suspended'] = np.where((x.end_of_trial_status == 'Temporarily Halted') | (x.end_of_trial_status == 'Suspended by CA'), 1, 0).sum()
+        d['other_status'] = np.where((x.end_of_trial_status == 'Not Authorised') | (x.end_of_trial_status == 'Prohibited by CA'), 1, 0).sum()
+        d['no_status'] = np.where(pd.isnull(x.end_of_trial_status),1,0).sum()
+        d['phase_1'] = x.trial_human_pharmacology_phase_i.sum()
+        d['phase_2'] = x.trial_therapeutic_exploratory_phase_ii.sum()
+        d['phase_3'] = x.trial_therapeutic_confirmatory_phase_iii.sum()
+        d['phase_4'] = x.trial_therapeutic_use_phase_iv.sum()
+        d['bioequivalence'] = x.trial_bioequivalence_study.sum()
+        d['not_bioequivalence'] = x.not_bioequivalence_study.sum()
+        d['healthy_volunteers'] = x.subject_healthy_volunteers.sum()
+        d['not_healthy_volunteers'] = x.not_healthy_volunteers.sum()
+        d['full_title'] = x.full_title.astype('str').min()
+        d['abbreviated_title'] = x.abbreviated_title.astype('str').max()
+        d['non_eu'] = x.non_eu.sum()
+        return pd.Series(d)
+
+    return euctr_cond.groupby('eudract_number').apply(f).reset_index()
+
+def clean_and_enhance_dataframe(grouped, due_date_cutoff, euctr_url):
+    """some data cleaning & building most of the final dataframe"""
     grouped.replace('nan', np.nan, inplace=True)
     grouped['full_title'] = grouped.full_title.str.replace(r'\r','')
     grouped['full_title'] = grouped.full_title.str.replace(r'\n','')
-
-    #Creating most of the final dataframe
 
     grouped.rename(columns={'eudract_number':'trial_id'}, inplace=True)
     grouped['min_end_date'] = pd.to_datetime(grouped['min_end_date'])
@@ -228,65 +283,13 @@ class Command(BaseCommand):
 
         spons = prepare_sponsor_data(euctr_cond)
 
-        #deal with these two parts of the sponsor separately
+        # deal with the name of the sponsor separately to the status
         spon_name = spons[['eudract_number', "name_of_sponsor"]].reset_index(drop=True)
         spon_type = spons[['eudract_number', 'eudract_number_with_country', 'status_of_the_sponsor']].reset_index(drop=True)
+        spon_status = create_spon_status(spon_type)
 
-        def sp(x):
-            st = {}
-            st['trial_count'] = x.eudract_number_with_country.count() 
-            st['commercial'] = np.where(x.status_of_the_sponsor == 'Commercial',1,0).sum()
-            st['non_commercial'] = np.where(x.status_of_the_sponsor == 'Non-Commercial',1,0).sum()
-            st['blank_status'] = np.where(pd.isnull(x.status_of_the_sponsor),1,0).sum()
-            return pd.Series(st)
-
-        spon_status = spon_type.groupby('eudract_number').apply(sp).reset_index()
-
-        ss_cond = [
-            (spon_status.non_commercial == spon_status.trial_count),
-            (spon_status.commercial == spon_status.trial_count),
-            (spon_status.blank_status == spon_status.trial_count)]
-        ss_vals = [0,1,3]
-        spon_status['sponsor_status'] = np.select(ss_cond, ss_vals, default = 2)
-
-        #Step 1 to the next dataframe. Defining this function to apply to the groupby that will create.
-
-        def f(x):
-            d = {}
-            d['number_of_countries'] = x.eudract_number_with_country.nunique()
-            d['min_end_date'] = x.date_of_the_global_end_of_the_trial.min()
-            d['max_end_date'] = x.date_of_the_global_end_of_the_trial.max()
-            d['comp_date'] = np.where(pd.notnull(x.date_of_the_global_end_of_the_trial),1,0).sum()
-            d['has_results'] = x.trial_results.sum()
-            d['includes_pip'] = x.trial_is_part_of_a_paediatric_investigation_plan.sum()
-            d['single_blind'] = x.trial_single_blind.sum()
-            d['not_single_blind'] = x.not_single_blind.sum()
-            d['rare_disease'] = x.trial_condition_being_studied_is_a_rare_disease.sum()
-            d['not_rare_disease'] = x.not_rare_disease.sum()
-            d['rare_disease_blank'] = x.rare_disease_blank.sum()
-            d['completed'] = np.where(x.end_of_trial_status == 'Completed', 1, 0).sum()
-            d['ongoing'] =  np.where((x.end_of_trial_status == 'Ongoing') | (x.end_of_trial_status == 'Restarted'), 1, 0).sum()
-            d['terminated'] = np.where(x.end_of_trial_status == 'Prematurely Ended', 1, 0).sum()
-            d['suspended'] = np.where((x.end_of_trial_status == 'Temporarily Halted') | (x.end_of_trial_status == 'Suspended by CA'), 1, 0).sum()
-            d['other_status'] = np.where((x.end_of_trial_status == 'Not Authorised') | (x.end_of_trial_status == 'Prohibited by CA'), 1, 0).sum()
-            d['no_status'] = np.where(pd.isnull(x.end_of_trial_status),1,0).sum()
-            d['phase_1'] = x.trial_human_pharmacology_phase_i.sum()
-            d['phase_2'] = x.trial_therapeutic_exploratory_phase_ii.sum()
-            d['phase_3'] = x.trial_therapeutic_confirmatory_phase_iii.sum()
-            d['phase_4'] = x.trial_therapeutic_use_phase_iv.sum()
-            d['bioequivalence'] = x.trial_bioequivalence_study.sum()
-            d['not_bioequivalence'] = x.not_bioequivalence_study.sum()
-            d['healthy_volunteers'] = x.subject_healthy_volunteers.sum()
-            d['not_healthy_volunteers'] = x.not_healthy_volunteers.sum()
-            d['full_title'] = x.full_title.astype('str').min()
-            d['abbreviated_title'] = x.abbreviated_title.astype('str').max()
-            d['non_eu'] = x.non_eu.sum()
-            return pd.Series(d)
-        
-        #Grouping and applying that function
-        grouped = euctr_cond.groupby('eudract_number').apply(f).reset_index()
- 
-        clean_and_create_dataframe(grouped, due_date_cutoff, euctr_url)
+        grouped = create_dataframe(euctr_cond)
+        clean_and_enhance_dataframe(grouped, due_date_cutoff, euctr_url)
         
         final_cols = ['trial_id', 'number_of_countries', 'min_end_date', 'max_end_date', 'comp_date', 
                       'has_results', 'includes_pip', 'exempt', 'single_blind', 'rare_disease', 'phase', 
@@ -296,17 +299,17 @@ class Command(BaseCommand):
 
         final_start = grouped[final_cols].reset_index(drop=True)
 
-        #merge in the sponsor status field
-
+        # merge in the sponsor status field
         euctr_final = final_start.merge(spon_status[['eudract_number', 'sponsor_status']], left_on = 'trial_id', right_on = 'eudract_number')
 
         # finally merge in the sponsor names 
         # (which should double up where relevant)
         euctr_final = euctr_final.merge(spon_name, left_on = 'trial_id', right_on = 'eudract_number')
-        #drop rows that are exact duplicates
+
+        # drop rows that are exact duplicates
         euctr_final = euctr_final.drop_duplicates().reset_index(drop=True)
         
-        #get rid of repeated columns from joins and index resets
+        # get rid of repeated columns from joins and index resets
         euctr_final = euctr_final[euctr_final.columns[~((euctr_final.columns.str.contains('eudract_number')) | (euctr_final.columns.str.contains('index')))]]
 
         col_order = ['trial_id', 'number_of_countries', 'min_end_date', 'max_end_date', 'comp_date', 'has_results', 
