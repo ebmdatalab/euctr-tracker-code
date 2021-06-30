@@ -21,9 +21,6 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
-TRIALS_CSV_FILE = settings.SOURCE_CSV_FILE
-TRIALS_META_FILE = settings.SOURCE_META_FILE
-
 def load_data_into_pandas(db, sufficiently_old):
     """load data from postgresql db"""
     engine = create_engine(db)
@@ -320,16 +317,16 @@ class Command(BaseCommand):
 
         euctr_final = euctr_final[col_order].reset_index(drop=True)
 
-        before_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
-        euctr_final.to_csv(TRIALS_CSV_FILE, index=False)
-        after_hash = hashlib.sha512(open(TRIALS_CSV_FILE).read().encode("utf-8")).digest()
+        before_hash = hashlib.sha512(open(settings.SOURCE_CSV_FILE).read().encode("utf-8")).digest()
+        euctr_final.to_csv(settings.SOURCE_CSV_FILE, index=False)
+        after_hash = hashlib.sha512(open(settings.SOURCE_CSV_FILE).read().encode("utf-8")).digest()
 
         # Update "got_from_db" only if there were changes in database
         # (to stop git history being contaminated)
         if before_hash != after_hash:
             if verbosity > 1:
                 print("Changes being recorded in meta file")
-            with atomic_write(TRIALS_META_FILE, overwrite=True) as f:
+            with atomic_write(settings.SOURCE_META_FILE, overwrite=True) as f:
                 out = collections.OrderedDict([
                     ('scrape_date', last_scrape_date.isoformat()),
                     ('due_date_cutoff', due_date_cutoff.isoformat()),
