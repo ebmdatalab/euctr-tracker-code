@@ -74,6 +74,10 @@ SELECT
             ELSE NULL
         END) AS completed,
     count ( CASE
+            WHEN end_of_trial_status = 'GB - no longer in EU/EEA' THEN 1
+            ELSE NULL
+        END) AS gb_exclude,
+    count ( CASE
             WHEN end_of_trial_status = 'Ongoing'
             OR end_of_trial_status = 'Restarted' THEN 1
             ELSE NULL
@@ -252,13 +256,14 @@ SELECT
     END AS health_volunteers,
     CASE
         WHEN ongoing = Total THEN 0
-        WHEN completed + terminated = Total THEN 1
-        WHEN ((completed + terminated)
+        WHEN completed + terminated + gb_exclude = Total AND gb_exclude != Total THEN 1
+        WHEN ((completed + terminated + gb_exclude)
             > 0
-            AND (completed + terminated)
+            AND (completed + terminated + gb_exclude)
             < total)
         THEN 2
         WHEN empty = total THEN 4
+        WHEN gb_exclude = Total THEN 5
         ELSE 3
     END AS Trial_status,
        CASE
@@ -270,7 +275,8 @@ SELECT
         ELSE 0
     END AS all_terminated,
     CASE
-        WHEN completed + terminated = Total
+        WHEN completed + terminated + gb_exclude = Total
+        AND gb_exclude != Total
         AND comp_date > 0
         AND max_end_date < %(due_date_cutoff)s
         AND NOT (phase_i_trial = Total AND Includes_PIP = 0)
@@ -283,6 +289,11 @@ SELECT
         THEN 1
         ELSE 0
     END AS all_completed_no_comp_date,
+    CASE
+        WHEN gb_exclude = Total
+        THEN 1
+        ELSE 0
+    END AS brexit_excluded,
     Spons3.Sponsor_Status,
     Spons3.name_of_sponsor AS name_of_sponsor,
     CASE
