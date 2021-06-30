@@ -65,7 +65,7 @@ def cleanup_dataset(euctr_cond):
     # Nick's notebook used pandas.notna, we reimplement a simplified version
     # here for compatibility with pandas 0.19
     def euctr_notna(x):
-        return not (x is None)
+        return not (x is None or x is np.nan)
     euctr_cond['trial_results'] = (euctr_cond['trial_results'].apply(euctr_notna)).astype(int)
 
     euctr_cond.rename(columns={'full_title_of_the_trial':'full_title', 'name_or_abbreviated_title_of_the_trial_where_available': 'abbreviated_title'}, inplace=True)
