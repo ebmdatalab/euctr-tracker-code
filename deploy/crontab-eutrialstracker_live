@@ -1,4 +1,4 @@
 # min hour day/month month day/week
 
-00 02 1 * 5 root [ $(date +\%d) -le 07 ] && /var/www/eutrialstracker_live/euctr-tracker-code/deploy/crawl-and-dump-eutrialstracker_live.sh
+00 19 * * 5 root [ $(date +\%d) -le 07 ] && /var/www/eutrialstracker_live/euctr-tracker-code/deploy/crawl-and-dump-eutrialstracker_live.sh
 30 */6 * * * root /var/www/eutrialstracker_live/euctr-tracker-code/deploy/loaddata-eutrialstracker_live.sh
