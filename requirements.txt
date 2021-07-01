@@ -2,7 +2,6 @@ Django==1.11.29
 django_compressor==2.1.1
 django-libsass==0.7
 csscompressor==0.9.4
-pandas==0.19.2
 gevent==1.2.1
 gunicorn==19.6.0
 numpy==1.16.2
