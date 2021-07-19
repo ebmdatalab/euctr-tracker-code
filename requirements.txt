@@ -1,4 +1,4 @@
-Django==2.0.13
+Django==2.1.15
 django_compressor==2.1.1
 django-libsass==0.7
 csscompressor==0.9.4
