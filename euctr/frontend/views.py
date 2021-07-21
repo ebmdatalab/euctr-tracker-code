@@ -5,8 +5,8 @@ import signal
 
 from django.shortcuts import render
 from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.urls import reverse
 
 import selenium.webdriver
 
