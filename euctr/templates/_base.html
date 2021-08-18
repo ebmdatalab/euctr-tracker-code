@@ -28,7 +28,7 @@
       {% include "_load_js.html" %}
     {% endif %}
 
-    <script async defer data-domain="eu.trialstracker.net" src="https://plausible.io/js/plausible.js"></script>
+    <script id="plausible" defer data-domain="eu.trialstracker.net" src="https://plausible.io/js/plausible.compat.js"></script>
   </head>
 
   {% if not taking_screenshot %}
