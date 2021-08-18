@@ -26,7 +26,7 @@ class GetTrialsFromDbTestCase(TestCase):
         df_output = pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)),'test_cleanup_dataset-output.csv'), parse_dates=['date_of_the_global_end_of_the_trial'])
 
         euctr_url = 'https://www.clinicaltrialsregister.eu/ctr-search/search?query='
-        last_scrape_date = pd.Timestamp("2021-01-01")
+        last_scrape_date = pd.Timestamp("2021-07-03")
 
         due_date_cutoff = pd.Timestamp(last_scrape_date - relativedelta(years=1) - datetime.timedelta(days=28))
 
