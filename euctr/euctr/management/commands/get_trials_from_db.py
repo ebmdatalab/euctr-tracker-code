@@ -234,9 +234,9 @@ class Command(BaseCommand):
         cur = conn.cursor()
         # Find out the start date of current scrape.
         cur.execute(
-            "select date(meta_updated) from euctr "
-            "group by meta_updated "
-            "order by meta_updated desc limit 60")
+            "select distinct date(meta_updated) as dmu from euctr "
+            "group by dmu "
+            "order by dmu desc limit 60")
         scrape_dates = [x[0] for x in cur.fetchall()]
         # Default to the oldest of the last 60 runs
         sufficiently_old = scrape_dates[-1]
