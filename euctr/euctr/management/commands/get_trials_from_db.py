@@ -21,6 +21,36 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.template.defaultfilters import slugify
 
+def calculate_sufficiently_old(scrape_dates, last_scrape_date, verbosity):
+    """return the oldest scrape date that we should consider"""
+    # Default to the oldest of the last 60 runs
+    sufficiently_old = scrape_dates[-1]
+
+    # sufficiently_old: the date that is both more than 60 days
+    # ago *and* more than 2 scrapes old. We assume such trials not
+    # longer exist. The hand-waving around 60 days and 2 scrapes
+    # is because some trials apparently reappear. See #66 for
+    # discussion and analysis.
+    scrape_index = 0
+    scrape_window = 3
+    for d in scrape_dates:
+        scrape_index += 1
+        if d > (last_scrape_date - datetime.timedelta(days=60)):
+            # Disregard dates in the last 2 months
+            continue
+        if scrape_index >= scrape_window:
+            sufficiently_old = d
+            break
+    if scrape_index < scrape_window \
+       or last_scrape_date == sufficiently_old:
+        # There's not been enough scrapes to expire anything, so
+        # expire nothing
+        sufficiently_old = sufficiently_old - datetime.timedelta(days=1)
+    if verbosity > 1:
+        print("Will skip trials older than:", sufficiently_old)
+
+    return sufficiently_old
+
 def load_data_into_pandas(db, sufficiently_old):
     """load data from postgresql db"""
     engine = create_engine(db)
@@ -234,45 +264,16 @@ class Command(BaseCommand):
         cur = conn.cursor()
         # Find out the start date of current scrape.
         cur.execute(
-            "select date(meta_updated) from euctr "
-            "group by meta_updated "
-            "order by meta_updated desc limit 60")
+            "select distinct date(meta_updated) as dmu from euctr "
+            "group by dmu "
+            "order by dmu desc limit 60")
         scrape_dates = [x[0] for x in cur.fetchall()]
-        # Default to the oldest of the last 60 runs
-        sufficiently_old = scrape_dates[-1]
-        last_scrape_date = scrape_dates.pop(0)
+
+        last_scrape_date = scrape_dates[0]
         if verbosity > 1:
             print("Late scrape start date:", last_scrape_date)
 
-        # sufficiently_old: the date that is both more than 60 days
-        # ago *and* more than 2 scrapes old. We assume such trials not
-        # longer exist. The hand-waving around 60 days and 2 scrapes
-        # is because some trials apparently reappear. See #66 for
-        # discussion and analysis.
-        scrape_index = 0
-        scrape_window = 3
-        for d in scrape_dates:
-            scrape_index += 1
-            if d > (last_scrape_date - datetime.timedelta(days=60)):
-                # Disregard dates in the last 2 months
-                continue
-            if scrape_index >= scrape_window:
-                sufficiently_old = d
-                break
-        if scrape_index < scrape_window \
-           or last_scrape_date == sufficiently_old:
-            # There's not been enough scrapes to expire anything, so
-            # expire nothing
-            sufficiently_old = sufficiently_old - datetime.timedelta(days=1)
-        if verbosity > 1:
-            print("Will skip trials older than:", sufficiently_old)
-
-        # Date for reporting to be due has cutoff is 1 year (365 days) (by law,
-        # trials must report a year after finishing) plus 4 weeks (28 days)
-        # allowance (it takes that long for submissions to enter register)
-        due_date_cutoff = pd.Timestamp(last_scrape_date - relativedelta(years=1) - datetime.timedelta(days=28))
-        if verbosity > 1:
-            print("Due date cutoff:", due_date_cutoff)
+        sufficiently_old = calculate_sufficiently_old(scrape_dates, last_scrape_date, verbosity)
 
         euctr_cond = load_data_into_pandas(opentrials_db, sufficiently_old)
 
@@ -286,6 +287,14 @@ class Command(BaseCommand):
         spon_status = create_spon_status(spon_type)
 
         grouped = create_dataframe(euctr_cond)
+
+        # Date for reporting to be due has cutoff is 1 year (365 days) (by law,
+        # trials must report a year after finishing) plus 4 weeks (28 days)
+        # allowance (it takes that long for submissions to enter register)
+        due_date_cutoff = pd.Timestamp(last_scrape_date - relativedelta(years=1) - datetime.timedelta(days=28))
+        if verbosity > 1:
+            print("Due date cutoff:", due_date_cutoff)
+
         clean_and_enhance_dataframe(grouped, due_date_cutoff, euctr_url)
         
         final_cols = ['trial_id', 'number_of_countries', 'min_end_date', 'max_end_date', 'comp_date', 
