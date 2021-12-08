@@ -21,9 +21,17 @@ cd euctr-tracker-code/euctr
 # Scrape. Takes approx 4 days.
 ./manage.py run_crawler 2004-01-01 $WHEN >>$LOG_FILE 2>&1
 
+echo "Convert db to csv" >>$LOG_FILE 2>&1
+echo "=========================" >>$LOG_FILE 2>&1
+echo >>$LOG_FILE
+
 # Turns database contents into a CSV and metadata file. Should happen
 # once, after scrape.
-./manage.py get_trials_from_db
+./manage.py get_trials_from_db >>$LOG_FILE 2>&1
+
+echo "Upload to google cloud" >>$LOG_FILE 2>&1
+echo "=========================" >>$LOG_FILE 2>&1
+echo >>$LOG_FILE
 
 # Upload to google cloud
-./manage.py raw_trials_to_cloud
+./manage.py raw_trials_to_cloud >>$LOG_FILE 2>&1
