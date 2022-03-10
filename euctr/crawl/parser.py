@@ -3,10 +3,21 @@ import urllib.parse as urlparse
 import crawl.base as base
 from .record import Record
 
+from opentelemetry import trace
+
 
 # Module API
 
 def parse_record(res):
+    tracer = trace.get_tracer(__name__)
+    with tracer.start_as_current_span("parse_record"):
+        parse_record_internal(res)
+
+def parse_record_internal(res):
+    span = trace.get_current_span()
+    span.set_attribute("url", res.url)
+    span.set_attribute("status_code", res.status)
+
     fields_to_remove = [
         'trial_other',
         'trial_will_this_trial_be_conducted_at_a_single_site_globally',
@@ -38,10 +49,12 @@ def parse_record(res):
         return None
     eudract_number = subdata['eudract_number']
     data.update(subdata)
+    span.set_attribute("eudract_number", eudract_number)
 
     key = 'eudract_number_with_country'
     value = '-'.join([eudract_number, res.url.split('/')[-1]])
     data.update({key: value})
+    span.set_attribute("eudract_number_with_country", value)
 
     # Trial results URL
 
