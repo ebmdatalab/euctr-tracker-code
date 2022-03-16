@@ -6,7 +6,7 @@ from datetime import date, timedelta
 from scrapy.spiders import Rule
 from scrapy.spiders import CrawlSpider
 from scrapy.linkextractors import LinkExtractor
-from crawl.parser import parse_record
+from crawl.parser import parse_record, trial_errback
 
 
 # Module API
@@ -36,7 +36,8 @@ class Spider(CrawlSpider):
                     allow=r'ctr-search/trial/[\d-]+/[\w]+',
                     deny=r'results$'
                 ),
-                callback=parse_record
+                callback=parse_record,
+                errback=trial_errback
             ),
             Rule(
                 LinkExtractor(

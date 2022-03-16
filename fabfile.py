@@ -24,7 +24,7 @@ def make_directory():
     run('mkdir -p %s' % (env.path))
 
 def venv_init():
-    run('[ -e venv ] || python3.5 -m venv venv')
+    run('[ -e venv ] || python3.6 -m venv venv')
 
 def pip_install():
     with prefix('source venv/bin/activate'):

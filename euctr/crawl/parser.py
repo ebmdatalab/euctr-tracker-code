@@ -180,6 +180,24 @@ def parse_record(res):
         return record
 
 
+def trial_errback(failure):
+    tracer = trace.get_tracer(__name__)
+    with tracer.start_as_current_span("trial_errback"):
+        eudract_number_with_country = '-'.join([failure.request.url.split('/')[-2], failure.request.url.split('/')[-1]])
+        span.set_attribute("eudract_number_with_country", eudract_number_with_country)
+
+        if failure.check(HttpError):
+            span.set_attribute("status_code", failure.value.response)
+
+        elif failure.check(DNSLookupError):
+            request = failure.request
+            span.set_attribute('error', 'DNSLookupError on %s', request.url)
+
+        elif failure.check(TimeoutError, TCPTimedOutError):
+            request = failure.request
+            span.set_attribute('error', 'TimeoutError on %s', request.url)
+
+
 # Internal
 
 def _select_table(sel, ident):
