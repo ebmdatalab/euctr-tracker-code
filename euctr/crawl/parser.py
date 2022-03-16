@@ -183,19 +183,20 @@ def parse_record(res):
 def trial_errback(failure):
     tracer = trace.get_tracer(__name__)
     with tracer.start_as_current_span("trial_errback"):
-        eudract_number_with_country = '-'.join([failure.request.url.split('/')[-2], failure.request.url.split('/')[-1]])
+        request = failure.request
+        span.set_attribute("url", request.url)
+
+        eudract_number_with_country = '-'.join([request.url.split('/')[-2], request.url.split('/')[-1]])
         span.set_attribute("eudract_number_with_country", eudract_number_with_country)
 
         if failure.check(HttpError):
-            span.set_attribute("status_code", failure.value.response)
+            span.set_attribute("status_code", failure.value.response.status)
 
         elif failure.check(DNSLookupError):
-            request = failure.request
-            span.set_attribute('error', 'DNSLookupError on %s', request.url)
+            span.set_attribute('error', 'DNSLookupError')
 
         elif failure.check(TimeoutError, TCPTimedOutError):
-            request = failure.request
-            span.set_attribute('error', 'TimeoutError on %s', request.url)
+            span.set_attribute('error', 'TimeoutError')
 
 # Internal
 
