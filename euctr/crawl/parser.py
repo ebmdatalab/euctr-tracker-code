@@ -197,7 +197,6 @@ def trial_errback(failure):
             request = failure.request
             span.set_attribute('error', 'TimeoutError on %s', request.url)
 
-
 # Internal
 
 def _select_table(sel, ident):
