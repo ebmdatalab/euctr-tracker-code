@@ -183,6 +183,8 @@ def parse_record(res):
 def trial_errback(failure):
     tracer = trace.get_tracer(__name__)
     with tracer.start_as_current_span("trial_errback"):
+        span = trace.get_current_span()
+
         request = failure.request
         span.set_attribute("url", request.url)
 
@@ -190,6 +192,7 @@ def trial_errback(failure):
         span.set_attribute("eudract_number_with_country", eudract_number_with_country)
 
         if failure.check(HttpError):
+            span.set_attribute('error', 'HttpError')
             span.set_attribute("status_code", failure.value.response.status)
 
         elif failure.check(DNSLookupError):
