@@ -7,3 +7,4 @@ rundev
 ghostdriver.log
 __pycache__/
 fixtures/euctr/4f/4ff2c188ce8d0558bf49ce65ba607b1a84e35f95/response_body
+.DS_Store
