@@ -4,7 +4,7 @@ django-libsass==0.7
 csscompressor==0.9.4
 gevent==1.2.1
 gunicorn==19.6.0
-numpy==1.16.2
+numpy==1.21.0
 pandas==0.19.2
 psycopg2-binary==2.7.6.1
 selenium==3.5.0
