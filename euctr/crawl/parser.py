@@ -5,6 +5,11 @@ from .record import Record
 
 from opentelemetry import trace
 
+from scrapy.spidermiddlewares.httperror import HttpError
+from twisted.internet.error import ConnectionDone
+from twisted.internet.error import DNSLookupError
+from twisted.internet.error import TimeoutError, TCPTimedOutError
+
 
 # Module API
 
@@ -198,8 +203,12 @@ def trial_errback(failure):
         elif failure.check(DNSLookupError):
             span.set_attribute('error', 'DNSLookupError')
 
+        elif failure.check(ConnectionDone):
+            span.set_attribute('error', 'ConnectionDone')
+
         elif failure.check(TimeoutError, TCPTimedOutError):
             span.set_attribute('error', 'TimeoutError')
+
 
 # Internal
 
