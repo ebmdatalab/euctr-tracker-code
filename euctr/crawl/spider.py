@@ -6,7 +6,7 @@ from datetime import date, timedelta
 from scrapy.spiders import Rule
 from scrapy.spiders import CrawlSpider
 from scrapy.linkextractors import LinkExtractor
-from crawl.parser import parse_record, trial_errback
+from crawl.parser import parse_record, trial_errback, searchpage_errback
 
 
 # Module API
@@ -44,7 +44,8 @@ class Spider(CrawlSpider):
                     allow=r'page=\d+',
                     restrict_css='[accesskey=n]'
                 ),
-                process_links=partial(_process_links, self.start_urls)
+                process_links=partial(_process_links, self.start_urls),
+                errback=searchpage_errback
             ),
         ]
 

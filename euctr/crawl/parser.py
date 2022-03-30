@@ -5,6 +5,11 @@ from .record import Record
 
 from opentelemetry import trace
 
+from scrapy.spidermiddlewares.httperror import HttpError
+from twisted.internet.error import ConnectionDone
+from twisted.internet.error import DNSLookupError
+from twisted.internet.error import TimeoutError, TCPTimedOutError
+
 
 # Module API
 
@@ -198,8 +203,34 @@ def trial_errback(failure):
         elif failure.check(DNSLookupError):
             span.set_attribute('error', 'DNSLookupError')
 
+        elif failure.check(ConnectionDone):
+            span.set_attribute('error', 'ConnectionDone')
+
         elif failure.check(TimeoutError, TCPTimedOutError):
             span.set_attribute('error', 'TimeoutError')
+
+
+def searchpage_errback(failure):
+    tracer = trace.get_tracer(__name__)
+    with tracer.start_as_current_span("searchpage_errback"):
+        span = trace.get_current_span()
+
+        request = failure.request
+        span.set_attribute("url", request.url)
+
+        if failure.check(HttpError):
+            span.set_attribute('error', 'HttpError')
+            span.set_attribute("status_code", failure.value.response.status)
+
+        elif failure.check(DNSLookupError):
+            span.set_attribute('error', 'DNSLookupError')
+
+        elif failure.check(ConnectionDone):
+            span.set_attribute('error', 'ConnectionDone')
+
+        elif failure.check(TimeoutError, TCPTimedOutError):
+            span.set_attribute('error', 'TimeoutError')
+
 
 # Internal
 
