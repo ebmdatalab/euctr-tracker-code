@@ -2,7 +2,7 @@ Django==2.2.27
 django_compressor==2.1.1
 django-libsass==0.7
 csscompressor==0.9.4
-gevent==1.2.1
+gevent==23.9.1
 gunicorn==19.6.0
 numpy==1.16.2
 pandas==0.19.2
