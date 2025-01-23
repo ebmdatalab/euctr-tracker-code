@@ -28,3 +28,4 @@ opentelemetry_api==1.9.1
 opentelemetry-sdk==1.9.1
 opentelemetry-exporter-otlp-proto-grpc==1.9.1
 pyOpenSSL==20.0.1
+cryptography==38.0.4
