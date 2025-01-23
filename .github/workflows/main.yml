@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     services:
       postgres:
@@ -38,9 +38,9 @@ jobs:
           path: euctr-tracker-data
 
       - name: Install Python 3
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.6
+          python-version: "3.6.15"
 
       - name: Install dependencies
         run: |
