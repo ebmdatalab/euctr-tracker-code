@@ -27,3 +27,4 @@ six==1.11.0
 opentelemetry_api==1.9.1
 opentelemetry-sdk==1.9.1
 opentelemetry-exporter-otlp-proto-grpc==1.9.1
+pyOpenSSL==20.0.1
