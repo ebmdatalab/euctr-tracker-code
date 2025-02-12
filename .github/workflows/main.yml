@@ -38,9 +38,9 @@ jobs:
           path: euctr-tracker-data
 
       - name: Install Python 3
-        uses: actions/setup-python@v5
+        uses: deadsnakes/action@e640ac8743173a67cca4d7d77cd837e514bf98e8 # v3.2.0
         with:
-          python-version: "3.6.15"
+          python-version: "3.6"
 
       - name: Install dependencies
         run: |
