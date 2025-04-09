@@ -76,7 +76,7 @@ def load_data_into_pandas(db, sufficiently_old):
 
 def cleanup_dataset(euctr_cond):
     """cleaning up the condensed EUCTR dataset and adding the false conditions"""
-    euctr_cond['date_of_the_global_end_of_the_trial'] = pd.to_datetime(euctr_cond['date_of_the_global_end_of_the_trial'])
+    euctr_cond['date_of_the_global_end_of_the_trial'] = pd.to_datetime(euctr_cond['date_of_the_global_end_of_the_trial'], errors = 'coerce')
     euctr_cond['trial_is_part_of_a_paediatric_investigation_plan'] = (euctr_cond['trial_is_part_of_a_paediatric_investigation_plan'] == True).astype(int)
     euctr_cond['trial_human_pharmacology_phase_i'] = (euctr_cond['trial_human_pharmacology_phase_i']== True).astype(int)
     euctr_cond['trial_therapeutic_exploratory_phase_ii'] = (euctr_cond['trial_therapeutic_exploratory_phase_ii']== True).astype(int)
