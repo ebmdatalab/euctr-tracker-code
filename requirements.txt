@@ -22,7 +22,7 @@ fabric3
 testing.postgresql==1.3.0
 attrs==19.2.0
 Automat==0.8.0
-Twisted==20.3.0
+Twisted==23.8.0
 six==1.11.0
 opentelemetry_api==1.9.1
 opentelemetry-sdk==1.9.1
